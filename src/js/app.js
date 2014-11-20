@@ -10,8 +10,6 @@ App.prototype.route = function(target) {
 		target = removeSlash(window.location.pathname);
 	}
     
-    console.log('navigate to: ' + target);
-    
     var pageName;
 	if(target === "/" || target === "") {
         pageName = 'home';

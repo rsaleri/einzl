@@ -27,18 +27,21 @@
 	<div class="app">
         <div class="wrapper">
         	<header>
+                <div class="title"><span>Einzelstück</span></div>
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
                         <li><a href="/home" title="Sound">Sound</a></li>
                         <li><a href="/ringe" title="Design">Design</a></li>
-                        <li>Performance</li>
-                        <li>Display</li>
+                        <li><a href="/ketten" title="Performance">Performance</a></li>
+                        <li><a href="/armbaender" title="Display">Display</a></li>
                     </ul>
                 </nav>
             </header>
 			<main></main>
-			<footer></footer>
+			<footer>
+                &copy; Einzelstück 2015 - Impressum - AGB - F12
+            </footer>
 		</div>
 	</div>
     

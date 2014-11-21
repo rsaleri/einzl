@@ -8,9 +8,36 @@ body {
     color: $darkgrey;
 }
 
+header .title {
+    position: absolute;
+    left: 0;
+    height: 60px;
+    line-height: 60px;
+    z-index: 510;
+    margin-left: 60px;
+}
 
+header .title span {
+    display: none;
+}
 
+header .title:before {
+    content: "Einzlstck";
+    display: inline;
+}
 
+@media(min-width: $bp1) {
+    header .title {
+        margin-left: 30px;
+    }
+    header .title:before {
+        display: none;
+    }
+    
+    header .title span {
+        display: inline;
+    }
+}
 
 .copy {
     box-sizing: border-box;

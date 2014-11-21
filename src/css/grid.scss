@@ -1,6 +1,6 @@
 // BREAKPOINTS
-
 $bp1: 750px;
+$bp2: 1200px;
 
 .wrapper {
     
@@ -19,7 +19,7 @@ section, article, .content {
     width: 100%;
 }
 
-.content {
+.content, footer {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -80,4 +80,11 @@ section, article, .content {
         min-height: 100vh;
     }
     
+}
+
+
+footer {
+    box-sizing: border-box;
+    padding: 1.5em;
+    font-size: .8em;
 }

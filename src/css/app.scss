@@ -1,7 +1,49 @@
 @import 'branding';
 @import 'grid';
+@import 'navigation';
 
 body {
     background-color: $softwhite;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial;
+    color: $darkgrey;
+}
+
+
+
+
+
+.copy {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+}
+
+.csstransforms .copy {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+@media(min-width: $bp1) {
+    .copy {
+        padding: 20px 70px;
+    }
+}
+
+
+.product {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+}
+
+@media(min-width: $bp1) {
+    .product .drop.like {
+        top: 50px;
+        right: 50px;
+    }
 }

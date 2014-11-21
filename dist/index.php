@@ -26,7 +26,17 @@
 <body>
 	<div class="app">
         <div class="wrapper">
-        	<header></header>
+        	<header>
+                <nav>
+                    <div class="hamburger-button"><i class="fa fa-bars"></i></div>
+                    <ul>
+                        <li><a href="/home" title="Sound">Sound</a></li>
+                        <li><a href="/ringe" title="Design">Design</a></li>
+                        <li>Performance</li>
+                        <li>Display</li>
+                    </ul>
+                </nav>
+            </header>
 			<main></main>
 			<footer></footer>
 		</div>

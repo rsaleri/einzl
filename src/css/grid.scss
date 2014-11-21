@@ -1,11 +1,83 @@
+// BREAKPOINTS
+
+$bp1: 750px;
+
 .wrapper {
     
 }
 
 header {
     box-sizing: border-box;
+    position: relative;
     background-color: #fff;
-    border-bottom: 1px solid #ccc;
     height: 60px;
     width: 100%;
+    z-index: 500;
+}
+
+section, article, .content {
+    width: 100%;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+[class^="units"],
+[class*=' units'] {
+    width: 100%;
+}
+
+[class^="units"]:after,
+[class*=' units']:after {
+    content: "";
+    height: 0;
+    visibility: hidden;
+    display: table;
+    float: none;
+    clear: both;
+}
+
+
+[class^="units"] > div,
+[class*=' units'] > div {
+    box-sizing: border-box;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    float: left;
+    background-color: $textwhite;
+    
+    width: 100%;
+    min-height: 300px;
+}
+
+.cssvhunit [class^="units"] > div,
+.cssvhunit [class*=' units'] > div {
+    min-height: 70vh;
+}
+
+@media(min-width: $bp1) {
+    [class^="units"] > div,
+    [class*=' units'] > div {
+        width: 50%;
+        min-height: 400px;
+    }
+    .cssvhunit [class^="units"] > div,
+    .cssvhunit [class*=' units'] > div {
+        min-height: 50vh;
+    }
+}
+
+@media(min-width: $bp1) {
+
+    .units-3 > div:first-child {
+        min-height: 800px;
+    }
+    
+    .cssvhunit .units-3 > div:first-child {
+        min-height: 100vh;
+    }
+    
 }

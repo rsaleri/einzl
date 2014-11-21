@@ -19,6 +19,10 @@ Page.prototype.createView = function() {
 };
 
 Page.prototype.start = function() {
+    
+    // empty DOM
+    $('main').html('');
+    
     // insert view into DOM
     this.view.appendTo($('main'));
     

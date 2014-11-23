@@ -10,6 +10,10 @@ App.prototype.initNavigation = function() {
         $('header nav').toggleClass('open');
     });
     
+    $('.cart-button').on('vclick', function() {
+        $('aside.cart-container').toggleClass('open');
+    });
+
     this.initAppRoutingLinks();
 };
 

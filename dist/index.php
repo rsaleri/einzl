@@ -31,16 +31,50 @@
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
-                        <li><a href="/home" title="Sound">Sound</a></li>
-                        <li><a href="/ringe" title="Design">Design</a></li>
-                        <li><a href="/ketten" title="Performance">Performance</a></li>
-                        <li><a href="/armbaender" title="Display">Display</a></li>
+                        <li><a href="/home" title="Home">Home</a></li>
+                        <li><a href="/ringe" title="Ringe">Ringe</a></li>
+                        <li><a href="/ketten" title="Ketten">Ketten</a></li>
+                        <li><a href="/armbaender" title="Armbänder">Armbänder</a></li>
                     </ul>
                 </nav>
+                <div class="cart-button">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="total">EUR 98.45 ,-</span>
+                </div>
             </header>
+            <aside class="cart-container open">
+                <h2>Dein Warenkorb</h2>
+                <div class="cart">
+                    <ul>
+                        <li>
+                            <span class="remove"><i class="fa fa-times"></i></span>
+                            <span class="price">29.99</span>
+                            <span class="name">Rosenstein Armband</span>
+                            <span class="quantity">1</span>
+                        </li>
+                        <li>
+                            <span class="remove"><i class="fa fa-times"></i></span>
+                            <span class="price">29.99</span>
+                            <span class="name">Rosenstein Armband</span>
+                            <span class="quantity">1</span>
+                        </li>
+                        <li>
+                            <span class="remove"><i class="fa fa-times"></i></span>
+                            <span class="price">29.99</span>
+                            <span class="name">Rosenstein Armband</span>
+                            <span class="quantity">1</span>
+                        </li>
+                    </ul>
+                    <ul class="">
+                        <li>Zwischensumme</li>
+                        <li>Versand</li>
+                        <li>Total</li>
+                    </ul>
+                </div>
+            </aside>
 			<main></main>
 			<footer>
-                &copy; Einzelstück 2015 - Impressum - AGB - F12
+                &copy; Einzelstück 2015 - Impressum - AGB - <a href="/f12" title="F12">F12</a>
             </footer>
 		</div>
 	</div>

@@ -12,6 +12,7 @@ $buttonbackgroundHover: #666;
 a, a:visited, a:focus, a:hover {
     color: $darkgrey;
     text-decoration: none;
+    outline: none;
 }
 
 h2 {

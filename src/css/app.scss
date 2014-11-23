@@ -1,6 +1,7 @@
 @import 'branding';
 @import 'grid';
 @import 'navigation';
+@import 'cart';
 
 body {
     background-color: $softwhite;
@@ -24,6 +25,31 @@ header .title span {
 header .title:before {
     content: "Einzlstck";
     display: inline;
+}
+
+header {
+    .cart-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 60px;
+        padding: 0 20px;
+        line-height: 60px;
+        z-index: 510;
+        margin-right: 30px;
+
+        i {
+            margin-right: 10px;
+        }
+
+        .total {
+            font-size: .8em;
+        }
+    }
+
+    .cart-button:hover {
+        cursor: pointer;
+    }
 }
 
 @media(min-width: $bp1) {

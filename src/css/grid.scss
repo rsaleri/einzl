@@ -72,6 +72,14 @@ section, article, .content {
 
 @media(min-width: $bp1) {
 
+    .units-2 > div {
+        min-height: 800px;
+    }
+
+    .cssvhunit .units-2 > div {
+        min-height: 100vh;
+    }
+
     .units-3 > div:first-child {
         min-height: 800px;
     }

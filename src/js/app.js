@@ -2,13 +2,27 @@ var App = function() {
     
     this.initRouting();
     this.initNavigation();
+    this.getProducts();
+};
+
+App.prototype.getProducts = function() {
+    
+    var obj = {
+        action: 'getProducts'
+    };
+    
+    return this.askServer(obj).then(function(data) {
+        if(data.status) {
+            einzl.products = data.result;
+        }
+    });
 };
 
 App.prototype.askServer = function(obj) {
     return $.ajax({
-		type: "POST",
+		type: 'POST',
 		dataType:'json',
-		url: "php/ajax.php",
+		url: 'php/ajax.php',
 		data: obj
 	}).done(function(result) {
         
@@ -105,7 +119,8 @@ App.prototype.initRouting = function() {
 $(document).ready(function() {
     
     window.einzl = {
-        pages: {}
+        pages: {},
+        products: []
     };
     einzl.app = new App();
     einzl.app.route(null);

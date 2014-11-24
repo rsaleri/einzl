@@ -20,6 +20,8 @@ Page.prototype.createView = function() {
 
 Page.prototype.start = function() {
     
+    einzl.pages.active = this;
+    
     // empty DOM
     $('main').html('');
     

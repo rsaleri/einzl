@@ -2,11 +2,13 @@
 @import 'grid';
 @import 'navigation';
 @import 'cart';
+@import 'custom';
 
 body {
     background-color: $softwhite;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial;
     color: $darkgrey;
+    
 }
 
 header .title {
@@ -69,9 +71,10 @@ header {
     box-sizing: border-box;
     padding: 20px;
     width: 100%;
+    position: relative;
 }
 
-.csstransforms .copy {
+.copy.center-y {
     position: absolute;
     top: 50%;
     left: 0;
@@ -80,7 +83,7 @@ header {
 
 @media(min-width: $bp1) {
     .copy {
-        padding: 20px 70px;
+        padding: 70px;
     }
 }
 

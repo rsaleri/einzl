@@ -4,6 +4,25 @@ var App = function() {
     this.initNavigation();
 };
 
+App.prototype.askServer = function(obj) {
+    return $.ajax({
+		type: "POST",
+		dataType:'json',
+		url: "php/ajax.php",
+		data: obj
+	}).done(function(result) {
+        
+    }).fail(function(a,b,c) {
+        console.log('AJAX Call failed');
+        console.log('tried to send this data:');
+        console.log(obj);
+        console.log('response data:');
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    });
+};
+
 App.prototype.initNavigation = function() {
     
     $('.hamburger-button').on('vclick', function() {

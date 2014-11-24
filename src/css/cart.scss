@@ -46,7 +46,7 @@ aside.cart-container.open {
 
     li {
         white-space: nowrap;
-        padding: .3em 0;
+        padding: .4em 0;
 
         .quantity {
             font-style: italic;
@@ -72,5 +72,28 @@ aside.cart-container.open {
             float: right;
         }
 
+    }
+    
+    ul.totals {
+        position: relative;
+        margin-top: 2em;
+        
+        li {
+            font-size: .8em;
+        }
+        
+        .sum {
+            font-size: 1em;
+        }
+    }
+    
+    ul.totals:before {
+        content: "";
+        height: 1px;
+        background-color: #333;
+        width: 20px;
+        position: absolute;
+        top: -1em;
+        left: 0;
     }
 }

@@ -89,4 +89,5 @@ $(document).ready(function() {
     };
     einzl.app = new App();
     einzl.app.route(null);
+    einzl.cart = new Cart();
 });

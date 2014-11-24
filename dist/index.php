@@ -44,33 +44,7 @@
             </header>
             <aside class="cart-container open">
                 <h2>Dein Warenkorb</h2>
-                <div class="cart">
-                    <ul>
-                        <li>
-                            <span class="remove"><i class="fa fa-times"></i></span>
-                            <span class="price">29.99</span>
-                            <span class="name">Rosenstein Armband</span>
-                            <span class="quantity">1</span>
-                        </li>
-                        <li>
-                            <span class="remove"><i class="fa fa-times"></i></span>
-                            <span class="price">29.99</span>
-                            <span class="name">Rosenstein Armband</span>
-                            <span class="quantity">1</span>
-                        </li>
-                        <li>
-                            <span class="remove"><i class="fa fa-times"></i></span>
-                            <span class="price">29.99</span>
-                            <span class="name">Rosenstein Armband</span>
-                            <span class="quantity">1</span>
-                        </li>
-                    </ul>
-                    <ul class="">
-                        <li>Zwischensumme</li>
-                        <li>Versand</li>
-                        <li>Total</li>
-                    </ul>
-                </div>
+                <div class="cart"></div>
             </aside>
 			<main></main>
 			<footer>

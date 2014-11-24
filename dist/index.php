@@ -42,7 +42,7 @@
                     <span class="total">EUR 98.45 ,-</span>
                 </div>
             </header>
-            <aside class="cart-container open">
+            <aside class="cart-container">
                 <h2>Dein Warenkorb</h2>
                 <div class="cart">
                     <ul>

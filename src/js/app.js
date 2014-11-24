@@ -122,8 +122,10 @@ $(document).ready(function() {
         pages: {},
         products: []
     };
+    
     einzl.app = new App();
     einzl.app.route(null);
+    
     einzl.cart = new Cart();
     
     

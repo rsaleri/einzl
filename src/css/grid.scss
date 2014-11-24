@@ -3,7 +3,9 @@ $bp1: 750px;
 $bp2: 1200px;
 
 .wrapper {
+    position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 header {

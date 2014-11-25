@@ -1,5 +1,5 @@
 var App = function() {
-    
+    this.initPages();
     this.initRouting();
     this.initNavigation();
     this.getProducts();
@@ -8,21 +8,26 @@ var App = function() {
 App.prototype.getProducts = function() {
     var self = this;
     
-    // get product template
-    this.getTemplate('modules/product').then(function(hbs) {
-        einzl.templates.product.resolve(hbs);
-        einzl.templates.product = hbs;
-    });
-    
     // get product models
     var obj = {
         action: 'getProducts'
     };
     
-    return this.askServer(obj).then(function(data) {
+    return this.askServer(obj).done(function(data) {
         if(data.status) {
-            einzl.products.resolve(data.result);
-            einzl.products = data.result;
+            
+            // get product template
+            self.getTemplate('modules/product').then(function(hbs) {
+                einzl.templates.product = hbs;
+                
+                // instantiate Product() for each product in data.result
+                $.each(data.result, function(i) {
+                    einzl.products[i] = new Product(this);
+                });
+                
+            });
+            
+            
         }
     });
 };
@@ -80,6 +85,14 @@ App.prototype.initAppRoutingLinks = function() {
     
 };
 
+App.prototype.initPages = function() {
+    
+    $.each(einzl.pages, function(i, v) {
+        einzl.pages[i] = new Page(i)
+    });
+    
+};
+
 App.prototype.route = function(target) {
     var self = this;
     
@@ -97,13 +110,9 @@ App.prototype.route = function(target) {
     
     if(einzl.pages[pageName] && einzl.pages[pageName].view.length > 0) {
         einzl.pages[pageName].start();
-        ga('send', 'pageview');
     } else {
         einzl.pages[pageName] = new Page(pageName);
-        einzl.pages[pageName].createView().then(function() {
-            einzl.pages[pageName].start();
-            ga('send', 'pageview');
-        });
+        einzl.pages[pageName].start();
     }
     
 };
@@ -129,10 +138,8 @@ $(document).ready(function() {
     
     window.einzl = {
         pages: {},
-        products: new $.Deferred(),
-        templates: {
-            product: new $.Deferred()
-        }
+        products: [],
+        templates: {}
     };
     
     einzl.app = new App();

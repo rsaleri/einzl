@@ -87,9 +87,7 @@ App.prototype.initAppRoutingLinks = function() {
 
 App.prototype.initPages = function() {
     
-    $.each(einzl.pages, function(i, v) {
-        einzl.pages[i] = new Page(i)
-    });
+    
     
 };
 
@@ -108,6 +106,7 @@ App.prototype.route = function(target) {
         pageName = target;
     }
     
+    // TODO: clean that shit up
     if(einzl.pages[pageName] && einzl.pages[pageName].view.length > 0) {
         einzl.pages[pageName].start();
     } else {

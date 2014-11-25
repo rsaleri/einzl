@@ -6,13 +6,22 @@ var App = function() {
 };
 
 App.prototype.getProducts = function() {
+    var self = this;
     
+    // get product template
+    this.getTemplate('modules/product').then(function(hbs) {
+        einzl.templates.product.resolve(hbs);
+        einzl.templates.product = hbs;
+    });
+    
+    // get product models
     var obj = {
         action: 'getProducts'
     };
     
     return this.askServer(obj).then(function(data) {
         if(data.status) {
+            einzl.products.resolve(data.result);
             einzl.products = data.result;
         }
     });
@@ -120,7 +129,10 @@ $(document).ready(function() {
     
     window.einzl = {
         pages: {},
-        products: []
+        products: new $.Deferred(),
+        templates: {
+            product: new $.Deferred()
+        }
     };
     
     einzl.app = new App();

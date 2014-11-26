@@ -94,6 +94,51 @@ App.prototype.initPages = function() {
     
 };
 
+App.prototype.findDestination = function(target) {
+    // find target in config.routes (slug)
+    
+    // define variable which will be returned
+    var route = null; 
+    
+    // loop through pre-defined routes
+    $.each(config.routes, function() {
+        var match = false;
+        
+        // check their slugs
+        $.each(this.slug, function(i, v) {
+            
+            if(v === target) {
+                // found the requested target slug
+                match = true;
+                // cancel loop
+                return false;
+            }
+        });
+        
+        if(match) {
+        // found route
+            
+            // save route to return it
+            route = this;
+            
+            // cancel loop
+            return false;
+        }
+        
+    });
+    
+    if(route) {
+        // route was found, return it
+        return route;
+    } else {
+        // requested URL doesn't exist, send to 404
+        return this.findDestination('/404');
+    }
+    
+    
+    
+};
+
 App.prototype.route = function(target) {
     var self = this;
     
@@ -101,21 +146,21 @@ App.prototype.route = function(target) {
 		target = removeSlash(window.location.pathname);
 	}
     
+    console.log('route to: ' + target);
     
-    var pageName;
-	if(target === "/" || target === "") {
-        pageName = 'home';
-    } else {
-        pageName = target;
-    }
+    // get page model
+    var route = this.findDestination(target);
     
     // TODO: clean that shit up
-    if(einzl.pages[pageName] && einzl.pages[pageName].view.length > 0) {
-        einzl.pages[pageName].start();
+    if(einzl.pages[route.id] && einzl.pages[route.id].view.length > 0) {
+        einzl.pages[route.id].start();
     } else {
-        einzl.pages[pageName] = new Page(pageName);
-        einzl.pages[pageName].start();
+        einzl.pages[route.id] = new Page(route);
+        einzl.pages[route.id].start();
     }
+    
+    // edit document title
+    document.title = route.title + ' - Einzelstück';
     
 };
 

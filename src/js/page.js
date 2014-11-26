@@ -1,5 +1,5 @@
-var Page = function(name) {
-    this.name = name;
+var Page = function(model) {
+    this.model = model;
 };
 
 Page.prototype.createView = function() {
@@ -7,7 +7,7 @@ Page.prototype.createView = function() {
     var self = this;
     
     // get handlebars template
-    return einzl.app.getTemplate('pages/'+this.name).then(function(hbs) {
+    return einzl.app.getTemplate(this.model.hbsPath).then(function(hbs) {
         
         // compile handlebars template - insert data here, if there is any
         var html = hbs();
@@ -41,6 +41,8 @@ Page.prototype.insertProducts = function() {
                 // insert into DOM
                 this.view.appendTo(container);
                 
+                // TODO: CHECK IF THIS WORKS FOR MULTIPLE PRODUCTS ON ONE PAGE
+                // AS THIS MIGHT CANCEL LOOP #1 AS WELL
                 // cancel loop #2
                 return false;
             }
@@ -60,7 +62,7 @@ Page.prototype.start = function() {
         einzl.pages.active = this;
     
         // empty DOM but keep jQuery data (events and stuff)
-        $('main').children().detach();
+        $('main').children('section').detach();
 
         // insert view into DOM
         this.view.appendTo($('main'));

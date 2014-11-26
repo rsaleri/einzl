@@ -16,7 +16,8 @@ Product.prototype.createView = function() {
 };
 
 Product.prototype.initController = function() {
+    var self = this;
     this.view.find('.drop').on('vclick', function() {
-        alert('test');
+        alert(self.model.id);
     });
 };

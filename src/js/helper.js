@@ -5,7 +5,7 @@ function getRandomInt(min, max) {
 }
 
 function removeSlash(site) {
-    return site.replace(/^\/|\/$/g, '');
+    return site.replace(/\/$/, "");
 }
 
 function goToByScroll(obj){

@@ -49,7 +49,6 @@ Page.prototype.insertProducts = function() {
             
         });
     });
-    
 };
 
 Page.prototype.start = function() {
@@ -67,9 +66,6 @@ Page.prototype.start = function() {
         // insert view into DOM
         this.view.appendTo($('main'));
         
-        // send pageview to GA
-        ga('send', 'pageview');
-        
     } else {
         // create view
         this.createView().then(function() {
@@ -78,7 +74,4 @@ Page.prototype.start = function() {
         });
         
     }
-    
-    
-    
 };

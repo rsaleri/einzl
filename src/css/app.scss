@@ -8,7 +8,6 @@ body {
     background-color: $softwhite;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial;
     color: $darkgrey;
-    
 }
 
 header .title {
@@ -71,6 +70,8 @@ header {
     box-sizing: border-box;
     padding: 20px;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -78,6 +79,8 @@ header {
     position: absolute;
     top: 50%;
     left: 0;
+    right: 0;
+    bottom: auto;
     transform: translate(0, -50%);
 }
 
@@ -95,6 +98,35 @@ header {
     right: 0;
     bottom: 0;
     
+    .details {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .background {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        div {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
 }
 
 @media(min-width: $bp1) {

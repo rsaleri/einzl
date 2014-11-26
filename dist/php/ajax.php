@@ -19,7 +19,6 @@ if ( $authenticated ) {
     
     if($action == 'getProducts') {
         $data = $moltin->get('products');
-
     }
     
     

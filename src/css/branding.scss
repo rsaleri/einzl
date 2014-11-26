@@ -15,6 +15,12 @@ a, a:visited, a:focus, a:hover {
     outline: none;
 }
 
+h1 {
+    font-size: 100px;
+    font-weight: 400;
+    text-align: center;
+}
+
 h2 {
     position: relative;
     margin-top: 0;
@@ -23,6 +29,7 @@ h2 {
     text-align: center;
 }
 
+h1:after,
 h2:after {
     content: "";
     height: 1px;
@@ -38,7 +45,7 @@ h2:after {
     font-family: 'Segoe UI', 'Helvetica Neue', Arial;
 }
 
-h2 + h3 {
+h3 {
     position: relative;
     font-weight: 400;
     text-align: center;

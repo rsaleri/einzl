@@ -1,7 +1,6 @@
 var Product = function(model) {
     this.model = model;
     this.createView();
-    this.initController();
 };
 
 Product.prototype.createView = function() {
@@ -17,7 +16,6 @@ Product.prototype.createView = function() {
 };
 
 Product.prototype.initController = function() {
-    
     this.view.find('.drop').on('vclick', function() {
         alert('test');
     });

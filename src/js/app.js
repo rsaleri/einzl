@@ -25,6 +25,9 @@ App.prototype.getProducts = function() {
                     einzl.products[i] = new Product(this);
                 });
                 
+                // resolve Deferred for products (tell the App that the products have been loaded);
+                einzl.deferreds.product.resolve();
+                
             });
             
             
@@ -138,7 +141,10 @@ $(document).ready(function() {
     window.einzl = {
         pages: {},
         products: [],
-        templates: {}
+        templates: {},
+        deferreds: {
+            product: new $.Deferred()
+        }
     };
     
     einzl.app = new App();

@@ -1,5 +1,3 @@
-// master test
-
 var App = function() {
     this.updateFromLocalStorage();
     this.initPages();
@@ -225,4 +223,3 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 // CUSTOM EVENTS: ga('send', 'event', 'category', 'action', 'label', value);
-// only some tests

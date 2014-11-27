@@ -13,6 +13,6 @@
 
 	// Autenticate using client credentials
 	$authenticated = $moltin->authenticate(new \Moltin\SDK\Authenticate\ClientCredentials, array(
-	    'client_id'     => $clientID,
-	    'client_secret' => $clientSecret
+	    'client_id'     => $moltinID,
+	    'client_secret' => $moltinSecret
 	));

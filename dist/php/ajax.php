@@ -1,6 +1,7 @@
 <?php
 
 require_once('moltin.php');
+require_once('newsletter.php');
 require_once('helper.php');
 
 // what to do?

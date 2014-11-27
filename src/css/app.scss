@@ -29,15 +29,23 @@ header .title:before {
 }
 
 header {
-    .cart-button {
+    
+    .right-area {
         position: absolute;
+        z-index: 510;
         top: 0;
         right: 0;
         height: 60px;
+    }
+    
+    .cart-button {
+        display: none;
+        float: right;
+        white-space: nowrap;
+        height: 60px;
         padding: 0 20px;
         line-height: 60px;
-        z-index: 510;
-        margin-right: 30px;
+        margin: 0 0px;
 
         i {
             margin-right: 10px;
@@ -49,6 +57,19 @@ header {
     }
 
     .cart-button:hover {
+        cursor: pointer;
+    }
+    
+    .language-button {
+        float: right;
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        font-size: .8em;
+    }
+    
+    .language-button:hover {
         cursor: pointer;
     }
 }

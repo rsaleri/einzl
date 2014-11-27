@@ -3,6 +3,7 @@ $softwhite: #f1f1f1;
 $textwhite: #f9f9f9;
 $buttonbackground: #888;
 $buttonbackgroundHover: #666;
+$red: #ED7D7C;
 
 [class^="units"] > div,
 [class*=' units'] > div {
@@ -97,7 +98,7 @@ input[type="text"]:focus {
     width: 36px;
     height: 36px;
     line-height: 36px;
-    background-color: #e1e1e1;
+    background-color: #f1f1f1;
     border-radius: 0% 50% 50% 50%;
     transform: rotate(45deg);
     text-align: center;
@@ -123,9 +124,12 @@ input[type="text"]:focus {
 }
 
 .drop.like {
-    
+     
 }
 
+.drop.liked {
+    color: $red;
+}
 
 
 

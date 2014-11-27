@@ -1,8 +1,17 @@
 var App = function() {
+    this.updateFromLocalStorage();
     this.initPages();
     this.initRouting();
     this.initNavigation();
     this.getProducts();
+};
+
+App.prototype.updateFromLocalStorage = function() {
+    if(isLocalStorageNameSupported() && localStorage.einzl_user) {
+        var user = JSON.parse(localStorage.einzl_user);
+        
+        $.extend(einzl.user, user);
+    }
 };
 
 App.prototype.getProducts = function() {
@@ -188,6 +197,9 @@ $(document).ready(function() {
     
     window.einzl = {
         pages: {},
+        user: {
+            likes: {}
+        },
         products: [],
         templates: {},
         deferreds: {
@@ -209,3 +221,5 @@ $(document).ready(function() {
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+// CUSTOM EVENTS: ga('send', 'event', 'category', 'action', 'label', value);

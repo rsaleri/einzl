@@ -41,8 +41,6 @@ Page.prototype.insertProducts = function() {
                 // insert into DOM
                 this.view.appendTo(container);
                 
-                // TODO: CHECK IF THIS WORKS FOR MULTIPLE PRODUCTS ON ONE PAGE
-                // AS THIS MIGHT CANCEL LOOP #1 AS WELL
                 // cancel loop #2
                 return false;
             }
@@ -62,6 +60,9 @@ Page.prototype.start = function() {
     
         // empty DOM but keep jQuery data (events and stuff)
         $('main').children('section').detach();
+        
+        // scroll to top
+        $(window).scrollTop(0);
 
         // insert view into DOM
         this.view.appendTo($('main'));

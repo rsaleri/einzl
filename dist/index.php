@@ -37,10 +37,17 @@
                         <li><a href="/armbaender" title="Armbänder">Armbänder</a></li>
                     </ul>
                 </nav>
-                <div class="cart-button">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span class="total">EUR 98.45 ,-</span>
+                <div class="right-area">
+                    <div class="language-button">
+                        <span title="only DE for now, sorry :(">DE</span>
+                    </div>
+                    <div class="cart-button">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="total">EUR 98.45 ,-</span>
+                    </div>
+                    
                 </div>
+                
             </header>
             <aside class="cart-container">
                 <h2>Dein Warenkorb</h2>
@@ -48,7 +55,7 @@
             </aside>
 			<main></main>
 			<footer>
-                &copy; Einzelstück 2015 - Impressum - AGB - <a href="/f12" title="F12">F12</a>
+                &copy; Einzelstück 2015 - <a href="/impressum" title="Impressum">Impressum</a> - <del>AGB</del> - <a href="/f12" title="F12">F12</a>
             </footer>
 		</div>
 	</div>

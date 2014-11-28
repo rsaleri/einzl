@@ -1,6 +1,5 @@
 var App = function() {
     this.updateFromLocalStorage();
-    this.initPages();
     this.initRouting();
     this.initNavigation();
     this.getProducts();
@@ -23,7 +22,7 @@ App.prototype.getProducts = function() {
     };
     
     return this.askServer(obj).done(function(data) {
-        if(data.status) {
+        if(data && data.status) {
             
             // get product template
             self.getTemplate('modules/product').then(function(hbs) {
@@ -40,6 +39,9 @@ App.prototype.getProducts = function() {
             });
             
             
+        } else {
+            console.log('GET PRODUCTS FAILED');
+            console.log(data);
         }
     });
 };
@@ -97,9 +99,18 @@ App.prototype.initAppRoutingLinks = function() {
     
 };
 
-App.prototype.initPages = function() {
+App.prototype.subscribe = function(userData) {
     
+    var obj = {
+        action: 'subscribe',
+        user: userData
+    };
     
+    return this.askServer(obj).done(function(data) {
+        console.log('user successfully subscribed');
+    }).fail(function(data) {
+        console.log('something is wrong with that email');
+    });
     
 };
 

@@ -5,7 +5,7 @@ $buttonbackground: #888;
 $buttonbackgroundHover: #666;
 $red: #ED7D7C;
 $green: #5E8858;
-$yellow: #E8E288;
+$yellow: #E8D2AE;
 
 [class^="units"] > div,
 [class*=' units'] > div {
@@ -76,9 +76,10 @@ input[type="text"]:focus {
 
 button,
 .button {
+    position: relative;
     display: inline-block;
     border: 0;
-    padding: 10px 25px;
+    padding: .5em 25px;
     text-align: center;
     background-color: $buttonbackground;
     color: #f3f3f3;
@@ -91,8 +92,26 @@ button:hover,
     cursor: pointer;
 }
 
+button.loading:before,
+.button.loading:before {
+	position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    vertical-align: baseline;
+	display: inline-block;
+	line-height: 1.4em;
+	font-family: FontAwesome;
+	content: "\f021";
+    text-align: center;animation: rotateIt 1s linear infinite reverse;
+    transform-origin: center center;
+  	backface-visibility: hidden;
+}
 
-
+button.loading > span,
+.button.loading > span {
+	opacity: 0;
+}
 
 
 .drop {
@@ -137,9 +156,21 @@ button:hover,
 
 
 
+.error {
+    border-color: $red !important;
+    color: $red !important;
+}
 
 
+/*------------------------------------*\
+    ANIMATIONS
+\*------------------------------------*/
 
+@keyframes rotateIt
+{
+	0%   {transform: rotate(360deg);}
+	100% {transform: rotate(0deg);}
+}
 
 
 

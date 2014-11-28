@@ -19,6 +19,54 @@ Page.prototype.createView = function() {
         $.when(einzl.deferreds.product).then(function() {
             self.insertProducts();
         });
+        
+        self.initController();
+    });
+};
+
+Page.prototype.initController = function() {
+    
+    // init email subscribe button
+    this.view.find('.newsletter-form').each(function() {
+        var form = $(this);
+        var input = form.find('input[type="email"]'),
+            button = form.find('button.subscribe[type="submit"]');
+        
+        // enable subscribe button
+        button.on('vclick', function(e) {
+            
+            // stop default stuff
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+            e.preventDefault();
+            
+            // check if entered email is valid
+            if(form[0].checkValidity() && input.val().length > 0) {
+                
+                button.addClass('loading');
+                
+                // save entered user data
+                var userData = {
+                    email: input.val()
+                }
+                
+                // subscribe
+                einzl.app.subscribe(userData)
+                .then(function(data) {
+                    button.removeClass('loading');
+                    input.val('');
+                });
+                
+            } else {
+                // email is invalid
+                input.addClass('error');
+                input.one('focus', function() {
+                    input.removeClass('error');
+                });
+                
+            }
+            
+        });
     });
 };
 

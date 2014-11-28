@@ -11,7 +11,7 @@ $action = $_POST['action'];
 $data = [];
 
 
-// Check authentication
+// Check moltin authentication
 if ( $authenticated ) {
     
     
@@ -19,7 +19,16 @@ if ( $authenticated ) {
     
     
     if($action == 'getProducts') {
+        
+        // get products from moltin
         $data = $moltin->get('products');
+        
+    } else if($action == 'subscribe') {
+        
+        // send userdata to mailchimp for email subscription
+        $user = $_POST['user'];
+        $data = subscribe($user, $mailchimp);
+        
     }
     
     

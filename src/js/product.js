@@ -30,7 +30,7 @@ Product.prototype.initController = function() {
         $(this).toggleClass('liked');
         
         // save like-status
-        var liked = $(this).hasClass('liked')
+        var liked = $(this).hasClass('liked');
         
         // send to google analytics
         if(liked) {

@@ -22,3 +22,26 @@ function isLocalStorageNameSupported() {
 		return false;
 	}
 }
+
+// Notifications
+var t1;
+var t2;
+function notifyUser(msg, type) {
+
+    var el = $('#notification'),
+        span = el.find('.message');
+
+    el.addClass(type).removeClass('hide');
+    span.text(msg);
+
+    clearTimeout(t1);
+    clearTimeout(t2);
+
+    t1 = window.setTimeout(function() {
+        el.addClass('hide');
+        t2 = window.setTimeout(function() {
+            el.removeClass(type);
+            span.text('');
+        }, 1000);
+    }, 3500);
+};

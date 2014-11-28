@@ -37,8 +37,6 @@ App.prototype.getProducts = function() {
                 einzl.deferreds.product.resolve();
                 
             });
-            
-            
         } else {
             console.log('GET PRODUCTS FAILED');
             console.log(data);

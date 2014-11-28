@@ -156,3 +156,30 @@ header {
         right: 50px;
     }
 }
+
+
+
+/*------------------------------------*\
+    NOTIFICATION
+\*------------------------------------*/
+
+#notification {
+    z-index: 9999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: #f3f3f3;
+    transition: transform ease .5s;
+    backface-visibility: hidden;
+}
+
+#notification.hide {
+    transform: translate3d(0, 100%, 0);
+}
+
+#notification.success { background-color: $green; }
+#notification.error { background-color: $red; }
+#notification.info { background-color: $yellow; }

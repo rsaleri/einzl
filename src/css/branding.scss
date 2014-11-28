@@ -1,3 +1,4 @@
+// COLORS
 $darkgrey: #333333;
 $softwhite: #f1f1f1;
 $textwhite: #f9f9f9;
@@ -6,6 +7,10 @@ $buttonbackgroundHover: #666;
 $red: #ED7D7C;
 $green: #5E8858;
 $yellow: #E8D2AE;
+
+// BREAKPOINTS
+$bp1: 750px;
+$bp2: 1200px;
 
 [class^="units"] > div,
 [class*=' units'] > div {
@@ -19,10 +24,23 @@ a, a:visited, a:focus, a:hover {
 }
 
 h1 {
-    font-size: 100px;
+    font-size: 40px;
     font-weight: 400;
     text-align: center;
 }
+
+@media(min-width: $bp1) {
+    h1 {
+        font-size: 70px;
+    }
+}
+
+@media(min-width: $bp2) {
+    h1 {
+        font-size: 100px;
+    }
+}
+
 
 h2 {
     position: relative;
@@ -32,7 +50,6 @@ h2 {
     text-align: center;
 }
 
-h1:after,
 h2:after {
     content: "";
     height: 1px;
@@ -139,7 +156,6 @@ button.loading > span,
 
 .drop i:before {
     
-    
 }
 
 .drop:hover {
@@ -153,8 +169,6 @@ button.loading > span,
 .drop.liked {
     color: $red;
 }
-
-
 
 .error {
     border-color: $red !important;

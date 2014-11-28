@@ -96,19 +96,23 @@ header {
     position: relative;
 }
 
-.copy.center-y {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    transform: translate(0, -50%);
-}
-
 @media(min-width: $bp1) {
     .copy {
         padding: 70px;
     }
+}
+
+.copy.center-y {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+}
+
+.csstransform .copy.center-y {
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 

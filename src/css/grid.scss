@@ -1,7 +1,3 @@
-// BREAKPOINTS
-$bp1: 750px;
-$bp2: 1200px;
-
 .wrapper {
     position: relative;
     overflow: hidden;
@@ -57,7 +53,7 @@ section, article, .content {
 
 .cssvhunit [class^="units"] > div,
 .cssvhunit [class*=' units'] > div {
-    min-height: 70vh;
+    min-height: 55vh;
 }
 
 @media(min-width: $bp1) {

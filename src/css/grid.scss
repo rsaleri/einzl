@@ -13,6 +13,13 @@ header {
     z-index: 500;
 }
 
+@media(min-width: $bp1) {
+    header {
+        position: fixed;
+        top: 0;
+    }
+}
+
 section, article, .content {
     width: 100%;
 }
@@ -77,6 +84,16 @@ section, article, .content {
     
     .cssvhunit .units-1 > div {
         height: 100vh;
+    }
+    
+    .units-1 .copy {
+        max-width: 500px;
+        text-align: center;
+        padding: 0;
+        
+        p {
+            padding: 0 70px;
+        }
     }
 
     .units-2 > div {

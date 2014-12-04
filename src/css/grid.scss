@@ -86,6 +86,14 @@ section, article, .content {
         height: 100vh;
     }
     
+    .units-1.cut-in-half > div {
+        height: 350px;
+    }
+    
+    .cssvhunit .units-1.cut-in-half > div {
+        height: 50vh;
+    }
+    
     .units-1 .copy {
         text-align: center;
         padding: 0;

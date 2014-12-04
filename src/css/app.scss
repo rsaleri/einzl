@@ -186,5 +186,5 @@ header {
 }
 
 #notification.success { background-color: $green; }
-#notification.error { background-color: $red; }
+#notification.error { background-color: $red; color: $softwhite !important }
 #notification.info { background-color: $yellow; }

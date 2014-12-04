@@ -52,7 +52,7 @@ Page.prototype.initController = function() {
                     }
 
                     // subscribe
-                    einzl.app.subscribe(userData).then(function(data) {
+                    einzl.app.subscribe(userData).always(function(data) {
                         button.removeClass('loading');
                         input.val('');
                     });

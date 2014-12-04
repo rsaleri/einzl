@@ -87,13 +87,18 @@ section, article, .content {
     }
     
     .units-1 .copy {
-        max-width: 500px;
         text-align: center;
         padding: 0;
         
         p {
             padding: 0 70px;
         }
+    }
+    
+    .units-1 .copy .limitWidth {
+        width: 500px;
+        margin: 0 auto;
+//        text-align: left;
     }
 
     .units-2 > div {

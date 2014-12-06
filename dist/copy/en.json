@@ -2,15 +2,24 @@
     "copy": {
         "title_long": "Einzelstück",
         "title_short": "Einzlstck",
+        "site_desc": "Handmade indian jewelry with precious and semiprecious stones embedded into beautiful settings made of sterling silver.",
         "nav_01": "Home",
-        "nav_02": "Ringe",
-        "nav_03": "Ketten",
-        "nav_04": "Armbänder",
+        "nav_02": "Rings",
+        "nav_03": "Necklaces",
+        "nav_04": "Bracelets",
         "footer_copyright": "© Einzelstück 2015",
-        "footer_link_01": "Impressum",
-        "footer_link_02": "AGB",
+        "footer_link_01": "Imprint",
+        "footer_link_02": "Terms & Conditions",
         "footer_link_03": "F12",
         "nl_headline": "Don't miss anything!",
-        "nl_copy": "Trage dich in unseren Newsletter ein und sichere dir <strong>20% Rabatt</strong> am Eröffnungstag."
+        "nl_copy": "Subscribe to our newsletter and get yourself <strong>20% off your order</strong> on our launch day.",
+        "nl_button": "Subscribe",
+        "messages": {
+            "welcome": [
+                "Hey you :-)",
+                "Welcome to Einzelstück",
+                "Hi, nice too see you :-)"
+            ]
+        }
     }
 }

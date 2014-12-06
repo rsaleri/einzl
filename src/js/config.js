@@ -43,12 +43,5 @@
              slug: ['/404'],
              hbsPath: '/pages/404'
          }
-     ],
-     messages: {
-        welcome: [
-            'Hi du :-)',
-            'Willkommen bei Einzelstück',
-            'Hey, schön dich zu sehen :-)'
-        ]
-    }
+     ]
  };

@@ -2,6 +2,7 @@
     "copy": {
         "title_long": "Einzelstück",
         "title_short": "Einzlstck",
+        "site_desc": "Handgemachter, indischer Schmuck mit echten Edelsteinen und Halbedelsteinen, eingelassen in wunderschönen Fassungen aus 925 Sterlingsilber.",
         "nav_01": "Home",
         "nav_02": "Ringe",
         "nav_03": "Ketten",
@@ -11,6 +12,7 @@
         "footer_link_02": "AGB",
         "footer_link_03": "F12",
         "nl_headline": "Nicht verpassen!",
-        "nl_copy": "Trage dich in unseren Newsletter ein und sichere dir <strong>20% Rabatt</strong> am Eröffnungstag."
+        "nl_copy": "Trage dich in unseren Newsletter ein und sichere dir <strong>20% Rabatt</strong> am Eröffnungstag.",
+        "nl_button": "Eintragen"
     }
 }

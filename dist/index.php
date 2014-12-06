@@ -27,14 +27,14 @@
 	<div class="app">
         <div class="wrapper">
         	<header>
-                <div class="title"><a href="/home" title="Home"><span>Einzelstück</span></a></div>
+                <div class="title"><a href="/home" title="Home"><span data-copy="title_long"></span></a></div>
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
-                        <li><a href="/home" title="Home">Home</a></li>
-                        <li><a href="/ringe" title="Ringe">Ringe</a></li>
-                        <li><a href="/ketten" title="Ketten">Ketten</a></li>
-                        <li><a href="/armbaender" title="Armbänder">Armbänder</a></li>
+                        <li><a data-copy="nav_01" href="/home" title="Home"></a></li>
+                        <li><a data-copy="nav_02" href="/ringe" title="Ringe"></a></li>
+                        <li><a data-copy="nav_03" href="/ketten" title="Ketten"></a></li>
+                        <li><a data-copy="nav_04" href="/armbaender" title="Armbänder"></a></li>
                     </ul>
                 </nav>
                 <div class="right-area">
@@ -55,7 +55,7 @@
             </aside>
 			<main></main>
 			<footer>
-                &copy; Einzelstück 2015 - <a href="/impressum" title="Impressum">Impressum</a> - <del>AGB</del> - <a href="/f12" title="F12">F12</a>
+                <span data-copy="footer_copyright"></span><!-- - <a href="/impressum" title="Impressum" data-copy="footer_link_01"></a> - <del data-copy="footer_link_02">AGB</del> - <a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
             </footer>
 		</div>
 	</div>

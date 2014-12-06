@@ -4,7 +4,6 @@ var App = function() {
     this.initRouting();
     this.initNavigation();
     this.getProducts();
-    
 };
 
 App.changeLanguageTo = function(lang) {
@@ -22,6 +21,14 @@ App.prototype.getCopy = function() {
         einzl.copy = data.copy;
         
         einzl.deferreds.copy.resolve();
+    }).done(function() {
+        // insert copy into current DOM
+        $('[data-copy]').each(function() {
+            var copy = einzl.copy[$(this).attr('data-copy')];
+            $(this).html(copy);
+        });
+        
+        notifyUser(einzl.copy.messages.welcome[getRandomInt(0, einzl.copy.messages.welcome.length -1)], 'success');
     });
 };
 

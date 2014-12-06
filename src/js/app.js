@@ -1,8 +1,28 @@
 var App = function() {
     this.updateFromLocalStorage();
+    this.getCopy();
     this.initRouting();
     this.initNavigation();
     this.getProducts();
+    
+};
+
+App.changeLanguageTo = function(lang) {
+    
+    config.lang = lang;
+    
+    this.getCopy().then(function() {
+        // insertCopy for all Pages, and App (and whereever it will be used again)
+    });
+    
+};
+
+App.prototype.getCopy = function() {
+    return $.getJSON('copy/' + config.lang + '.json', function(data) {
+        einzl.copy = data.copy;
+        
+        einzl.deferreds.copy.resolve();
+    });
 };
 
 App.prototype.updateFromLocalStorage = function() {
@@ -216,7 +236,8 @@ $(document).ready(function() {
         products: [],
         templates: {},
         deferreds: {
-            product: new $.Deferred()
+            product: new $.Deferred(),
+            copy: new $.Deferred()
         }
     };
     

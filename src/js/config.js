@@ -1,4 +1,5 @@
  var config = {
+     lang: 'en',
      routes: [
          {
              title: 'Home',

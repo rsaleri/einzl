@@ -23,7 +23,7 @@ header .title span {
     display: none;
 }
 
-header .title:before {
+header .title a:before {
     content: "Einzlstck";
     display: inline;
 }
@@ -79,7 +79,7 @@ header {
     header .title {
         margin-left: 30px;
     }
-    header .title:before {
+    header .title a:before {
         display: none;
     }
     

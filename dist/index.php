@@ -27,7 +27,7 @@
 	<div class="app">
         <div class="wrapper">
         	<header>
-                <div class="title"><span>Einzelstück</span></div>
+                <div class="title"><a href="/home" title="Home"><span>Einzelstück</span></a></div>
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>

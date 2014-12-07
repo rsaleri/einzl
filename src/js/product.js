@@ -16,9 +16,9 @@ Product.prototype.createView = function() {
 };
 
 Product.prototype.addToCart = function() {
-    var obj = {
-        
-    }
+    console.log(this.model);
+    einzl.cart.addItem(this.model.id);
+    
 };
 
 Product.prototype.initController = function() {
@@ -26,6 +26,8 @@ Product.prototype.initController = function() {
     
     // enable add-to-cart button
     this.view.find('.drop.add-to-cart').on('vclick', function() {
+        
+        self.addToCart();
         
     });
     

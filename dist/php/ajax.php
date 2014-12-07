@@ -43,6 +43,28 @@ if ( $authenticated ) {
         }
 
         
+    } else if($action == 'addToCart') {
+        try
+        {
+
+            $productID = $_POST['product_id'];
+            $cartID = $_POST['cart']['id'];
+            
+            // put item into cart
+            $data['item'] = $moltin->post('cart/'.$cartID, array('id' => $productID, 'quantity' => 1));
+            
+            // get updated cart content
+            $cart = $moltin->get('cart/'.$cartID);
+            $data['cart'] = $cart['result'];
+            
+            // insert cart ID into response
+            $data['cart']['id'] = $cartID;
+            
+        }
+        catch (\Exception $e)
+        {
+            $data = $e->getMessage();
+        }
     }
     
 } else {

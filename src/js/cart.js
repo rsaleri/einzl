@@ -6,11 +6,29 @@ var Cart = function() {
     this.getCart().then(function() {
         // get cart template
         self.getTemplate().then(function() {
-            // create cart view
+            // create cart view and insert into DOM
             self.createView();
-            // insert into DOM
-            self.view.clone().appendTo($('.cart'));
         });
+    });
+    
+};
+
+Cart.prototype.addItem = function(prodID) {
+    var self = this;
+    
+    var obj = {
+        action: 'addToCart',
+        cart: {
+            id: self.model.id
+        },
+        product_id: prodID
+    }
+    
+    return einzl.app.askServer(obj).done(function(data) {
+        console.log(data);
+        
+        self.model = data.cart;
+        self.createView();
     });
     
 };
@@ -51,9 +69,24 @@ Cart.prototype.getTemplate = function() {
     });
 };
 
-Cart.prototype.createView = function() {
+Cart.prototype.initController = function() {
     
-    var html = this.template();
+    // enable remove-button
+    // try it without a data-prodID in the cart, think about how to do it via models only
+    
+};
+
+Cart.prototype.createView = function() {
+    console.log('create view');
+    console.log(this.model);
+    
+    var html = this.template(this.model);
     
     this.view = $(html);
+    
+    // insert into DOM
+    $('.cart').html('');
+    this.view.clone(true).appendTo($('.cart'));
+    
+    this.initController();
 };

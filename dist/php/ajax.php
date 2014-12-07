@@ -14,10 +14,6 @@ $data = [];
 // Check moltin authentication
 if ( $authenticated ) {
     
-    
-    
-    
-    
     if($action == 'getProducts') {
         
         // get products from moltin
@@ -30,11 +26,6 @@ if ( $authenticated ) {
         $data = subscribe($user, $mailchimp);
         
     }
-    
-    
-    
-    
-    
     
 } else {
     // Autentication failed

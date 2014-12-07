@@ -179,6 +179,7 @@ header {
     padding: 10px 0;
     text-align: center;
     color: #f3f3f3;
+    transform: translate3d(0, 0%, 0);
     transition: transform ease .5s;
     backface-visibility: hidden;
 }

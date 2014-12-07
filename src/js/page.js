@@ -81,8 +81,7 @@ Page.prototype.initController = function() {
 
                 }
             }
-                
-            
+               
         });
     });
 };
@@ -103,8 +102,8 @@ Page.prototype.insertProducts = function() {
             if(prodID === id) {
                 // found the product
                 
-                // insert into DOM
-                this.view.appendTo(container);
+                // insert copy of product view into DOM
+                this.view.clone(true).appendTo(container);
                 
                 // cancel loop #2
                 return false;

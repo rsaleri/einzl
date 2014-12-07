@@ -28,7 +28,10 @@ App.prototype.getCopy = function() {
             $(this).html(copy);
         });
         
-        notifyUser(einzl.copy.messages.welcome[getRandomInt(0, einzl.copy.messages.welcome.length -1)], 'success');
+        window.setTimeout(function() {
+            notifyUser(einzl.copy.messages.welcome[getRandomInt(0, einzl.copy.messages.welcome.length -1)], 'success');
+        }, 2000);
+        
     });
 };
 

@@ -59,7 +59,7 @@
             </footer>
 		</div>
 	</div>
-    <div id="notification"><span class="message"></span></div>
+    <div id="notification" class="hide"><span class="message"></span></div>
     
     
     <!-- javascript -->

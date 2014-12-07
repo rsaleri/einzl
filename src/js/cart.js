@@ -2,19 +2,23 @@ var Cart = function() {
     
     var self = this;
     
-    this.getTemplate().then(function() {
-        self.createView();
-        
-        self.view.appendTo($('.cart'));
+    // get cart data
+    this.getCart().then(function() {
+        // get cart template
+        self.getTemplate().then(function() {
+            // create cart view
+            self.createView();
+            // insert into DOM
+            self.view.clone().appendTo($('.cart'));
+        });
     });
-    
-    this.getCart();
     
 };
 
 Cart.prototype.getCart = function() {
     var self = this;
     
+    // define question for server & moltin
     var obj = {
         action: 'getCart',
         cart: {
@@ -22,6 +26,7 @@ Cart.prototype.getCart = function() {
         }
     };
     
+    // get cart data from moltin
     return einzl.app.askServer(obj).done(function(data) {
         console.log(data);
         

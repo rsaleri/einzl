@@ -17,17 +17,25 @@ App.changeLanguageTo = function(lang) {
 };
 
 App.prototype.getCopy = function() {
+    // get copy, the words, the spaces and all typo
+    
     return $.getJSON('copy/' + config.lang + '.json', function(data) {
+        
+        // save copy into einzl object
         einzl.copy = data.copy;
         
+        // resolve the deferred to let everyone know that we learned words
         einzl.deferreds.copy.resolve();
+        
     }).done(function() {
+        
         // insert copy into current DOM
         $('[data-copy]').each(function() {
             var copy = einzl.copy[$(this).attr('data-copy')];
             $(this).html(copy);
         });
         
+        // we just learned words, so say hello to our beloved user
         window.setTimeout(function() {
             notifyUser(einzl.copy.messages.welcome[getRandomInt(0, einzl.copy.messages.welcome.length -1)], 'success');
         }, 2000);

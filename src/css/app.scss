@@ -25,7 +25,6 @@ header {
             display: inline;
         }
         
-        
         span {
             display: none;
         }
@@ -191,15 +190,15 @@ header {
     transform: translate3d(0, 0%, 0);
     transition: transform ease .5s;
     backface-visibility: hidden;
+    
+    &.hide {
+        transform: translate3d(0, 100%, 0);
+    }
+    
+    &.success { background-color: $green; }
+    &.error { background-color: $red; color: $softwhite !important }
+    &.info { background-color: $yellow; }
 }
-
-#notification.hide {
-    transform: translate3d(0, 100%, 0);
-}
-
-#notification.success { background-color: $green; }
-#notification.error { background-color: $red; color: $softwhite !important }
-#notification.info { background-color: $yellow; }
 
 
 /*------------------------------------*\

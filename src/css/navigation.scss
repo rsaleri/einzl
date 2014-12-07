@@ -16,6 +16,11 @@ nav {
         transition: all ease .5s;
     }
     
+    &.open ul {
+        padding: 0 0 1em;
+        max-height: 500px;
+    }
+    
     ul li {
         box-sizing: border-box;
         width: 100%;
@@ -23,24 +28,26 @@ nav {
     }
 
     ul li a {
+        position: relative;
         display: block;
         padding: 1em 20px;
     }
-}
-
-nav.open {
     
-    ul {
-        padding: 0 0 1em;
-        max-height: 500px;
+    ul li a:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        transition: all ease .3s;
+        background-color: #000;
     }
     
-
-}
-
-@media(min-width: $bp1) {
     
-    nav {
+    @media(min-width: $bp1) {
+    
         width: 100%;
         
         ul {
@@ -61,9 +68,20 @@ nav.open {
             height: 60px;
             line-height: 60px;
         }
+        
+        ul li a.active {
+//            color: #f3f3f3;
+        }
+        
+        ul li a.active:before {
+            height: 3px;
+        }
+        
     }
-    
+
 }
+
+
 
 .hamburger-button {
     display: inline-block;
@@ -73,15 +91,16 @@ nav.open {
     text-align: center;
     font-size: 21px;
     font-size: 1.3rem;
-}
-
-.hamburger-button:hover {
-    cursor: pointer;
-}
-
-@media(min-width: $bp1) {
-    .hamburger-button {
+    
+    @media(min-width: $bp1) {
         display: none;
         pointer-events: none;
     }
+    
+    &:hover {
+        cursor: pointer;
+    }
+
 }
+
+

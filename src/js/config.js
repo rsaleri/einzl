@@ -10,7 +10,7 @@
          {
              title: 'Ringe',
              id: 'rings',
-             slug: ['/ringe'],
+             slug: ['/ringe', '/rings'],
              hbsPath: '/pages/ringe'
          },
          {

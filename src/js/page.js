@@ -119,6 +119,7 @@ Page.prototype.start = function() {
     
     // check if view exists
     if(this.view) {
+        
         // save this page as the active one
         einzl.pages.active = this;
     
@@ -132,6 +133,7 @@ Page.prototype.start = function() {
         this.view.appendTo($('main'));
         
     } else {
+        
         // create view
         this.createView().then(function() {
             // call start again

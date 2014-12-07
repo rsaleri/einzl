@@ -212,10 +212,14 @@ App.prototype.route = function(target) {
     }
     
     // edit document title
-    document.title = route.title; // add  + ' - Einzelstück' later
+    document.title = route.title+ ' - Einzelstück';
     
     // send pageview to GA
     ga('send', 'pageview');
+    
+    
+    // mark item in main menu
+    $('header nav a').removeClass('active').filter('[href="' + route.slug[0] + '"]').addClass('active');
     
 };
 

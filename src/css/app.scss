@@ -10,25 +10,42 @@ body {
     color: $darkgrey;
 }
 
-header .title {
-    position: absolute;
-    left: 0;
-    height: 60px;
-    line-height: 60px;
-    z-index: 510;
-    margin-left: 60px;
-}
-
-header .title span {
-    display: none;
-}
-
-header .title a:before {
-    content: "Einzlstck";
-    display: inline;
-}
-
 header {
+    
+    .title {
+        position: absolute;
+        left: 0;
+        height: 60px;
+        line-height: 60px;
+        z-index: 510;
+        margin-left: 60px;
+        
+        a:before {
+            content: "Einzlstck";
+            display: inline;
+        }
+        
+        span {
+            display: none;
+        }
+    }
+    
+    @media(min-width: $bp1) {
+        
+        .title {
+            
+            margin-left: 30px;
+            
+            a:before {
+                display: none;
+            }
+            
+            span {
+                display: inline;
+            }
+        }
+        
+    }
     
     .right-area {
         position: absolute;
@@ -54,10 +71,10 @@ header {
         .total {
             font-size: .8em;
         }
-    }
-
-    .cart-button:hover {
-        cursor: pointer;
+        
+        &:hover {
+            cursor: pointer;
+        }
     }
     
     .language-button {
@@ -70,23 +87,10 @@ header {
         font-size: .8em;
         
         display: none;
-    }
-    
-    .language-button:hover {
-        cursor: pointer;
-    }
-}
-
-@media(min-width: $bp1) {
-    header .title {
-        margin-left: 30px;
-    }
-    header .title a:before {
-        display: none;
-    }
-    
-    header .title span {
-        display: inline;
+        
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
@@ -97,26 +101,28 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-}
-
-@media(min-width: $bp1) {
-    .copy {
+    
+    @media(min-width: $bp1) {
         padding: 70px;
     }
+    
+    
+    &.center-y {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+    }
+    
+    .csstransforms &.center-y {
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
 }
 
-.copy.center-y {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-}
 
-.csstransforms .copy.center-y {
-    top: 50%;
-    transform: translate(0, -50%);
-}
 
 
 .product {
@@ -155,14 +161,16 @@ header {
             background-position: center center;
         }
     }
-}
-
-@media(min-width: $bp1) {
-    .product .drop.like {
-        top: 50px;
-        right: 50px;
+    
+    @media(min-width: $bp1) {
+        .drop.like {
+            top: 50px;
+            right: 50px;
+        }
     }
 }
+
+
 
 
 

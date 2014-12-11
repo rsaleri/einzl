@@ -44,4 +44,4 @@ function notifyUser(msg, type) {
             span.text('');
         }, 1000);
     }, 3500);
-};
+}

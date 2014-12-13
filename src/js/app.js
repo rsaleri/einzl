@@ -136,7 +136,7 @@ App.prototype.initAppRoutingLinks = function() {
 };
 
 App.prototype.subscribe = function(userData) {
-    
+    var self = this;
     var obj = {
         action: 'subscribe',
         user: userData
@@ -145,11 +145,11 @@ App.prototype.subscribe = function(userData) {
     return this.askServer(obj).done(function(data) {
         console.log('user successfully subscribed');
         console.log(data);
-        notifyUser('Hey das hat geklappt :-) Wir freuen uns!', 'success');
+        notifyUser(einzl.copy.messages.nl_subscribed, 'success');
     }).fail(function(data) {
         console.log('something is wrong with that email');
         console.log(data);
-        notifyUser('Oh, da ging etwas schief :(', 'error');
+        notifyUser(einzl.copy.messages.nl_error, 'error');
     });
     
 };

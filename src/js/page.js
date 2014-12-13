@@ -64,7 +64,7 @@ Page.prototype.initController = function() {
                     // save entered user data
                     var userData = {
                         email: input.val()
-                    }
+                    };
 
                     // subscribe
                     einzl.app.subscribe(userData).always(function(data) {

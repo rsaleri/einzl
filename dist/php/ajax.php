@@ -53,18 +53,47 @@ if ( $authenticated ) {
             // put item into cart
             $data['item'] = $moltin->post('cart/'.$cartID, array('id' => $productID, 'quantity' => 1));
             
-            // get updated cart content
-            $cart = $moltin->get('cart/'.$cartID);
-            $data['cart'] = $cart['result'];
-            
-            // insert cart ID into response
-            $data['cart']['id'] = $cartID;
-            
         }
         catch (\Exception $e)
         {
             $data = $e->getMessage();
         }
+        
+        // get updated cart content
+        $cart = $moltin->get('cart/'.$cartID);
+        $data['cart'] = $cart['result'];
+
+        // insert cart ID into response
+        $data['cart']['id'] = $cartID;
+        
+    } else if($action == 'removeFromCart') {
+        
+        $productKey = $_POST['product']['key'];
+        $productQuantity = $_POST['product']['quantity'];
+        $cartID = $_POST['cart']['id'];
+        
+        try
+        {
+            // remove item from cart or lower quantity
+            if($productQuantity == 1) {
+                $data['item'] = $moltin->delete('cart/'.$cartID.'/item/'.$productKey);
+            } else {
+                $productQuantity--;
+                $data['item'] = $moltin->put('cart/'.$cartID.'/item/'.$productKey, array('quantity' => $productQuantity));
+            }
+            
+        }
+        catch (\Exception $e)
+        {
+            $data['item'] = $e->getMessage();
+        }
+        
+        // get updated cart content
+        $cart = $moltin->get('cart/'.$cartID);
+        $data['cart'] = $cart['result'];
+
+        // insert cart ID into response
+        $data['cart']['id'] = $cartID;
     }
     
 } else {

@@ -8,9 +8,31 @@ var Cart = function() {
         self.getTemplate().then(function() {
             // create cart view and insert into DOM
             self.createView();
+            self.initController();
         });
     });
+
+};
+
+Cart.prototype.removeItem = function(product_key) {
+    var self = this;
     
+    console.log('remove product ' + product_key);
+    var obj = {
+        action: 'removeFromCart',
+        cart: {
+            id: self.model.id
+        },
+        product: {
+            key: product_key,
+            quantity: self.model.contents[product_key].quantity
+        }
+    }
+    
+    return einzl.app.askServer(obj).done(function(data) {
+        self.model = data.cart;
+        self.createView();
+    });
 };
 
 Cart.prototype.addItem = function(prodID) {
@@ -25,8 +47,6 @@ Cart.prototype.addItem = function(prodID) {
     }
     
     return einzl.app.askServer(obj).done(function(data) {
-        console.log(data);
-        
         self.model = data.cart;
         self.createView();
     });
@@ -70,23 +90,26 @@ Cart.prototype.getTemplate = function() {
 };
 
 Cart.prototype.initController = function() {
+    var self = this;
+    var container = $('.cart');
     
-    // enable remove-button
-    // try it without a data-prodID in the cart, think about how to do it via models only
+    container.on('vclick', '.remove', function() {
+        var product_key = $(this).closest('li').attr('data-product-key');
+        self.removeItem(product_key);
+    });
     
 };
 
 Cart.prototype.createView = function() {
-    console.log('create view');
-    console.log(this.model);
     
+    // render cart handlebars template
     var html = this.template(this.model);
     
+    // save rendered template as view
     this.view = $(html);
     
     // insert into DOM
     $('.cart').html('');
     this.view.clone(true).appendTo($('.cart'));
-    
-    this.initController();
+
 };

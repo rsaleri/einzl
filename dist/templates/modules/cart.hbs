@@ -2,7 +2,7 @@
     
     {{#each contents}}
         
-        <li>
+        <li data-product-key="{{@key}}">
             <span class="remove"><i class="fa fa-times"></i></span>
             <span class="price">{{this.pricing.rounded.with_tax}}</span>
             <span class="name">{{this.title}}</span>

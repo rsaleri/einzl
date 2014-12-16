@@ -15,6 +15,7 @@ header {
 
 @media(min-width: $bp1) {
     header {
+        backface-visibility: hidden;
         position: fixed;
         top: 0;
     }

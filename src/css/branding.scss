@@ -91,8 +91,7 @@ input[type="text"]:focus {
     border-color: #999;
 }
 
-button,
-.button {
+button, .button {
     position: relative;
     display: inline-block;
     border: 0;
@@ -101,33 +100,58 @@ button,
     background-color: $buttonbackground;
     color: #f3f3f3;
     transition: all ease .3s;
-}
-
-button:hover,
-.button:hover {
-    background-color: $buttonbackgroundHover;
-    cursor: pointer;
-}
-
-button.loading:before,
-.button.loading:before {
-	position: absolute;
-    text-align: center;
-    left: 0;
-    right: 0;
-    vertical-align: baseline;
-	display: inline-block;
-	line-height: 1.4em;
-	font-family: FontAwesome;
-	content: "\f021";
-    text-align: center;animation: rotateIt 1s linear infinite reverse;
-    transform-origin: center center;
-  	backface-visibility: hidden;
-}
-
-button.loading > span,
-.button.loading > span {
-	opacity: 0;
+    backface-visibility: hidden;
+    
+    &:hover {
+        background-color: $buttonbackgroundHover;
+        cursor: pointer;
+    }
+    
+    &:before {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        vertical-align: baseline;
+        display: inline-block;
+        line-height: 1.4em;
+        font-family: FontAwesome;
+        text-align: center;
+        backface-visibility: hidden;
+    }
+    
+    &.success {
+        background-color: $green;
+    }
+    &.fail {
+        background-color: $red;
+    }
+    
+    &.loading:before {
+        content: "\f021";
+        animation: rotateIt 1s linear infinite reverse;
+        transform-origin: center center;
+    }
+    
+    &.success:before {
+        content: "\f00c";
+    }
+    
+    &.fail:before {
+        content: "\f00d";
+    }
+    
+    span {
+        position: relative;
+        opacity: 1;
+        transition: all ease .3s;
+    }
+    
+    &.loading > span,
+    &.success > span,
+    &.fail > span {
+        opacity: 0;
+    }
 }
 
 
@@ -143,31 +167,23 @@ button.loading > span,
     transform: rotate(45deg);
     text-align: center;
     transform-origin: center center;
-}
-
-.drop i {
-    vertical-align: top;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    transform: rotate(-45deg);
-    transform-origin: center center;
-}
-
-.drop i:before {
     
-}
-
-.drop:hover {
-    cursor: pointer;
-}
-
-.drop.like {
-     
-}
-
-.drop.liked {
-    color: $red;
+    &:hover {
+        cursor: pointer;
+    }
+    
+    &.liked {
+        color: $red;
+    }
+    
+    i {
+        vertical-align: top;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        transform: rotate(-45deg);
+        transform-origin: center center;
+    }
 }
 
 .error {

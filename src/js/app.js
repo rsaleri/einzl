@@ -1,9 +1,12 @@
 var App = function() {
+    var self = this;
     this.updateFromLocalStorage();
-    this.getCopy();
+    this.getCopy().then(function() {
+        self.getProducts();
+    });
     this.initRouting();
     this.initNavigation();
-    this.getProducts();
+    
 };
 
 App.changeLanguageTo = function(lang) {

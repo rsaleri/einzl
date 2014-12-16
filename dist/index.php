@@ -8,7 +8,7 @@
 	<meta name="description" content=""/>
 	<meta name="msapplication-tap-highlight" content="no"/>
 
-	<title>Einzl</title>
+	<title>Einzelstück</title>
 
 	<!-- icons -->
 	<link href="images/ci/favicon.ico?v=3" rel="shortcut icon">
@@ -71,7 +71,7 @@
 	<!--[if lt IE 9]>
     <script src='js/libs/respond.min.js'></script>
     <![endif]-->
-    <!-- main hydra JS -->
+    <!-- main einzl JS -->
 	<script src="js/app.min.js"></script>
 </body>
 </html>

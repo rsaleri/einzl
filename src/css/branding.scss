@@ -100,6 +100,7 @@ button, .button {
     background-color: $buttonbackground;
     color: #f3f3f3;
     transition: all ease .3s;
+    backface-visibility: hidden;
     
     &:hover {
         background-color: $buttonbackgroundHover;
@@ -117,12 +118,19 @@ button, .button {
         font-family: FontAwesome;
         text-align: center;
         backface-visibility: hidden;
-        transform-origin: center center;
+    }
+    
+    &.success {
+        background-color: $green;
+    }
+    &.fail {
+        background-color: $red;
     }
     
     &.loading:before {
         content: "\f021";
         animation: rotateIt 1s linear infinite reverse;
+        transform-origin: center center;
     }
     
     &.success:before {

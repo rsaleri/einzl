@@ -49,7 +49,7 @@ function notifyUser(msg, type) {
 
 // temporarily adds a class to an element and removes it after a timeout
 jQuery.fn.tempElementClass = function(c, t) {
-    var o = $(this[0]) // It's your element
+    var o = $(this[0]); // It's your element
     
     o.addClass(c);
     window.setTimeout(function() {

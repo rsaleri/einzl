@@ -167,31 +167,23 @@ button, .button {
     transform: rotate(45deg);
     text-align: center;
     transform-origin: center center;
-}
-
-.drop i {
-    vertical-align: top;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    transform: rotate(-45deg);
-    transform-origin: center center;
-}
-
-.drop i:before {
     
-}
-
-.drop:hover {
-    cursor: pointer;
-}
-
-.drop.like {
-     
-}
-
-.drop.liked {
-    color: $red;
+    &:hover {
+        cursor: pointer;
+    }
+    
+    &.liked {
+        color: $red;
+    }
+    
+    i {
+        vertical-align: top;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        transform: rotate(-45deg);
+        transform-origin: center center;
+    }
 }
 
 .error {

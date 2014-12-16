@@ -70,6 +70,12 @@ Page.prototype.initController = function() {
                     einzl.app.subscribe(userData).always(function(data) {
                         button.removeClass('loading');
                         input.val('');
+                    })
+                    .done(function() {
+                        button.tempElementClass('success', 2000);
+                    })
+                    .fail(function() {
+                        button.tempElementClass('fail', 2000);
                     });
 
                 } else {

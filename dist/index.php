@@ -34,7 +34,7 @@
                         <li><a data-copy="nav_01" href="/home" title="Home" class="active"></a></li>
                         <li><a data-copy="nav_02" href="/ringe" title="Ringe"></a></li>
                         <li><a data-copy="nav_03" href="/ketten" title="Ketten"></a></li>
-                        <li><a data-copy="nav_04" href="/armbaender" title="Armbänder"></a></li>
+                        <li><a data-copy="nav_04" href="/bracelets" title="Armbänder"></a></li>
                     </ul>
                 </nav>
                 <div class="right-area">

@@ -22,8 +22,8 @@
          {
              title: 'Armbänder',
              id: 'bracelets',
-             slug: ['/armbaender'],
-             hbsPath: '/pages/armbaender'
+             slug: ['/bracelets'],
+             hbsPath: '/pages/bracelets'
          },
          {
              title: 'Impressum',

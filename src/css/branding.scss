@@ -7,6 +7,7 @@ $buttonbackgroundHover: #666;
 $red: #ED7D7C;
 $green: #5E8858;
 $yellow: #E8D2AE;
+$blue: #3F7CAC;
 
 // BREAKPOINTS
 $bp1: 750px;
@@ -21,6 +22,32 @@ a, a:visited, a:focus, a:hover {
     color: $darkgrey;
     text-decoration: none;
     outline: none;
+}
+
+.copy a {
+    box-sizing: border-box;
+    color: #3F7CAC;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    
+    &:hover {
+        
+    }
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    &:hover:before {
+        
+    }
 }
 
 h1 {

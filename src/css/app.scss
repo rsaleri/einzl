@@ -101,6 +101,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+    line-height: 1.3em;
     
     @media(min-width: $bp1) {
         padding: 70px;
@@ -170,10 +171,6 @@ header {
     }
 }
 
-
-
-
-
 /*------------------------------------*\
     NOTIFICATION
 \*------------------------------------*/
@@ -205,9 +202,10 @@ header {
     SPECIAL LINKS
 \*------------------------------------*/
 
-.twitter-link, .insta-link {
+.copy a.twitter-link, .copy a.insta-link {
     font-size: 2em;
     margin: 10px 30px;
+    color: $darkgrey;
 }
 
 .twitter-link:hover i:before {

@@ -79,15 +79,14 @@ Page.prototype.initController = function() {
                     });
 
                 } else {
+                    
                     // email is invalid
                     input.addClass('error');
                     input.one('focus', function() {
                         input.removeClass('error');
                     });
-
                 }
             }
-               
         });
     });
 };

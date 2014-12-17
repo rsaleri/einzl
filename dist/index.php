@@ -32,9 +32,9 @@
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
                         <li><a data-copy="nav_01" href="/home" title="Home" class="active"></a></li>
-                        <li><a data-copy="nav_02" href="/ringe" title="Ringe"></a></li>
-                        <li><a data-copy="nav_03" href="/ketten" title="Ketten"></a></li>
-                        <li><a data-copy="nav_04" href="/bracelets" title="Armbänder"></a></li>
+                        <li><a data-copy="nav_02" href="/rings" title="Rings"></a></li>
+                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>
+                        <li><a data-copy="nav_04" href="/bracelets" title="Bracelets"></a></li>
                     </ul>
                 </nav>
                 <div class="right-area">
@@ -55,7 +55,7 @@
             </aside>
 			<main></main>
 			<footer>
-                <span data-copy="footer_copyright"></span><!-- - <a href="/impressum" title="Impressum" data-copy="footer_link_01"></a> - <del data-copy="footer_link_02">AGB</del> - <a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
+                <span data-copy="footer_copyright"></span><!-- - <a href="/imprint" title="Impressum" data-copy="footer_link_01"></a> - <del data-copy="footer_link_02">AGB</del> - <a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
             </footer>
 		</div>
 	</div>
@@ -73,5 +73,15 @@
     <![endif]-->
     <!-- main einzl JS -->
 	<script src="js/app.min.js"></script>
+    
+    <script>
+        // init google analytics
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+        // CUSTOM EVENTS: ga('send', 'event', 'category', 'action', 'label', value);
+    </script>
 </body>
 </html>

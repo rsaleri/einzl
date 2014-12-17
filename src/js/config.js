@@ -10,14 +10,14 @@
          {
              title: 'Ringe',
              id: 'rings',
-             slug: ['/ringe', '/rings'],
-             hbsPath: '/pages/ringe'
+             slug: ['/rings', '/ringe'],
+             hbsPath: '/pages/rings'
          },
          {
-             title: 'Ketten',
-             id: 'ketten',
-             slug: ['/ketten'],
-             hbsPath: '/pages/ketten'
+             title: 'Necklaces',
+             id: 'necklaces',
+             slug: ['/necklaces'],
+             hbsPath: '/pages/necklaces'
          },
          {
              title: 'Armbänder',
@@ -28,8 +28,8 @@
          {
              title: 'Impressum',
              id: 'imprint',
-             slug: ['/impressum'],
-             hbsPath: '/pages/impressum'
+             slug: ['/imprint'],
+             hbsPath: '/pages/imprint'
          },
          {
              title: 'Developer Page',

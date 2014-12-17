@@ -1,5 +1,8 @@
-var App = function() {
+var App = function(model) {
     var self = this;
+    
+    this.model = config;
+    
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
         self.getProducts();
@@ -11,10 +14,10 @@ var App = function() {
 
 App.changeLanguageTo = function(lang) {
     
-    config.lang = lang;
+    this.model.lang = lang;
     
     this.getCopy().then(function() {
-        // insertCopy for all Pages, and App (and whereever it will be used again)
+        // TODO: insertCopy for all Pages, and App (and whereever it will be used again)
     });
     
 };
@@ -22,7 +25,7 @@ App.changeLanguageTo = function(lang) {
 App.prototype.getCopy = function() {
     // get copy, the words, the spaces and all typo
     
-    return $.getJSON('copy/' + config.lang + '.json', function(data) {
+    return $.getJSON('copy/' + this.model.lang + '.json', function(data) {
         
         // save copy into einzl object
         einzl.copy = data.copy;
@@ -158,13 +161,13 @@ App.prototype.subscribe = function(userData) {
 };
 
 App.prototype.findDestination = function(target) {
-    // find target in config.routes (slug)
+    // find target (slug) in this.model.routes
     
     // define variable which will be returned
     var route = null; 
     
     // loop through pre-defined routes
-    $.each(config.routes, function() {
+    $.each(this.model.routes, function() {
         var match = false;
         
         // check their slugs
@@ -209,7 +212,7 @@ App.prototype.route = function(target) {
 		target = removeSlash(window.location.pathname);
 	}
     
-    console.log('route to: ' + target);
+//    console.log('route to: ' + target);
     
     // get page model
     var route = this.findDestination(target);
@@ -227,7 +230,6 @@ App.prototype.route = function(target) {
     
     // send pageview to GA
     ga('send', 'pageview');
-    
     
     // mark item in main menu
     $('header nav a').removeClass('active').filter('[href="' + route.slug[0] + '"]').addClass('active');
@@ -266,7 +268,7 @@ $(document).ready(function() {
         }
     };
     
-    einzl.app = new App();
+    einzl.app = new App(config);
     einzl.app.route(null);
     
     einzl.cart = new Cart();
@@ -274,11 +276,3 @@ $(document).ready(function() {
     ga('create', 'UA-46833918-1', 'auto');
 
 });
-
-// init google analytics
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-// CUSTOM EVENTS: ga('send', 'event', 'category', 'action', 'label', value);

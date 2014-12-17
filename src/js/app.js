@@ -255,6 +255,7 @@ App.prototype.initRouting = function() {
 
 $(document).ready(function() {
     
+    // define the main object
     window.einzl = {
         pages: {},
         user: {
@@ -268,9 +269,13 @@ $(document).ready(function() {
         }
     };
     
+    // init app
     einzl.app = new App(config);
+    
+    // route to URL
     einzl.app.route(null);
     
+    // init cart
     einzl.cart = new Cart();
 
     ga('create', 'UA-46833918-1', 'auto');

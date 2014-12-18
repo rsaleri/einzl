@@ -64,11 +64,25 @@ header {
         margin: 0 0px;
 
         i {
-            margin-right: 10px;
+            
         }
 
-        .total {
+        .total-items {
             font-size: .8em;
+            
+            &:before {
+                content: "|";
+                display: inline-block;
+                margin-right: 3px;
+            }
+            
+            &:empty {
+                display: none;
+            }
+        }
+        
+        .total-price {
+            display: none;
         }
         
         &:hover {

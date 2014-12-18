@@ -43,7 +43,8 @@
                     </div>
                     <div class="cart-button">
                         <i class="fa fa-shopping-cart"></i>
-                        <span class="total">EUR 98.45 ,-</span>
+                        <span class="total-items"></span>
+                        <span class="total-price"></span>
                     </div>
                     
                 </div>

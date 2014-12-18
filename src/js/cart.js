@@ -111,5 +111,9 @@ Cart.prototype.createView = function() {
     // insert into DOM
     $('.cart').html('');
     this.view.clone(true).appendTo($('.cart'));
+    
+    // update totals outside of view
+    $('.total-items').text(this.model.total_items);
+    $('.total-price').text(this.model.totals.formatted.with_tax);
 
 };

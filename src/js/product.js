@@ -24,6 +24,11 @@ Product.prototype.addToCart = function() {
 Product.prototype.initController = function() {
     var self = this;
     
+    // enable plus button
+    this.view.find('.drop.plus').on('vclick', function() {
+        $(this).closest('.details').toggleClass('collapsed expanded');
+    });
+    
     // enable add-to-cart button
     this.view.find('.drop.add-to-cart').on('vclick', function() {
         

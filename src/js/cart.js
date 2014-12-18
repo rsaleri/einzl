@@ -27,7 +27,7 @@ Cart.prototype.removeItem = function(product_key) {
             key: product_key,
             quantity: self.model.contents[product_key].quantity
         }
-    }
+    };
     
     return einzl.app.askServer(obj).done(function(data) {
         self.model = data.cart;
@@ -44,7 +44,7 @@ Cart.prototype.addItem = function(prodID) {
             id: self.model.id
         },
         product_id: prodID
-    }
+    };
     
     return einzl.app.askServer(obj).done(function(data) {
         self.model = data.cart;
@@ -93,9 +93,18 @@ Cart.prototype.initController = function() {
     var self = this;
     var container = $('.cart');
     
-    container.on('vclick', '.remove', function() {
+    container.on('vclick', '.remove', function(e) {
+        var li = $(e.currentTarget).closest('li.item');
         var product_key = $(this).closest('li').attr('data-product-key');
-        self.removeItem(product_key);
+        
+        console.log(li);
+        
+        if(!li.hasClass('loading')) {
+            li.addClass('loading');
+            self.removeItem(product_key);
+        }
+        
+        
     });
     
 };

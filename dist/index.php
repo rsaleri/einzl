@@ -51,7 +51,7 @@
                 
             </header>
             <aside class="cart-container">
-                <h2>Dein Warenkorb</h2>
+                <h2>Your Shopping Cart</h2>
                 <div class="cart"></div>
             </aside>
 			<main></main>

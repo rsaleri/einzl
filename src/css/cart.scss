@@ -3,20 +3,25 @@ aside.cart-container {
     background-color: #fff;
     width: 100%;
     max-width: 400px;
-    padding: 30px;
+//    padding: 30px;
     position: absolute;
     top: 60px;
     height: 500px;
     z-index: 600;
     right: -400px;
+    
+    @media(min-width: $bp1) {
+        position: fixed;
+    }
 
     h2 {
         text-align: left;
+        margin-bottom: 30px;
+        padding: 0 30px;
     }
 
     h2:after {
-        left: 0;
-        right: auto;
+        display: none;
     }
 }
 
@@ -41,59 +46,94 @@ aside.cart-container.open {
         list-style-type: none;
         padding: 0;
         margin: 0;
+        
+        li {
+            position: relative;
+            white-space: nowrap;
+            padding: 5px 30px;
+            margin-bottom: 1px;
+            
+            &.heading {
+                font-weight: 800;
+                font-size: .8em;
+                
+                .price:after {
+                    display: none;
+                }
+            }
+            
+            &.loading .remove i:before {
+                content: "\f021";
+                animation: rotateIt 1s linear infinite reverse;
+                transform-origin: center center;
+            }
+
+            .quantity {
+                font-style: italic;
+                margin-left: 10px;
+            }
+
+            .quantity:before {
+                content: "x";
+            }
+
+            .remove {
+                position: absolute;
+                right: 6px;
+                display: inline-block;
+                margin-left: 10px;
+                color: #ccc;
+            }
+
+            .remove:hover {
+                cursor: pointer;
+                
+                i {
+                    color: $red;
+                }
+            }
+            
+            &.loading .remove:hover {
+                cursor: default;
+                
+                i {
+                    color: #ccc;
+                }
+            }
+
+            .price {
+                float: right;
+
+                &:after {
+                    content: ",-";
+                }
+            }
+
+        }
 
     }
 
-    li {
-        white-space: nowrap;
-        padding: .4em 0;
-
-        .quantity {
-            font-style: italic;
-            margin-left: 10px;
-        }
-
-        .quantity:before {
-            content: "x";
-        }
-
-        .remove {
-            float: right;
-            display: inline-block;
-            margin-left: 10px;
-            color: #ccc;
-        }
-
-        .remove:hover {
-            cursor: pointer;
-        }
-
-        .price {
-            float: right;
-        }
-
-    }
+    
     
     ul.totals {
         position: relative;
-        margin-top: 2em;
+        margin-top: 30px;
         
         li {
             font-size: .8em;
         }
         
-        .sum {
+        .subtotal, .shipping {
+            background-color: #f3f3f3;
+        }
+        
+        .shipping .price:after {
+            display: none;
+        }
+        
+        .total {
             font-size: 1em;
         }
-    }
-    
-    ul.totals:before {
-        content: "";
-        height: 1px;
-        background-color: #333;
-        width: 20px;
-        position: absolute;
-        top: -1em;
-        left: 0;
+        
     }
 }

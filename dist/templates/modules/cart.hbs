@@ -1,22 +1,15 @@
 <ul class="items">
-    <li>
-        <span class="remove"><i class="fa fa-times"></i></span>
-        <span class="price">29.99</span>
-        <span class="name">Rosenstein Armband</span>
-        <span class="quantity">1</span>
-    </li>
-    <li>
-        <span class="remove"><i class="fa fa-times"></i></span>
-        <span class="price">29.99</span>
-        <span class="name">Rosenstein Armband</span>
-        <span class="quantity">1</span>
-    </li>
-    <li>
-        <span class="remove"><i class="fa fa-times"></i></span>
-        <span class="price">29.99</span>
-        <span class="name">Rosenstein Armband</span>
-        <span class="quantity">1</span>
-    </li>
+    
+    {{#each contents}}
+        
+        <li data-product-key="{{@key}}">
+            <span class="remove"><i class="fa fa-times"></i></span>
+            <span class="price">{{this.pricing.rounded.with_tax}}</span>
+            <span class="name">{{this.title}}</span>
+            <span class="quantity">{{this.quantity}}</span>
+        </li>
+    
+    {{/each}}
 </ul>
 <ul class="totals">
     <li>

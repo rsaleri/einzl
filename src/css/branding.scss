@@ -5,7 +5,7 @@ $textwhite: #f9f9f9;
 $buttonbackground: #888;
 $buttonbackgroundHover: #666;
 $red: #ED7D7C;
-$green: #5E8858;
+$green: #7DCE82;
 $yellow: #E8D2AE;
 $blue: #3F7CAC;
 
@@ -187,15 +187,16 @@ button, .button {
     position: absolute;
     right: 20px;
     top: 20px;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    font-size: 1.1em;
     text-align: center;
     background-color: #f1f1f1;
     border-radius: 0% 50% 50% 50%;
     transform: rotate(45deg);
     text-align: center;
-    transform-origin: center center;
+    transform-origin: 50% 50%;
     transition: all ease .3s;
     
     @media(min-width: $bp1) {
@@ -222,6 +223,29 @@ button, .button {
     
      &.drop-points-left i {
         transform: rotate(45deg);
+    }
+    
+    &.loading i:before {
+        content: "\f021";
+        animation: rotateIt 1s linear infinite reverse;
+        transform-origin: 50% 50%;
+    }
+    
+    &.success {
+        background-color: $green;
+    }
+    &.fail {
+        background-color: $red;
+    }
+    
+    &.success i:before {
+        content: "\f00c";
+        color: $softwhite;
+    }
+    
+    &.fail i:before {
+        content: "\f00d";
+        color: $softwhite;
     }
 }
 

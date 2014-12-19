@@ -17,7 +17,7 @@ Product.prototype.createView = function() {
 
 Product.prototype.addToCart = function() {
     console.log(this.model);
-    einzl.cart.addItem(this.model.id);
+    return einzl.cart.addItem(this.model.id);
     
 };
 
@@ -31,8 +31,20 @@ Product.prototype.initController = function() {
     
     // enable add-to-cart button
     this.view.find('.drop.add-to-cart').on('vclick', function() {
+        var button = $(this);
         
-        self.addToCart();
+        button.addClass('loading');
+        
+        self.addToCart()
+        .always(function() {
+            button.removeClass('loading');
+        })
+        .done(function() {
+            button.addTempClass('success', 1500);
+        })
+        .fail(function() {
+            button.addTempClass('fail', 1500);
+        });
         
     });
     

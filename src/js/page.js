@@ -67,15 +67,16 @@ Page.prototype.initController = function() {
                     };
 
                     // subscribe
-                    einzl.app.subscribe(userData).always(function(data) {
+                    einzl.app.subscribe(userData)
+                    .always(function(data) {
                         button.removeClass('loading');
                         input.val('');
                     })
                     .done(function() {
-                        button.tempElementClass('success', 2000);
+                        button.addTempClass('success', 2000);
                     })
                     .fail(function() {
-                        button.tempElementClass('fail', 2000);
+                        button.addTempClass('fail', 2000);
                     });
 
                 } else {

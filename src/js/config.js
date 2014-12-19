@@ -8,7 +8,7 @@
              hbsPath: '/pages/home'
          },
          {
-             title: 'Ringe',
+             title: 'Rings',
              id: 'rings',
              slug: ['/rings', '/ringe'],
              hbsPath: '/pages/rings'
@@ -20,13 +20,19 @@
              hbsPath: '/pages/necklaces'
          },
          {
-             title: 'Armbänder',
+             title: 'Bracelets',
              id: 'bracelets',
              slug: ['/bracelets'],
              hbsPath: '/pages/bracelets'
          },
          {
-             title: 'Impressum',
+             title: 'Checkout',
+             id: 'checkout',
+             slug: ['/checkout'],
+             hbsPath: '/pages/checkout'
+         },
+         {
+             title: 'Imprint',
              id: 'imprint',
              slug: ['/imprint'],
              hbsPath: '/pages/imprint'

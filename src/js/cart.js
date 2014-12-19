@@ -93,6 +93,10 @@ Cart.prototype.initController = function() {
     var self = this;
     var container = $('.cart');
     
+    container.on('vclick', '.button.checkout', function(e) {
+        
+    });
+    
     container.on('vclick', '.remove', function(e) {
         var li = $(e.currentTarget).closest('li.item');
         var product_key = $(this).closest('li').attr('data-product-key');

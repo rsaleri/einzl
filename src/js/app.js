@@ -212,7 +212,7 @@ App.prototype.route = function(target) {
 		target = removeSlash(window.location.pathname);
 	}
     
-//    console.log('route to: ' + target);
+    console.log('route to: ' + target);
     
     // get page model
     var route = this.findDestination(target);
@@ -224,6 +224,8 @@ App.prototype.route = function(target) {
         einzl.pages[route.id] = new Page(route);
         einzl.pages[route.id].start();
     }
+    
+    console.log(route);
     
     // edit document title
     document.title = route.title+ ' - Einzelstück';

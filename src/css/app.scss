@@ -240,6 +240,20 @@ header {
     
 }
 
+ul.user-address-list {
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    
+    li {
+        border: 2px solid #ccc;
+        padding: 10px 30px;
+        margin: 5px 0;
+    }
+}
+
+
 /*------------------------------------*\
     NOTIFICATION
 \*------------------------------------*/

@@ -52,24 +52,26 @@ a, a:visited, a:focus, a:hover {
 
 h1 {
     font-size: 40px;
+    line-height: 1em;
     font-weight: 400;
     text-align: center;
-}
-
-@media(min-width: $bp1) {
-    h1 {
+    
+    @media(min-width: $bp1) {
         font-size: 70px;
     }
-}
-
-@media(min-width: $bp2) {
-    h1 {
+    
+    @media(min-width: $bp2) {
         font-size: 100px;
+    }
+    
+    &.stretch {
+        font-size: calc(100% + 10vw);
     }
 }
 
-
 h2 {
+    font-size: 1.5em;
+    line-height: 1.5em;
     position: relative;
     margin-top: 0;
     margin-bottom: 2em;

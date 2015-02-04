@@ -1,5 +1,6 @@
 var Page = function(model) {
     this.model = model;
+    
 };
 
 Page.prototype.createView = function() {
@@ -50,11 +51,12 @@ Page.prototype.initController = function() {
         // enable subscribe button
         button.on('vclick', function(e) {
             
+            // stop default stuff
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+            e.preventDefault();
+            
             if(!button.hasClass('loading')) {
-                // stop default stuff
-                e.stopImmediatePropagation();
-                e.stopPropagation();
-                e.preventDefault();
 
                 // check if entered email is valid
                 if(form[0].checkValidity() && input.val().length > 0) {

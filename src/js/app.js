@@ -5,7 +5,6 @@ var App = function(model) {
     
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
-        console.log('got copy');
         self.getProducts();
     });
     this.initRouting();
@@ -25,7 +24,6 @@ App.changeLanguageTo = function(lang) {
 
 App.prototype.getCopy = function() {
     // get copy, the words, the spaces and all typo
-    console.log('get copy');
     return $.getJSON('copy/' + this.model.lang + '.json', function(data) {
         
         // save copy into einzl object
@@ -67,7 +65,7 @@ App.prototype.getProducts = function() {
     };
     
     return this.askServer(obj).done(function(data) {
-        console.log(data);
+        
         if(data && data.status) {
             
             // get product template
@@ -224,10 +222,14 @@ App.prototype.route = function(target) {
         einzl.pages[route.id].start();
     } else {
         einzl.pages[route.id] = new Page(route);
+//        if(route.id == 'checkout') {
+//            einzl.pages[route.id] = new Checkout(route);
+//        } else {
+//            einzl.pages[route.id] = new Page(route);
+//        }
+        
         einzl.pages[route.id].start();
     }
-    
-    console.log(route);
     
     // edit document title
     document.title = route.title+ ' - Einzelstück';

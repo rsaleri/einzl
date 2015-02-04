@@ -43,14 +43,15 @@
                     </div>
                     <div class="cart-button">
                         <i class="fa fa-shopping-cart"></i>
-                        <span class="total">EUR 98.45 ,-</span>
+                        <span class="total-items"></span>
+                        <span class="total-price"></span>
                     </div>
                     
                 </div>
                 
             </header>
             <aside class="cart-container">
-                <h2>Dein Warenkorb</h2>
+                <h2>Your Shopping Cart</h2>
                 <div class="cart"></div>
             </aside>
 			<main></main>

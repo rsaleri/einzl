@@ -52,24 +52,26 @@ a, a:visited, a:focus, a:hover {
 
 h1 {
     font-size: 40px;
+    line-height: 1em;
     font-weight: 400;
     text-align: center;
-}
-
-@media(min-width: $bp1) {
-    h1 {
+    
+    @media(min-width: $bp1) {
         font-size: 70px;
     }
-}
-
-@media(min-width: $bp2) {
-    h1 {
+    
+    @media(min-width: $bp2) {
         font-size: 100px;
+    }
+    
+    &.stretch {
+        font-size: calc(100% + 10vw);
     }
 }
 
-
 h2 {
+    font-size: 1.5em;
+    line-height: 1.5em;
     position: relative;
     margin-top: 0;
     margin-bottom: 2em;
@@ -97,6 +99,7 @@ h3 {
     font-weight: 400;
     text-align: center;
     margin-top: 0;
+    line-height: 1.4em;
 }
 
 input[type="email"], input[type="text"] {
@@ -118,7 +121,7 @@ input[type="text"]:focus {
     border-color: #999;
 }
 
-button, .button {
+button, .button, a.button {
     position: relative;
     display: inline-block;
     border: 0;
@@ -135,6 +138,7 @@ button, .button {
     }
     
     &:before {
+        font-family: FontAwesome;
         position: absolute;
         text-align: center;
         left: 0;
@@ -142,7 +146,6 @@ button, .button {
         vertical-align: baseline;
         display: inline-block;
         line-height: 1.4em;
-        font-family: FontAwesome;
         text-align: center;
         backface-visibility: hidden;
     }
@@ -186,14 +189,27 @@ button, .button {
     position: absolute;
     right: 20px;
     top: 20px;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    font-size: 1.1em;
+    text-align: center;
     background-color: #f1f1f1;
     border-radius: 0% 50% 50% 50%;
+    
     transform: rotate(45deg);
-    text-align: center;
-    transform-origin: center center;
+    transform-origin: 50% 50%;
+    transition: all ease .3s;
+    backface-visibility: hidden;
+    
+    @media(min-width: $bp1) {
+        top: 50px;
+        right: 50px;
+    }
+    
+    &.drop-points-left {
+        transform: rotate(-45deg);
+    }
     
     &:hover {
         cursor: pointer;
@@ -204,12 +220,39 @@ button, .button {
     }
     
     i {
-        vertical-align: top;
-        width: 36px;
-        height: 36px;
-        line-height: 36px;
         transform: rotate(-45deg);
-        transform-origin: center center;
+        transition: all ease .3s;
+        backface-visibility: hidden;
+    }
+    
+     &.drop-points-left i {
+        transform: rotate(45deg);
+    }
+    
+    &.loading i {
+        animation: rotateIt 1s linear infinite reverse;
+        transform-origin: 50% 50%;
+        
+        &:before {
+            content: "\f021";
+        }
+    }
+    
+    &.success {
+        background-color: $green;
+    }
+    &.fail {
+        background-color: $red;
+    }
+    
+    &.success i:before {
+        content: "\f00c";
+        color: $softwhite;
+    }
+    
+    &.fail i:before {
+        content: "\f00d";
+        color: $softwhite;
     }
 }
 

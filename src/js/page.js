@@ -67,15 +67,16 @@ Page.prototype.initController = function() {
                     };
 
                     // subscribe
-                    einzl.app.subscribe(userData).always(function(data) {
+                    einzl.app.subscribe(userData)
+                    .always(function(data) {
                         button.removeClass('loading');
                         input.val('');
                     })
                     .done(function() {
-                        button.tempElementClass('success', 2000);
+                        button.addTempClass('success', 2000);
                     })
                     .fail(function() {
-                        button.tempElementClass('fail', 2000);
+                        button.addTempClass('fail', 2000);
                     });
 
                 } else {
@@ -103,10 +104,10 @@ Page.prototype.insertProducts = function() {
         // loop #2: find the products in products array by ID
         $.each(einzl.products, function() {
             var id = this.model.id;
-            console.log(this);
+            
             if(prodID === id) {
                 // found the product
-                console.log(this);
+                
                 // insert copy of product view into DOM
                 this.view.clone(true).appendTo(container);
                 

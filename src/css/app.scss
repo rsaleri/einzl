@@ -56,7 +56,6 @@ header {
     }
     
     .cart-button {
-        display: none;
         float: right;
         white-space: nowrap;
         height: 60px;
@@ -65,11 +64,25 @@ header {
         margin: 0 0px;
 
         i {
-            margin-right: 10px;
+            
         }
 
-        .total {
+        .total-items {
             font-size: .8em;
+            
+            &:before {
+                content: "|";
+                display: inline-block;
+                margin-right: 3px;
+            }
+            
+            &:empty {
+                display: none;
+            }
+        }
+        
+        .total-price {
+            display: none;
         }
         
         &:hover {
@@ -96,7 +109,7 @@ header {
 
 .copy {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 50px 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -133,6 +146,7 @@ header {
     right: 0;
     bottom: 0;
     
+    
     .details {
         position: absolute;
         z-index: 20;
@@ -140,6 +154,68 @@ header {
         left: 0;
         right: 0;
         bottom: 0;
+        
+        .drop.plus {
+            z-index: 10;
+        }
+        
+        .drop.like {
+            top: 70px;
+            
+            @media(min-width: $bp1) {
+                top: 100px;
+            }
+            
+        }
+        
+        .drop.add-to-cart {
+            top: 120px;
+            
+            @media(min-width: $bp1) {
+                top: 150px;
+            }
+            
+        }
+        
+        &.collapsed {
+            
+            .drop.plus i {
+                transform: rotate(0deg);
+            }
+
+            .drop.like {
+                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
+                transform: translate(0px, -50px) rotate(45deg);
+                opacity: 0;
+            }
+
+            .drop.add-to-cart {
+                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
+                transform: translate(0px, -100px) rotate(45deg);
+                opacity: 0;
+            }
+            
+        }
+        
+        &.expanded {
+            
+            .drop.plus i {
+                transform: rotate(-45deg);
+            }
+
+            .drop.like {
+                transition: transform ease .3s .2s, opacity ease .3s .2s, background-color ease .3s 0s, color ease .3s 0s;
+                transform: translate(0px, 0px) rotate(-45deg);
+                opacity: 1;
+            }
+
+            .drop.add-to-cart {
+                transition: transform ease .3s .4s, opacity ease .3s .4s, background-color ease .3s 0s, color ease .3s 0s;
+                transform: translate(0px, 0px) rotate(-45deg);
+                opacity: 1;
+            }
+            
+        }
     }
     
     .background {
@@ -163,13 +239,21 @@ header {
         }
     }
     
-    @media(min-width: $bp1) {
-        .drop.like {
-            top: 50px;
-            right: 50px;
-        }
+}
+
+ul.user-address-list {
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    
+    li {
+        border: 2px solid #ccc;
+        padding: 10px 30px;
+        margin: 5px 0;
     }
 }
+
 
 /*------------------------------------*\
     NOTIFICATION

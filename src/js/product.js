@@ -15,13 +15,38 @@ Product.prototype.createView = function() {
     
 };
 
+Product.prototype.addToCart = function() {
+    console.log(this.model);
+    return einzl.cart.addItem(this.model.id);
+    
+};
+
 Product.prototype.initController = function() {
     var self = this;
     
-    // add liked-class
-    if(einzl.user.likes[this.model.id]) {
-        this.view.find('.drop.like').addClass('liked');
-    }
+    // enable plus button
+    this.view.find('.drop.plus').on('vclick', function() {
+        $(this).closest('.details').toggleClass('collapsed expanded');
+    });
+    
+    // enable add-to-cart button
+    this.view.find('.drop.add-to-cart').on('vclick', function() {
+        var button = $(this);
+        
+        button.addClass('loading');
+        
+        self.addToCart()
+        .always(function() {
+            button.removeClass('loading');
+        })
+        .done(function() {
+            button.addTempClass('success', 1500);
+        })
+        .fail(function() {
+            button.addTempClass('fail', 1500);
+        });
+        
+    });
     
     // enable like button
     this.view.find('.drop.like').on('vclick', function() {
@@ -47,4 +72,9 @@ Product.prototype.initController = function() {
             localStorage.einzl_user = JSON.stringify(einzl.user);
         }
     });
+    
+    // add liked-class
+    if(einzl.user.likes[this.model.id]) {
+        this.view.find('.drop.like').addClass('liked');
+    }
 };

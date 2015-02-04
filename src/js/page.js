@@ -99,15 +99,15 @@ Page.prototype.insertProducts = function() {
     // loop #1: all products that need to be inserted on this page
     this.view.find('[data-product]').each(function() {
         var container = $(this);
-        var prodID = parseInt(container.attr('data-product'));
+        var prodID = container.attr('data-product');
         
         // loop #2: find the products in products array by ID
         $.each(einzl.products, function() {
             var id = this.model.id;
-            
+            console.log(this);
             if(prodID === id) {
                 // found the product
-                
+                console.log(this);
                 // insert copy of product view into DOM
                 this.view.clone(true).appendTo(container);
                 

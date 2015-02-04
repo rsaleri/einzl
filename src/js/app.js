@@ -265,7 +265,20 @@ $(document).ready(function() {
     window.einzl = {
         pages: {},
         user: {
-            likes: {}
+            likes: {},
+            addresses: [
+                {
+                    id: '1',
+                    firstname: 'Sumit',
+                    lastname: 'Kumar',
+                    email: 'sk@outlook.com',
+                    street: 'Schwabstraße 32',
+                    code: '70197',
+                    city: 'Stuttgart',
+                    country: 'DE',
+                    notes: ''
+                }
+            ]
         },
         products: [],
         templates: {},

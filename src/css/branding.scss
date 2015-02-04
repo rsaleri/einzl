@@ -103,22 +103,43 @@ h3 {
 }
 
 input[type="email"], input[type="text"] {
+    box-sizing: border-box;
     border: 1px solid #eee;
-    width: 80%;
+    width: 100%;
     margin: 10px 0;
     padding: 10px;
-}
-
-.csscalc {
-    input[type="email"], input[type="text"] {
-        width: calc(100% - 20px);
+    
+    &:focus {
+        outline: none;
+        border-color: #999;
     }
 }
 
-input[type="email"]:focus,
-input[type="text"]:focus {
-    outline: none;
-    border-color: #999;
+select {
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 5px;
+    font-weight: normal;
+    
+    &:focus {
+        outline: none;
+        border-color: #999;
+    }
+}
+
+textarea {
+    border: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px 0;
+    
+    &:focus {
+        outline: none;
+        border-color: #999;
+    }
 }
 
 button, .button, a.button {

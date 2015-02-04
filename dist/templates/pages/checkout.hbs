@@ -16,21 +16,11 @@
                 <div>
                     <div class="copy">
                         <h2>Billing Address</h2>
-                        <ul class="user-address-list">
-                            <li>
-                                <span>Sumit Kumar</span><br/>
-                                <span>Schwabstraße 32, 70197 Stuttgart</span><br/>
-                                <span>Eingang Gutenbergstraße</span>
-                            </li>
-                            <li>
-                                <span>Sumit Kumar</span><br/>
-                                <span>Seidenstraße 57, 70197 Stuttgart</span>
-                            </li>
-                        </ul>
-                        <button>
+                        <div class="user-address-list"></div>
+                        <button class="new-address-button">
                             <span><i class=" fa fa-plus"></i> Add New Address</span>
                         </button>
-                        <form autocomplete="on">
+                        <form class="new-address-form" autocomplete="on">
                             <h3>New Address</h3>
                             <input autocomplete="on" class="firstname" type="text" placeholder="first name" required="">
                             <input autocomplete="on" class="lastname" type="text" placeholder="last name" required="">
@@ -39,13 +29,13 @@
                             <input autocomplete="on" class="code" type="text" placeholder="area code" required="">
                             <input autocomplete="on" class="city" type="text" placeholder="city" required="">
                             <select class="country" type="text" required="">
-                                <option value="DE">Germany</option>
-                                <option value="CH">Schweiz</option>
-                                <option value="AT">Österreich</option>
+                                <option value="DE">DE</option>
+                                <option value="CH">CH</option>
+                                <option value="AT">AT</option>
                             </select>
                             <textarea class="note" placeholder="Any special notes?"></textarea>
-                            <button type="reset" class="cancel">Cancel</button>
                             <button type="submit" class="save green"><span>Save Address</span></button>
+                            <button type="reset" class="cancel">Cancel</button>
                         </form>
                     </div>
                 </div>

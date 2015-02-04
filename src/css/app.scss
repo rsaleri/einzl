@@ -2,12 +2,14 @@
 @import 'grid';
 @import 'navigation';
 @import 'cart';
+@import 'checkout';
 @import 'custom';
 
 body {
     background-color: $softwhite;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial;
     color: $darkgrey;
+    font-size: 16px;
 }
 
 header {

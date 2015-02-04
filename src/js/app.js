@@ -222,11 +222,11 @@ App.prototype.route = function(target) {
         einzl.pages[route.id].start();
     } else {
         einzl.pages[route.id] = new Page(route);
-//        if(route.id == 'checkout') {
-//            einzl.pages[route.id] = new Checkout(route);
-//        } else {
-//            einzl.pages[route.id] = new Page(route);
-//        }
+        if(route.id == 'checkout') {
+            einzl.pages[route.id] = new Checkout(route);
+        } else {
+            einzl.pages[route.id] = new Page(route);
+        }
         
         einzl.pages[route.id].start();
     }

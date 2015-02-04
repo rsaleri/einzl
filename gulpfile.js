@@ -33,7 +33,13 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src('src/js/**/*.js')
+  return gulp.src([
+      'src/js/config.js',
+      'src/js/helper.js',
+      'src/js/app.js',
+      'src/js/page.js',
+      'src/js/*.js'
+  ])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('app.js'))

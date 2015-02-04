@@ -125,6 +125,9 @@ Cart.prototype.createView = function() {
     $('.cart').html('');
     this.view.clone(true).appendTo($('.cart'));
     
+    // re-init app links
+    einzl.app.initAppRoutingLinks();
+    
     // update totals outside of view
     $('.total-items').text(this.model.total_items);
     $('.total-price').text(this.model.totals.formatted.with_tax);

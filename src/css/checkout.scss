@@ -13,8 +13,22 @@
         padding: 10px 30px;
         margin: 5px 0;
         
+        &:hover {
+            cursor: pointer;
+            border-color: #999;
+        }
+        
+        &.selected {
+            border-color: $green;
+            background-color: $green;
+            color: #fff;
+            
+        }
+        
         .email {
             font-style: italic;
+            opacity: .8;
+            
         }
     }
 }
@@ -22,6 +36,7 @@
 
 
 .new-address-form {
+    
     max-height: 0px;
     margin-top: 40px;
     transition: max-height ease .5s;
@@ -71,8 +86,6 @@
     }
     
     select {
-        
-        
         
         &.country {
             font-size: 15px;

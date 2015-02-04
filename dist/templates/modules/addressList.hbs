@@ -1,6 +1,6 @@
 <ul>
     {{#each addresses}}
-    <li>
+    <li data-address-id="{{this.id}}">
         <span>{{this.firstname}} {{this.lastname}}</span>
         <span class="email">[{{this.email}}]</span><br/>
         <span>{{this.street}}</span><br/>

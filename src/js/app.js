@@ -5,6 +5,7 @@ var App = function(model) {
     
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
+        console.log('got copy');
         self.getProducts();
     });
     this.initRouting();
@@ -24,7 +25,7 @@ App.changeLanguageTo = function(lang) {
 
 App.prototype.getCopy = function() {
     // get copy, the words, the spaces and all typo
-    
+    console.log('get copy');
     return $.getJSON('copy/' + this.model.lang + '.json', function(data) {
         
         // save copy into einzl object
@@ -66,6 +67,7 @@ App.prototype.getProducts = function() {
     };
     
     return this.askServer(obj).done(function(data) {
+        console.log(data);
         if(data && data.status) {
             
             // get product template

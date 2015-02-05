@@ -104,7 +104,7 @@ Checkout.prototype.processOrder = function() {
         
     } else {
         // display error
-        
+        console.log('error');
         return false;
     }
     
@@ -132,16 +132,24 @@ Checkout.prototype.processOrder = function() {
         
     } else {
         // display error
-        
+        console.log('error');
         return false;
     }
     
     order.shipAd = shippingAddress;
     
+    // check if cart is empty
+    if(!einzl.cart.model || einzl.cart.model.total_items <= 0) {
+        // display error
+        console.log('error');
+        return false;
+    }
     
     
-    
-    
+    // get payment choice
+    var payContainer = $('#payment-choice');
+    var choice = payContainer.find('[name="paymentOption"]:checked').val();
+    order.payment = choice;
     
     console.log(order);
 };

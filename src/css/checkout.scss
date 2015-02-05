@@ -101,3 +101,56 @@
     }
     
 }
+
+
+.cart {
+    
+    .button.checkout {
+        display: none;
+    }
+    
+}
+
+.payment-options {
+    
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        list-style: none;
+        list-style-type: none;
+        padding: 3px;
+        
+        input:hover, label:hover {
+            cursor: pointer;
+        }
+        
+        input {
+            margin-right: 10px;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

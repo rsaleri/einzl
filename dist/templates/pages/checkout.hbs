@@ -50,11 +50,19 @@
                 <div>
                     <div class="copy">
                         <h2>Your Cart</h2>
+                        <div class="cart"></div>
                     </div>
                 </div>
                 <div>
                     <div class="copy">
                         <h2>Payment</h2>
+                        <form class="payment-options">
+                            <ul>
+                                <li><input type="radio" name="paymentOption" id="paypal" value="paypal" /><label for="paypal">Paypal</label></li>
+                                <li><input type="radio" name="paymentOption" id="credit" value="credit" /><label for="credit">Credit Card</label></li>
+                                <li><input type="radio" name="paymentOption" id="transfer" value="transfer" /><label for="transfer">Manual Transfer</label></li>
+                            </ul>
+                        </form>
                     </div>
                 </div>
             </div>

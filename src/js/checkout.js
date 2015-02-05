@@ -65,6 +65,9 @@ Checkout.prototype.insertAddresses = function() {
     
     // insert into DOM
     container.html(html);
+    
+    // activate the first address
+    container.find('li:first-child').addClass('selected');
 };
 
 Checkout.prototype.createUniqueAddressID = function() {

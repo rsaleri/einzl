@@ -17,7 +17,6 @@ var Cart = function() {
 Cart.prototype.removeItem = function(product_key) {
     var self = this;
     
-    console.log('remove product ' + product_key);
     var obj = {
         action: 'removeFromCart',
         cart: {

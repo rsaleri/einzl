@@ -1,7 +1,5 @@
 var Checkout = function(model) {
     
-    console.log('this is checkout calling');
-    
     this.model = model;
     
     this.order = {};
@@ -38,14 +36,36 @@ Checkout.prototype.initController = function() {
         
         self.addUserAddress(form);
         
+    });
+    
+    // enable process order button
+    this.view.find('.button.buy').on('vclick', function(e) {
+        
+        var button = $(e.currentTarget);
+        
+        if(!button.hasClass('loading')) {
+            button.addClass('loading');
+            
+            self.processOrder();
+        }
+        
+        
+        
+        
         
     });
+    
     
     // add user addresses
     einzl.app.getTemplate('/modules/addressList').then(function(hbs) {
         self.addressTemplate = hbs;
         self.insertAddresses();
     });
+    
+    // add cart to view
+    if(einzl.cart.view) {
+        this.view.find('.cart').html(einzl.cart.view);
+    }
     
     // enable address buttons
     this.view.find('.user-address-list').on('vclick', 'li', function() {
@@ -54,6 +74,77 @@ Checkout.prototype.initController = function() {
     });
 };
 
+
+
+Checkout.prototype.processOrder = function() {
+    
+    console.log('process order');
+    
+    var order = {};
+    
+    
+    // get billing address
+    var billingContainer = $('#billing-address');
+    var selectedBill = billingContainer.find('.user-address-list .selected').first();
+    var billID;
+    var billingAddress;
+    
+    if(selectedBill.length > 0) {
+        
+        billID = selectedBill.attr('data-address-id');
+        
+        $.each(einzl.user.addresses, function() {
+            
+            if(this.id === billID) {
+                billingAddress = this;
+                return false;
+            }
+            
+        });
+        
+    } else {
+        // display error
+        
+        return false;
+    }
+    
+    order.billAd = billingAddress;
+    
+    
+    // get shipping address
+    var shippingContainer = $('#shipping-address');
+    var selectedShip = shippingContainer.find('.user-address-list .selected').first();
+    var shipID;
+    var shippingAddress;
+    
+    if(selectedShip.length > 0) {
+        
+        shipID = selectedShip.attr('data-address-id');
+        
+        $.each(einzl.user.addresses, function() {
+            
+            if(this.id === shipID) {
+                shippingAddress = this;
+                return false;
+            }
+            
+        });
+        
+    } else {
+        // display error
+        
+        return false;
+    }
+    
+    order.shipAd = shippingAddress;
+    
+    
+    
+    
+    
+    
+    console.log(order);
+};
 
 Checkout.prototype.insertAddresses = function() {
     

@@ -1,148 +1,157 @@
-.user-address-list {
+.checkout {
     
-    ul {
-        margin: 0 0 30px;
-        padding: 0;
-        list-style: none;
-        list-style-type: none;
+    
+    .user-address-list {
+    
+        ul {
+            margin: 0 0 30px;
+            padding: 0;
+            list-style: none;
+            list-style-type: none;
+        }
+
+
+        li {
+            border: 2px solid #ccc;
+            padding: 10px 30px;
+            margin: 5px 0;
+
+            &:hover {
+                cursor: pointer;
+                border-color: #999;
+            }
+
+            &.selected {
+                border-color: $green;
+                background-color: $green;
+                color: #fff;
+
+            }
+
+            .email {
+                font-style: italic;
+                opacity: .8;
+
+            }
+        }
     }
-    
-    
-    li {
-        border: 2px solid #ccc;
-        padding: 10px 30px;
-        margin: 5px 0;
-        
-        &:hover {
-            cursor: pointer;
-            border-color: #999;
-        }
-        
-        &.selected {
-            border-color: $green;
-            background-color: $green;
-            color: #fff;
-            
-        }
-        
-        .email {
-            font-style: italic;
-            opacity: .8;
-            
-        }
-    }
-}
 
 
 
-.new-address-form {
-    
-    max-height: 0px;
-    margin-top: 40px;
-    transition: max-height ease .5s;
-    overflow: hidden;
-    
-    &.open {
-        max-height: 500px;
-    }
-    
-    h3 {
-        text-align: left;
-    }
-    
-    button {
-        margin-right: 5px;
-        margin-top: 5px;
-    }
-    
-    input {
-        
-        margin: 3px 0;
-        
-        &.firstname, &.lastname {
-            width: 49%;
-            display: inline-block;
-        }
-        
-        &.firstname {
-            margin-right: 2%;
-            float: left;
-        }
-        
-        &.code {
-            width: 35%;
-            float: left;
-            margin-right: 1%;
-        }
-        
-        &.city {
-            margin-right: 1%;
-            width: 50%;
-            display: inline-block;
-            float: left;
-        }
-        
-        
-    }
-    
-    select {
-        
-        &.country {
-            font-size: 15px;
-            width: 13%;
-            margin: 3px 0;
-        }
-        
-    }
-    
-    textarea.note {
-        margin: 3px 0;
-        height: 200px;
-    }
-    
-}
+    .new-address-form {
 
+        max-height: 0px;
+        margin-top: 40px;
+        transition: max-height ease .5s;
+        overflow: hidden;
 
-.cart {
-    
-    .button.checkout {
-        display: none;
-    }
-    
-}
-
-.payment-options {
-    
-    ul {
-        padding: 0;
-        margin: 0;
-    }
-    
-    li {
-        list-style: none;
-        list-style-type: none;
-        padding: 3px;
-        
-        input:hover, label:hover {
-            cursor: pointer;
+        &.open {
+            max-height: 500px;
         }
-        
+
+        h3 {
+            text-align: left;
+        }
+
+        button {
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+
         input {
-            margin-right: 10px;
+
+            margin: 3px 0;
+
+            &.firstname, &.lastname {
+                width: 49%;
+                display: inline-block;
+            }
+
+            &.firstname {
+                margin-right: 2%;
+                float: left;
+            }
+
+            &.code {
+                width: 35%;
+                float: left;
+                margin-right: 1%;
+            }
+
+            &.city {
+                margin-right: 1%;
+                width: 50%;
+                display: inline-block;
+                float: left;
+            }
+
+
         }
+
+        select {
+
+            &.country {
+                font-size: 15px;
+                width: 13%;
+                margin: 3px 0;
+            }
+
+        }
+
+        textarea.note {
+            margin: 3px 0;
+            height: 200px;
+        }
+
     }
+
+
+    .cart {
+
+        .button.checkout {
+            display: none;
+        }
+
+    }
+
+    .payment-options {
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            list-style-type: none;
+            padding: 3px;
+
+            input:hover, label:hover {
+                cursor: pointer;
+            }
+
+            input {
+                margin-right: 10px;
+            }
+        }
+
+    }
+
+
+    .button.buy {
+        width: 100%;
+        display: block;
+        height: 60px;
+        background-color: $green;
+        color: #fff;
+        margin-top: 100px;
+    }
+    
+    
     
 }
 
 
-.button.buy {
-    width: 100%;
-    display: block;
-    height: 60px;
-    background-color: $green;
-    color: #fff;
-    margin-top: 100px;
-}
 
 
 

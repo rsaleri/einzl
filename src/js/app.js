@@ -272,10 +272,12 @@ $(document).ready(function() {
                     firstname: 'Sumit',
                     lastname: 'Kumar',
                     email: 'sk@outlook.com',
-                    street: 'Schwabstraße 32',
+                    phone: '000',
+                    address_1: 'Schwabstraße 32',
                     code: '70197',
                     city: 'Stuttgart',
                     country: 'DE',
+                    county: '--',
                     notes: ''
                 }
             ]

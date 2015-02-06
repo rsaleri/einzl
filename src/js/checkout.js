@@ -151,7 +151,19 @@ Checkout.prototype.processOrder = function() {
     var choice = payContainer.find('[name="paymentOption"]:checked').val();
     order.payment = choice;
     
-    console.log(order);
+    var obj = {
+        action: 'processOrder',
+        order: order,
+        cart: einzl.cart.model
+    };
+    
+    return einzl.app.askServer(obj).done(function(data) {
+        
+        console.log(data);
+        
+    });
+    
+    
 };
 
 Checkout.prototype.insertAddresses = function() {
@@ -194,12 +206,12 @@ Checkout.prototype.addUserAddress = function(form) {
     var obj = {};
     
     // extract address information
-    obj.firstname = form.find('.firstname').val();
-    obj.lastname = form.find('.lastname').val();
+    obj.first_name = form.find('.firstname').val();
+    obj.last_name = form.find('.lastname').val();
     obj.email = form.find('.email').val();
     obj.phone = '000';
     obj.address_1 = form.find('.address_1').val();
-    obj.code = form.find('.code').val();
+    obj.postcode = form.find('.code').val();
     obj.city = form.find('.city').val();
     obj.county = '--';
     obj.country = form.find('.country').val();

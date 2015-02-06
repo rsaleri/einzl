@@ -269,12 +269,12 @@ $(document).ready(function() {
             addresses: [
                 {
                     id: '1',
-                    firstname: 'Sumit',
-                    lastname: 'Kumar',
+                    first_name: 'Sumit',
+                    last_name: 'Kumar',
                     email: 'sk@outlook.com',
                     phone: '000',
                     address_1: 'Schwabstraße 32',
-                    code: '70197',
+                    postcode: '70197',
                     city: 'Stuttgart',
                     country: 'DE',
                     county: '--',

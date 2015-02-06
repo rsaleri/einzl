@@ -133,6 +133,14 @@
             input {
                 margin-right: 10px;
             }
+            
+            .disabled {
+                color: #ccc;
+                
+                &:after {
+                    content: " (soon)"
+                }
+            }
         }
 
     }

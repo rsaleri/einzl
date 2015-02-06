@@ -159,7 +159,9 @@ class SDK
 
             // Format errors
             if (isset($result['errors']) && is_array($result['errors'])) {
-                $error = implode("\n", $result['errors']);
+//                $error = implode("\n", $result['errors']);
+                
+                $error = json_encode($result['errors']);
             } elseif (isset($result['error']) && is_array($result['error'])) {
                 $error = implode("\n", $result['error']);
             } else {

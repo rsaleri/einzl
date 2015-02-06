@@ -46,7 +46,21 @@ Checkout.prototype.initController = function() {
         if(!button.hasClass('loading')) {
             button.addClass('loading');
             
-            self.processOrder();
+            self.processOrder().always(function() {
+                button.removeClass('loading');
+            }).done(function(data) {
+                
+                if(data.status) {
+                    // remove current cart
+                    einzl.user.cart_id = null;
+
+                    // create new cart
+                    einzl.cart = new Cart();
+
+                    // TODO: redirect user to confirmation page
+                }
+                
+            });
         }
         
         
@@ -62,11 +76,6 @@ Checkout.prototype.initController = function() {
         self.insertAddresses();
     });
     
-    // add cart to view
-    if(einzl.cart.view) {
-        this.view.find('.cart').html(einzl.cart.view);
-    }
-    
     // enable address buttons
     this.view.find('.user-address-list').on('vclick', 'li', function() {
         $(this).addClass('selected');
@@ -74,7 +83,19 @@ Checkout.prototype.initController = function() {
     });
 };
 
-
+Checkout.prototype.start = function() {
+    
+    Page.prototype.start.call(this); 
+    
+    if(this.view) {
+        // add cart to view
+        if(einzl.cart.view) {
+            console.log('insert cart into view');
+            this.view.find('.cart').html(einzl.cart.view);
+        }
+    }
+    
+};
 
 Checkout.prototype.processOrder = function() {
     

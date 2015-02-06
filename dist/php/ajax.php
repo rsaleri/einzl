@@ -103,18 +103,19 @@ if ( $authenticated ) {
             $order = $_POST['order'];
             $cartID = $_POST['cart']['id'];
             
+            // create customer out of billing data
             $user = array(
                 'first_name' => $order['billAd']['first_name'],
                 'last_name' => $order['billAd']['last_name'],
                 'email' => $order['billAd']['email']
             );
             
+            // send order to moltin
             $data['order'] = $moltin->post('cart/'.$cartID.'/checkout', array(
                 'customer' => $user,
                 'gateway' => $order['payment'],
                 'bill_to' => $order['billAd'],
-                'ship_to' => $order['shipAd'],
-                'shipping' => 6846
+                'ship_to' => $order['shipAd']
             ));
             
         }

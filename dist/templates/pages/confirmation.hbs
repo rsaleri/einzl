@@ -21,7 +21,7 @@
                         </p>
                         <p>
                             We hope you enjoy your new jewelry and we are eager to see how good it looks on you.
-                            Let us know by posting an image to Instagram and mention <a href="instagram.com/einzlstck" title="Einzelstück on Instagram">@einzlstck</a> or post it directly onto our <a href="https://www.facebook.com/einzlstck" title="Einzelstück auf Facebook">Facebook Wall</a>.
+                            Let us know by posting an image to Instagram and mention <a href="http://instagram.com/einzlstck" title="Einzelstück on Instagram" target="_blank">@einzlstck</a> or post it directly onto our <a href="https://www.facebook.com/einzlstck" title="Einzelstück auf Facebook" target="_blank">Facebook Wall</a>.
                         </p>
                         <p>
                             The next steps for your order are payment and shipping. More details on the right.
@@ -51,8 +51,37 @@
                 
             </div>
             <div class="units">
-               <div>
-                    <div class="copy"></div>
+                <div>
+                    <div class="copy">
+                        <h2>Billing</h2>
+                        <p>Your order is billed to the following Address</p>
+                        <span>{{this.order.bill_to.data.first_name}} {{this.order.bill_to.data.last_name}}</span><br/>
+                        <span>{{this.order.bill_to.data.address_1}}</span><br/>
+                        <span>{{this.order.bill_to.data.postcode}} {{this.order.bill_to.data.city}}, {{this.order.bill_to.data.country.value}}</span><br/>
+                        <span>{{this.order.bill_to.data.note}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="copy">
+                        <h2>Shipping</h2>
+                        <p>As soon as we recieve your payment we'll send out your new jewelry to the following address.</p>
+                        <span>{{this.order.ship_to.data.first_name}} {{this.order.ship_to.data.last_name}}</span><br/>
+                        <span>{{this.order.ship_to.data.address_1}}</span><br/>
+                        <span>{{this.order.ship_to.data.postcode}} {{this.order.ship_to.data.city}}, {{this.order.ship_to.data.country.value}}</span><br/>
+                        <span>{{this.order.ship_to.data.note}}</span>
+                   </div>
+                </div>
+                
+            </div>
+            <center style="padding: 20px;">Thank you again for your order.</center>
+            <div class="units">
+                <div>
+                    <div class="copy">
+                        <h2>Want to help out?</h2>
+                        <p><strong>There is no better person than you to help us improve our store.</strong> Did you had any problems? Did you miss something or have been confused?</p>
+                        <p>We would love to hear your feedback so we can tweak every little detail to make you, {{this.order.bill_to.data.first_name}} - our dear customer - feel comfortable on our site.</p>
+                        <p>Please reach out to us on <a href="http://twitter.com/einzlstck" title="Einzelstück on Twitter" target="_blank">Twitter</a> or at <a href="mailto:info@einzelstueck-shop.com" target="_blank" title="mail Einzelstück">info@einzelstueck-shop.com</a>.<br/>We can't wait to talk to you.</p>
+                    </div>
                 </div>
                 <div>
                     <div class="copy"></div>

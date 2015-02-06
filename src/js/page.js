@@ -10,8 +10,8 @@ Page.prototype.createView = function() {
     // get handlebars template
     return einzl.app.getTemplate(this.model.hbsPath).then(function(hbs) {
         
-        // compile handlebars template - insert data here, if there is any
-        var html = hbs();
+        // compile handlebars template - pass model to it
+        var html = hbs(self.model);
         
         // save jQuery object as view
         self.view = $(html);

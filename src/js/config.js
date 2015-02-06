@@ -32,6 +32,12 @@
              hbsPath: '/pages/checkout'
          },
          {
+             title: 'Confirmation',
+             id: 'confirmation',
+             slug: ['/confirmation'],
+             hbsPath: '/pages/confirmation'
+         },
+         {
              title: 'Imprint',
              id: 'imprint',
              slug: ['/imprint'],

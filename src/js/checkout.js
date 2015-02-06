@@ -50,14 +50,16 @@ Checkout.prototype.initController = function() {
                 button.removeClass('loading');
             }).done(function(data) {
                 
-                if(data.status) {
+                if(data.order.status) {
                     // remove current cart
                     einzl.user.cart_id = null;
 
                     // create new cart
                     einzl.cart = new Cart();
-
-                    // TODO: redirect user to confirmation page
+                    
+                    einzl.order = data.order.result;
+                    
+                    History.pushState("", 'Confirmation', '/confirmation');
                 }
                 
             });

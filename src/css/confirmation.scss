@@ -1,0 +1,27 @@
+.confirmation {
+    
+    .payment-information {
+        
+        ul {
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+            list-style-type: none;
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+            
+            &:last-child {
+                border-bottom: 0;
+            }
+            
+            span {
+                float: right;
+            }
+        }
+        
+    }
+    
+    
+}

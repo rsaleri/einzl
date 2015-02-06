@@ -3,6 +3,7 @@
 @import 'navigation';
 @import 'cart';
 @import 'checkout';
+@import 'confirmation';
 @import 'custom';
 
 body {
@@ -116,7 +117,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    line-height: 1.3em;
+    line-height: 1.4em;
     
     @media(min-width: $bp1) {
         padding: 70px;

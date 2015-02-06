@@ -1,0 +1,63 @@
+<section class="confirmation">
+    <article>
+        <div class="units-1 cut-in-half">
+            <div>
+                <div class="copy center-y">
+                    <h1>Thank you {{this.order.bill_to.data.first_name}}!</h1>
+                    <p>Your order has been placed.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <article>
+        <div class="content">
+            <div class="units">
+                <div>
+                    <div class="copy">
+                        <h2>Dear {{this.order.bill_to.data.first_name}}</h2>
+                        <p>
+                            We're so glad you found something. If you have any questions at all, please don't hesitate to contact us via <a href="mailto:info@einzelstueck-shop.com" title="mail Einzelstück">info@einzelstueck-shop.com</a>
+                        </p>
+                        <p>
+                            We hope you enjoy your new jewelry and we are eager to see how good it looks on you.
+                            Let us know by posting an image to Instagram and mention <a href="instagram.com/einzlstck" title="Einzelstück on Instagram">@einzlstck</a> or post it directly onto our <a href="https://www.facebook.com/einzlstck" title="Einzelstück auf Facebook">Facebook Wall</a>.
+                        </p>
+                        <p>
+                            The next steps for your order are payment and shipping. More details on the right.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="copy payment-information">
+                        <h2>Payment</h2>
+                        <p>Please transfer <strong>{{this.order.currency_code}} {{this.order.total}}</strong> to the following Bank Account</p>
+                        <ul>
+                            <li>
+                                <label>Account Holder</label>
+                                <span>Einzelstück</span>
+                            </li>
+                            <li>
+                                <label>IBAN</label>
+                                <span>000000000000000000000000</span>
+                            </li>
+                            <li>
+                                <label>BIC</label>
+                                <span>11111111111</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="units">
+               <div>
+                    <div class="copy"></div>
+                </div>
+                <div>
+                    <div class="copy"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

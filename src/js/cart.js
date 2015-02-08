@@ -105,16 +105,21 @@ Cart.prototype.initController = function() {
         
     });
     
+    container.on('vclick', '.item', function(e) {
+        $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
+    });
+    
     container.on('vclick', '.remove', function(e) {
         var li = $(e.currentTarget).closest('li.item');
         var product_key = $(this).closest('li').attr('data-product-key');
-        
-        console.log(li);
         
         if(!li.hasClass('loading')) {
             li.addClass('loading');
             self.removeItem(product_key);
         }
+        
+        e.stopPropagation();
+        e.preventDefault();
         
         
     });

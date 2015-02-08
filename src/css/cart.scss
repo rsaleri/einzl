@@ -50,8 +50,14 @@ aside.cart-container.open {
         li {
             position: relative;
             white-space: nowrap;
-            padding: 5px 30px;
+            padding: 15px 30px;
             margin-bottom: 1px;
+            transition: all ease .3s;
+            
+            &.item:hover {
+                cursor: pointer;
+                background-color: #f6f6f6;
+            }
             
             &.heading {
                 font-weight: 800;
@@ -79,26 +85,35 @@ aside.cart-container.open {
 
             .remove {
                 position: absolute;
-                right: 6px;
+                padding: 15px;
+                top: 0;
+                right: 0;
+                transform: translate(100%, 0);
                 display: inline-block;
                 margin-left: 10px;
-                color: #ccc;
+                color: #fff;
+                background-color: $red;
+                transition: all ease .3s;
+                
+                &:hover {
+                    cursor: pointer;
+                }
+                
+                
             }
 
-            .remove:hover {
-                cursor: pointer;
+            &.selected {
                 
-                i {
-                    color: $red;
+                padding-right: 60px;
+                
+                .remove {
+                    transform: translate(0%, 0);
                 }
+                
             }
             
             &.loading .remove:hover {
                 cursor: default;
-                
-                i {
-                    color: #ccc;
-                }
             }
 
             .price {

@@ -34,7 +34,7 @@ Product.prototype.initController = function() {
         var button = $(this);
         
         if(!button.hasClass('loading')) {
-            button.addClass('loading');
+            button.addClass('loading').removeClass('success fail');
         
             self.addToCart()
             .always(function() {

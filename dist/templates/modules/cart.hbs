@@ -1,8 +1,8 @@
 <ul class="items">
     
     <li class="heading">
-        <span class="name">Product</span>
-        <span class="price">EUR</span>
+        <span class="name" data-copy="cart_heading_product"></span>
+        <span class="price" data-copy="cart_heading_currency"></span>
     </li>
     
     {{#each contents}}
@@ -19,17 +19,17 @@
 <ul class="totals">
     <li class="subtotal">
         <span class="price">{{totals.rounded.with_tax}}</span>
-        <span class="name">Subtotal</span>
+        <span class="name" data-copy="cart_totals_subtotal"></span>
     </li>
     <li class="shipping">
         <span class="price">free</span>
-        <span class="name">Shipping</span>
+        <span class="name" data-copy="cart_totals_shipping"></span>
     </li>
     <li class="total">
         <span class="price">{{totals.rounded.with_tax}}</span>
-        <span class="name">Total</span>
+        <span class="name" data-copy="cart_totals_total"></span>
     </li>
 </ul>
 <div class="actions">
-    <a class="button checkout" href="/checkout" title="Proceed to Checkout"><span>Checkout</span></a>
+    <a class="button checkout" href="/checkout" title="Proceed to Checkout"><span data-copy="cart_button_checkout"></span></a>
 </div>

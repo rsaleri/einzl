@@ -97,6 +97,9 @@ Checkout.prototype.start = function() {
         }
     }
     
+    $('.cart-container').removeClass('open');
+    $('.cart-button').removeClass('open');
+    
 };
 
 Checkout.prototype.processOrder = function() {

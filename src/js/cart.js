@@ -101,10 +101,6 @@ Cart.prototype.initController = function() {
     var self = this;
     var container = $('.cart');
     
-    container.on('vclick', '.button.checkout', function(e) {
-        
-    });
-    
     container.on('vclick', '.item', function(e) {
         $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
     });

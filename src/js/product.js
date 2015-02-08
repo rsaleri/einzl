@@ -33,18 +33,22 @@ Product.prototype.initController = function() {
     this.view.find('.drop.add-to-cart').on('vclick', function() {
         var button = $(this);
         
-        button.addClass('loading');
+        if(!button.hasClass('loading')) {
+            button.addClass('loading');
         
-        self.addToCart()
-        .always(function() {
-            button.removeClass('loading');
-        })
-        .done(function() {
-            button.addTempClass('success', 1500);
-        })
-        .fail(function() {
-            button.addTempClass('fail', 1500);
-        });
+            self.addToCart()
+            .always(function() {
+                button.removeClass('loading');
+            })
+            .done(function() {
+                button.addTempClass('success', 1500);
+            })
+            .fail(function() {
+                button.addTempClass('fail', 1500);
+            });
+        }
+        
+        
         
     });
     

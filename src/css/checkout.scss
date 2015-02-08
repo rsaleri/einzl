@@ -93,6 +93,7 @@
             &.country {
                 font-size: 15px;
                 width: 13%;
+                height: 40px;
                 margin: 3px 0;
             }
 
@@ -110,6 +111,28 @@
 
         .button.checkout {
             display: none;
+        }
+        
+        .item:hover {
+            background-color: transparent;
+            cursor: default;
+            
+        }
+        
+        .item.selected {
+            padding-right: 30px;
+        }
+        
+        .remove {
+            opacity: .3;
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+        
+        .item.selected .remove {
+            transform: translate(100%,0);
         }
 
     }

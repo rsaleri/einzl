@@ -113,7 +113,8 @@ App.prototype.initNavigation = function() {
         $('header nav').toggleClass('open');
     });
     
-    $('.cart-button').on('vclick', function() {
+    $('.cart-button').on('vclick', function(e) {
+        $(e.currentTarget).toggleClass('open');
         $('aside.cart-container').toggleClass('open');
     });
 

@@ -10,6 +10,21 @@ aside.cart-container {
     z-index: 600;
     right: -400px;
     
+    &.open {
+        right: 0;
+    }
+    
+    .csstransforms & {
+        right: 0;
+        transform: translate(100%, 0);
+        transition: all ease .5s;
+        
+        &.open {
+            transform: translate(0%, 0);
+        }
+        
+    }
+    
     @media(min-width: $bp1) {
         position: fixed;
     }
@@ -23,20 +38,6 @@ aside.cart-container {
     h2:after {
         display: none;
     }
-}
-
-aside.cart-container.open {
-    right: 0;
-}
-
-.csstransforms aside.cart-container {
-    right: 0;
-    transform: translate(100%, 0);
-    transition: all ease .5s;
-}
-
-.csstransforms aside.cart-container.open {
-    transform: translate(0%, 0);
 }
 
 .cart {

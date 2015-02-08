@@ -65,8 +65,16 @@ header {
         padding: 0 20px;
         line-height: 60px;
         margin: 0 0px;
-
-        i {
+        
+        &.open {
+            
+            i:before {
+                content: "\f00d";
+            }
+            
+            .total-items {
+                display: none;
+            }
             
         }
 

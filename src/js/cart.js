@@ -14,6 +14,15 @@ var Cart = function() {
 
 };
 
+Cart.prototype.insertCopy = function() {
+    
+    this.view.find('[data-copy]').each(function() {
+        var copy = einzl.copy[$(this).attr('data-copy')];
+        $(this).html(copy);
+    });
+    
+};
+
 Cart.prototype.removeItem = function(product_key) {
     var self = this;
     
@@ -114,11 +123,18 @@ Cart.prototype.initController = function() {
 
 Cart.prototype.createView = function() {
     
+    var self = this;
+    
     // render cart handlebars template
     var html = this.template(this.model);
     
     // save rendered template as view
     this.view = $(html);
+    
+    // insert copy into view once JSON is available
+    $.when(einzl.deferreds.copy).then(function() {
+        self.insertCopy();
+    });
     
     // insert into DOM
     $('.cart').html('');

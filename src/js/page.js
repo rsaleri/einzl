@@ -110,7 +110,7 @@ Page.prototype.insertProducts = function() {
             if(prodID === id) {
                 // found the product
                 
-                // insert copy of product view into DOM
+                // insert clone of product view into DOM
                 this.view.clone(true).appendTo(container);
                 
                 // cancel loop #2

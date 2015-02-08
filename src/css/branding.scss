@@ -242,7 +242,7 @@ button, .button, a.button {
     
     i {
         transform: rotate(-45deg);
-        transition: all ease .3s;
+        transition: transform ease .3s;
         backface-visibility: hidden;
     }
     

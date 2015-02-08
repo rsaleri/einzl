@@ -14,6 +14,14 @@
         "nl_headline": "Don't miss anything!",
         "nl_copy": "Subscribe to our newsletter and get yourself <strong>20% off your order</strong> on our launch day.",
         "nl_button": "Subscribe",
+        "cart_headline": "Your Shopping Cart",
+        "beta_headline": "We're in beta right now",
+        "beta_copy1": "You can't shop yet, but you can let us know that you'd like to.",
+        "beta_copy2": "This shop, the functions, the design and the products are work-in-progress. We're still settings things up but we'd love to know what you think.",
+        "beta_copy3": "If you like the products you see here, click the <i class='fa fa-heart'></i> and let us know.",
+        "follow_headline": "Follow our journey",
+        "follow_copy1": "You'll see new products first and we let you know about updates to our store before anyone else.",
+        "follow_copy2": "All our lovely followers are getting regular special discounts, so what are you waiting for? Follow us!",
         "messages": {
             "welcome": [
                 "Hey you :-)",

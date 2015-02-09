@@ -35,6 +35,17 @@
         "rings_headline": "Rings",
         "bracelet_headline": "Bracelets",
         "necklace_headline": "Necklaces",
+        "checkout_headline": "Checkout",
+        "checkout_subheadline": "There is no waiting in line. We promise.",
+        "checkout_billing_headline": "Billing Address",
+        "checkout_add_address_button": "<i class='fa fa-plus'></i> Add New Address",
+        "checkout_new_address_headline": "New Address",
+        "checkout_save_address_button": "Save Address",
+        "checkout_cancel_address_button": "Cancel",
+        "checkout_shipping_headline": "Shipping Address",
+        "checkout_cart_headline": "Your Cart",
+        "checkout_pay_headline": "Payment",
+        "checkout_process_order_button": "Process Order",
         "messages": {
             "welcome": [
                 "Hey you :-)",

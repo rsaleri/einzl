@@ -3,8 +3,8 @@
         <div class="units-1 cut-in-half">
             <div>
                 <div class="copy center-y">
-                    <h1>Checkout</h1>
-                    <p>There is no waiting in line. We promise.</p>
+                    <h1 data-copy="checkout_headline"></h1>
+                    <p data-copy="checkout_subheadline"></p>
                 </div>
             </div>
         </div>
@@ -15,13 +15,13 @@
             <div class="units">
                 <div id="billing-address">
                     <div class="copy">
-                        <h2>Billing Address</h2>
+                        <h2 data-copy="checkout_billing_headline"></h2>
                         <div class="user-address-list"></div>
                         <button class="new-address-button">
-                            <span><i class=" fa fa-plus"></i> Add New Address</span>
+                            <span data-copy="checkout_add_address_button"></span>
                         </button>
                         <form class="new-address-form" autocomplete="on">
-                            <h3>New Address</h3>
+                            <h3 data-copy="checkout_new_address_headline"></h3>
                             <input autocomplete="on" class="firstname" type="text" placeholder="first name" required="">
                             <input autocomplete="on" class="lastname" type="text" placeholder="last name" required="">
                             <input autocomplete="on" class="email" type="email" placeholder="email" required="">
@@ -34,14 +34,14 @@
                                 <option value="AT">AT</option>
                             </select>
                             <textarea class="note" placeholder="Any special notes?"></textarea>
-                            <button type="submit" class="save green"><span>Save Address</span></button>
-                            <button type="reset" class="cancel">Cancel</button>
+                            <button type="submit" class="save green"><span data-text="checkout_save_address_button"></span></button>
+                            <button type="reset" class="cancel" data-copy="checkout_cancel_address_button"></button>
                         </form>
                     </div>
                 </div>
                 <div id="shipping-address">
                     <div class="copy">
-                        <h2>Shipping Address</h2>
+                        <h2 data-copy="checkout_shipping_headline"></h2>
                         <div class="user-address-list"></div>
                     </div>
                 </div>
@@ -49,18 +49,18 @@
             <div class="units">
                 <div id="cart-preview">
                     <div class="copy">
-                        <h2>Your Cart</h2>
+                        <h2 data-copy="checkout_cart_headline"></h2>
                         <div class="cart"></div>
                     </div>
                 </div>
                 <div id="payment-choice">
                     <div class="copy">
-                        <h2>Payment</h2>
+                        <h2 data-copy="checkout_pay_headline"></h2>
                         <ul>
                             <li><input type="radio" name="paymentOption" id="paypal" value="paypal-express" disabled /><label class="disabled" for="paypal">Paypal</label></li>
                             <li><input type="radio" name="paymentOption" id="transfer" value="manual" checked /><label for="transfer">Manual Transfer</label></li>
                         </ul>
-                        <button class="button buy"><span>Process Order</span></button>
+                        <button class="button buy"><span data-copy="checkout_process_order_button"></span></button>
                     </div>
                 </div>
             </div>

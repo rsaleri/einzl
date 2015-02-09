@@ -3,6 +3,9 @@ var App = function(model) {
     
     this.model = config;
     
+    // let body know about our language
+    $('body').attr('data-active-lang', this.model.lang);
+    
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
         self.getProducts();
@@ -16,8 +19,9 @@ App.prototype.changeLanguageTo = function(lang) {
     
     this.model.lang = lang;
     
+    $('body').attr('data-active-lang', this.model.lang);
+    
     this.getCopy().then(function() {
-        // TODO: get all templates compile and render again
         
         // re-create views for pages
         $.each(einzl.pages, function() {
@@ -117,6 +121,8 @@ App.prototype.askServer = function(obj) {
 
 App.prototype.initNavigation = function() {
     
+    var self = this;
+    
     $('.hamburger-button').on('vclick', function(e) {
         $('header nav').toggleClass('open');
         e.preventDefault();
@@ -126,8 +132,14 @@ App.prototype.initNavigation = function() {
     $('.cart-button').on('vclick', function(e) {
         $(e.currentTarget).toggleClass('open');
         $('aside.cart-container').toggleClass('open');
-         e.preventDefault();
+        e.preventDefault();
         e.stopPropagation();
+    });
+    
+    $('.language-button span').on('vclick', function(e) {
+        var button = $(e.currentTarget);
+        self.changeLanguageTo(button.attr('data-language'));
+        
     });
 
     this.initAppRoutingLinks();

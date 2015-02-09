@@ -23,7 +23,7 @@
 	<script src="js/libs/modernizr.min.js"></script>
     
 </head>
-<body>
+<body data-active-lang="">
 	<div class="app">
         <div class="wrapper">
         	<header>
@@ -39,8 +39,8 @@
                 </nav>
                 <div class="right-area">
                     <div class="language-button">
-                        <span data-language="de">DE</span>
-                        <span data-language="en">EN</span>
+                        <span title="Ändere die Sprache auf Deutsch" data-language="de">DE</span>
+                        <span title="Change language to english" data-language="en">EN</span>
                     </div>
                     <div class="cart-button">
                         <i class="fa fa-shopping-cart"></i>

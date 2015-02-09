@@ -98,24 +98,38 @@ header {
         
         &:hover {
             cursor: pointer;
+            background-color: #f6f6f6;
         }
     }
     
     .language-button {
         float: right;
         display: inline-block;
-        height: 60px;
-        line-height: 60px;
-        padding: 0 20px;
         margin-right: 10px;
         font-size: .8em;
         
-//        display: none;
-        
         &:hover {
             cursor: pointer;
+            background-color: #f6f6f6;
+        }
+        
+        span {
+            display: inline-block;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 20px;
+        }
+        
+        body[data-active-lang="en"] & span[data-language="en"] {
+            display: none;
+        }
+        
+        body[data-active-lang="de"] & span[data-language="de"] {
+            display: none;
         }
     }
+    
+    
 }
 
 .copy {

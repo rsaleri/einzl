@@ -4,12 +4,7 @@ var Cart = function() {
     
     // get cart data
     this.getCart().then(function() {
-        // get cart template
-        self.getTemplate().then(function() {
-            // create cart view and insert into DOM
-            self.createView();
-            self.initController();
-        });
+         self.createView();
     });
 
 };
@@ -30,7 +25,7 @@ Cart.prototype.removeItem = function(product_key) {
     
     return einzl.app.askServer(obj).done(function(data) {
         self.model = data.cart;
-        self.createView();
+        self.render();
     });
 };
 
@@ -47,7 +42,7 @@ Cart.prototype.addItem = function(prodID) {
     
     return einzl.app.askServer(obj).done(function(data) {
         self.model = data.cart;
-        self.createView();
+        self.render();
     });
     
 };
@@ -81,10 +76,12 @@ Cart.prototype.getCart = function() {
     
 };
 
-Cart.prototype.getTemplate = function() {
+Cart.prototype.createView = function() {
     var self = this;
     return einzl.app.getTemplate('modules/cart').then(function(hbs) {
         self.template = hbs;
+        self.render();
+        self.initController();
     });
 };
 
@@ -115,7 +112,9 @@ Cart.prototype.initController = function() {
     
 };
 
-Cart.prototype.createView = function() {
+
+
+Cart.prototype.render = function() {
     
     var self = this;
     

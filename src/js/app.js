@@ -12,12 +12,20 @@ var App = function(model) {
     
 };
 
-App.changeLanguageTo = function(lang) {
+App.prototype.changeLanguageTo = function(lang) {
     
     this.model.lang = lang;
     
     this.getCopy().then(function() {
         // TODO: get all templates compile and render again
+        
+        // re-create views for pages
+        $.each(einzl.pages, function() {
+            this.createView();
+        });
+        
+        // re-create view for cart
+        einzl.cart.createView();
     });
     
 };
@@ -50,8 +58,8 @@ App.prototype.getCopy = function() {
 
 App.prototype.updateFromLocalStorage = function() {
     if(isLocalStorageNameSupported() && localStorage.einzl_user) {
-        var user = JSON.parse(localStorage.einzl_user);
         
+        var user = JSON.parse(localStorage.einzl_user);
         $.extend(einzl.user, user);
     }
 };

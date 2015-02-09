@@ -39,7 +39,8 @@
                 </nav>
                 <div class="right-area">
                     <div class="language-button">
-                        <span title="only DE for now, sorry :(">DE</span>
+                        <span data-language="de">DE</span>
+                        <span data-language="en">EN</span>
                     </div>
                     <div class="cart-button">
                         <i class="fa fa-shopping-cart"></i>

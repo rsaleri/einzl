@@ -14,15 +14,6 @@ var Cart = function() {
 
 };
 
-Cart.prototype.insertCopy = function() {
-    
-    this.view.find('[data-copy]').each(function() {
-        var copy = einzl.copy[$(this).attr('data-copy')];
-        $(this).html(copy);
-    });
-    
-};
-
 Cart.prototype.removeItem = function(product_key) {
     var self = this;
     
@@ -103,6 +94,8 @@ Cart.prototype.initController = function() {
     
     container.on('vclick', '.item', function(e) {
         $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
+         e.preventDefault();
+        e.stopPropagation();
     });
     
     container.on('vclick', '.remove', function(e) {
@@ -131,11 +124,6 @@ Cart.prototype.createView = function() {
     
     // save rendered template as view
     this.view = $(html);
-    
-    // insert copy into view once JSON is available
-    $.when(einzl.deferreds.copy).then(function() {
-        self.insertCopy();
-    });
     
     // insert into DOM
     $('.cart').html('');

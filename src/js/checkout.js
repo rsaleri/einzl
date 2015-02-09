@@ -22,8 +22,11 @@ Checkout.prototype.initController = function() {
     });
     
     // enable cancel address button
-    this.view.find('.new-address-form button[type="reset"]').on('vclick', function() {
+    this.view.find('.new-address-form button[type="reset"]').on('vclick', function(e) {
         self.view.find('.new-address-form').removeClass('open');
+        
+        e.preventDefault();
+        e.stopPropagation();
     });
     
     // enable save address button
@@ -79,9 +82,12 @@ Checkout.prototype.initController = function() {
     });
     
     // enable address buttons
-    this.view.find('.user-address-list').on('vclick', 'li', function() {
+    this.view.find('.user-address-list').on('vclick', 'li', function(e) {
         $(this).addClass('selected');
         $(this).siblings('li').removeClass('selected');
+        
+        e.preventDefault();
+        e.stopPropagation();
     });
 };
 

@@ -22,7 +22,7 @@
         "cart_totals_total": "Total",
         "cart_button_checkout": "Checkout",
         "beta_headline": "We're in beta right now",
-        "beta_copy1": "You can't shop yet, but you can let us know that you'd like to.",
+        "beta_copy1": "You can use the shop and look at the products but orders won't be processed until we're live.",
         "beta_copy2": "This shop, the functions, the design and the products are work-in-progress. We're still settings things up but we'd love to know what you think.",
         "beta_copy3": "If you like the products you see here, click the <i class='fa fa-heart'></i> and let us know.",
         "follow_headline": "Follow our journey",
@@ -45,7 +45,13 @@
         "checkout_shipping_headline": "Shipping Address",
         "checkout_cart_headline": "Your Cart",
         "checkout_pay_headline": "Payment",
-        "checkout_process_order_button": "Process Order",
+        "checkout_process_order_button": "Test Process Order",
+        "confirmation_headline": "Thank you {{this.order.bill_to.data.first_name}}!",
+        "confirmation_subheadline": "Your order has been placed.",
+        "confirmation_dear_headline": "Dear {{this.order.bill_to.data.first_name}}",
+        "confirmation_dear_copy1": "We're so glad you found something. If you have any questions at all, please don't hesitate to contact us via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück'>info@einzelstueck-shop.com</a>",
+        "confirmation_dear_copy2": "We hope you enjoy your new jewelry and we are eager to see how good it looks on you. Let us know by posting an image to Instagram and mention <a href='http://instagram.com/einzlstck' title='Einzelstück on Instagram' target='_blank'>@einzlstck</a> or post it directly onto our <a href='https://www.facebook.com/einzlstck' title='Einzelstück auf Facebook' target='_blank'>Facebook Wall</a>.",
+        "confirmation_dear_copy3": "The next steps for your order are payment and shipping. More details on the right.",
         "messages": {
             "welcome": [
                 "Hey you :-)",

@@ -17,7 +17,7 @@ App.changeLanguageTo = function(lang) {
     this.model.lang = lang;
     
     this.getCopy().then(function() {
-        // TODO: insertCopy for all Pages, and App (and whereever it will be used again)
+        // TODO: get all templates compile and render again
     });
     
 };
@@ -109,13 +109,17 @@ App.prototype.askServer = function(obj) {
 
 App.prototype.initNavigation = function() {
     
-    $('.hamburger-button').on('vclick', function() {
+    $('.hamburger-button').on('vclick', function(e) {
         $('header nav').toggleClass('open');
+        e.preventDefault();
+        e.stopPropagation();
     });
     
     $('.cart-button').on('vclick', function(e) {
         $(e.currentTarget).toggleClass('open');
         $('aside.cart-container').toggleClass('open');
+         e.preventDefault();
+        e.stopPropagation();
     });
 
     this.initAppRoutingLinks();
@@ -245,10 +249,31 @@ App.prototype.route = function(target) {
     
 };
 
-App.prototype.getTemplate = function(name) {
-    return $.get('/templates/'+name+'.hbs').then(function(src) {
-       return Handlebars.compile(src);
+App.prototype.insertCopy = function(htmlStr) {
+    
+    // save HTML string into jQuery object so we can work with it
+    var html = $('<div></div>').append(htmlStr);
+    
+    // insert copy
+    html.find('[data-copy]').each(function() {
+        var copy = einzl.copy[$(this).attr('data-copy')];
+        $(this).html(copy);
     });
+    
+    // return the copy-filled HTML string without the DIV we created above
+    return html.html();
+    
+};
+
+App.prototype.getTemplate = function(name) {
+    var self = this;
+    return $.when(einzl.deferreds.copy).then(function() {
+        return $.get('/templates/'+name+'.hbs').then(function(src) {
+            src = self.insertCopy(src);
+            return Handlebars.compile(src);
+        });
+    });
+    
 };
 
 App.prototype.initRouting = function() {

@@ -13,6 +13,10 @@ $blue: #3F7CAC;
 $bp1: 750px;
 $bp2: 1200px;
 
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 [class^="units"] > div,
 [class*=' units'] > div {
     border-color: #eee;
@@ -22,6 +26,7 @@ a, a:visited, a:focus, a:hover {
     color: $darkgrey;
     text-decoration: none;
     outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .copy a {
@@ -152,6 +157,7 @@ button, .button, a.button {
     color: #f3f3f3;
     transition: all ease .3s;
     backface-visibility: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     
     &:hover {
         background-color: $buttonbackgroundHover;

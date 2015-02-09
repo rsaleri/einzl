@@ -16,11 +16,6 @@ Page.prototype.createView = function() {
         // save jQuery object as view
         self.view = $(html);
         
-        // insert copy into view once JSON is available
-        $.when(einzl.deferreds.copy).then(function() {
-            self.insertCopy();
-        });
-        
         // insert products into view once the product array is available
         $.when(einzl.deferreds.product).then(function() {
             self.insertProducts();
@@ -28,16 +23,6 @@ Page.prototype.createView = function() {
         
         self.initController();
     });
-};
-
-Page.prototype.insertCopy = function() {
-    
-    this.view.find('[data-copy]').each(function() {
-        var copy = einzl.copy[$(this).attr('data-copy')];
-        
-        $(this).html(copy);
-    });
-    
 };
 
 Page.prototype.initController = function() {

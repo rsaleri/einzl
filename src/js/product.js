@@ -25,12 +25,14 @@ Product.prototype.initController = function() {
     var self = this;
     
     // enable plus button
-    this.view.find('.drop.plus').on('vclick', function() {
+    this.view.find('.drop.plus').on('vclick', function(e) {
         $(this).closest('.details').toggleClass('collapsed expanded');
+        e.preventDefault();
+        e.stopPropagation();
     });
     
     // enable add-to-cart button
-    this.view.find('.drop.add-to-cart').on('vclick', function() {
+    this.view.find('.drop.add-to-cart').on('vclick', function(e) {
         var button = $(this);
         
         if(!button.hasClass('loading')) {
@@ -48,12 +50,13 @@ Product.prototype.initController = function() {
             });
         }
         
-        
+        e.preventDefault();
+        e.stopPropagation();
         
     });
     
     // enable like button
-    this.view.find('.drop.like').on('vclick', function() {
+    this.view.find('.drop.like').on('vclick', function(e) {
         
         // toggle like class
         $(this).toggleClass('liked');
@@ -75,6 +78,9 @@ Product.prototype.initController = function() {
         if(isLocalStorageNameSupported()) {
             localStorage.einzl_user = JSON.stringify(einzl.user);
         }
+        
+        e.preventDefault();
+        e.stopPropagation();
     });
     
     // add liked-class

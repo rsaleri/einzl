@@ -23,11 +23,11 @@
                 </div>
                 <div>
                     <div class="copy payment-information">
-                        <h2>Payment</h2>
-                        <p>Please transfer <strong>{{this.order.currency_code}} {{this.order.total}}</strong> to the following Bank Account</p>
+                        <h2 data-copy="confirmation_pay_headline"></h2>
+                        <p data-copy="confirmation_pay_copy1"></p>
                         <ul>
                             <li>
-                                <label>Account Holder</label>
+                                <label data-copy="confirmation_pay_account_label"></label>
                                 <span>Einzelstück</span>
                             </li>
                             <li>
@@ -46,8 +46,8 @@
             <div class="units">
                 <div>
                     <div class="copy">
-                        <h2>Billing</h2>
-                        <p>Your order is billed to the following Address</p>
+                        <h2 data-copy="confirmation_bill_headline"></h2>
+                        <p data-copy="confirmation_bill_copy1"></p>
                         <span>{{this.order.bill_to.data.first_name}} {{this.order.bill_to.data.last_name}}</span><br/>
                         <span>{{this.order.bill_to.data.address_1}}</span><br/>
                         <span>{{this.order.bill_to.data.postcode}} {{this.order.bill_to.data.city}}, {{this.order.bill_to.data.country.value}}</span><br/>
@@ -56,8 +56,8 @@
                 </div>
                 <div>
                     <div class="copy">
-                        <h2>Shipping</h2>
-                        <p>As soon as we recieve your payment we'll send out your new jewelry to the following address.</p>
+                        <h2 data-copy="confirmation_ship_headline"></h2>
+                        <p data-copy="confirmation_ship_copy1"></p>
                         <span>{{this.order.ship_to.data.first_name}} {{this.order.ship_to.data.last_name}}</span><br/>
                         <span>{{this.order.ship_to.data.address_1}}</span><br/>
                         <span>{{this.order.ship_to.data.postcode}} {{this.order.ship_to.data.city}}, {{this.order.ship_to.data.country.value}}</span><br/>
@@ -66,14 +66,14 @@
                 </div>
                 
             </div>
-            <center style="padding: 20px;">Thank you again for your order.</center>
+            <center style="padding: 20px;" data-copy="confirmation_thanks_foot"></center>
             <div class="units">
                 <div>
                     <div class="copy">
-                        <h2>Want to help out?</h2>
-                        <p><strong>There is no better person than you to help us improve our store.</strong> Did you had any problems? Did you miss something or have been confused?</p>
-                        <p>We would love to hear your feedback so we can tweak every little detail to make you, {{this.order.bill_to.data.first_name}} - our dear customer - feel comfortable on our site.</p>
-                        <p>Please reach out to us on <a href="http://twitter.com/einzlstck" title="Einzelstück on Twitter" target="_blank">Twitter</a> or at <a href="mailto:info@einzelstueck-shop.com" target="_blank" title="mail Einzelstück">info@einzelstueck-shop.com</a>.<br/>We can't wait to talk to you.</p>
+                        <h2 data-copy="confirmation_help_headline"></h2>
+                        <p data-copy="confirmation_help_copy1"></p>
+                        <p data-copy="confirmation_help_copy2"></p>
+                        <p data-copy="confirmation_help_copy3"></p>
                     </div>
                 </div>
                 <div>

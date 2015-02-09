@@ -52,6 +52,18 @@
         "confirmation_dear_copy1": "We're so glad you found something. If you have any questions at all, please don't hesitate to contact us via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück'>info@einzelstueck-shop.com</a>",
         "confirmation_dear_copy2": "We hope you enjoy your new jewelry and we are eager to see how good it looks on you. Let us know by posting an image to Instagram and mention <a href='http://instagram.com/einzlstck' title='Einzelstück on Instagram' target='_blank'>@einzlstck</a> or post it directly onto our <a href='https://www.facebook.com/einzlstck' title='Einzelstück auf Facebook' target='_blank'>Facebook Wall</a>.",
         "confirmation_dear_copy3": "The next steps for your order are payment and shipping. More details on the right.",
+        "confirmation_pay_headline": "Payment",
+        "confirmation_pay_copy1": "Please transfer <strong>{{this.order.currency_code}} {{this.order.total}}</strong> to the following Bank Account",
+        "confirmation_pay_account_label": "Account Holder",
+        "confirmation_bill_headline": "Billing",
+        "confirmation_bill_copy1": "Your order is billed to the following Address",
+        "confirmation_ship_headline": "Shipping",
+        "confirmation_ship_copy1": "As soon as we recieve your payment we'll send out your new jewelry to the following address.",
+        "confirmation_thanks_foot": "Thank you again for your order.",
+        "confirmation_help_headline": "Want to help out?",
+        "confirmation_help_copy1": "<strong>There is no better person than you to help us improve our store.</strong> Did you had any problems? Did you miss something or have been confused?",
+        "confirmation_help_copy2": "We would love to hear your feedback so we can tweak every little detail to make you, {{this.order.bill_to.data.first_name}} - our dear customer - feel comfortable on our site.",
+        "confirmation_help_copy3": "Please reach out to us on <a href='http://twitter.com/einzlstck' title='Einzelstück on Twitter' target='_blank'>Twitter</a> or at <a href='mailto:info@einzelstueck-shop.com' target='_blank' title='mail Einzelstück'>info@einzelstueck-shop.com</a>.<br/>We can't wait to talk to you.",
         "messages": {
             "welcome": [
                 "Hey you :-)",

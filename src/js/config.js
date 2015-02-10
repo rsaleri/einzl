@@ -17,19 +17,19 @@ var config = {
          {
              title: 'Necklaces',
              id: 'necklaces',
-             slug: ['/necklaces'],
+             slug: ['/necklaces', '/ketten'],
              hbsPath: '/pages/necklaces'
          },
          {
              title: 'Bracelets',
              id: 'bracelets',
-             slug: ['/bracelets'],
+             slug: ['/bracelets', '/armbaender', '/armband'],
              hbsPath: '/pages/bracelets'
          },
          {
              title: 'Checkout',
              id: 'checkout',
-             slug: ['/checkout'],
+             slug: ['/checkout', '/kasse'],
              hbsPath: '/pages/checkout'
          },
          {
@@ -41,7 +41,7 @@ var config = {
          {
              title: 'Imprint',
              id: 'imprint',
-             slug: ['/imprint'],
+             slug: ['/imprint', '/impressum'],
              hbsPath: '/pages/imprint'
          },
          {

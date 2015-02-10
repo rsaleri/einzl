@@ -76,6 +76,10 @@ section, article, .content {
     }
 }
 
+.units-1 .copy {
+    text-align: center;
+}
+
 @media(min-width: $bp1) {
     .units-1 > div {
         width: 100%;
@@ -95,7 +99,6 @@ section, article, .content {
     }
     
     .units-1 .copy {
-        text-align: center;
         padding: 0;
         
         p {
@@ -106,7 +109,6 @@ section, article, .content {
     .units-1 .copy .limitWidth {
         width: 500px;
         margin: 0 auto;
-//        text-align: left;
     }
 
     .units-2 > div {

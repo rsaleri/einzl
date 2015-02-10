@@ -1,3 +1,8 @@
+/**
+ * Main elements
+ *
+ */
+
 .wrapper {
     position: relative;
     overflow: hidden;
@@ -11,10 +16,8 @@ header {
     height: 60px;
     width: 100%;
     z-index: 500;
-}
-
-@media(min-width: $bp1) {
-    header {
+    
+    @media(min-width: $bp1) {
         backface-visibility: hidden;
         position: fixed;
         top: 0;
@@ -30,108 +33,169 @@ section, article, .content {
     margin: 0 auto;
 }
 
-[class^="units"],
-[class*=' units'] {
-    width: 100%;
-}
-
-[class^="units"]:after,
-[class*=' units']:after {
-    content: "";
-    height: 0;
-    visibility: hidden;
-    display: table;
-    float: none;
-    clear: both;
-}
-
-
-[class^="units"] > div,
-[class*=' units'] > div {
-    box-sizing: border-box;
-    position: relative;
-    border-width: 1px;
-    border-style: solid;
-    float: left;
-    background-color: $textwhite;
-    
-    width: 100%;
-    min-height: 300px;
-}
-
-.cssvhunit [class^="units"] > div,
-.cssvhunit [class*=' units'] > div {
-    min-height: 55vh;
-}
-
-@media(min-width: $bp1) {
-    [class^="units"] > div,
-    [class*=' units'] > div {
-        width: 50%;
-        min-height: 400px;
-    }
-    .cssvhunit [class^="units"] > div,
-    .cssvhunit [class*=' units'] > div {
-        min-height: 50vh;
-    }
-}
-
-.units-1 .copy {
-    text-align: center;
-}
-
-@media(min-width: $bp1) {
-    .units-1 > div {
-        width: 100%;
-        height: 700px;
-    }
-    
-    .cssvhunit .units-1 > div {
-        height: 100vh;
-    }
-    
-    .units-1.cut-in-half > div {
-        height: 350px;
-    }
-    
-    .cssvhunit .units-1.cut-in-half > div {
-        height: 50vh;
-    }
-    
-    .units-1 .copy {
-        padding: 0;
-        
-        p {
-            padding: 0 70px;
-        }
-    }
-    
-    .units-1 .copy .limitWidth {
-        width: 500px;
-        margin: 0 auto;
-    }
-
-    .units-2 > div {
-        min-height: 800px;
-    }
-
-    .cssvhunit .units-2 > div {
-        min-height: 100vh;
-    }
-
-    .units-3 > div:first-child {
-        min-height: 800px;
-    }
-    
-    .cssvhunit .units-3 > div:first-child {
-        min-height: 100vh;
-    }
-    
-}
-
 
 footer {
     box-sizing: border-box;
     padding: 1.5em;
     font-size: .8em;
 }
+
+
+
+/**
+ * The grid units
+ *
+ */
+
+[class^="units"],
+[class*=' units'] {
+    width: 100%;
+    
+    &:after {
+        @extend .clearfix
+    }
+    
+    
+    > div {
+        
+        box-sizing: border-box;
+        position: relative;
+        border-width: 1px;
+        border-style: solid;
+        float: left;
+        background-color: $textwhite;
+
+        width: 100%;
+        min-height: 300px;
+
+        @media(min-width: $bp1) {
+            width: 50%;
+            min-height: 400px;
+        }
+
+        .cssvhunit & {
+            min-height: 55vh;
+
+            @media(min-width: $bp1) {
+                min-height: 50vh;
+            }
+        }
+        
+        
+    }
+    
+}
+
+/**
+ * Unit-1
+ * 
+ */
+
+.units-1 {
+    
+    @media(min-width: $bp1) {
+        
+        > div {
+            width: 100%;
+            height: 700px;
+            
+            .cssvhunit & {
+                height: 100vh;
+            }
+        }
+        
+        &.cut-in-half {
+            
+            > div {
+                height: 350px;
+                
+                .cssvhunit & {
+                    height: 50vh;
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    .copy {
+        text-align: center;
+        
+        @media(min-width: $bp1) {
+            
+            padding: 0;
+            
+            p {
+                padding: 0 70px;
+            }
+        }
+        
+    }
+    
+}
+
+
+/**
+ * Unit-2
+ * 
+ */
+
+.units-2 {
+    
+    > div {
+        
+        @media(min-width: $bp1) {
+            
+            min-height: 800px;
+            
+            .cssvhunit & {
+                min-height: 100vh;
+            }
+            
+        }
+        
+    }
+    
+}
+
+/**
+ * Unit-2
+ * 
+ */
+
+.units-3 {
+    
+    > div {
+        
+        @media(min-width: $bp1) {
+            
+            &:first-child {
+                min-height: 800px;
+            }
+            
+            .cssvhunit &:first-child {
+                min-height: 100vh;
+            }
+            
+        }
+        
+    }
+    
+    
+}
+
+@media(min-width: $bp1) {
+    
+    
+    
+    .units-1 .copy .limitWidth {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    
+}
+
+

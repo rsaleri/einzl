@@ -1,7 +1,7 @@
 var App = function(model) {
     var self = this;
     
-    this.model = config;
+    this.model = model;
     
     this.updateFromLocalStorage();
     this.getCopy().then(function() {

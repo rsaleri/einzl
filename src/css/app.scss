@@ -1,3 +1,4 @@
+@import 'helper';
 @import 'branding';
 @import 'grid';
 @import 'navigation';
@@ -147,16 +148,24 @@ header {
     
     
     &.center-y {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: auto;
+        
+        
+        @media(min-width: $bp1) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+        }
     }
     
     .csstransforms &.center-y {
-        top: 50%;
-        transform: translate(0, -50%);
+        
+        
+        @media(min-width: $bp1) {
+            top: 50%;
+            transform: translate(0, -50%);
+        }
     }
 
 }

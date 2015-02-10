@@ -1,7 +1,6 @@
 var userLang = navigator.language || navigator.userLanguage;
 
 var config = {
-     lang: userLang == 'de' ? 'de' : 'en',
      routes: [
          {
              title: 'Home',

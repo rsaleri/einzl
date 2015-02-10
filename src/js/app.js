@@ -4,7 +4,7 @@ var App = function(model) {
     this.model = config;
     
     // let body know about our language
-    $('body').attr('data-active-lang', this.model.lang);
+    $('body').attr('data-active-lang', einzl.user.lang);
     
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
@@ -16,10 +16,11 @@ var App = function(model) {
 };
 
 App.prototype.changeLanguageTo = function(lang) {
+        
+    // save the new language as this users preferred language
+    einzl.user.lang = lang;
     
-    this.model.lang = lang;
-    
-    $('body').attr('data-active-lang', this.model.lang);
+    $('body').attr('data-active-lang', einzl.user.lang);
     
     this.getCopy().then(function() {
         
@@ -32,11 +33,16 @@ App.prototype.changeLanguageTo = function(lang) {
         einzl.cart.createView();
     });
     
+    // save user object into localStorage
+    if(isLocalStorageNameSupported()) {
+        localStorage.einzl_user = JSON.stringify(einzl.user);
+    }
+    
 };
 
 App.prototype.getCopy = function() {
     // get copy, the words, the spaces and all typo
-    return $.getJSON('copy/' + this.model.lang + '.json', function(data) {
+    return $.getJSON('copy/' + einzl.user.lang + '.json', function(data) {
         
         // save copy into einzl object
         einzl.copy = data.copy;
@@ -314,7 +320,8 @@ $(document).ready(function() {
         pages: {},
         user: {
             likes: {},
-            addresses: []
+            addresses: [],
+            lang: userLang == 'de' ? 'de' : 'en'
         },
         products: [],
         templates: {},

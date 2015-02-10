@@ -68,10 +68,7 @@ Cart.prototype.getCart = function() {
         // save id into user object
         einzl.user.cart_id = data.cart.id;
 
-        // save user object into localStorage
-        if(isLocalStorageNameSupported()) {
-            localStorage.einzl_user = JSON.stringify(einzl.user);
-        }
+        einzl.app.saveUser();
     });
     
 };

@@ -3,9 +3,6 @@ var App = function(model) {
     
     this.model = config;
     
-    // let body know about our language
-    $('body').attr('data-active-lang', einzl.user.lang);
-    
     this.updateFromLocalStorage();
     this.getCopy().then(function() {
         self.getProducts();
@@ -13,6 +10,13 @@ var App = function(model) {
     this.initRouting();
     this.initNavigation();
     
+};
+
+App.prototype.saveUser = function() {
+    // save user object into localStorage
+    if(isLocalStorageNameSupported()) {
+        localStorage.einzl_user = JSON.stringify(einzl.user);
+    }
 };
 
 App.prototype.changeLanguageTo = function(lang) {
@@ -33,10 +37,7 @@ App.prototype.changeLanguageTo = function(lang) {
         einzl.cart.createView();
     });
     
-    // save user object into localStorage
-    if(isLocalStorageNameSupported()) {
-        localStorage.einzl_user = JSON.stringify(einzl.user);
-    }
+    einzl.app.saveUser();
     
 };
 
@@ -72,6 +73,9 @@ App.prototype.updateFromLocalStorage = function() {
         var user = JSON.parse(localStorage.einzl_user);
         $.extend(einzl.user, user);
     }
+    
+    // let body know about our language
+    $('body').attr('data-active-lang', einzl.user.lang);
 };
 
 App.prototype.getProducts = function() {

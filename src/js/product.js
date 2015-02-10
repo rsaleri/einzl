@@ -74,10 +74,7 @@ Product.prototype.initController = function() {
         // save like into user object
         einzl.user.likes[self.model.id] = liked;
         
-        // save user object into localStorage
-        if(isLocalStorageNameSupported()) {
-            localStorage.einzl_user = JSON.stringify(einzl.user);
-        }
+        einzl.app.saveUser();
         
         e.preventDefault();
         e.stopPropagation();

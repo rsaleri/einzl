@@ -12,6 +12,7 @@ $blue: #3F7CAC;
 // BREAKPOINTS
 $bp1: 750px;
 $bp2: 1200px;
+$height_bp1: 800px;
 
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -26,33 +27,6 @@ a, a:visited, a:focus, a:hover {
     color: $darkgrey;
     text-decoration: none;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-.copy a {
-    box-sizing: border-box;
-    color: #3F7CAC;
-    font-weight: bold;
-    display: inline-block;
-    position: relative;
-    
-    &:hover {
-        
-    }
-    
-    &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    
-    &:hover:before {
-        
-    }
 }
 
 h1 {
@@ -286,6 +260,38 @@ button, .button, a.button {
 .error {
     border-color: $red !important;
     color: $red !important;
+}
+
+
+.html-logo {
+    
+    .drop {
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: $darkgrey;
+        
+        width: 26px;
+        height: 26px;
+        margin: 2px;
+        
+        transform: rotate(0deg);
+        float: left;
+        
+        &:nth-child(1) {
+            transform: rotate(180deg);
+        }
+        &:nth-child(2) {
+            transform: rotate(180deg);
+        }
+        &:nth-child(3) {
+            transform: rotate(180deg);
+        }
+        &:nth-child(4) {
+            transform: rotate(180deg);
+        }
+    }
+    
 }
 
 

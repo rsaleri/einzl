@@ -27,6 +27,12 @@
 	<div class="app">
         <div class="wrapper">
         	<header>
+                <div class="html-logo">
+                    <div class="drop"></div>
+                    <div class="drop"></div>
+                    <div class="drop"></div>
+                    <div class="drop"></div>
+                </div>
                 <div class="title"><a href="/home" title="Home"><span data-copy="title_long"></span></a></div>
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>

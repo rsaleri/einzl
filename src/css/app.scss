@@ -16,6 +16,21 @@ body {
 
 header {
     
+    .html-logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 60px;
+        width: 60px;
+        z-index: 510;
+        
+        display: none;
+        
+        @media(min-width: $bp1) {
+//            display: block;
+        }
+    }
+    
     .title {
         position: absolute;
         left: 0;
@@ -37,7 +52,7 @@ header {
     @media(min-width: $bp1) {
         
         .title {
-            
+            left: 70px;
             margin-left: 30px;
             
             a:before {
@@ -146,8 +161,7 @@ header {
         padding: 70px;
     }
     
-    
-    &.center-y {
+    .csstransforms &.center-y {
         
         
         @media(min-width: $bp1) {
@@ -156,16 +170,16 @@ header {
             left: 0;
             right: 0;
             bottom: auto;
-        }
-    }
-    
-    .csstransforms &.center-y {
-        
-        
-        @media(min-width: $bp1) {
+            
             top: 50%;
             transform: translate(0, -50%);
         }
+    }
+    
+    
+    
+    a {
+        color: $blue;
     }
 
 }
@@ -179,7 +193,6 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    
     
     .details {
         position: absolute;

@@ -18,12 +18,12 @@ Checkout.prototype.initController = function() {
     
     // enable new address button
     this.view.find('.new-address-button').on('vclick', function() {
-        self.view.find('.new-address-form').addClass('open');
+        self.view.find('#billing-address').addClass('open-form');
     });
     
     // enable cancel address button
     this.view.find('.new-address-form button[type="reset"]').on('vclick', function(e) {
-        self.view.find('.new-address-form').removeClass('open');
+        self.view.find('#billing-address').removeClass('open-form');
         
         e.preventDefault();
         e.stopPropagation();
@@ -211,6 +211,11 @@ Checkout.prototype.insertAddresses = function() {
     
     // activate the first address
     container.find('li:first-child').addClass('selected');
+    
+    // open form if there is no address yet
+    if(einzl.user.addresses.length === 0) {
+        this.view.find('#billing-address').addClass('open-form');
+    }
 };
 
 Checkout.prototype.createUniqueAddressID = function() {
@@ -266,6 +271,6 @@ Checkout.prototype.addUserAddress = function(form) {
     form.get(0).reset();
     
     // close form
-    this.view.find('.new-address-form').removeClass('open');
+    this.view.find('#billing-address').removeClass('open-form');
     
 };

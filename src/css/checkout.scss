@@ -36,7 +36,16 @@
         }
     }
 
-
+    .open-form {
+        .new-address-form {
+            max-height: 500px;
+        }
+        
+        .new-address-button {
+            display: none;
+        }
+        
+    }
 
     .new-address-form {
 
@@ -44,10 +53,6 @@
         margin-top: 40px;
         transition: max-height ease .5s;
         overflow: hidden;
-
-        &.open {
-            max-height: 500px;
-        }
 
         h3 {
             text-align: left;

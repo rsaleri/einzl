@@ -6,6 +6,8 @@ var Cart = function() {
     this.getCart().then(function() {
          self.createView();
     });
+    
+    self.initController();
 
 };
 
@@ -78,7 +80,6 @@ Cart.prototype.createView = function() {
     return einzl.app.getTemplate('modules/cart').then(function(hbs) {
         self.template = hbs;
         self.render();
-        self.initController();
     });
 };
 
@@ -88,7 +89,7 @@ Cart.prototype.initController = function() {
     
     container.on('vclick', '.item', function(e) {
         $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
-         e.preventDefault();
+        e.preventDefault();
         e.stopPropagation();
     });
     

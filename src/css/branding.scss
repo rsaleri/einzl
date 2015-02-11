@@ -271,9 +271,9 @@ button, .button, a.button {
         left: 0;
         background-color: $darkgrey;
         
-        width: 26px;
-        height: 26px;
-        margin: 2px;
+        width: 18px;
+        height: 18px;
+        margin: 1px;
         
         transform: rotate(0deg);
         float: left;
@@ -282,13 +282,17 @@ button, .button, a.button {
             transform: rotate(180deg);
         }
         &:nth-child(2) {
-            transform: rotate(180deg);
+            transform: rotate(-90deg);
         }
         &:nth-child(3) {
-            transform: rotate(180deg);
+            transform: rotate(90deg);
         }
         &:nth-child(4) {
-            transform: rotate(180deg);
+            transform: rotate(0deg);
+        }
+        
+        &:hover {
+            cursor: default;
         }
     }
     

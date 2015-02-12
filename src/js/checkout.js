@@ -24,7 +24,12 @@ Checkout.prototype.initController = function() {
     
     // enable cancel address button
     this.view.find('.new-address-form button[type="reset"]').on('vclick', function(e) {
+        
+        // close form
         self.view.find('#billing-address').removeClass('open-form');
+        
+        // reset form
+        self.view.find('form').get(0).reset();
         
         e.preventDefault();
         e.stopPropagation();
@@ -238,13 +243,53 @@ Checkout.prototype.createUniqueAddressID = function() {
 };
 
 Checkout.prototype.validateAddressForm = function(form) {
+    
+    // check that all required fields are filled out
+    $(form).find('[required]').each(function() {
+        
+        var input = $(this);
+        
+        if(input.val().length === 0) {
+            
+            input.addClass('error');
+            input.one('focus', function() {
+                input.removeClass('error');
+            });
+            
+        }
+    });
+    
+    if($(form).find('.error').length > 0) {
+        notifyUser(einzl.copy.messages.form_empty_input, 'error');
+        return false;
+    }
+    
+    // check email validity
+    var inputEmail = $(form).find('.email');
+    if(!inputEmail.get(0).checkValidity()) {
+        
+        inputEmail.addClass('error');
+        inputEmail.one('focus', function() {
+            inputEmail.removeClass('error');
+        });
+        
+        notifyUser(einzl.copy.messages.form_email_invalid, 'error');
+        return false;
+        
+    }
+    
+    // check HTML5 validity
+    if(!form.checkValidity()) {
+        return false;
+    }
+    
     return true;
 };
 
 Checkout.prototype.addUserAddress = function(form) {
     
     // don't add address if validation fails
-    if(!this.validateAddressForm(form)) {
+    if(!this.validateAddressForm(form.get(0))) {
         return false;
     }
     

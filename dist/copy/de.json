@@ -71,7 +71,9 @@
                 "Hi, schön dich zu sehen :-)"
             ],
             "nl_subscribed": "Du hast dich erfolgreich eingetragen! Juhu :-)",
-            "nl_error": "Da hat etwas nicht geklappt :-("
+            "nl_error": "Da hat etwas nicht geklappt :-(",
+            "form_empty_input": "Wir vermissen ein paar Infos",
+            "form_email_invalid": "Deine E-Mail ist nicht gültig :-("
         }
     }
 }

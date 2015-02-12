@@ -64,6 +64,10 @@
         }
 
         input {
+            
+            &.error {
+                border-color: $red;
+            }
 
             margin: 3px 0;
 

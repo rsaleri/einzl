@@ -12,7 +12,6 @@ $blue: #3F7CAC;
 // BREAKPOINTS
 $bp1: 750px;
 $bp2: 1200px;
-$height_bp1: 800px;
 
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -56,22 +55,23 @@ h2 {
     margin-bottom: 2em;
     font-weight: 400;
     text-align: center;
+    
+    &:after {
+        content: "";
+        height: 1px;
+        border-top: 1px solid #333;
+        background: transparent;
+        width: 20px;
+        position: absolute;
+        bottom: -1em;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        overflow: hidden;
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial;
+    }
 }
 
-h2:after {
-    content: "";
-    height: 1px;
-    border-top: 1px solid #333;
-    background: transparent;
-    width: 20px;
-    position: absolute;
-    bottom: -1em;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    overflow: hidden;
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial;
-}
 
 h3 {
     position: relative;
@@ -81,7 +81,8 @@ h3 {
     line-height: 1.4em;
 }
 
-input[type="email"], input[type="text"] {
+input[type="email"],
+input[type="text"] {
     box-sizing: border-box;
     border: 1px solid #eee;
     width: 100%;

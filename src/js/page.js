@@ -3,23 +3,36 @@ var Page = function(model) {
     
 };
 
+Page.prototype.renderView = function(hbs) {
+    console.log('render view');
+    var self = this;
+    
+    // compile handlebars template - pass model to it
+    var html = hbs(this.model);
+
+    // save jQuery object as view
+    this.view = $(html);
+    
+    // insert copy
+    einzl.app.insertCopy(this.view);
+
+    // insert products into view once the product array is available
+    $.when(einzl.deferreds.product).then(function() {
+        self.insertProducts();
+    });
+};
+
 Page.prototype.createView = function() {
     
     var self = this;
     
+    console.log('create view');
+    
     // get handlebars template
     return einzl.app.getTemplate(this.model.hbsPath).then(function(hbs) {
         
-        // compile handlebars template - pass model to it
-        var html = hbs(self.model);
-        
-        // save jQuery object as view
-        self.view = $(html);
-        
-        // insert products into view once the product array is available
-        $.when(einzl.deferreds.product).then(function() {
-            self.insertProducts();
-        });
+        console.log('got template');
+        self.renderView(hbs);
         
         self.initController();
     });

@@ -20,7 +20,9 @@ App.prototype.saveUser = function() {
 };
 
 App.prototype.changeLanguageTo = function(lang) {
-        
+    
+    var self = this;
+    
     // save the new language as this users preferred language
     einzl.user.lang = lang;
     
@@ -28,21 +30,35 @@ App.prototype.changeLanguageTo = function(lang) {
     
     this.getCopy().then(function() {
         
-        // re-create views for pages
-        $.each(einzl.pages, function() {
-            this.createView();
+        // insert new copy for pages
+        $.each(einzl.pages, function(key, value) {
+            if(key != 'active') {
+                self.insertCopy(this.view);
+            }
+            
         });
         
-        // re-create view for cart
-        einzl.cart.createView();
+        // insert new copy for cart
+        self.insertCopy(einzl.cart.view);
+        einzl.cart.insertIntoDOM();
     });
     
     einzl.app.saveUser();
     
 };
 
+App.prototype.insertCopy = function(view) {
+    
+    // insert copy
+    view.find('[data-copy]').each(function() {
+        var copy = einzl.copy[$(this).attr('data-copy')];
+        $(this).html(copy);
+    });
+    
+};
+
 App.prototype.getCopy = function() {
-    // get copy, the words, the spaces and all typo
+    // get copy, the words, the spaces and all typos
     return $.getJSON('copy/' + einzl.user.lang + '.json', function(data) {
         
         // save copy into einzl object
@@ -58,7 +74,7 @@ App.prototype.getCopy = function() {
             var copy = einzl.copy[$(this).attr('data-copy')];
             $(this).html(copy);
         });
-        
+
         // we just learned words, so say hello to our beloved user
         window.setTimeout(function() {
             notifyUser(einzl.copy.messages.welcome[getRandomInt(0, einzl.copy.messages.welcome.length -1)], 'success');
@@ -279,27 +295,12 @@ App.prototype.route = function(target) {
     
 };
 
-App.prototype.insertCopy = function(htmlStr) {
-    
-    // save HTML string into jQuery object so we can work with it
-    var html = $('<div></div>').append(htmlStr);
-    
-    // insert copy
-    html.find('[data-copy]').each(function() {
-        var copy = einzl.copy[$(this).attr('data-copy')];
-        $(this).html(copy);
-    });
-    
-    // return the copy-filled HTML string without the DIV we created above
-    return html.html();
-    
-};
+
 
 App.prototype.getTemplate = function(name) {
     var self = this;
     return $.when(einzl.deferreds.copy).then(function() {
         return $.get('/templates/'+name+'.hbs').then(function(src) {
-            src = self.insertCopy(src);
             return Handlebars.compile(src);
         });
     });

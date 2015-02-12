@@ -4,7 +4,7 @@ var Cart = function() {
     
     // get cart data
     this.getCart().then(function() {
-         self.createView();
+        self.createView();
     });
     
     self.initController();
@@ -80,6 +80,8 @@ Cart.prototype.createView = function() {
     return einzl.app.getTemplate('modules/cart').then(function(hbs) {
         self.template = hbs;
         self.render();
+        einzl.app.insertCopy(self.view);
+        self.insertIntoDOM();
     });
 };
 
@@ -111,16 +113,7 @@ Cart.prototype.initController = function() {
 };
 
 
-
-Cart.prototype.render = function() {
-    
-    var self = this;
-    
-    // render cart handlebars template
-    var html = this.template(this.model);
-    
-    // save rendered template as view
-    this.view = $(html);
+Cart.prototype.insertIntoDOM = function() {
     
     // insert into DOM
     $('.cart').html('');
@@ -132,5 +125,20 @@ Cart.prototype.render = function() {
     // update totals outside of view
     $('.total-items').text(this.model.total_items);
     $('.total-price').text(this.model.totals.formatted.with_tax);
+    
+};
+
+
+Cart.prototype.render = function() {
+    
+    var self = this;
+    
+    // render cart handlebars template
+    var html = this.template(this.model);
+    
+    // save rendered template as view
+    this.view = $(html);
+    
+    this.insertIntoDOM();
 
 };

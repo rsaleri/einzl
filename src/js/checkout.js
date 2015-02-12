@@ -8,16 +8,17 @@ var Checkout = function(model) {
     
 };
 
-// inherit Experience prototype and all it's variables and functions
+// inherit Page prototype and all it's variables and functions
 Checkout.prototype = Object.create(Page.prototype);
 Checkout.prototype.constructor = Checkout;
 
 Checkout.prototype.initController = function() {
     
-    var self = this;
-    
+    var self = this;    
+    console.log('init controller');
     // enable new address button
     this.view.find('.new-address-button').on('vclick', function() {
+        console.log(self.view.find('#billing-address'));
         self.view.find('#billing-address').addClass('open-form');
     });
     
@@ -236,9 +237,16 @@ Checkout.prototype.createUniqueAddressID = function() {
     
 };
 
+Checkout.prototype.validateAddressForm = function(form) {
+    return true;
+};
+
 Checkout.prototype.addUserAddress = function(form) {
     
-    // TODO: add form validation
+    // don't add address if validation fails
+    if(!this.validateAddressForm(form)) {
+        return false;
+    }
     
     var obj = {};
     

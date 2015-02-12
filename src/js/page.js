@@ -129,8 +129,7 @@ Page.prototype.start = function() {
         // save this page as the active one
         einzl.pages.active = this;
     
-        // empty DOM but keep jQuery data (events and stuff)
-        $('main').children('section').detach();
+        
         
         // scroll to top
         $(window).scrollTop(0);

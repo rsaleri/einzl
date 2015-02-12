@@ -186,7 +186,9 @@ App.prototype.initAppRoutingLinks = function() {
             if(current !== target) {
                 History.pushState("", title, target);
             }
-
+            
+            // close navigation
+            $('header nav').removeClass('open');
         });
     }
     
@@ -267,6 +269,9 @@ App.prototype.route = function(target) {
     
     // get page model
     var route = this.findDestination(target);
+    
+    // empty DOM but keep jQuery data (events and stuff)
+    $('main').children('section').detach();
     
     // TODO: clean that shit up
     if(einzl.pages[route.id] && einzl.pages[route.id].view.length > 0) {

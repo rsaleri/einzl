@@ -18,7 +18,6 @@ Checkout.prototype.initController = function() {
     console.log('init controller');
     // enable new address button
     this.view.find('.new-address-button').on('vclick', function() {
-        console.log(self.view.find('#billing-address'));
         self.view.find('#billing-address').addClass('open-form');
     });
     

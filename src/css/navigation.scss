@@ -16,11 +16,6 @@ nav {
         transition: all ease .5s;
     }
     
-    &.open ul {
-        padding: 0 0 1em;
-        max-height: 500px;
-    }
-    
     ul li {
         box-sizing: border-box;
         width: 100%;
@@ -30,7 +25,16 @@ nav {
     ul li a {
         position: relative;
         display: block;
-        padding: 1em 20px;
+        padding: 1.2em 20px;
+        
+        &:hover {
+            background-color: #f6f6f6;
+        }
+        
+        &.active {
+            background-color: $darkgrey;
+            color: $softwhite;
+        }
     }
     
     ul li a:before {
@@ -46,12 +50,28 @@ nav {
     }
     
     
+    &.open {
+        
+        .hamburger-button i:before {
+            content: "\f00d";
+        }
+        
+        ul {
+            padding: 0 0 1em;
+            min-height: 100vh;
+            max-height: 999px;
+        }
+        
+    }
+    
+    
     @media(min-width: $bp1) {
     
         width: 100%;
         
         ul {
             max-height: none;
+            min-height: none;
             position: relative;
             white-space: nowrap;
             text-align: center;
@@ -67,10 +87,15 @@ nav {
             padding: 0 20px;
             height: 60px;
             line-height: 60px;
-        }
-        
-        ul li a.active {
-//            color: #f3f3f3;
+            
+            &:hover {
+                background-color: transparent;
+            }
+            
+            &.active {
+                background-color: transparent;
+                color: inherit;
+            }
         }
         
         ul li a.active:before {

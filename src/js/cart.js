@@ -6,8 +6,6 @@ var Cart = function() {
     this.getCart().then(function() {
         self.createView();
     });
-    
-    self.initController();
 
 };
 
@@ -80,8 +78,7 @@ Cart.prototype.createView = function() {
     return einzl.app.getTemplate('modules/cart').then(function(hbs) {
         self.template = hbs;
         self.render();
-        einzl.app.insertCopy(self.view);
-        self.insertIntoDOM();
+        self.initController();
     });
 };
 
@@ -138,6 +135,8 @@ Cart.prototype.render = function() {
     
     // save rendered template as view
     this.view = $(html);
+    
+    einzl.app.insertCopy(self.view);
     
     this.insertIntoDOM();
 

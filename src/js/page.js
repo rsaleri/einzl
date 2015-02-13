@@ -133,6 +133,9 @@ Page.prototype.start = function() {
         
         // scroll to top
         $(window).scrollTop(0);
+        
+        // remove body loading class
+        $('body').removeClass('loading');
 
         // insert view into DOM
         this.view.appendTo($('main'));

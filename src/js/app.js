@@ -273,6 +273,9 @@ App.prototype.route = function(target) {
     // empty DOM but keep jQuery data (events and stuff)
     $('main').children('section').detach();
     
+    // give body a loading class
+    $('body').addClass('loading');
+    
     // TODO: clean that shit up
     if(einzl.pages[route.id] && einzl.pages[route.id].view.length > 0) {
         einzl.pages[route.id].start();

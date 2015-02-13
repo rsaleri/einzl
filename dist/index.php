@@ -61,7 +61,7 @@
                 <h2 data-copy="cart_headline"></h2>
                 <div class="cart"></div>
             </aside>
-            <div class="loading">
+            <div class="loading-animation">
                 <div class="html-logo">
                     <div class="drop"></div>
                     <div class="drop"></div>

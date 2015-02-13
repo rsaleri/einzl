@@ -97,11 +97,15 @@ footer {
 
 .units-table {
     
-    display: table;
+    @media(min-width: $bp1) {
     
-    > div {
-        float: none;
-        display: table-cell;
+        display: table;
+
+        > div {
+            float: none;
+            display: table-cell;
+        }
+        
     }
     
 }

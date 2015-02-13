@@ -50,9 +50,13 @@ aside.cart-container {
         li {
             position: relative;
             white-space: nowrap;
-            padding: 15px 30px;
             margin-bottom: 1px;
             transition: all ease .3s;
+            padding: 15px 15px;
+            
+            @media(min-width: 350px) {
+                padding: 15px 30px;
+            }
             
             &.item:hover {
                 cursor: pointer;

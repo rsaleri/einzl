@@ -30,6 +30,12 @@ Checkout.prototype.initController = function() {
         // reset form
         self.view.find('form').get(0).reset();
         
+        // remove focus
+        $(':focus').blur();
+        
+        // scroll to address list
+        $(window).scrollTop(self.view.find('#billing-address').offset().top);
+        
         e.preventDefault();
         e.stopPropagation();
     });

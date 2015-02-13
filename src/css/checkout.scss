@@ -38,7 +38,7 @@
 
     .open-form {
         .new-address-form {
-            max-height: 500px;
+            display: block;
         }
         
         .new-address-button {
@@ -49,10 +49,8 @@
 
     .new-address-form {
 
-        max-height: 0px;
+        display: none;
         margin-top: 40px;
-        transition: max-height ease .5s;
-        overflow: hidden;
 
         h3 {
             text-align: left;
@@ -114,37 +112,49 @@
         }
 
     }
-
-
-    .cart {
-
-        .button.checkout {
-            display: none;
+    
+    
+    #cart-preview {
+        
+        .copy {
+            padding-left: 0;
+            padding-right: 0;
         }
         
-        .item:hover {
-            background-color: transparent;
-            cursor: default;
+        .cart {
             
-        }
-        
-        .item.selected {
-            padding-right: 30px;
-        }
-        
-        .remove {
-            opacity: .3;
-            
-            &:hover {
-                opacity: 1;
+            li {
+                padding-right: 40px;
             }
-        }
-        
-        .item.selected .remove {
-            transform: translate(100%,0);
-        }
 
+            .button.checkout {
+                display: none;
+            }
+
+            .item:hover {
+                background-color: transparent;
+                cursor: default;
+
+            }
+
+            .remove {
+                opacity: .3;
+                transform: none;
+                background-color: transparent;
+                color: $red;
+                width: 40px;
+                padding: 15px 0;
+                text-align: center;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+        }
     }
+
+    
 
     #payment-choice {
 

@@ -154,5 +154,10 @@ aside.cart-container {
     
     .actions {
         padding: 30px;
+        
+        .button.checkout {
+            display: block;
+            padding: 1em 25px;
+        }
     }
 }

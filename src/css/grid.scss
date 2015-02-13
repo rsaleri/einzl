@@ -91,6 +91,22 @@ footer {
 }
 
 /**
+ * Unit-Table
+ * Sync two columns height based on their content
+ */
+
+.units-table {
+    
+    display: table;
+    
+    > div {
+        float: none;
+        display: table-cell;
+    }
+    
+}
+
+/**
  * Unit-1
  * 
  */

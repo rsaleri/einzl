@@ -38,7 +38,9 @@
 
     .open-form {
         .new-address-form {
-            display: block;
+            max-height: none;
+            opacity: 1;
+            transition: opacity .5s ease;
         }
         
         .new-address-button {
@@ -48,8 +50,9 @@
     }
 
     .new-address-form {
-
-        display: none;
+        max-height: 0;
+        opacity: 0;
+        
         margin-top: 40px;
 
         h3 {

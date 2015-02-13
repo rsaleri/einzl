@@ -1,13 +1,17 @@
 aside.cart-container {
     box-sizing: border-box;
     background-color: #fff;
+    border: 2px solid $beigewhite;
     width: 100%;
     max-width: 400px;
-//    padding: 30px;
     position: absolute;
     top: 60px;
     z-index: 600;
     right: -400px;
+    
+    .cssvhunit & {
+        min-height: 100vh;
+    }
     
     &.open {
         right: 0;
@@ -30,6 +34,7 @@ aside.cart-container {
 
     h2 {
         text-align: left;
+        margin-top: 30px;
         margin-bottom: 30px;
         padding: 0 30px;
     }

@@ -125,6 +125,8 @@ header {
         
         &.open {
             
+            background-color: $beigewhite;
+            
             i:before {
                 content: "\f00d";
             }
@@ -155,7 +157,7 @@ header {
         
         &:hover {
             cursor: pointer;
-            background-color: #f6f6f6;
+            background-color: $beigewhite;
         }
     }
     
@@ -167,7 +169,7 @@ header {
         
         &:hover {
             cursor: pointer;
-            background-color: #f6f6f6;
+            background-color: $beigewhite;
         }
         
         span {

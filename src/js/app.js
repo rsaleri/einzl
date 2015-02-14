@@ -32,28 +32,45 @@ App.prototype.changeLanguageTo = function(lang) {
         
         // insert new copy for pages
         $.each(einzl.pages, function(key, value) {
-            if(key != 'active') {
-                self.insertCopy(this.view);
+            
+            if(this.view) {
+                this.view.remove();
+                delete this.view;
+            }
+            
+            if(key == 'active') {
+                this.start();
             }
             
         });
         
         // insert new copy for cart
-        self.insertCopy(einzl.cart.view);
-        einzl.cart.insertIntoDOM();
+        einzl.cart.createView();
     });
     
     einzl.app.saveUser();
     
 };
 
-App.prototype.insertCopy = function(view) {
+App.prototype.insertCopy = function(htmlStr) {
     
     // insert copy
-    view.find('[data-copy]').each(function() {
+//    view.find('[data-copy]').each(function() {
+//        var copy = einzl.copy[$(this).attr('data-copy')];
+//        $(this).html(copy);
+//    });
+    
+    // save HTML string into jQuery object so we can work with it
+    var html = $('<div></div>').append(htmlStr);
+    
+    // insert copy
+    html.find('[data-copy]').each(function() {
         var copy = einzl.copy[$(this).attr('data-copy')];
         $(this).html(copy);
     });
+    
+    // return the copy-filled HTML string without the DIV we created above
+    return html.html();
     
 };
 
@@ -107,8 +124,8 @@ App.prototype.getProducts = function() {
         if(data && data.status) {
             
             // get product template
-            self.getTemplate('modules/product').then(function(hbs) {
-                einzl.templates.product = hbs;
+            self.getTemplate('modules/product').then(function(src) {
+                einzl.templates.product = src;
                 
                 // instantiate Product() for each product in data.result
                 $.each(data.result, function(i) {
@@ -277,7 +294,7 @@ App.prototype.route = function(target) {
     $('body').addClass('loading');
     
     // TODO: clean that shit up
-    if(einzl.pages[route.id] && einzl.pages[route.id].view.length > 0) {
+    if(einzl.pages[route.id] && einzl.pages[route.id].view && einzl.pages[route.id].view.length > 0) {
         einzl.pages[route.id].start();
     } else {
         einzl.pages[route.id] = new Page(route);
@@ -309,6 +326,7 @@ App.prototype.getTemplate = function(name) {
     var self = this;
     return $.when(einzl.deferreds.copy).then(function() {
         return $.get('/templates/'+name+'.hbs').then(function(src) {
+            src = self.insertCopy(src)
             return Handlebars.compile(src);
         });
     });

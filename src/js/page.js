@@ -4,17 +4,16 @@ var Page = function(model) {
 };
 
 Page.prototype.renderView = function(hbs) {
-    console.log('render view');
+    
     var self = this;
     
     // compile handlebars template - pass model to it
-    var html = hbs(this.model);
+    var html = this.template(this.model);
 
     // save jQuery object as view
     this.view = $(html);
     
-    // insert copy
-    einzl.app.insertCopy(this.view);
+    this.initController();
 
     // insert products into view once the product array is available
     $.when(einzl.deferreds.product).then(function() {
@@ -26,16 +25,45 @@ Page.prototype.createView = function() {
     
     var self = this;
     
-    console.log('create view');
-    
     // get handlebars template
     return einzl.app.getTemplate(this.model.hbsPath).then(function(hbs) {
         
-        console.log('got template');
+        self.template = hbs;
+        
         self.renderView(hbs);
         
-        self.initController();
     });
+};
+
+Page.prototype.start = function() {
+    
+    
+    var self = this;
+    
+    // check if view exists
+    if(this.view) {
+        
+        // save this page as the active one
+        einzl.pages.active = this;
+        
+        // scroll to top
+        $(window).scrollTop(0);
+        
+        // remove body loading class
+        $('body').removeClass('loading');
+
+        // insert view into DOM
+        this.view.appendTo($('main'));
+        
+    } else {
+        
+        // create view
+        this.createView().then(function() {
+            // call start again
+            self.start();
+        });
+        
+    }
 };
 
 Page.prototype.initController = function() {
@@ -117,36 +145,4 @@ Page.prototype.insertProducts = function() {
             
         });
     });
-};
-
-Page.prototype.start = function() {
-    
-    var self = this;
-    
-    // check if view exists
-    if(this.view) {
-        
-        // save this page as the active one
-        einzl.pages.active = this;
-    
-        
-        
-        // scroll to top
-        $(window).scrollTop(0);
-        
-        // remove body loading class
-        $('body').removeClass('loading');
-
-        // insert view into DOM
-        this.view.appendTo($('main'));
-        
-    } else {
-        
-        // create view
-        this.createView().then(function() {
-            // call start again
-            self.start();
-        });
-        
-    }
 };

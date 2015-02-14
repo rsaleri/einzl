@@ -55,10 +55,6 @@ App.prototype.changeLanguageTo = function(lang) {
 App.prototype.insertCopy = function(htmlStr) {
     
     // insert copy
-//    view.find('[data-copy]').each(function() {
-//        var copy = einzl.copy[$(this).attr('data-copy')];
-//        $(this).html(copy);
-//    });
     
     // save HTML string into jQuery object so we can work with it
     var html = $('<div></div>').append(htmlStr);

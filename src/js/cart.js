@@ -25,6 +25,7 @@ Cart.prototype.removeItem = function(product_key) {
     };
     
     return einzl.app.askServer(obj).done(function(data) {
+        // TODO: parse cart data and fix moltins pricings
         self.model = data.cart;
         self.renderView();
     });

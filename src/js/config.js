@@ -21,6 +21,12 @@ var config = {
              hbsPath: '/pages/necklaces'
          },
          {
+             title: 'Pendants',
+             id: 'pendants',
+             slug: ['/pendants', '/anhaenger'],
+             hbsPath: '/pages/pendants'
+         },
+         {
              title: 'Bracelets',
              id: 'bracelets',
              slug: ['/bracelets', '/armbaender', '/armband'],

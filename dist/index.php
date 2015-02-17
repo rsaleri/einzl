@@ -11,7 +11,7 @@
 	<title>Einzelstück</title>
 
 	<!-- icons -->
-	<link href="images/ci/favicon.ico?v=3" rel="shortcut icon">
+	<link href="images/favicon.png?v=2" rel="shortcut icon">
 	<link href="img/icons/touch.png" rel="apple-touch-fa-precomposed">
 
 	<!-- css -->

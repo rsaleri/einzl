@@ -43,7 +43,7 @@ function notifyUser(msg, type) {
             el.removeClass(type);
             span.text('');
         }, 1000);
-    }, 3500);
+    }, 4500);
 }
 
 

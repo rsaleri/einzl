@@ -340,23 +340,37 @@ header {
 #notification {
     z-index: 9999;
     position: fixed;
-    bottom: 0;
+    top: 60px;
     left: 0;
     right: 0;
-    padding: 10px 0;
+    line-height: 40px;
+    height: 40px;
+    overflow: hidden;
     text-align: center;
     color: #f3f3f3;
     transform: translate3d(0, 0%, 0);
-    transition: transform ease .5s;
+    transition: height ease .5s;
     backface-visibility: hidden;
     
     &.hide {
-        transform: translate3d(0, 100%, 0);
+        height: 0;
+        
+        .message {
+            opacity: 0;
+            transition-delay: 0s;
+            transform: translate3d(0, -15px, 0);
+        }
     }
     
     &.success { background-color: $green; }
     &.error { background-color: $red; color: $softwhite !important }
     &.info { background-color: $yellow; }
+    
+    .message {
+        opacity: 1;
+        transform: translate3d(0, 0px, 0);
+        transition: all ease .2s .2s;
+    }
 }
 
 

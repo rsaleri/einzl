@@ -20,6 +20,14 @@ nav {
         box-sizing: border-box;
         width: 100%;
         padding: 0px;
+        
+        &.likes {
+            display: none;
+            
+            .has-likes & {
+                display: inline-block;
+            }
+        }
     }
 
     ul li a {

@@ -33,6 +33,12 @@ var config = {
              hbsPath: '/pages/bracelets'
          },
          {
+             title: '<3',
+             id: 'likes',
+             slug: ['/likes', '/yourlikes', '/mylikes'],
+             hbsPath: '/pages/likes'
+         },
+         {
              title: 'Checkout',
              id: 'checkout',
              slug: ['/checkout', '/kasse'],

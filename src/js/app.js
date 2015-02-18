@@ -105,6 +105,70 @@ App.prototype.updateFromLocalStorage = function() {
     
     // let body know about our language
     $('body').attr('data-active-lang', einzl.user.lang);
+    
+    this.handleLikes(true);
+};
+
+App.prototype.handleLikes = function(onPageLoad) {
+    
+    var self = this;
+    
+    // if this function is called on page load
+    if(onPageLoad) {
+        
+        // remove all likes from products that aren't listed anymore
+        einzl.deferreds.product.then(function() {
+            
+            $.each(einzl.user.likes, function(productID, liked) {
+            
+                var listed = false;
+                
+                if(liked) {
+                    
+                    $.each(einzl.products, function(i, product) {
+                        
+                        if(product.model.id === productID) {
+                            listed = true;
+                            return false;
+                        }
+
+                    });
+                    
+                }
+                
+
+                if(!listed) {
+                    console.log('delete like');
+                    delete einzl.user.likes[productID];
+                }
+
+            });
+            
+            self.handleLikes();
+            
+        });
+        
+    } else {
+        
+        // provide "has-likes" class, if user got likes or remove it, if not
+        var hasLikes = false;
+        $.each(einzl.user.likes, function(productID, liked) {
+
+            if(liked) {
+                hasLikes = true;
+                return false;
+            }
+
+        });
+
+        if(hasLikes) {
+            $('html').addClass('has-likes');
+        } else {
+            $('html').removeClass('has-likes');
+        }
+        
+    }
+    
 };
 
 App.prototype.getProducts = function() {

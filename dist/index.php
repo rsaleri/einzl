@@ -42,6 +42,7 @@
                         <li><a data-copy="nav_05" href="/pendants" title="Pendandts"></a></li>
 <!--                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>-->
                         <li><a data-copy="nav_04" href="/bracelets" title="Bracelets"></a></li>
+                        <li class="likes"><a data-copy="nav_06" href="/likes" title="Your Likes"></a></li>
                     </ul>
                 </nav>
                 <div class="right-area">

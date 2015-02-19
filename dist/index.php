@@ -34,7 +34,7 @@
                     <div class="drop"></div>
                 </div>
                 <div class="title"><a href="/home" title="Home"><span data-copy="title_long"></span></a></div>
-                <nav class="open">
+                <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
                         <li><a data-copy="nav_01" href="/home" title="Home" class="active"></a></li>

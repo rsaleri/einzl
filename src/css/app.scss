@@ -340,25 +340,48 @@ header {
 #notification {
     z-index: 9999;
     position: fixed;
-    top: 60px;
     left: 0;
     right: 0;
     line-height: 40px;
-    height: 40px;
-    overflow: hidden;
     text-align: center;
     color: #f3f3f3;
-    transform: translate3d(0, 0%, 0);
-    transition: height ease .5s;
     backface-visibility: hidden;
     
-    &.hide {
-        height: 0;
+    // position & animation for mobile
+    transform: translate3d(0, 0%, 0);
+    bottom: 0;
+    transition: transform ease .3s;
+    
+    @media(min-width: $bp1) {
         
-        .message {
-            opacity: 0;
-            transition-delay: 0s;
-            transform: translate3d(0, -15px, 0);
+        // remove mobile style
+        bottom: auto;
+        
+        // position & animation for desktop
+        top: 60px;
+        height: 40px;
+        overflow: hidden;
+        transition: height ease .5s;
+        
+    }
+    
+    &.hide {
+        
+        // position & animation for mobile
+        transform: translate3d(0, 100%, 0);
+        
+        @media(min-width: $bp1) {
+            
+            // position & animation for desktop
+            height: 0;
+            transform: translate3d(0, 0%, 0);
+        
+            .message {
+
+                opacity: 0;
+                transition-delay: 0s;
+                transform: translate3d(0, -15px, 0);
+            }
         }
     }
     

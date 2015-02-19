@@ -9,11 +9,14 @@ nav {
         list-style: none;
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding: 30px 0;
         background-color: #fff;
         width: 100%;
-        max-height: 0;
+        max-width: 400px;
+        min-height: 100vh;
+        transform: translate3d(-100%, 0, 0);
         transition: all ease .5s;
+        border: 2px solid #f6f6f6;
     }
     
     ul li {
@@ -33,15 +36,16 @@ nav {
     ul li a {
         position: relative;
         display: block;
-        padding: 1.2em 20px;
+        padding: 1.2em 40px;
         
         &:hover {
             background-color: #f6f6f6;
         }
         
         &.active {
-            background-color: $darkgrey;
-            color: $softwhite;
+//            background-color: $darkgrey;
+//            color: $softwhite;
+            font-weight: bold;
         }
     }
     
@@ -60,14 +64,16 @@ nav {
     
     &.open {
         
+        .hamburger-button {
+            background-color: #f6f6f6;
+        }
+        
         .hamburger-button i:before {
             content: "\f00d";
         }
         
         ul {
-            padding: 0 0 1em;
-            min-height: 100vh;
-            max-height: 999px;
+            transform: translate3d(0%, 0, 0);
         }
         
     }
@@ -79,10 +85,14 @@ nav {
         
         ul {
             max-height: none;
-            min-height: none;
+            max-width: none;
+            min-height: 0;
             position: relative;
             white-space: nowrap;
             text-align: center;
+            transform: translate3d(0, 0, 0);
+            padding: 0;
+            border: 0;
         }
         ul li {
             display: inline-block;
@@ -103,6 +113,7 @@ nav {
             &.active {
                 background-color: transparent;
                 color: inherit;
+                font-weight: normal;
             }
         }
         

@@ -190,14 +190,13 @@ button, .button, a.button {
 
 .drop {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    
     width: 40px;
     height: 40px;
     line-height: 38px;
     font-size: 1.1em;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: $softwhite;
     border-radius: 0% 50% 50% 50%;
     
     transform: rotate(45deg);
@@ -205,10 +204,7 @@ button, .button, a.button {
     transition: all ease .3s;
     backface-visibility: hidden;
     
-    @media(min-width: $bp1) {
-        top: 50px;
-        right: 50px;
-    }
+    
     
     &.drop-points-left {
         transform: rotate(-45deg);

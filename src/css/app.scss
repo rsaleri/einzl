@@ -245,6 +245,18 @@ header {
         left: 0;
         right: 0;
         bottom: 0;
+		
+		.drop {
+			right: 20px;
+    		top: 20px;
+			
+			@media(min-width: $bp1) {
+				top: 50px;
+				right: 50px;
+			}
+		}
+		
+		
         
         .drop.plus {
             z-index: 10;
@@ -267,6 +279,29 @@ header {
             }
             
         }
+		
+		.info {
+			padding: 30px;
+			background-color: $softwhite;
+			display: inline-block;
+			max-width: 50%;
+			position: absolute;
+			transition: all ease .4s;
+			
+			top: 20px;
+    		right: 80px;
+			
+			@media(min-width: $bp1) {
+				top: 50px;
+				right: 110px;
+			}
+			
+			.price {
+				margin-top: 30px;
+				font-size: 20px;
+				text-align: center;
+			}
+		}
         
         &.collapsed {
             
@@ -285,6 +320,12 @@ header {
                 transform: translate(0px, -100px) rotate(45deg);
                 opacity: 0;
             }
+			
+			.info {
+				transform: translate3d(20px, 0, 0);
+				opacity: 0;
+				pointer-events: none;
+			}
             
         }
         
@@ -305,6 +346,11 @@ header {
                 transform: translate(0px, 0px) rotate(-45deg);
                 opacity: 1;
             }
+			
+			.info {
+				transform: translate3d(0px, 0, 0);
+				opacity: 1;
+			}
             
         }
     }

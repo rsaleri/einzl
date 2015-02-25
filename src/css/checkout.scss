@@ -90,12 +90,36 @@
 
             &.city {
                 margin-right: 1%;
-                width: 50%;
+                width: 43%;
                 float: left;
+				
+				@media(min-width: 500px) {
+					width: 50%;
+				}
+				
+				@media(min-width: $bp1) {
+					width: 43%
+				}
+				
+				@media(min-width: $bp2) {
+					width: 50%;
+				}
             }
             
             &.country {
-                width: 13%;
+                width: 20%;
+				
+				@media(min-width: 500px) {
+					width: 13%;
+				}
+				
+				@media(min-width: $bp1) {
+					width: 20%
+				}
+				
+				@media(min-width: $bp2) {
+					width: 13%;
+				}
             }
             
             &.error input {

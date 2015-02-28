@@ -7,7 +7,6 @@ var Cart = function() {
         self.createView();
     });
     
-    this.initController();
 };
 
 Cart.prototype.removeItem = function(product_key) {
@@ -85,15 +84,16 @@ Cart.prototype.createView = function() {
 
 Cart.prototype.initController = function() {
     var self = this;
-    var container = $('.cart');
     
-    container.on('vclick', '.item', function(e) {
+	this.view.find('.item').off('vclick');
+    this.view.find('.item').on('vclick', function(e) {
         $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
         e.preventDefault();
         e.stopPropagation();
     });
     
-    container.on('vclick', '.remove', function(e) {
+	this.view.find('.remove').off('vclick');
+    this.view.find('.remove').on('vclick', function(e) {
         var li = $(e.currentTarget).closest('li.item');
         var product_key = $(this).closest('li').attr('data-product-key');
         
@@ -101,6 +101,7 @@ Cart.prototype.initController = function() {
             li.addClass('loading');
             self.removeItem(product_key);
         }
+		
         
         e.stopPropagation();
         e.preventDefault();
@@ -135,6 +136,8 @@ Cart.prototype.renderView = function() {
     // save rendered template as view
     this.view = $(html);
     
+	this.initController();
+	
     this.insertIntoDOM();
     
     

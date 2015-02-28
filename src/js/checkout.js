@@ -109,8 +109,8 @@ Checkout.prototype.start = function() {
     if(this.view) {
         // add cart to view
         if(einzl.cart.view) {
-            console.log('insert cart into view');
-            this.view.find('.cart').html(einzl.cart.view);
+            this.view.find('.cart').html('');
+            einzl.cart.view.clone(true).appendTo(this.view.find('.cart'));
         }
     }
     

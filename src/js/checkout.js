@@ -17,15 +17,15 @@ Checkout.prototype.initController = function() {
     var self = this;    
     console.log('init controller');
     // enable new address button
-    this.view.find('.new-address-button').on('vclick', function() {
-        self.view.find('#billing-address').addClass('open-form');
+    this.view.find('.new-address-button').on('vclick', function(e) {
+        $(e.currentTarget).closest('.unit').addClass('open-form');
     });
     
     // enable cancel address button
     this.view.find('.new-address-form button[type="reset"]').on('vclick', function(e) {
         
         // close form
-        self.view.find('#billing-address').removeClass('open-form');
+        $(e.currentTarget).closest('.unit').removeClass('open-form');
         
         // reset form
         self.view.find('form').get(0).reset();

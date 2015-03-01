@@ -72,7 +72,9 @@
             "welcome": [
                 "Hey du :-)",
                 "Willkommen bei Einzelstück",
-                "Hi, schön dich zu sehen :-)"
+                "Hi, schön dich zu sehen :-)",
+				"Wow, du siehst heute aber gut aus!",
+				"Hallo, Schönheit :-)"
             ],
             "nl_subscribed": "Du hast dich erfolgreich eingetragen! Juhu :-)",
             "nl_error": "Da hat etwas nicht geklappt :-(",

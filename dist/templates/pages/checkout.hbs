@@ -13,7 +13,7 @@
     <article>
         <div class="content">
             <div class="units-table">
-                <div id="billing-address">
+                <div id="billing-address" class="unit">
                     <div class="copy">
                         <h2 data-copy="checkout_billing_headline"></h2>
                         <div class="user-address-list"></div>
@@ -63,10 +63,54 @@
                         </form>
                     </div>
                 </div>
-                <div id="shipping-address">
+                <div id="shipping-address" class="unit">
                     <div class="copy">
                         <h2 data-copy="checkout_shipping_headline"></h2>
                         <div class="user-address-list"></div>
+						<button class="new-address-button">
+                            <span data-copy="checkout_add_address_button"></span>
+                        </button>
+                        <form class="new-address-form" autocomplete="on">
+                            <h3 data-copy="checkout_new_address_headline"></h3>
+                            
+                            <div class="firstname">
+                                <input autocomplete="on" type="text" placeholder="first name" required="">
+                                <label>Your lovely first name</label>
+                            </div>
+                            <div class="lastname">
+                                <input autocomplete="on" type="text" placeholder="last name" required="">
+                                <label>What's your last name?</label>
+                            </div>
+                            <div class="email">
+                                <input autocomplete="on" type="email" placeholder="email" required="">
+                                <label>We need an email to contact you</label>
+                            </div>
+                            <div class="address_1">
+                                <input autocomplete="on" type="text" placeholder="street / apt number" required="">
+                                <label>Your Address</label>
+                            </div>
+                            <div class="code">
+                                <input autocomplete="on" type="text" placeholder="area code" required="">
+                                <label>Area Code</label>
+                            </div>
+                            <div class="city">
+                                <input autocomplete="on" type="text" placeholder="city" required="">
+                                <label>We hear your city is awesome</label>
+                            </div>
+                            <div class="country">
+                                <select type="text" required="">
+                                    <option value="DE">DE</option>
+                                    <option value="CH">CH</option>
+                                    <option value="AT">AT</option>
+                                </select>
+                            </div>
+                            <div class="note">
+                                <textarea placeholder="Any special notes?"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="save green"><span data-copy="checkout_save_address_button"></span></button>
+                            <button type="reset" class="cancel" data-copy="checkout_cancel_address_button"></button>
+                        </form>
                     </div>
                 </div>
             </div>

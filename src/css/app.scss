@@ -281,19 +281,26 @@ header {
         }
 		
 		.info {
-			padding: 30px;
+			padding: 20px;
 			background-color: $softwhite;
 			display: inline-block;
-			max-width: 50%;
 			position: absolute;
 			transition: all ease .4s;
-			
 			top: 20px;
+			left: 20px;
     		right: 80px;
 			
+			@media(min-width: 450px) {
+				left: auto;
+				max-width: 300px;
+			}
+			
 			@media(min-width: $bp1) {
+				padding: 30px;
 				top: 50px;
 				right: 110px;
+				left: auto;
+				max-width: 50%;
 			}
 			
 			h3 {

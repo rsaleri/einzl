@@ -329,6 +329,6 @@ Checkout.prototype.addUserAddress = function(form) {
     form.get(0).reset();
     
     // close form
-    this.view.find('#billing-address').removeClass('open-form');
+    this.view.find('.open-form').removeClass('open-form');
     
 };

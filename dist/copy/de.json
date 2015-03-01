@@ -21,6 +21,7 @@
         "cart_heading_currency": "EUR",
         "cart_totals_subtotal": "Zwischensumme",
         "cart_totals_shipping": "Lieferung",
+		"cart_shipping": "gratis",
         "cart_totals_total": "Summe",
         "cart_button_checkout": "Kasse",
         "beta_headline": "Soft Opening",

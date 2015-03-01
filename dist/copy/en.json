@@ -21,6 +21,7 @@
         "cart_heading_currency": "EUR",
         "cart_totals_subtotal": "Subtotal",
         "cart_totals_shipping": "Shipping",
+		"cart_shipping": "free",
         "cart_totals_total": "Total",
         "cart_button_checkout": "Checkout",
         "beta_headline": "We're in beta right now",

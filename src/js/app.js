@@ -412,7 +412,22 @@ $(document).ready(function() {
         user: {
             likes: {},
             addresses: [],
-            lang: userLang == 'de' ? 'de' : 'en'
+            lang: function() {
+				
+				// default language
+				var language = 'de';
+				
+				if(userLang) {
+					language = userLang.split('-')[0];
+				}
+				
+				if(!language || language === 'de') {
+					return 'de';
+				} else {
+					return 'en';
+				}
+				
+			}()
         },
         products: [],
         templates: {},

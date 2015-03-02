@@ -73,7 +73,7 @@ header {
         height: 60px;
         line-height: 60px;
         z-index: 510;
-        margin-left: 60px;
+        margin-left: 70px;
         
         a:before {
             content: "Einzlstck";
@@ -90,7 +90,7 @@ header {
         .title {
             // values if html logo is visible
 //            left: 70px;
-//            margin-left: 7px;
+            margin-left: 20px;
             
             // values without html logo
             
@@ -245,6 +245,18 @@ header {
         left: 0;
         right: 0;
         bottom: 0;
+		
+		.drop {
+			right: 20px;
+    		top: 20px;
+			
+			@media(min-width: $bp1) {
+				top: 50px;
+				right: 50px;
+			}
+		}
+		
+		
         
         .drop.plus {
             z-index: 10;
@@ -267,6 +279,40 @@ header {
             }
             
         }
+		
+		.info {
+			padding: 20px;
+			background-color: $softwhite;
+			display: inline-block;
+			position: absolute;
+			transition: all ease .4s;
+			top: 20px;
+			left: 20px;
+    		right: 80px;
+			
+			@media(min-width: 450px) {
+				left: auto;
+				max-width: 300px;
+			}
+			
+			@media(min-width: $bp1) {
+				padding: 30px;
+				top: 50px;
+				right: 110px;
+				left: auto;
+				max-width: 50%;
+			}
+			
+			h3 {
+				text-align: left;
+			}
+			
+			.price {
+				margin-top: 30px;
+				font-size: 20px;
+				text-align: center;
+			}
+		}
         
         &.collapsed {
             
@@ -285,6 +331,12 @@ header {
                 transform: translate(0px, -100px) rotate(45deg);
                 opacity: 0;
             }
+			
+			.info {
+				transform: translate3d(20px, 0, 0);
+				opacity: 0;
+				pointer-events: none;
+			}
             
         }
         
@@ -305,6 +357,11 @@ header {
                 transform: translate(0px, 0px) rotate(-45deg);
                 opacity: 1;
             }
+			
+			.info {
+				transform: translate3d(0px, 0, 0);
+				opacity: 1;
+			}
             
         }
     }
@@ -340,23 +397,60 @@ header {
 #notification {
     z-index: 9999;
     position: fixed;
-    bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px 0;
+    line-height: 40px;
     text-align: center;
     color: #f3f3f3;
-    transform: translate3d(0, 0%, 0);
-    transition: transform ease .5s;
     backface-visibility: hidden;
     
+    // position & animation for mobile
+    transform: translate3d(0, 0%, 0);
+    bottom: 0;
+    transition: transform ease .3s;
+    
+    @media(min-width: $bp1) {
+        
+        // remove mobile style
+        bottom: auto;
+        
+        // position & animation for desktop
+        top: 60px;
+        height: 40px;
+        overflow: hidden;
+        transition: height ease .5s;
+        
+    }
+    
     &.hide {
+        
+        // position & animation for mobile
         transform: translate3d(0, 100%, 0);
+        
+        @media(min-width: $bp1) {
+            
+            // position & animation for desktop
+            height: 0;
+            transform: translate3d(0, 0%, 0);
+        
+            .message {
+
+                opacity: 0;
+                transition-delay: 0s;
+                transform: translate3d(0, -15px, 0);
+            }
+        }
     }
     
     &.success { background-color: $green; }
     &.error { background-color: $red; color: $softwhite !important }
     &.info { background-color: $yellow; }
+    
+    .message {
+        opacity: 1;
+        transform: translate3d(0, 0px, 0);
+        transition: all ease .2s .2s;
+    }
 }
 
 

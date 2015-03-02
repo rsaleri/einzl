@@ -17,15 +17,15 @@ Checkout.prototype.initController = function() {
     var self = this;    
     console.log('init controller');
     // enable new address button
-    this.view.find('.new-address-button').on('vclick', function() {
-        self.view.find('#billing-address').addClass('open-form');
+    this.view.find('.new-address-button').on('vclick', function(e) {
+        $(e.currentTarget).closest('.unit').addClass('open-form');
     });
     
     // enable cancel address button
     this.view.find('.new-address-form button[type="reset"]').on('vclick', function(e) {
         
         // close form
-        self.view.find('#billing-address').removeClass('open-form');
+        $(e.currentTarget).closest('.unit').removeClass('open-form');
         
         // reset form
         self.view.find('form').get(0).reset();
@@ -109,8 +109,8 @@ Checkout.prototype.start = function() {
     if(this.view) {
         // add cart to view
         if(einzl.cart.view) {
-            console.log('insert cart into view');
-            this.view.find('.cart').html(einzl.cart.view);
+            this.view.find('.cart').html('');
+            einzl.cart.view.clone(true).appendTo(this.view.find('.cart'));
         }
     }
     
@@ -256,9 +256,9 @@ Checkout.prototype.validateAddressForm = function(form) {
         
         if(input.val().length === 0) {
             
-            input.addClass('error');
+            input.closest('div').addClass('error');
             input.one('focus', function() {
-                input.removeClass('error');
+                input.closest('div').removeClass('error');
             });
             
         }
@@ -270,12 +270,12 @@ Checkout.prototype.validateAddressForm = function(form) {
     }
     
     // check email validity
-    var inputEmail = $(form).find('.email');
+    var inputEmail = $(form).find('.email input');
     if(!inputEmail.get(0).checkValidity()) {
         
-        inputEmail.addClass('error');
+        inputEmail.closest('div').addClass('error');
         inputEmail.one('focus', function() {
-            inputEmail.removeClass('error');
+            inputEmail.closest('div').removeClass('error');
         });
         
         notifyUser(einzl.copy.messages.form_email_invalid, 'error');
@@ -301,16 +301,16 @@ Checkout.prototype.addUserAddress = function(form) {
     var obj = {};
     
     // extract address information
-    obj.first_name = form.find('.firstname').val();
-    obj.last_name = form.find('.lastname').val();
-    obj.email = form.find('.email').val();
+    obj.first_name = form.find('.firstname input').val();
+    obj.last_name = form.find('.lastname input').val();
+    obj.email = form.find('.email input').val();
     obj.phone = '000';
-    obj.address_1 = form.find('.address_1').val();
-    obj.postcode = form.find('.code').val();
-    obj.city = form.find('.city').val();
+    obj.address_1 = form.find('.address_1 input').val();
+    obj.postcode = form.find('.code input').val();
+    obj.city = form.find('.city input').val();
     obj.county = '--';
-    obj.country = form.find('.country').val();
-    obj.note = form.find('.note').val();
+    obj.country = form.find('.country select').val();
+    obj.note = form.find('.note textarea').val();
     obj.id = this.createUniqueAddressID();
     
     
@@ -329,6 +329,6 @@ Checkout.prototype.addUserAddress = function(form) {
     form.get(0).reset();
     
     // close form
-    this.view.find('#billing-address').removeClass('open-form');
+    this.view.find('.open-form').removeClass('open-form');
     
 };

@@ -7,6 +7,8 @@
         "nav_02": "Ringe",
         "nav_03": "Ketten",
         "nav_04": "Armbänder",
+        "nav_05": "Anhänger",
+        "nav_06": "<i class='fa fa-heart'></i> Liste",
         "footer_copyright": "© Einzelstück 2015",
         "footer_link_01": "Impressum",
         "footer_link_02": "AGB",
@@ -19,6 +21,7 @@
         "cart_heading_currency": "EUR",
         "cart_totals_subtotal": "Zwischensumme",
         "cart_totals_shipping": "Lieferung",
+		"cart_shipping": "gratis",
         "cart_totals_total": "Summe",
         "cart_button_checkout": "Kasse",
         "beta_headline": "Soft Opening",
@@ -33,6 +36,7 @@
         "furnish_headline": "Dies ist kein Minimalismus",
         "furnish_copy": "Wir sind einfach noch nicht eingerichtet. Sobald wir es sind, erfährst du es zuerst auf <a href='http://www.twitter.com/einzlstck' target='_blank' title='Follow us on Twitter'>Twitter</a> und <a href='http://www.instagram.com/einzlstck' target='_blank' title='Follow us on Instagram'>Instagram</a>.",
         "rings_headline": "Ringe",
+        "pendants_headline": "Anhänger",
         "bracelet_headline": "Armbänder",
         "necklace_headline": "Ketten",
         "checkout_headline": "Kasse",
@@ -68,7 +72,9 @@
             "welcome": [
                 "Hey du :-)",
                 "Willkommen bei Einzelstück",
-                "Hi, schön dich zu sehen :-)"
+                "Hi, schön dich zu sehen :-)",
+				"Wow, du siehst heute aber gut aus!",
+				"Hallo, Schönheit :-)"
             ],
             "nl_subscribed": "Du hast dich erfolgreich eingetragen! Juhu :-)",
             "nl_error": "Da hat etwas nicht geklappt :-(",

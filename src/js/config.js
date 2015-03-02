@@ -21,10 +21,22 @@ var config = {
              hbsPath: '/pages/necklaces'
          },
          {
+             title: 'Pendants',
+             id: 'pendants',
+             slug: ['/pendants', '/anhaenger'],
+             hbsPath: '/pages/pendants'
+         },
+         {
              title: 'Bracelets',
              id: 'bracelets',
              slug: ['/bracelets', '/armbaender', '/armband'],
              hbsPath: '/pages/bracelets'
+         },
+         {
+             title: '<3',
+             id: 'likes',
+             slug: ['/likes', '/yourlikes', '/mylikes'],
+             hbsPath: '/pages/likes'
          },
          {
              title: 'Checkout',

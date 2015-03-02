@@ -32,28 +32,41 @@ App.prototype.changeLanguageTo = function(lang) {
         
         // insert new copy for pages
         $.each(einzl.pages, function(key, value) {
-            if(key != 'active') {
-                self.insertCopy(this.view);
+            
+            if(this.view) {
+                this.view.remove();
+                delete this.view;
+            }
+            
+            if(key == 'active') {
+                this.start();
             }
             
         });
         
         // insert new copy for cart
-        self.insertCopy(einzl.cart.view);
-        einzl.cart.insertIntoDOM();
+        einzl.cart.createView();
     });
     
     einzl.app.saveUser();
     
 };
 
-App.prototype.insertCopy = function(view) {
+App.prototype.insertCopy = function(htmlStr) {
     
     // insert copy
-    view.find('[data-copy]').each(function() {
+    
+    // save HTML string into jQuery object so we can work with it
+    var html = $('<div></div>').append(htmlStr);
+    
+    // insert copy
+    html.find('[data-copy]').each(function() {
         var copy = einzl.copy[$(this).attr('data-copy')];
         $(this).html(copy);
     });
+    
+    // return the copy-filled HTML string without the DIV we created above
+    return html.html();
     
 };
 
@@ -92,6 +105,70 @@ App.prototype.updateFromLocalStorage = function() {
     
     // let body know about our language
     $('body').attr('data-active-lang', einzl.user.lang);
+    
+    this.handleLikes(true);
+};
+
+App.prototype.handleLikes = function(onPageLoad) {
+    
+    var self = this;
+    
+    // if this function is called on page load
+    if(onPageLoad) {
+        
+        // remove all likes from products that aren't listed anymore
+        einzl.deferreds.product.then(function() {
+            
+            $.each(einzl.user.likes, function(productID, liked) {
+            
+                var listed = false;
+                
+                if(liked) {
+                    
+                    $.each(einzl.products, function(i, product) {
+                        
+                        if(product.model.id === productID) {
+                            listed = true;
+                            return false;
+                        }
+
+                    });
+                    
+                }
+                
+
+                if(!listed) {
+                    console.log('delete like');
+                    delete einzl.user.likes[productID];
+                }
+
+            });
+            
+            self.handleLikes();
+            
+        });
+        
+    } else {
+        
+        // provide "has-likes" class, if user got likes or remove it, if not
+        var hasLikes = false;
+        $.each(einzl.user.likes, function(productID, liked) {
+
+            if(liked) {
+                hasLikes = true;
+                return false;
+            }
+
+        });
+
+        if(hasLikes) {
+            $('html').addClass('has-likes');
+        } else {
+            $('html').removeClass('has-likes');
+        }
+        
+    }
+    
 };
 
 App.prototype.getProducts = function() {
@@ -107,8 +184,8 @@ App.prototype.getProducts = function() {
         if(data && data.status) {
             
             // get product template
-            self.getTemplate('modules/product').then(function(hbs) {
-                einzl.templates.product = hbs;
+            self.getTemplate('modules/product').then(function(src) {
+                einzl.templates.product = src;
                 
                 // instantiate Product() for each product in data.result
                 $.each(data.result, function(i) {
@@ -277,7 +354,7 @@ App.prototype.route = function(target) {
     $('body').addClass('loading');
     
     // TODO: clean that shit up
-    if(einzl.pages[route.id] && einzl.pages[route.id].view.length > 0) {
+    if(einzl.pages[route.id] && einzl.pages[route.id].view && einzl.pages[route.id].view.length > 0) {
         einzl.pages[route.id].start();
     } else {
         einzl.pages[route.id] = new Page(route);
@@ -309,6 +386,7 @@ App.prototype.getTemplate = function(name) {
     var self = this;
     return $.when(einzl.deferreds.copy).then(function() {
         return $.get('/templates/'+name+'.hbs').then(function(src) {
+            src = self.insertCopy(src)
             return Handlebars.compile(src);
         });
     });

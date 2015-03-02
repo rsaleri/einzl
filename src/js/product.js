@@ -64,17 +64,19 @@ Product.prototype.initController = function() {
         // save like-status
         var liked = $(this).hasClass('liked');
         
-        // send to google analytics
+        // save like into user object
+        einzl.user.likes[self.model.id] = liked;
+        
+        einzl.app.saveUser();
+        
+        // send like to google analytics
         if(liked) {
             ga('send', 'event', 'product', self.model.id, 'liked');
         } else {
             ga('send', 'event', 'product', self.model.id, 'unliked');
         }
         
-        // save like into user object
-        einzl.user.likes[self.model.id] = liked;
-        
-        einzl.app.saveUser();
+        einzl.app.handleLikes();
         
         e.preventDefault();
         e.stopPropagation();

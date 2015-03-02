@@ -6,7 +6,7 @@ var Cart = function() {
     this.getCart().then(function() {
         self.createView();
     });
-
+    
 };
 
 Cart.prototype.removeItem = function(product_key) {
@@ -24,8 +24,9 @@ Cart.prototype.removeItem = function(product_key) {
     };
     
     return einzl.app.askServer(obj).done(function(data) {
+        // TODO: parse cart data and fix moltins pricings
         self.model = data.cart;
-        self.render();
+        self.renderView();
     });
 };
 
@@ -42,7 +43,7 @@ Cart.prototype.addItem = function(prodID) {
     
     return einzl.app.askServer(obj).done(function(data) {
         self.model = data.cart;
-        self.render();
+        self.renderView();
     });
     
 };
@@ -77,22 +78,22 @@ Cart.prototype.createView = function() {
     var self = this;
     return einzl.app.getTemplate('modules/cart').then(function(hbs) {
         self.template = hbs;
-        self.render();
-        self.initController();
+        self.renderView(hbs);
     });
 };
 
 Cart.prototype.initController = function() {
     var self = this;
-    var container = $('.cart');
     
-    container.on('vclick', '.item', function(e) {
+	this.view.find('.item').off('vclick');
+    this.view.find('.item').on('vclick', function(e) {
         $(e.currentTarget).toggleClass('selected').siblings('li').removeClass('selected');
         e.preventDefault();
         e.stopPropagation();
     });
     
-    container.on('vclick', '.remove', function(e) {
+	this.view.find('.remove').off('vclick');
+    this.view.find('.remove').on('vclick', function(e) {
         var li = $(e.currentTarget).closest('li.item');
         var product_key = $(this).closest('li').attr('data-product-key');
         
@@ -100,11 +101,10 @@ Cart.prototype.initController = function() {
             li.addClass('loading');
             self.removeItem(product_key);
         }
+		
         
         e.stopPropagation();
         e.preventDefault();
-        
-        
     });
     
 };
@@ -126,7 +126,7 @@ Cart.prototype.insertIntoDOM = function() {
 };
 
 
-Cart.prototype.render = function() {
+Cart.prototype.renderView = function() {
     
     var self = this;
     
@@ -136,8 +136,10 @@ Cart.prototype.render = function() {
     // save rendered template as view
     this.view = $(html);
     
-    einzl.app.insertCopy(self.view);
-    
+	this.initController();
+	
     this.insertIntoDOM();
+    
+    
 
 };

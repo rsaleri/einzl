@@ -11,7 +11,7 @@
 	<title>Einzelstück</title>
 
 	<!-- icons -->
-	<link href="images/ci/favicon.ico?v=3" rel="shortcut icon">
+	<link href="images/favicon.png?v=2" rel="shortcut icon">
 	<link href="img/icons/touch.png" rel="apple-touch-fa-precomposed">
 
 	<!-- css -->
@@ -39,8 +39,10 @@
                     <ul>
                         <li><a data-copy="nav_01" href="/home" title="Home" class="active"></a></li>
                         <li><a data-copy="nav_02" href="/rings" title="Rings"></a></li>
-                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>
+                        <li><a data-copy="nav_05" href="/pendants" title="Pendandts"></a></li>
+<!--                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>-->
                         <li><a data-copy="nav_04" href="/bracelets" title="Bracelets"></a></li>
+                        <li class="likes"><a data-copy="nav_06" href="/likes" title="Your Likes"></a></li>
                     </ul>
                 </nav>
                 <div class="right-area">

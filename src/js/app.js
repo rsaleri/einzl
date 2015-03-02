@@ -370,7 +370,7 @@ App.prototype.route = function(target) {
     }
     
     // edit document title
-    document.title = route.title+ ' - Einzelstück';
+    document.title = route.title[einzl.user.lang] + ' - Einzelstück';
     
     // send pageview to GA
     ga('send', 'pageview');

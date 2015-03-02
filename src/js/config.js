@@ -3,67 +3,100 @@ var userLang = navigator.language || navigator.userLanguage;
 var config = {
      routes: [
          {
-             title: 'Home',
+             title: {
+				 en: 'Home',
+				 de: 'Home'
+			 },
              id: 'home',
              slug: ['/home', '/', ''],
              hbsPath: '/pages/home'
          },
          {
-             title: 'Rings',
+             title: {
+				 en: 'Rings',
+				 de: 'Ringe'
+			 },
              id: 'rings',
              slug: ['/rings', '/ringe'],
              hbsPath: '/pages/rings'
          },
          {
-             title: 'Necklaces',
+             title: {
+				 en: 'Necklaces',
+				 de: 'Ketten'
+			 },
              id: 'necklaces',
              slug: ['/necklaces', '/ketten'],
              hbsPath: '/pages/necklaces'
          },
          {
-             title: 'Pendants',
+             title: {
+				 en: 'Pendants',
+				 de: 'Anhänger'
+			 },
              id: 'pendants',
              slug: ['/pendants', '/anhaenger'],
              hbsPath: '/pages/pendants'
          },
          {
-             title: 'Bracelets',
+             title: {
+				 en: 'Bracelets',
+				 de: 'Armbänder'
+			 },
              id: 'bracelets',
              slug: ['/bracelets', '/armbaender', '/armband'],
              hbsPath: '/pages/bracelets'
          },
          {
-             title: '<3',
+             title: {
+				 en: '<3',
+				 de: '<3'
+			 },
              id: 'likes',
              slug: ['/likes', '/yourlikes', '/mylikes'],
              hbsPath: '/pages/likes'
          },
          {
-             title: 'Checkout',
+             title: {
+				 en: 'Checkout',
+				 de: 'Kasse'
+			 },
              id: 'checkout',
              slug: ['/checkout', '/kasse'],
              hbsPath: '/pages/checkout'
          },
          {
-             title: 'Confirmation',
+             title: {
+				 en: 'Confirmation',
+				 de: 'Bestätigung'
+			 },
              id: 'confirmation',
              slug: ['/confirmation'],
              hbsPath: '/pages/confirmation'
          },
          {
-             title: 'Imprint',
+             title: {
+				 en: 'Imprint',
+				 de: 'Impressum'
+			 },
              id: 'imprint',
              slug: ['/imprint', '/impressum'],
              hbsPath: '/pages/imprint'
          },
          {
-             title: 'Developer Page',
+             title: {
+				 en: 'Developer Page',
+				 de: 'Entwickler Seite'
+			 },
              id: 'f12',
              slug: ['/f12'],
              hbsPath: '/pages/f12'
          },
          {
-             title: '404',
+             title: {
+				 en: '404',
+				 de: '404'
+			 },
              id: '404',
              slug: ['/404'],
              hbsPath: '/pages/404'

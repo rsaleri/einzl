@@ -458,10 +458,26 @@ header {
     SPECIAL LINKS
 \*------------------------------------*/
 
-.copy a.twitter-link, .copy a.insta-link {
-    font-size: 2em;
-    margin: 10px 30px;
-    color: $darkgrey;
+.social-links {
+	white-space: nowrap;
+}
+
+.twitter-link, .insta-link, .facebook-link {
+	
+	.copy & {
+		font-size: 2em;
+		margin: 10px 15px;
+		color: $darkgrey;
+		
+		@media(min-width: $bp1) {
+			margin: 10px 20px;
+		}
+		
+		@media(min-width: $bp2) {
+			margin: 10px 30px;
+		}
+	}
+    
 }
 
 .twitter-link:hover i:before {
@@ -470,4 +486,8 @@ header {
 
 .insta-link:hover i:before {
     color: #517fa4;
+}
+
+.facebook-link:hover i:before {
+    color: #3b5998;
 }

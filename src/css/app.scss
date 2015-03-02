@@ -466,15 +466,15 @@ header {
 	
 	.copy & {
 		font-size: 2em;
-		margin: 10px 15px;
+		padding: 10px 15px;
 		color: $darkgrey;
 		
 		@media(min-width: $bp1) {
-			margin: 10px 20px;
+			padding: 10px 20px;
 		}
 		
 		@media(min-width: $bp2) {
-			margin: 10px 30px;
+			padding: 10px 30px;
 		}
 	}
     

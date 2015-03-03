@@ -63,7 +63,7 @@ Checkout.prototype.initController = function() {
             self.processOrder().always(function() {
                 button.removeClass('loading');
             }).done(function(data) {
-                
+                console.log(data);
                 if(data.order.status) {
                     // remove current cart
                     einzl.user.cart_id = null;
@@ -193,6 +193,9 @@ Checkout.prototype.processOrder = function() {
     var payContainer = $('#payment-choice');
     var choice = payContainer.find('[name="paymentOption"]:checked').val();
     order.payment = choice;
+    
+    // set shipping for DHL
+    order.shipping = '6846';
     
     var obj = {
         action: 'processOrder',

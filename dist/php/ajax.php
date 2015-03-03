@@ -116,7 +116,8 @@ if ( $authenticated ) {
                 'customer' => $user,
                 'gateway' => $order['payment'],
                 'bill_to' => $order['billAd'],
-                'ship_to' => $order['shipAd']
+                'ship_to' => $order['shipAd'],
+                'shipping' => $order['shipping']
             ));
 			
 			// send confirmation mail

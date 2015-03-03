@@ -10,3 +10,12 @@
 	font-size: 1.3em;
 	padding: .5em 1em;
 }
+
+.quatsch-arrow:before {
+    content: "\2191";
+    
+    @media(min-width: $bp1) {
+        content: "\2190";
+    }
+    
+}

@@ -68,6 +68,11 @@
         "confirmation_help_copy1": "<strong>There is no better person than you to help us improve our store.</strong> Did you had any problems? Did you miss something or have been confused?",
         "confirmation_help_copy2": "We would love to hear your feedback so we can tweak every little detail to make you, {{this.order.bill_to.data.first_name}} - our dear customer - feel comfortable on our site.",
         "confirmation_help_copy3": "Please reach out to us on <a href='http://twitter.com/einzlstck' title='Einzelstück on Twitter' target='_blank'>Twitter</a> or at <a href='mailto:info@einzelstueck-shop.com' target='_blank' title='mail Einzelstück'>info@einzelstueck-shop.com</a>.<br/>We can't wait to talk to you.",
+        "404_headline": "404",
+        "404_subheadline": "We're terribly sorry but you got lost. :-(",
+        "404_shopping_headline": "Visit the Store",
+        "404_shopping_link": "Shop Now",
+        "404_insta_headline": "Find Inspiration on Instagram",
         "messages": {
             "welcome": [
                 "Hey you :-)",

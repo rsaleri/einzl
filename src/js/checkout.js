@@ -194,6 +194,9 @@ Checkout.prototype.processOrder = function() {
     var choice = payContainer.find('[name="paymentOption"]:checked').val();
     order.payment = choice;
     
+    // set shipping for DHL
+    order.shipping = '6846';
+    
     var obj = {
         action: 'processOrder',
         order: order,

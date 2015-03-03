@@ -101,7 +101,8 @@ if ( $authenticated ) {
         {
 
             $order = $_POST['order'];
-            $cartID = $_POST['cart']['id'];
+			$cart = $_POST['cart'];
+            $cartID = $cart['id'];
             
             // create customer out of billing data
             $user = array(
@@ -117,6 +118,9 @@ if ( $authenticated ) {
                 'bill_to' => $order['billAd'],
                 'ship_to' => $order['shipAd']
             ));
+			
+			// send confirmation mail
+			sendConfirmationMail($user, $order, $cart);
             
         }
         catch (\Exception $e)

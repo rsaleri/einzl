@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	</head>
+	<body style="font-family: 'Helvetica Neue', Helvetica, 'Segoe WP', 'Segoe UI', Arial; width: 100%; font-size: 14px; color: #333;">
+		<h3 style="border-bottom: 1px solid #666; font-size: 18px; padding: 5px 0px; font-weight: 400;">Bestellbestätigung</h3>
+		<p>%anrede%%firstname%,<br/>schön, dass du etwas gefunden hast.</p>
+		<p><b>Deine Bestellung</b></p>
+		<table cellpadding="5" width="100%" style="width: 100%; text-align: left; font-family: 'Helvetica Neue', Helvetica, 'Segoe WP', 'Segoe UI', Arial; width: 100%; font-size: 14px; color: #333;">
+			<tr>
+				<td style="border-bottom: 1px solid #666; text-align: left; padding: 5px 0;"><b>Schmuckstück</b></td>
+				<td style="border-bottom: 1px solid #666; text-align: left; padding: 5px 0;"><b>Anzahl</b></td>
+				<td style="border-bottom: 1px solid #666; text-align: left; padding: 5px 0;"><b>Preis</b></td>
+			</tr>
+			%cartitems%
+			<tr>
+				<td style="border-top: 1px solid #666; padding: 5px 0;">Enthaltene USt 19%</td>
+				<td style="border-top: 1px solid #666; padding: 5px 0;"></td>
+				<td style="border-top: 1px solid #666; padding: 5px 0;">€ %tax%</td>
+			</tr>
+			<tr>
+				<td style="padding: 5px 0;"><b>Summe</b></td>
+				<td style="padding: 5px 0;"></td>
+				<td style="padding: 5px 0;"><b>€ %totalprice%</b></td>
+			</tr>
+		</table>
+		<p>Bitte überweise den Gesamtbetrag von %totalprice%€ auf folgendes Konto:</p>
+		<p>
+			Einzelstück<br/>
+			Kto: 000 000 00<br/>
+			BLZ: 000 000 000<br/>
+			IBAN: 0000 00000 000000 0000<br/>
+			BIC: 0000 000 000000<br/>
+			<b>Verwendungszweck: %orderID%</b><br/>
+			(bitte unbedingt angeben)
+		</p>
+		<p>Sobald wir den Zahlungseingang festellen, schicken wir dir deine Bestellung an folgende Adresse:</p>
+		<p>%shippingAdress%</p>
+		<p>Bei Fragen jeglicher Art stehen wir dir unter <a href="mailto:info@einzelstueck-shop.com" title="E-Mail an Einzelstück" style="color: #3a9ad9; text-decoration: none;">info@einzelstueck-shop.com</a> zur Verfügung.</p>
+		<p>
+			Wir wünschen dir viel Spaß mit deinem neuen Schmuck und würden uns freuen, wenn du uns zeigst wie gut dir der Schmuck steht.<br/>
+			Poste dein Bild auf Instagram und erwähne uns mit <a href="instagram.com/einzlstck" title="Einzelstück auf Instagram" style="color: #3a9ad9; text-decoration: none;">@einzlstck</a> oder direkt auf unsere <a href="https://www.facebook.com/einzlstck" title="Einzelstück auf Facebook" style="color: #3a9ad9; text-decoration: none;">Facebook Wall</a>.
+		</p>
+		<p>Bis bald,<br/>
+		dein Einzelstück-Team</p>
+		<p style="font-size: 12px; border-top: 1px solid #666; padding: 5px 0px;"><a href="http://www.einzelstueck-shop.com" title="Einzelstück Website" style="color: #3a9ad9; text-decoration: none;">Einzelstück 2014</a> | <a href="http://www.einzelstueck-shop.com/imprint" title="Einzelstück Impressum" style="color: #3a9ad9; text-decoration: none;">Impressum</a> | <a href="http://www.einzelstueck-shop.com/agb" title="Einzelstück AGB" style="color: #3a9ad9; text-decoration: none;">AGB</a></p>
+	</body>
+</html>

@@ -1,7 +1,7 @@
 <?php
 require 'libs/PHPMailer/PHPMailerAutoload.php';
 
-function sendConfirmationMail($user, $order, $cart) {
+function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	$orderData = $order;
 	$shipAd = $orderData['ship_to']['data'];
 	$billAd = $orderData['bill_to']['data'];
@@ -53,7 +53,7 @@ function sendConfirmationMail($user, $order, $cart) {
 	$mail->Host = 'smtp.strato.de';						  // Specify main and backup server
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'info@einzelstueck-shop.com';       // SMTP username
-	$mail->Password = '091210sk()';                        // SMTP password
+	$mail->Password = $smtpPassword;                        // SMTP password
 	$mail->Port = 465;									  // SMTP port
 	$mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
 

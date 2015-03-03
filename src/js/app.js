@@ -437,6 +437,4 @@ $(document).ready(function() {
     // init cart
     einzl.cart = new Cart();
 
-    ga('create', 'UA-46833918-1', 'auto');
-
 });

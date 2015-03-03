@@ -74,7 +74,9 @@ Checkout.prototype.initController = function() {
                     einzl.order = data.order.result;
                     
                     History.pushState("", 'Confirmation', '/confirmation');
-                }
+                } else {
+					notifyUser(einzl.copy.messages.nl_error, 'error');
+				}
                 
             });
         }
@@ -203,6 +205,8 @@ Checkout.prototype.processOrder = function() {
         cart: einzl.cart.model
     };
     
+	console.log(obj);
+	
     return einzl.app.askServer(obj).done(function(data) {
         
         console.log(data);

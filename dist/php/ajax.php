@@ -3,6 +3,7 @@
 require_once('moltin.php');
 require_once('newsletter.php');
 require_once('helper.php');
+require_once('mail.php');
 
 // what to do?
 $action = $_POST['action'];
@@ -121,12 +122,13 @@ if ( $authenticated ) {
             ));
 			
 			// send confirmation mail
-			sendConfirmationMail($user, $order, $cart);
+			$data['mail'] = sendConfirmationMail($user, $data['order']['result'], $cart);
             
         }
         catch (\Exception $e)
         {
             $data = $e->getMessage();
+			
         }
         
         

@@ -229,6 +229,57 @@ header {
 }
 
 
+.link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	
+	a {
+		position: absolute;
+		box-sizing: border-box;
+		display: block;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: all ease .3s;
+		
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			transition: all ease .3s;
+			transform: scale(.95);
+		}
+		
+		&:hover {
+			
+			color: $textwhite;
+			
+			&:after {
+				background-color: $red;
+				transform: scale(1);
+			}
+		}
+		
+		.link-text {
+			font-size: 1.2em;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	
+}
 
 
 .product {

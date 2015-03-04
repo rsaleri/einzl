@@ -49,6 +49,8 @@
         "checkout_shipping_headline": "Lieferadresse",
         "checkout_cart_headline": "Deine Artikel",
         "checkout_pay_headline": "Zahlung",
+        "checkout_pay_option1": "Paypal",
+        "checkout_pay_option2": "Überweisung",
         "checkout_process_order_button": "Kaufen (Nur ein Test)",
         "confirmation_headline": "Vielen Dank, {{this.order.bill_to.data.first_name}}!",
         "confirmation_subheadline": "Deine Bestellung war erfolgreich.",

@@ -49,6 +49,8 @@
         "checkout_shipping_headline": "Shipping Address",
         "checkout_cart_headline": "Your Cart",
         "checkout_pay_headline": "Payment",
+        "checkout_pay_option1": "Paypal",
+        "checkout_pay_option2": "Manual Transfer",
         "checkout_process_order_button": "Test Process Order",
         "confirmation_headline": "Thank you {{this.order.bill_to.data.first_name}}!",
         "confirmation_subheadline": "Your order has been placed.",

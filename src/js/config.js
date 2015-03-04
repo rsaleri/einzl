@@ -76,6 +76,15 @@ var config = {
          },
          {
              title: {
+				 en: 'GTC',
+				 de: 'AGB'
+			 },
+             id: 'terms',
+             slug: ['/terms', '/agb'],
+             hbsPath: '/pages/terms'
+         },
+         {
+             title: {
 				 en: 'Imprint',
 				 de: 'Impressum'
 			 },

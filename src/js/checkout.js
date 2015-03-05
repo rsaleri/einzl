@@ -124,6 +124,8 @@ Checkout.prototype.start = function() {
 Checkout.prototype.processOrder = function() {
     
     console.log('process order');
+	
+	var errorPromise = $.Deferred();
     
     var order = {};
     
@@ -149,8 +151,9 @@ Checkout.prototype.processOrder = function() {
         
     } else {
         // display error
-        console.log('error');
-        return false;
+        goToByScroll(billingContainer);
+		notifyUser(einzl.copy.messages.checkout_noBillingAddress, 'error');
+        return errorPromise.reject();
     }
     
     order.billAd = billingAddress;
@@ -177,8 +180,9 @@ Checkout.prototype.processOrder = function() {
         
     } else {
         // display error
-        console.log('error');
-        return false;
+		goToByScroll(shippingContainer);
+        notifyUser(einzl.copy.messages.checkout_noShippingAddress, 'error');
+        return errorPromise.reject();
     }
     
     order.shipAd = shippingAddress;
@@ -186,8 +190,8 @@ Checkout.prototype.processOrder = function() {
     // check if cart is empty
     if(!einzl.cart.model || einzl.cart.model.total_items <= 0) {
         // display error
-        console.log('error');
-        return false;
+        notifyUser(einzl.copy.messages.checkout_empty_cart, 'error');
+        return errorPromise.reject();
     }
     
     

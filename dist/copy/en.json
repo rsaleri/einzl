@@ -89,7 +89,10 @@
             "nl_subscribed": "You have successfully subscribed! Yay :-)",
             "nl_error": "Something didn't work out :-(",
             "form_empty_input": "We're missing some information",
-            "form_email_invalid": "Your email is invalid :-("
+            "form_email_invalid": "Your email is invalid :-(",
+			"checkout_empty_cart": "Oh, your cart is empty.",
+			"checkout_noBillingAddress": "Oh, we need a billing address.",
+			"checkout_noShippingAddress": "Oh, we need a shipping address."
         }
     }
 }

@@ -228,6 +228,7 @@ App.prototype.initNavigation = function() {
     
     $('.hamburger-button').on('vclick', function(e) {
         $('header nav').toggleClass('open');
+		$('body').toggleClass('no-scroll-mobile');
         e.preventDefault();
         e.stopPropagation();
     });

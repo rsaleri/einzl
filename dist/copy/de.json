@@ -92,6 +92,15 @@
 			"checkout_empty_cart": "Oh, dein Warenkorb ist noch leer.",
 			"checkout_noBillingAddress": "Oh, wir brauchen noch eine Rechnungsadresse.",
 			"checkout_noShippingAddress": "Oh, wir brauchen noch eine Lieferadresse."
-        }
+        },
+		"placeholders": {
+			"first_name": "Vorname",
+			"last_name": "Nachname",
+			"email": "E-Mail",
+			"street": "Straße",
+			"city": "Stadt",
+			"area_code": "PLZ",
+			"notes": "Weitere Notizen?"
+		}
     }
 }

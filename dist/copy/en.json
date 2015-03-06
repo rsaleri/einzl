@@ -93,6 +93,15 @@
 			"checkout_empty_cart": "Oh, your cart is empty.",
 			"checkout_noBillingAddress": "Oh, we need a billing address.",
 			"checkout_noShippingAddress": "Oh, we need a shipping address."
-        }
+        },
+		"placeholders": {
+			"first_name": "First Name",
+			"last_name": "Last Name",
+			"email": "Email",
+			"street": "Street",
+			"city": "City",
+			"area_code": "area code",
+			"notes": "Any Special Notes?"
+		}
     }
 }

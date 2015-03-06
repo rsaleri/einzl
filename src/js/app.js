@@ -64,6 +64,12 @@ App.prototype.insertCopy = function(htmlStr) {
         var copy = einzl.copy[$(this).attr('data-copy')];
         $(this).html(copy);
     });
+	
+	// insert placeholders
+	html.find('[data-placeholder]').each(function() {
+		var placeholder = einzl.copy.placeholders[$(this).attr('data-placeholder')];
+		$(this).attr('placeholder', placeholder);
+	});
     
     // return the copy-filled HTML string without the DIV we created above
     return html.html();
@@ -87,6 +93,8 @@ App.prototype.getCopy = function() {
             var copy = einzl.copy[$(this).attr('data-copy')];
             $(this).html(copy);
         });
+		
+		// TODO: insert placeholders if there are any in index.php (outside of all hbs templates)
 
         // we just learned words, so say hello to our beloved user
         window.setTimeout(function() {

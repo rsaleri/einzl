@@ -205,6 +205,7 @@ App.prototype.getProducts = function() {
                 
             });
         } else {
+			notifyUser(einzl.copy.messages.noConnection, 'error');
             console.log('GET PRODUCTS FAILED');
             console.log(data);
         }

@@ -91,7 +91,9 @@
             "form_email_invalid": "Deine E-Mail ist nicht gültig :-(",
 			"checkout_empty_cart": "Oh, dein Warenkorb ist noch leer.",
 			"checkout_noBillingAddress": "Oh, wir brauchen noch eine Rechnungsadresse.",
-			"checkout_noShippingAddress": "Oh, wir brauchen noch eine Lieferadresse."
+			"checkout_noShippingAddress": "Oh, wir brauchen noch eine Lieferadresse.",
+			"slowConnection": "Langsames Internet?",
+			"noConnection": "Kein Internet? Versuchs nochmal."
         },
 		"placeholders": {
 			"first_name": "Vorname",

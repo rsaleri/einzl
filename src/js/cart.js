@@ -61,15 +61,20 @@ Cart.prototype.getCart = function() {
     
     // get cart data from moltin
     return einzl.app.askServer(obj).done(function(data) {
-        console.log(data);
         
-        // save cart model
-        self.model = data.cart;
-        
-        // save id into user object
-        einzl.user.cart_id = data.cart.id;
+		if(data.cart) {
+			// save cart model
+			self.model = data.cart;
 
-        einzl.app.saveUser();
+			// save id into user object
+			einzl.user.cart_id = data.cart.id;
+
+			einzl.app.saveUser();
+		} else {
+			notifyUser(einzl.copy.messages.noConnection, 'error');
+		}
+        
+        
     });
     
 };

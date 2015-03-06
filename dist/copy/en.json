@@ -92,7 +92,9 @@
             "form_email_invalid": "Your email is invalid :-(",
 			"checkout_empty_cart": "Oh, your cart is empty.",
 			"checkout_noBillingAddress": "Oh, we need a billing address.",
-			"checkout_noShippingAddress": "Oh, we need a shipping address."
+			"checkout_noShippingAddress": "Oh, we need a shipping address.",
+			"slowConnection": "Slow connection?",
+			"noConnection": "No Internet? Try again."
         },
 		"placeholders": {
 			"first_name": "First Name",

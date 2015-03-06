@@ -235,6 +235,7 @@ App.prototype.initNavigation = function() {
     $('.cart-button').on('vclick', function(e) {
         $(e.currentTarget).toggleClass('open');
         $('aside.cart-container').toggleClass('open');
+		$('body').toggleClass('no-scroll-mobile');
         e.preventDefault();
         e.stopPropagation();
     });

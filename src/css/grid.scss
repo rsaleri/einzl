@@ -7,20 +7,21 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+	padding-top: 60px;
 }
 
 header {
     box-sizing: border-box;
-    position: relative;
     background-color: #fff;
     height: 60px;
     width: 100%;
     z-index: 500;
+	backface-visibility: hidden;
+	position: fixed;
+	top: 0;
     
     @media(min-width: $bp1) {
-        backface-visibility: hidden;
-        position: fixed;
-        top: 0;
+        
     }
 }
 

@@ -1,5 +1,5 @@
-@import 'helper';
 @import 'branding';
+@import 'helper';
 @import 'grid';
 @import 'navigation';
 @import 'cart';
@@ -255,7 +255,6 @@ header {
 			left: 0;
 			right: 0;
 			bottom: 0;
-			z-index: -1;
 			transition: all ease .3s;
 			transform: scale(.95);
 		}
@@ -271,6 +270,7 @@ header {
 		}
 		
 		.link-text {
+			z-index: 1;
 			font-size: 1.2em;
 			position: absolute;
 			top: 50%;

@@ -4,14 +4,13 @@ aside.cart-container {
     border: 2px solid $beigewhite;
     width: 100%;
     max-width: 400px;
-    position: absolute;
+    position: fixed;
     top: 60px;
+	bottom: 0;
     z-index: 600;
     right: -400px;
-    
-    .cssvhunit & {
-        min-height: 100vh;
-    }
+	overflow-x: hidden;
+	overflow-y: auto;
     
     &.open {
         right: 0;

@@ -11,3 +11,12 @@
     max-width: 500px;
     margin: 0 auto;
 }
+
+.no-scroll-mobile {
+	overflow: hidden;
+	
+	@media(min-width: $bp1) {
+		overflow: auto;
+	}
+	
+}

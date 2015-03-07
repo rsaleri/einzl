@@ -63,15 +63,22 @@ Checkout.prototype.initController = function() {
             self.processOrder().always(function() {
                 button.removeClass('loading');
             }).done(function(data) {
+				
                 console.log(data);
+				
                 if(data.order.status) {
+					
                     // remove current cart
                     einzl.user.cart_id = null;
 
                     // create new cart
                     einzl.cart = new Cart();
                     
+					// save order
                     einzl.order = data.order.result;
+					
+					// track order with google analytics
+					self.trackOrder(einzl.order);
                     
                     History.pushState("", 'Confirmation', '/confirmation');
                 } else {
@@ -102,6 +109,36 @@ Checkout.prototype.initController = function() {
         e.preventDefault();
         e.stopPropagation();
     });
+};
+
+Checkout.prototype.trackOrder = function(order) {
+	
+	ga('require', 'ecommerce');
+	
+	ga('ecommerce:addTransaction', {
+		'id': order.id,                     	// Transaction ID. Required.
+		'affiliation': 'Einzelstück',   		// Affiliation or store name.
+		'revenue': order.total,               	// Grand Total.
+		'shipping': order.shipping_price,       // Shipping.
+		'tax': '0',                     		// Tax.
+		'currency': 'EUR'						// Currency
+	});
+	
+	$.each(order.cart.contents, function(key, item) {
+		
+		ga('ecommerce:addItem', {
+			'id': key,                     		// Transaction ID. Required.
+			'name': item.name,    				// Product name. Required.
+			'sku': item.sku,                 	// SKU/code.
+			'category': item.category.value,    // Category or variation.
+			'price': item.total,                // Unit price.
+			'quantity': item.quantity           // Quantity.
+		});
+		
+	});
+	
+	ga('ecommerce:send');
+	
 };
 
 Checkout.prototype.start = function() {

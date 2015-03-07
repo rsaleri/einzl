@@ -122,6 +122,8 @@ if ( $authenticated ) {
                 'shipping' => $order['shipping']
             ));
 			
+			$data['order']['result']['cart'] = $cart;
+			
 			// send confirmation mail
 			$data['mail'] = sendConfirmationMail($user, $data['order']['result'], $cart, $smtpPassword);
             

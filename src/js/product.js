@@ -54,6 +54,27 @@ Product.prototype.initController = function() {
         e.stopPropagation();
         
     });
+	
+	// enable image gallery
+	this.view.find('.indicators span').each(function(e) {
+		
+		$(this).on('vclick', function(e) {
+			
+			var button = $(e.currentTarget);
+			var container = button.closest('.product');
+			
+			if(!button.hasClass('fa-circle')) {
+				
+				container.find('.background .image.active').removeClass('active');
+				container.find('.background .image').eq(button.index()).addClass('active');
+				
+				container.find('.indicators span.active').removeClass('active');
+				container.find('.indicators span').eq(button.index()).addClass('active');
+			}
+			
+		});
+		
+	});
     
     // enable like button
     this.view.find('.drop.like').on('vclick', function(e) {

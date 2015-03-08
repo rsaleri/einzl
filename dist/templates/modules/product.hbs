@@ -8,10 +8,25 @@
 			<span class="desc">Unsere Beschreibungen sind noch nicht fertig - und nur auf deutsch verfügbar. Wir arbeiten daran :-)</span>
 			<div class="price">{{pricing.formatted.with_tax}}</div>
 		</div>
+		
+		<div class="indicators">
+			{{#each images}}
+				{{#if @first}}
+					<span class="drop active"></span>
+				{{else}}
+					<span class="drop"></span>
+				{{/if}}
+				
+			{{/each}}
+		</div>
     </div>
     <div class="background">
         {{#each images}}
-            <div style="background-image: url({{this.url.http}});"></div>
+			{{#if @first}}
+            	<div class="image active" style="background-image: url({{this.url.http}});"></div>
+			{{else}}
+				<div class="image" style="background-image: url({{this.url.http}});"></div>
+			{{/if}}
         {{/each}}
     </div>
 </div>

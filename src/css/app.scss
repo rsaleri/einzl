@@ -306,8 +306,6 @@ header {
 				right: 50px;
 			}
 		}
-		
-		
         
         .drop.plus {
             z-index: 10;
@@ -330,6 +328,47 @@ header {
             }
             
         }
+		
+		.indicators {
+			font-size: 15px;
+			padding: 5px;
+			color: $textwhite;
+			position: absolute;
+			bottom: 15px;
+			display: inline-block;
+			left: 50%;
+			transform: translate(-50%, 0);
+			
+			display: none;
+			
+			.drop {
+				transition: all ease .3s;
+				position: relative !important;
+				top: 0;
+				left: 0;
+				display: inline-block;
+				width: 13px;
+				height: 13px;
+				border-radius: 50% 50% 50%;
+				opacity: .7;
+				
+				&:hover {
+					cursor: pointer;
+					opacity: 1;
+				}
+				
+				&.active {
+					border-radius: 0 50% 50%;
+					opacity: 1;
+					cursor: default;
+				}
+				
+			}
+			
+			
+			
+			
+		}
 		
 		.info {
 			padding: 20px;
@@ -425,17 +464,25 @@ header {
         right: 0;
         bottom: 0;
         
-        div {
+        .image {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1;
+            
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
+			
+			display: none;
+			
+			&.active {
+				display: block;
+			}
         }
+		
+		
     }
     
 }

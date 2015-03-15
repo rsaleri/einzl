@@ -236,16 +236,61 @@ App.prototype.initNavigation = function() {
     var self = this;
     
     $('.hamburger-button').on('vclick', function(e) {
-        $('header nav').toggleClass('open');
-		$('body').toggleClass('no-scroll-mobile');
+		
+		var menuButton = $(e.currentTarget);
+		var cartButton = $('.cart-button');
+		
+		if(menuButton.hasClass('open')) {
+			
+			// close menu
+			menuButton.removeClass('open');
+			$('header nav').removeClass('open');
+			$('body').removeClass('no-scroll-mobile');
+			
+		} else {
+			
+			// open menu
+			menuButton.addClass('open');
+			$('header nav').addClass('open');
+			$('body').addClass('no-scroll-mobile');
+			
+			// close cart
+			cartButton.removeClass('open')
+			$('aside.cart-container').removeClass('open');
+			
+		}
+		
+		
         e.preventDefault();
         e.stopPropagation();
     });
     
     $('.cart-button').on('vclick', function(e) {
-        $(e.currentTarget).toggleClass('open');
-        $('aside.cart-container').toggleClass('open');
-		$('body').toggleClass('no-scroll-mobile');
+		
+		var cartButton = $(e.currentTarget);
+		var menuButton = $('.hamburger-button');
+		
+		if(cartButton.hasClass('open')) {
+			
+			// close cart
+			cartButton.removeClass('open')
+			$('aside.cart-container').removeClass('open');
+			$('body').removeClass('no-scroll-mobile');
+			
+		} else {
+			
+			// open cart
+			cartButton.addClass('open')
+			$('aside.cart-container').addClass('open');
+			$('body').addClass('no-scroll-mobile');
+			
+			// close menu
+			menuButton.removeClass('open');
+			$('header nav').removeClass('open');
+			
+			
+		}
+		
         e.preventDefault();
         e.stopPropagation();
     });

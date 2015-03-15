@@ -11,6 +11,7 @@ aside.cart-container {
     right: -400px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
     
     &.open {
         right: 0;

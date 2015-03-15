@@ -13,7 +13,13 @@
 }
 
 .no-scroll-mobile {
+	
 	overflow: hidden;
+	
+	body {
+		position: relative;
+		overflow: hidden;
+	}
 	
 	@media(min-width: $bp1) {
 		overflow: auto;

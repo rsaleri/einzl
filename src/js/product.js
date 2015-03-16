@@ -55,7 +55,7 @@ Product.prototype.initController = function() {
         
     });
 	
-	// enable image gallery
+	// enable image gallery indicators
 	this.view.find('.indicators span').each(function(e) {
 		
 		$(this).on('vclick', function(e) {
@@ -70,9 +70,32 @@ Product.prototype.initController = function() {
 				
 				container.find('.indicators span.active').removeClass('active');
 				container.find('.indicators span').eq(button.index()).addClass('active');
+				
+				container.find('.background').addTempClass('changeImage', 500);
 			}
 			
 		});
+		
+	});
+	
+	// enable image gallery swipe
+	this.view.on('swipeleft', function(e) {
+		
+		var container = $(e.currentTarget);
+		
+		var activeImage = container.find('.background .image.active');
+		var activeIndicator = container.find('.indicators span.active');
+		
+		if(activeImage.next('.image').length > 0) {
+			
+			activeImage.next().addClass('active');
+			activeIndicator.next().addClass('active');
+
+			activeImage.removeClass('active');
+			activeIndicator.removeClass('active');
+			
+		}
+		
 		
 	});
     

@@ -457,13 +457,15 @@ header {
     }
     
     .background {
+		overflow: hidden;
         position: absolute;
         z-index: 10;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        
+		
+		
         .image {
             position: absolute;
             top: 0;
@@ -475,10 +477,11 @@ header {
             background-repeat: no-repeat;
             background-position: center center;
 			
-			display: none;
+			transition: all ease .5s;
+			width: 0%;
 			
 			&.active {
-				display: block;
+				width: 100%;
 			}
         }
 		

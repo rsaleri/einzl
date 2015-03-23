@@ -479,9 +479,9 @@ $(document).ready(function() {
 				// default language
 				var language = 'de';
 				
-				if(userLang) {
-					language = userLang.split('-')[0];
-				}
+//				if(userLang) {
+//					language = userLang.split('-')[0];
+//				}
 				
 				if(!language || language === 'de') {
 					return 'de';

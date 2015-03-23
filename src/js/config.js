@@ -94,6 +94,15 @@ var config = {
          },
          {
              title: {
+				 en: 'The Brand',
+				 de: 'Die Marke'
+			 },
+             id: 'brand',
+             slug: ['/brand', '/marke'],
+             hbsPath: '/pages/brand'
+         },
+         {
+             title: {
 				 en: 'Developer Page',
 				 de: 'Entwickler Seite'
 			 },

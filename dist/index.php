@@ -73,7 +73,16 @@
             </div>
 			<main></main>
 			<footer>
-                <span data-copy="footer_copyright"></span> - <a href="/imprint" title="Impressum" data-copy="footer_link_01"></a><!-- - <del data-copy="footer_link_02">AGB</del> - <a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
+				<div class="links">
+					<a href="/imprint" title="Impressum" data-copy="footer_link_01"></a> | 
+					<a href="" title="">Versand und Rückgabe</a> | 
+					<a href="" title="">Datenschutz</a> | 
+					<a href="/f12" title="F12" data-copy="footer_link_03">F12</a> 
+				</div>
+				<div class="copyright">
+					<span data-copy="footer_copyright"></span>
+				</div>
+                
             </footer>
 		</div>
 	</div>

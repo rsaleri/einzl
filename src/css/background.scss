@@ -1,0 +1,31 @@
+.background {
+	overflow: hidden;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+
+	.image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+
+		transition: all ease .5s;
+		width: 0%;
+
+		&.active {
+			width: 100%;
+		}
+	}
+
+
+}

@@ -3,6 +3,8 @@
 @import 'grid';
 @import 'navigation';
 @import 'cart';
+@import 'product';
+@import 'background';
 @import 'checkout';
 @import 'confirmation';
 @import 'custom';
@@ -167,6 +169,8 @@ header {
         margin-right: 10px;
         font-size: .8em;
         
+		display: none;
+		
         &:hover {
             cursor: pointer;
             background-color: $beigewhite;
@@ -282,213 +286,7 @@ header {
 }
 
 
-.product {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    
-    .details {
-        position: absolute;
-        z-index: 20;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-		
-		.drop {
-			right: 20px;
-    		top: 20px;
-			
-			@media(min-width: $bp1) {
-				top: 50px;
-				right: 50px;
-			}
-		}
-        
-        .drop.plus {
-            z-index: 10;
-        }
-        
-        .drop.like {
-            top: 70px;
-            
-            @media(min-width: $bp1) {
-                top: 100px;
-            }
-            
-        }
-        
-        .drop.add-to-cart {
-            top: 120px;
-            
-            @media(min-width: $bp1) {
-                top: 150px;
-            }
-            
-        }
-		
-		.indicators {
-			font-size: 15px;
-			padding: 5px;
-			color: $textwhite;
-			position: absolute;
-			bottom: 15px;
-			display: inline-block;
-			left: 50%;
-			transform: translate(-50%, 0);
-			
-//			display: none;
-			
-			.drop {
-				transition: all ease .3s;
-				position: relative !important;
-				top: 0;
-				left: 0;
-				display: inline-block;
-				width: 13px;
-				height: 13px;
-				border-radius: 50% 50% 50%;
-				opacity: .7;
-				
-				&:hover {
-					cursor: pointer;
-					opacity: 1;
-				}
-				
-				&.active {
-					border-radius: 0 50% 50%;
-					opacity: 1;
-					cursor: default;
-				}
-				
-			}
-			
-			
-			
-			
-		}
-		
-		.info {
-			padding: 20px;
-			background-color: $softwhite;
-			display: inline-block;
-			position: absolute;
-			transition: all ease .4s;
-			top: 20px;
-			left: 20px;
-    		right: 80px;
-			
-			@media(min-width: 450px) {
-				left: auto;
-				max-width: 300px;
-			}
-			
-			@media(min-width: $bp1) {
-				padding: 30px;
-				top: 50px;
-				right: 110px;
-				left: auto;
-				max-width: 50%;
-			}
-			
-			h3 {
-				text-align: left;
-			}
-			
-			.price {
-				margin-top: 30px;
-				font-size: 20px;
-				text-align: center;
-			}
-		}
-        
-        &.collapsed {
-            
-            .drop.plus i {
-                transform: rotate(0deg);
-            }
 
-            .drop.like {
-                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, -50px) rotate(45deg);
-                opacity: 0;
-            }
-
-            .drop.add-to-cart {
-                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, -100px) rotate(45deg);
-                opacity: 0;
-            }
-			
-			.info {
-				transform: translate3d(20px, 0, 0);
-				opacity: 0;
-				pointer-events: none;
-			}
-            
-        }
-        
-        &.expanded {
-            
-            .drop.plus i {
-                transform: rotate(-45deg);
-            }
-
-            .drop.like {
-                transition: transform ease .3s .2s, opacity ease .3s .2s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, 0px) rotate(-45deg);
-                opacity: 1;
-            }
-
-            .drop.add-to-cart {
-                transition: transform ease .3s .4s, opacity ease .3s .4s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, 0px) rotate(-45deg);
-                opacity: 1;
-            }
-			
-			.info {
-				transform: translate3d(0px, 0, 0);
-				opacity: 1;
-			}
-            
-        }
-    }
-    
-    .background {
-		overflow: hidden;
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-		
-		
-        .image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-			
-			transition: all ease .5s;
-			width: 0%;
-			
-			&.active {
-				width: 100%;
-			}
-        }
-		
-		
-    }
-    
-}
 
 
 /*------------------------------------*\
@@ -554,6 +352,17 @@ header {
     }
 }
 
+
+footer {
+	.links {
+		text-align: right;
+		padding: 10px 0;
+		border-bottom: 1px solid #ccc;
+	}
+	.copyright {
+		padding: 10px;
+	}
+}
 
 /*------------------------------------*\
     SPECIAL LINKS

@@ -53,7 +53,7 @@
         "checkout_pay_headline": "Zahlung",
         "checkout_pay_option1": "Paypal",
         "checkout_pay_option2": "Überweisung",
-        "checkout_process_order_button": "Kaufen (Nur ein Test)",
+        "checkout_process_order_button": "Kaufen",
         "confirmation_headline": "Vielen Dank, {{this.order.bill_to.data.first_name}}!",
         "confirmation_subheadline": "Deine Bestellung war erfolgreich.",
         "confirmation_dear_headline": "Liebe/r {{this.order.bill_to.data.first_name}}",

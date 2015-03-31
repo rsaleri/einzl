@@ -51,6 +51,7 @@
                         <span title="Change language to english" data-language="en">EN</span>
                     </div>
                     <div class="cart-button">
+						
                         <i class="fa fa-shopping-cart"></i>
                         <span class="total-items"></span>
                         <span class="total-price"></span>

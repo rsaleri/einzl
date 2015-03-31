@@ -136,6 +136,10 @@ header {
             .total-items {
                 display: none;
             }
+			
+			.total-price {
+				display: none;
+			}
             
         }
 
@@ -154,7 +158,21 @@ header {
         }
         
         .total-price {
-            display: none;
+            font-size: .8em;
+			
+			&:after {
+				content: "€";
+			}
+			
+            &:before {
+                content: "|";
+                display: inline-block;
+                margin-right: 3px;
+            }
+			
+			&:empty {
+                display: none;
+            }
         }
         
         &:hover {

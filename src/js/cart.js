@@ -126,7 +126,7 @@ Cart.prototype.insertIntoDOM = function() {
     
     // update totals outside of view
     $('.total-items').text(this.model.total_items);
-    $('.total-price').text(this.model.totals.formatted.with_tax);
+    $('.total-price').text(this.model.totals.rounded.with_tax);
     
 };
 

@@ -94,6 +94,24 @@ var config = {
          },
          {
              title: {
+				 en: 'Shipping & Retour',
+				 de: 'Versand & Rückgabe'
+			 },
+             id: 'shipping',
+             slug: ['/shipping', '/versand'],
+             hbsPath: '/pages/shipping'
+         },
+         {
+             title: {
+				 en: 'Privacy',
+				 de: 'Datenschutz'
+			 },
+             id: 'privacy',
+             slug: ['/privacy', '/datenschutz'],
+             hbsPath: '/pages/privacy'
+         },
+         {
+             title: {
 				 en: 'The Brand',
 				 de: 'Die Marke'
 			 },

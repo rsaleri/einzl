@@ -74,8 +74,8 @@
 			<main></main>
 			<footer>
 				<div class="links">
-					<a href="" title="">Versand und Rückgabe</a> | 
-					<a href="" title="">Datenschutz</a> |
+					<a href="/shipping" title="Versand und Rückgabe">Versand und Rückgabe</a> | 
+					<a href="/privacy" title="Datenschutz">Datenschutz</a> |
 <!--					<a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
 					<a href="/imprint" title="Impressum" data-copy="footer_link_01"></a>
 				</div>

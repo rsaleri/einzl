@@ -205,6 +205,10 @@ header {
     line-height: 1.4em;
     
     @media(min-width: $bp1) {
+        padding: 50px;
+    }
+	
+	@media(min-width: $bp2) {
         padding: 70px;
     }
     
@@ -376,7 +380,7 @@ footer {
 	
 	.copy & {
 		font-size: 2em;
-		padding: 10px 15px;
+		padding: 5px 15px;
 		color: $darkgrey;
 		
 		@media(min-width: $bp1) {

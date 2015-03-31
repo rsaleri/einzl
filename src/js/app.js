@@ -439,6 +439,10 @@ App.prototype.route = function(target) {
     
     // mark item in main menu
     $('header nav a').removeClass('active').filter('[href="' + route.slug[0] + '"]').addClass('active');
+	
+	// close cart
+	$('.cart-button').removeClass('open')
+	$('aside.cart-container').removeClass('open');
     
 };
 

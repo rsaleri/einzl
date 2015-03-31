@@ -13,6 +13,27 @@
 	<!-- icons -->
 	<link href="images/favicon.png?v=2" rel="shortcut icon">
 	<link href="img/icons/touch.png" rel="apple-touch-fa-precomposed">
+	
+	<!-- Apple -->
+    <meta name="apple-mobile-web-app-title" content="Einzelstück">
+    <link rel="apple-touch-icon" href="images/icons/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icons/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/touch-icon-ipad-retina.png">
+    
+    <!-- Microsoft -->
+    <meta name="application-name" content="Einzelstück" />
+    <meta name="msapplication-tooltip" content="Betrete den Einzelstück Store." />
+    <meta name="msapplication-starturl" content="./" />
+    <meta name="msapplication-navbutton-color" content="#280B20" />
+    <meta name="msapplication-TileColor" content="#280B20"/>
+    <!-- Windows 8 -->
+    <meta name="msapplication-TileImage" content="images/icons/logo-144x144.png"/>
+    <!-- Windows 8.1 -->
+    <meta name="msapplication-square70x70logo" content="images/icons/tiny.png"/>
+    <meta name="msapplication-square150x150logo" content="images/icons/square.png"/>
+    <meta name="msapplication-wide310x150logo" content="images/icons/wide.png"/>
+    <meta name="msapplication-square310x310logo" content="images/icons/large.png"/>
 
 	<!-- css -->
 	<link href="css/libs/font-awesome.min.css" rel="stylesheet">

@@ -34,6 +34,12 @@
     <meta name="msapplication-square150x150logo" content="images/icons/square.png"/>
     <meta name="msapplication-wide310x150logo" content="images/icons/wide.png"/>
     <meta name="msapplication-square310x310logo" content="images/icons/large.png"/>
+	
+	<meta property="og:title" content="Einzelstück - Handgemachter, indischer Schmuck"/>
+	<meta property="og:type" content="Website"/>
+	<meta property="og:site_name" content="einzlstck"/>
+	<meta property="og:url" content="http://einzelstueck-shop.com"/>
+	<meta property="og:image" content="http://einzelstueck-shop.com/images/backgrounds/armband_mondstein.jpg"/>
 
 	<!-- css -->
 	<link href="css/libs/font-awesome.min.css" rel="stylesheet">

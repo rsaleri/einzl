@@ -147,13 +147,18 @@ aside.cart-container {
             font-size: .8em;
         }
         
-        .subtotal, .shipping {
+        .subtotal, .taxes, .shipping {
             background-color: #f3f3f3;
         }
         
-        .shipping .price:after {
+        .shipping .price:after, .taxes .price:after {
             display: none;
         }
+		
+		.taxes a {
+			color: $blue;
+			font-weight: bold;
+		}
         
         .total {
             font-size: 1em;

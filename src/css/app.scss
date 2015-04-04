@@ -151,6 +151,12 @@ header {
                 display: inline-block;
                 margin-right: 3px;
             }
+			
+			&:after {
+				content: "items";
+				display: inline-block;
+				margin-left: 3px;
+			}
             
             &:empty {
                 display: none;

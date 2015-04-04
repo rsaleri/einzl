@@ -377,12 +377,16 @@ header {
 
 footer {
 	.links {
-		text-align: right;
 		padding: 10px 0;
 		border-bottom: 1px solid #ccc;
+		
+		@media(min-width: $bp1) {
+			float: right;
+			border-bottom: 0px;
+		}
 	}
 	.copyright {
-		padding: 10px;
+		padding: 10px 0;
 	}
 }
 

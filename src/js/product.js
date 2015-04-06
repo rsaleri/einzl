@@ -1,5 +1,10 @@
 var Product = function(model) {
     this.model = model;
+	
+	// round to two decimals
+	this.model.pricing.rounded.with_tax = this.model.pricing.rounded.with_tax.toFixed(2);
+	this.model.pricing.rounded.without_tax = this.model.pricing.rounded.without_tax.toFixed(2);
+	
     this.createView();
 };
 

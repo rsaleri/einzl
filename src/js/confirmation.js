@@ -22,5 +22,15 @@ Confirmation.prototype.constructor = Confirmation;
 Confirmation.prototype.handleOrder = function() {
     
     console.log(this.model);
+	
+	// show payment
+	
+	this.view.find('.button.pay').on('vclick', function() {
+		
+//		https://api.moltin.com/v1/checkout/payment/purchase/955849294299005894
+		
+		
+		
+	});
     
 };

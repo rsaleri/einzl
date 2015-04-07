@@ -404,10 +404,10 @@ App.prototype.route = function(target) {
     var route = this.findDestination(target);
     
     // redirect user to home if he tries to access confirmation page without placing an order
-    if(!einzl.order && route.id === 'confirmation') {
-        History.pushState("", 'Home', '/');
-        return false;
-    }
+//    if(!einzl.order && route.id === 'confirmation') {
+//        History.pushState("", 'Home', '/');
+//        return false;
+//    }
     
     // empty DOM but keep jQuery data (events and stuff)
     $('main').children('section').detach();

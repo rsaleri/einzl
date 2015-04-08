@@ -152,7 +152,7 @@ if ( $authenticated ) {
         
     } else if($action == 'processPayment') {
         
-        $oderID = $_POST['orderID'];
+        $orderID = $_POST['orderID'];
         
         
         
@@ -167,12 +167,26 @@ if ( $authenticated ) {
             'cancel_url' => 'https://einzlstck.fwd.wf/php/paypalreturn.php?orderID='.$orderID
         );
         
-        $data['payment'] = $moltin->post('checkout/payment/purchase/'.$oderID, $paypalArr);
+        $data['payment'] = $moltin->post('checkout/payment/purchase/'.$orderID, $paypalArr);
         
 //        $data['payment'] = $paypalArr;
         
         
-    }
+    } else if($action == 'completePayment') {
+		
+		$orderID = $_POST['orderID'];
+		$PayerID = $_POST['PayerID'];
+		$token = $_POST['token'];
+		
+		$paypalArr = array(
+			'token' => $token,
+			'payerid' => $PayerID
+		);
+		
+		// update order at moltin
+		$data['payment'] = $moltin->post('checkout/payment/complete_purchase/'.$orderID, $paypalArr);
+		
+	}
     
 } else {
     // Autentication failed

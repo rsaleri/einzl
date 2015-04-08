@@ -80,7 +80,7 @@ Checkout.prototype.initController = function() {
 					// track order with google analytics
 					self.trackOrder(einzl.order);
                     
-                    History.pushState("", 'Confirmation', '/confirmation');
+                    History.pushState("", 'Confirmation', '/confirmation?orderID=' + einzl.order.id);
                 } else {
 					notifyUser(einzl.copy.messages.nl_error, 'error');
 				}

@@ -11,26 +11,111 @@ var Confirmation = function(model) {
     
     Page.apply(this,arguments);
     
-    this.handleOrder();
-    
 };
 
 // inherit Experience prototype and all it's variables and functions
 Confirmation.prototype = Object.create(Page.prototype);
 Confirmation.prototype.constructor = Confirmation;
 
-Confirmation.prototype.handleOrder = function() {
+Confirmation.prototype.start = function() {
     
-    console.log(this.model);
-	
-	// show payment
-	
-	this.view.find('.button.pay').on('vclick', function() {
-		
-//		https://api.moltin.com/v1/checkout/payment/purchase/955849294299005894
-		
-		
-		
-	});
+    Page.prototype.start.call(this);
+    
+    if(this.view) {
+        this.handleAccess();
+    }
+    
     
 };
+
+Confirmation.prototype.handleAccess = function() {
+    
+    var self = this;
+	var parameters = getUrlParams();
+    
+    console.log(parameters);
+    
+    // redirect user to home if he tries to access confirmation page without placing an order
+    if(einzl.order || parameters.orderID) {
+        
+        
+        if(parameters.orderID) {
+            
+            var obj = {
+                action: 'getOrder',
+                orderID: parameters.orderID
+            };
+            
+            einzl.app.askServer(obj).done(function(data) {
+                
+                console.log(data);
+                
+                if(data.order && data.order.status) {
+                    einzl.order = data.order.result;
+                    self.createView().then(function() {
+                        self.view.appendTo($('main'));
+                    });
+                    
+                    
+                }
+                
+            });
+            
+        } else {
+            // check gateway
+            self.handlePayment();
+        }
+        
+        
+        
+    } else {
+        History.pushState("", 'Home', '/');
+    }
+	
+    
+    
+    
+};
+
+
+Confirmation.prototype.handlePayment = function() {
+    
+    var self = this;
+    
+    if(einzl.order.gateway.data.slug === 'paypal-express') {
+            
+        var payButton = self.view.find('.button.pay');
+
+        payButton.addClass('loading');
+
+        var obj = {
+            action: "processPayment",
+            orderID: einzl.order.id
+        }
+
+        einzl.app.askServer(obj).done(function(data) {
+
+            console.log(data);
+            payButton.removeClass('loading');
+
+            if(data.payment.status && data.payment.result.url) {
+
+                // show payment
+                payButton.on('vclick', function() {
+
+                    window.open(data.payment.result.url);
+
+                });
+
+            }
+
+        });
+
+
+        $('#pay-paypal').show();
+
+    } else {
+        $('#pay-manual').show();
+    }
+    
+}

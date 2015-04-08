@@ -65,17 +65,6 @@ Cart.prototype.getCart = function() {
 		if(data.cart) {
 			// save cart model
 			self.model = data.cart;
-			
-			// round to two decimals
-			self.model.totals.rounded.with_tax = self.model.totals.rounded.with_tax.toFixed(2);
-			self.model.totals.rounded.without_tax = self.model.totals.rounded.without_tax.toFixed(2);
-			
-			$.each(self.model.contents, function() {
-				
-				this.pricing.rounded.with_tax = this.pricing.rounded.with_tax.toFixed(2);
-				this.pricing.rounded.without_tax = this.pricing.rounded.without_tax.toFixed(2);
-				
-			});
 
 			// save id into user object
 			einzl.user.cart_id = data.cart.id;
@@ -145,6 +134,17 @@ Cart.prototype.insertIntoDOM = function() {
 Cart.prototype.renderView = function() {
     
     var self = this;
+    
+    // round to two decimals (move this into PHP at some point)
+    this.model.totals.rounded.with_tax = this.model.totals.rounded.with_tax.toFixed(2);
+    this.model.totals.rounded.without_tax = this.model.totals.rounded.without_tax.toFixed(2);
+
+    $.each(this.model.contents, function() {
+
+        this.pricing.rounded.with_tax = this.pricing.rounded.with_tax.toFixed(2);
+        this.pricing.rounded.without_tax = this.pricing.rounded.without_tax.toFixed(2);
+
+    });
     
     // render cart handlebars template
     var html = this.template(this.model);

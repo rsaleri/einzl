@@ -116,7 +116,6 @@
 	</div>
     <div id="notification" class="hide"><span class="message"></span></div>
     
-    
     <!-- javascript -->
 	<script src="js/libs/jquery-1.11.0.min.js"></script>
 	<script src="js/libs/jquery.mobile.custom.min.js"></script>

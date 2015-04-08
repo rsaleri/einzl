@@ -68,6 +68,20 @@ if ( $authenticated ) {
         // insert cart ID into response
         $data['cart']['id'] = $cartID;
         
+    } else if($action == 'getOrder') {
+        
+        
+        try
+        {
+            $orderID = $_POST['orderID'];
+            $data['order'] = $moltin->get('order/'.$orderID);
+            
+        } 
+        catch (\Exception $e)
+        {
+            $data = $e->getMessage();
+        }
+        
     } else if($action == 'removeFromCart') {
         
         $productKey = $_POST['product']['key'];
@@ -134,6 +148,28 @@ if ( $authenticated ) {
 			
         }
         
+        
+        
+    } else if($action == 'processPayment') {
+        
+        $oderID = $_POST['orderID'];
+        
+        
+        
+//        $paypalArr = array(
+//            'return_url' => $_SERVER['SERVER_NAME'].'/confirmation/',
+//            'cancel_url' => $_SERVER['SERVER_NAME'].'/confirmation/'
+//        );
+        
+        // local development test from https://forwardhq.com/
+        $paypalArr = array(
+            'return_url' => 'https://einzlstck.fwd.wf/php/paypalreturn.php?orderID='.$orderID,
+            'cancel_url' => 'https://einzlstck.fwd.wf/php/paypalreturn.php?orderID='.$orderID
+        );
+        
+        $data['payment'] = $moltin->post('checkout/payment/purchase/'.$oderID, $paypalArr);
+        
+//        $data['payment'] = $paypalArr;
         
         
     }

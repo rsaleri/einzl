@@ -427,6 +427,9 @@ App.prototype.route = function(target) {
     
     // edit document title
     document.title = route.title[einzl.user.lang] + ' - Einzelstück';
+	
+	// add body attribute
+	$('body').attr('active-page', route.id);
     
     // send pageview to GA
     ga('send', 'pageview');

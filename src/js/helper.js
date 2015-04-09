@@ -39,7 +39,7 @@ function notifyUser(msg, type) {
     var el = $('#notification'),
         span = el.find('.message');
 
-    el.addClass(type).removeClass('hide');
+    el.removeClass('success info error').addClass(type).removeClass('hide');
     span.text(msg);
 
     clearTimeout(t1);

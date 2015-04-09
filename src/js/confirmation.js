@@ -131,7 +131,7 @@ Confirmation.prototype.handlePayment = function(parameters) {
 	} else if(parameters.PayerID && parameters.paypal) {
 		
 		// just paid by paypal
-		$('#paid').show();
+		self.view.find('.button.pay').addClass('loading').show();
 		// set order status to "Paid"
 		var obj = {
 			action: 'completePayment',

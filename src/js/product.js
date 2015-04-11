@@ -135,4 +135,9 @@ Product.prototype.initController = function() {
     if(einzl.user.likes[this.model.id]) {
         this.view.find('.drop.like').addClass('liked');
     }
+	
+	// add stock class
+	if(this.model.stock_level == 0) {
+		this.view.addClass('out-of-stock');
+	}
 };

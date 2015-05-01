@@ -119,7 +119,9 @@
     <!-- javascript -->
 	<script src="js/libs/jquery-1.11.0.min.js"></script>
 	<script src="js/libs/jquery.mobile.custom.min.js"></script>
-    <script src="js/libs/jquery.history.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+	<script src="js/libs/backbone-min.js"></script>
+	<script src="js/libs/jquery.history.js"></script>
     <script src="js/libs/handlebars-v2.0.0.js"></script>
     <!-- media queries for IE8 -->
 	<!--[if lt IE 9]>

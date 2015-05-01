@@ -31,7 +31,7 @@ var PageView = Backbone.View.extend({
 			
 			self.el = $(html);
 
-			console.log(self.el);
+			$('main').html(self.el);
 		});
 		
 	},
@@ -49,20 +49,39 @@ var PageView = Backbone.View.extend({
 var Router = Backbone.Router.extend({
 
 	routes: {
-		"*default": "page"
+		"home": "home",
+		"rings": "rings",
+		"ringe": "rings",
+		"*default": "home"
 	},
 
-	page: function(data) {
+	home: function(data) {
 		
 		// start the view
 		console.log('start view');
+		console.log(data);
+		
 		if(!Einzlstck.Views.Home) {
 			Einzlstck.Views.Home = new PageView({
 				hbsPath: 'pages/home.hbs'
 			});
 		}
 		
+		
 		Einzlstck.Views.Home.render();
+		
+	},
+	
+	rings: function(data) {
+		
+		if(!Einzlstck.Views.Rings) {
+			Einzlstck.Views.Rings = new PageView({
+				hbsPath: 'pages/rings.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Rings.render();
 		
 	}
 

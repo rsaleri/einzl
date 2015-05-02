@@ -13,14 +13,14 @@ var Shop = Backbone.Model.extend({
 	getTemplate: function(path) {
 		return $.get('/templates/'+path).then(function(src) {
 			
-			// insert copy into this HTML string before we do the handlebars magic
+			// is the copy already available?
 			return Einzlstck.Models.Copy.model.then(function(copy) {
 				
+				// insert copy into this html string
 				src = Einzlstck.Models.Copy.insertCopy(src, copy);
 				
+				// return a handlebars tempate with copy pre-filled
 				return Handlebars.compile(src);
-				
-				
 			});
 			
 			

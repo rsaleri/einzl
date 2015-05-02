@@ -16,30 +16,42 @@ var Shop = Backbone.Model.extend({
 
 var PageView = Backbone.View.extend({
 	
-	template: function() {
-		console.log('template func');
-		console.log(this.model.hbsPath);
-		return Einzlstck.Models.Shop.getTemplate(this.model.hbsPath);
-		
-	},
-	
 	render: function() {
 		var self = this;
-		return this.template().then(function(hbs) {
-			
+		return this.template.then(function(hbs) {
 			var html = hbs();
 			
 			self.el = $(html);
 
 			$('main').html(self.el);
+			
+			self.initController();
 		});
 		
 	},
 	
 	initialize: function(model) {
 		
+		var self = this;
+		
+		// page specific data
 		this.model = model;
-		console.log(this.model);
+		this.template = $.Deferred();
+		
+		// get the template
+		Einzlstck.Models.Shop.getTemplate(this.model.hbsPath).then(function(hbs) {
+			
+			// resolve template deferred
+			self.template.resolve(hbs);
+			
+		});
+		
+	},
+	
+	initController: function() {
+		
+		
+		
 	}
 	
 	
@@ -56,10 +68,6 @@ var Router = Backbone.Router.extend({
 	},
 
 	home: function(data) {
-		
-		// start the view
-		console.log('start view');
-		console.log(data);
 		
 		if(!Einzlstck.Views.Home) {
 			Einzlstck.Views.Home = new PageView({

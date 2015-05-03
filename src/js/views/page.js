@@ -62,7 +62,7 @@ var PageView = Backbone.View.extend({
 					$.when(product.view.template).then(function() {
 						
 						// yes, so insert the products view into the product container on this page
-						container.html(product.view.el);
+						product.view.el.clone(true).appendTo(container);
 						
 					});
 					

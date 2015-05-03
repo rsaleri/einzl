@@ -94,8 +94,6 @@ var ProductView = Backbone.View.extend({
 			
 			self.el = $(html);
 			
-			
-			
 		});
 		
 	}

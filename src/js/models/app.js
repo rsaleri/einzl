@@ -16,8 +16,6 @@ var Shop = Backbone.Model.extend({
 			
 		});
 		
-		
-		
 	},
 	
 	getTemplate: function(path) {
@@ -116,5 +114,4 @@ $(document).ready(function() {
 	Einzlstck.Models.Shop = new Shop();
 	Einzlstck.Router = new Router();
 	
-	Backbone.history.start({pushState: true});
 });

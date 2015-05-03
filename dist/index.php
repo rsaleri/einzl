@@ -60,15 +60,15 @@
                     <div class="drop"></div>
                     <div class="drop"></div>
                 </div>
-                <div class="title"><a href="/home" title="Home"><span data-copy="title_long"></span></a></div>
+                <div class="title"><a href="/home" title="Home"><span data-copy="title_long">Einzelstück</span></a></div>
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
-                        <li><a data-copy="nav_01" href="/home" title="Home" class="active"></a></li>
-                        <li><a data-copy="nav_02" href="/rings" title="Rings"></a></li>
-                        <li><a data-copy="nav_05" href="/pendants" title="Pendandts"></a></li>
+                        <li><a data-copy="nav_01" href="/home" title="Home" class="active">Home</a></li>
+                        <li><a data-copy="nav_02" href="/rings" title="Ringe">Ringe</a></li>
+                        <li><a data-copy="nav_05" href="/pendants" title="Anhänger">Anhänger</a></li>
 <!--                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>-->
-                        <li><a data-copy="nav_04" href="/bracelets" title="Bracelets"></a></li>
+                        <li><a data-copy="nav_04" href="/bracelets" title="Armbänder">Armbänder</a></li>
                         <li class="likes"><a data-copy="nav_06" href="/likes" title="Your Likes"></a></li>
                     </ul>
                 </nav>
@@ -105,10 +105,10 @@
 					<a href="/shipping" title="Versand und Rückgabe">Versand und Rückgabe</a> | 
 					<a href="/privacy" title="Datenschutz">Datenschutz</a> |
 <!--					<a href="/f12" title="F12" data-copy="footer_link_03">F12</a> -->
-					<a href="/imprint" title="Impressum" data-copy="footer_link_01"></a>
+					<a href="/imprint" title="Impressum" data-copy="footer_link_01">Impressum</a>
 				</div>
 				<div class="copyright">
-					<span data-copy="footer_copyright"></span>
+					<span data-copy="footer_copyright">&copy; Einzelstück 2015</span>
 				</div>
                 
             </footer>

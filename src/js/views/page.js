@@ -42,6 +42,8 @@ var PageView = Backbone.View.extend({
 	
 	insertProducts: function() {
 		
+		console.log('insert products');
+		
 		// find all products on this page
 		this.el.find('[data-product]').each(function() {
 			

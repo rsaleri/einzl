@@ -1,4 +1,23 @@
 var Router = Backbone.Router.extend({
+	
+	initialize: function() {
+		
+		Backbone.history.start({pushState: true});
+		
+		// handle internal links
+		$(document).on('vclick', 'a:not([target="_blank"])', function(e) {
+			
+			// prevent page reload
+			e.preventDefault();
+			
+			// navigate to the target
+			var href = $(this).attr('href');
+			Einzlstck.Router.navigate(href, true);
+			
+		});
+		
+		
+	},
 
 	routes: {
 		"home": "home",
@@ -23,6 +42,8 @@ var Router = Backbone.Router.extend({
 	},
 	
 	rings: function(data) {
+		
+		console.log('route to rings');
 		
 		if(!Einzlstck.Views.Rings) {
 			Einzlstck.Views.Rings = new PageView({

@@ -66,8 +66,6 @@ var PageView = Backbone.View.extend({
 						
 					});
 					
-					
-					
 					return false;
 				}
 				

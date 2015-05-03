@@ -20,10 +20,30 @@ var Router = Backbone.Router.extend({
 	},
 
 	routes: {
+		
 		"home": "home",
+		
 		"rings": "rings",
 		"ringe": "rings",
+		
+		"armbaender": "bracelets",
+		"bracelets": "bracelets",
+		
+		"anhaenger": "pendants",
+		"pendants": "pendants",
+		
+		"marke": "brand",
+		"brand": "brand",
+		
+		"impressum": "imprint",
+		"imprint": "imprint",
+		
+		"shipping": "shipping",
+		
+		"privacy": "privacy",
+		
 		"*default": "home"
+		
 	},
 
 	home: function(data) {
@@ -53,6 +73,96 @@ var Router = Backbone.Router.extend({
 		
 		
 		Einzlstck.Views.Rings.render();
+		
+	},
+	
+	bracelets: function(data) {
+		
+		console.log('route to bracelets');
+		
+		if(!Einzlstck.Views.Bracelets) {
+			Einzlstck.Views.Bracelets = new PageView({
+				hbsPath: 'pages/bracelets.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Bracelets.render();
+		
+	},
+	
+	pendants: function(data) {
+		
+		console.log('route to pendants');
+		
+		if(!Einzlstck.Views.Pendants) {
+			Einzlstck.Views.Pendants = new PageView({
+				hbsPath: 'pages/pendants.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Pendants.render();
+		
+	},
+	
+	brand: function(data) {
+		
+		console.log('route to brand');
+		
+		if(!Einzlstck.Views.Brand) {
+			Einzlstck.Views.Brand = new PageView({
+				hbsPath: 'pages/brand.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Brand.render();
+		
+	},
+	
+	imprint: function(data) {
+		
+		console.log('route to imprint');
+		
+		if(!Einzlstck.Views.Imprint) {
+			Einzlstck.Views.Imprint = new PageView({
+				hbsPath: 'pages/imprint.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Imprint.render();
+		
+	},
+	
+	shipping: function(data) {
+		
+		console.log('route to shipping');
+		
+		if(!Einzlstck.Views.Shipping) {
+			Einzlstck.Views.Shipping = new PageView({
+				hbsPath: 'pages/shipping.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Shipping.render();
+		
+	},
+	
+	privacy: function(data) {
+		
+		console.log('route to privacy');
+		
+		if(!Einzlstck.Views.Privacy) {
+			Einzlstck.Views.Privacy = new PageView({
+				hbsPath: 'pages/privacy.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Privacy.render();
 		
 	}
 

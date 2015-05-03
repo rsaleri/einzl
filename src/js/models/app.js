@@ -3,14 +3,25 @@ var Shop = Backbone.Model.extend({
 	
 	initialize: function(model) {
 		
+		var self = this;
 		
+		// go get the copy
+		Einzlstck.Models.Copy = new Lang('de');
 		
+		// after we have our copy...
+		Einzlstck.Models.Copy.model.then(function() {
+			
+			// ... get products from moltin
+			self.getProducts();
+			
+		});
 		
 		
 		
 	},
 	
 	getTemplate: function(path) {
+		
 		return $.get('/templates/'+path).then(function(src) {
 			
 			// is the copy already available?
@@ -21,9 +32,41 @@ var Shop = Backbone.Model.extend({
 				
 				// return a handlebars tempate with copy pre-filled
 				return Handlebars.compile(src);
+				
 			});
 			
 			
+		});
+		
+	},
+	
+	getProducts: function() {
+		
+		var self = this;
+		
+		// get product models
+		var obj = {
+			action: 'getProducts'
+		};
+		
+		return this.askServer(obj).done(function(data) {
+
+			if(data && data.status) {
+				
+				Einzlstck.Models.Products = [];
+
+				$.each(data.result, function(i) {
+					Einzlstck.Models.Products[i] = new ProductModel(this);
+				});
+				
+				Einzlstck.Deferreds.products.resolve(data);
+				
+				
+			} else {
+				notifyUser(einzl.copy.messages.noConnection, 'error');
+				console.log('GET PRODUCTS FAILED');
+				console.log(data);
+			}
 		});
 	},
 	
@@ -59,18 +102,19 @@ $(document).ready(function() {
 		
 		Models: {
 			
-			Shop: new Shop(),
-			Copy: new Lang('de')
-			
 		},
 		Views: {
 			
-			
-			
 		},
-		Router: new Router()
+		Deferreds: {
+			products: $.Deferred()
+		}
 		
 	};
+	
+	// let's to this
+	Einzlstck.Models.Shop = new Shop();
+	Einzlstck.Router = new Router();
 	
 	Backbone.history.start({pushState: true});
 });

@@ -501,12 +501,12 @@ $(document).ready(function() {
     };
     
     // init app
-    einzl.app = new App(config);
+//    einzl.app = new App(config);
     
     // route to URL
-    einzl.app.route(null);
+//    einzl.app.route(null);
     
     // init cart
-    einzl.cart = new Cart();
+//    einzl.cart = new Cart();
 
 });

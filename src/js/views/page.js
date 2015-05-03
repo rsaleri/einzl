@@ -1,7 +1,9 @@
 var PageView = Backbone.View.extend({
 	
 	render: function() {
+		
 		var self = this;
+		
 		return this.template.then(function(hbs) {
 			var html = hbs();
 			
@@ -10,6 +12,12 @@ var PageView = Backbone.View.extend({
 			$('main').html(self.el);
 			
 			self.initController();
+			
+			Einzlstck.Deferreds.products.then(function() {
+				self.insertProducts();
+			});
+			
+			
 		});
 		
 	},
@@ -27,6 +35,41 @@ var PageView = Backbone.View.extend({
 			
 			// resolve template deferred
 			self.template.resolve(hbs);
+			
+		});
+		
+	},
+	
+	insertProducts: function() {
+		
+		// find all products on this page
+		this.el.find('[data-product]').each(function() {
+			
+			var container = $(this);
+			var prodID = container.attr('data-product');
+			
+			// loop through all products
+			$.each(Einzlstck.Models.Products, function() {
+				
+				var product = this;
+				
+				// do we have a product match?
+				if(product.data.id === prodID) {
+					
+					// is the product template availble?
+					$.when(product.view.template).then(function() {
+						
+						// yes, so insert the products view into the product container on this page
+						container.html(product.view.el);
+						
+					});
+					
+					
+					
+					return false;
+				}
+				
+			});
 			
 		});
 		

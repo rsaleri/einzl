@@ -9,6 +9,8 @@ var Router = Backbone.Router.extend({
 
 	home: function(data) {
 		
+		console.log('route to home');
+		
 		if(!Einzlstck.Views.Home) {
 			Einzlstck.Views.Home = new PageView({
 				hbsPath: 'pages/home.hbs'

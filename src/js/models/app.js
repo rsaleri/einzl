@@ -113,5 +113,5 @@ $(document).ready(function() {
 	// let's to this
 	Einzlstck.Models.Shop = new Shop();
 	Einzlstck.Router = new Router();
-	
+	Einzlstck.Models.Cart = new Basket();
 });

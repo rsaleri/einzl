@@ -20,6 +20,7 @@ var ProductModel = Backbone.Model.extend({
 		
 		console.log('add this product to cart: ' + this.data.id);
 		
+		return Einzlstck.Models.Cart.addItem(this.data.id);
 	},
 	
 	initController: function() {

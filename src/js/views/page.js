@@ -8,7 +8,11 @@ var PageView = Backbone.View.extend({
 			var html = hbs();
 			
 			self.el = $(html);
-
+			
+			// scroll to top
+			$('html, body').scrollTop(0);
+			
+			// insert into DOM
 			$('main').html(self.el);
 			
 			self.initController();

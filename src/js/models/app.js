@@ -16,6 +16,42 @@ var Shop = Backbone.Model.extend({
 			
 		});
 		
+		this.initEvents();
+		
+	},
+	
+	initEvents: function() {
+		
+		$(document).on('vclick', '.cart-button', function(e) {
+		
+			var cartButton = $(e.currentTarget);
+			var menuButton = $('.hamburger-button');
+
+			if(cartButton.hasClass('open')) {
+
+				// close cart
+				cartButton.removeClass('open')
+				$('aside.cart-container').removeClass('open');
+				$('body').removeClass('no-scroll-mobile');
+
+			} else {
+
+				// open cart
+				cartButton.addClass('open')
+				$('aside.cart-container').addClass('open');
+				$('body').addClass('no-scroll-mobile');
+
+				// close menu
+				menuButton.removeClass('open');
+				$('header nav').removeClass('open');
+
+
+			}
+
+			e.preventDefault();
+			e.stopPropagation();
+		});
+		
 	},
 	
 	getTemplate: function(path) {

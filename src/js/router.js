@@ -32,6 +32,12 @@ var Router = Backbone.Router.extend({
 		"anhaenger": "pendants",
 		"pendants": "pendants",
 		
+		"checkout": "checkout",
+		"kasse": "checkout",
+		
+		"confirmation": "confirmation",
+		"bestaetigung": "confirmation",
+		
 		"marke": "brand",
 		"brand": "brand",
 		
@@ -43,6 +49,36 @@ var Router = Backbone.Router.extend({
 		"privacy": "privacy",
 		
 		"*default": "home"
+		
+	},
+	
+	checkout: function(data) {
+		
+		console.log('route to home');
+		
+		if(!Einzlstck.Views.Checkout) {
+			Einzlstck.Views.Checkout = new PageView({
+				hbsPath: 'pages/checkout.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Checkout.render();
+		
+	},
+	
+	confirmation: function(data) {
+		
+		console.log('route to home');
+		
+		if(!Einzlstck.Views.Confirmation) {
+			Einzlstck.Views.Confirmation = new PageView({
+				hbsPath: 'pages/confirmation.hbs'
+			});
+		}
+		
+		
+		Einzlstck.Views.Confirmation.render();
 		
 	},
 

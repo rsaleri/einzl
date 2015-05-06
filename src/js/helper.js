@@ -26,7 +26,7 @@ function isLocalStorageNameSupported() {
 function getUrlParams() {
     var url = location.search.substring(1);
     var params = url?JSON.parse('{"' + url.replace(/&/g, '","').replace(/=/g,'":"') + '"}',
-    function(key, value) { return key===""?value:decodeURIComponent(value) }):{}
+    function(key, value) { return key===""?value:decodeURIComponent(value); }):{};
     
     return params;
 }

@@ -73,7 +73,7 @@ var Basket = Backbone.Model.extend({
 			action: 'getCart',
 			cart: {
 				// TODO: get id if already available from localStorage
-				id: null
+				id: Einzlstck.Models.User.data.cart_id ? Einzlstck.Models.User.data.cart_id : null
 			}
 		};
 
@@ -127,7 +127,7 @@ var BasketView = Backbone.View.extend({
 
 		});
 		
-        get the template
+        // get the template
 		return this.template.then(function(hbs) {
 			
             // render it

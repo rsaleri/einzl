@@ -1,6 +1,12 @@
-var User = new Backbone.Model.extend({
+var User = Backbone.Model.extend({
     
     data: {
+        
+    },
+    
+    initialize: function() {
+        
+        this.getFromLocalStorage();
         
     },
     

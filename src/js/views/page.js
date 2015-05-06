@@ -1,7 +1,7 @@
 var PageView = Backbone.View.extend({
 	
 	render: function() {
-		
+        
 		var self = this;
 		
 		return this.template.then(function(hbs) {

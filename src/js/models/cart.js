@@ -127,12 +127,16 @@ var BasketView = Backbone.View.extend({
 
 		});
 		
+        get the template
 		return this.template.then(function(hbs) {
 			
+            // render it
 			var html = hbs(data);
 			
+            // save it
 			self.el = $(html);
 			
+            // enable clicky stuff
 			self.initController();
 			
 			// insert into DOM
@@ -166,7 +170,6 @@ var BasketView = Backbone.View.extend({
 				li.addClass('loading');
 				Einzlstck.Models.Cart.removeItem(product_key);
 			}
-
 
 			e.stopPropagation();
 			e.preventDefault();

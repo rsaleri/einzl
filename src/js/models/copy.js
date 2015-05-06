@@ -3,10 +3,8 @@ var Lang = Backbone.Model.extend({
 	
 	initialize: function(language) {
 		
-		
 		this.language = language;
-		
-		this.model = $.Deferred();
+        
 		this.getCopy();
 		
 		
@@ -19,7 +17,8 @@ var Lang = Backbone.Model.extend({
 		return $.getJSON('copy/' + this.language + '.json', function(data) {
 
 			// resolve the deferred to let everyone know that we learned words
-			self.model.resolve(data.copy);
+			Einzlstck.Deferreds.copy.resolve(data.copy);
+            self.data = data.copy;
 
 		});
 		

@@ -4,24 +4,30 @@ var Shop = Backbone.Model.extend({
 	initialize: function(model) {
 		
 		var self = this;
+        
+        // init some basic events (clicky stuff and all that)
+        this.initEvents();
 		
 		// go get the copy
 		Einzlstck.Models.Copy = new Lang('de');
 		
 		// after we have our copy...
-		Einzlstck.Models.Copy.model.then(function() {
+		Einzlstck.Deferreds.copy.then(function(copy) {
 			
 			// ... get products from moltin
 			self.getProducts();
 			
+            // ... and greet the user
+            window.setTimeout(function() {
+                notifyUser(copy.messages.welcome[getRandomInt(0, copy.messages.welcome.length -1)], 'success');
+            }, 2000);
 		});
-		
-		this.initEvents();
 		
 	},
 	
 	initEvents: function() {
 		
+        // this is the cart button
 		$(document).on('vclick', '.cart-button', function(e) {
 		
 			var cartButton = $(e.currentTarget);
@@ -51,6 +57,37 @@ var Shop = Backbone.Model.extend({
 			e.preventDefault();
 			e.stopPropagation();
 		});
+        
+        // this is the menu button
+        $(document).on('vclick', '.hamburger-button', function(e) {
+		
+            var menuButton = $(e.currentTarget);
+            var cartButton = $('.cart-button');
+
+            if(menuButton.hasClass('open')) {
+
+                // close menu
+                menuButton.removeClass('open');
+                $('header nav').removeClass('open');
+                $('body').removeClass('no-scroll-mobile');
+
+            } else {
+
+                // open menu
+                menuButton.addClass('open');
+                $('header nav').addClass('open');
+                $('body').addClass('no-scroll-mobile');
+
+                // close cart
+                cartButton.removeClass('open')
+                $('aside.cart-container').removeClass('open');
+
+            }
+
+
+            e.preventDefault();
+            e.stopPropagation();
+        });
 		
 	},
 	
@@ -59,7 +96,7 @@ var Shop = Backbone.Model.extend({
 		return $.get('/templates/'+path).then(function(src) {
 			
 			// is the copy already available?
-			return Einzlstck.Models.Copy.model.then(function(copy) {
+			return Einzlstck.Deferreds.copy.then(function(copy) {
 				
 				// insert copy into this html string
 				src = Einzlstck.Models.Copy.insertCopy(src, copy);
@@ -97,7 +134,7 @@ var Shop = Backbone.Model.extend({
 				
 				
 			} else {
-				notifyUser(einzl.copy.messages.noConnection, 'error');
+				notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
 				console.log('GET PRODUCTS FAILED');
 				console.log(data);
 			}
@@ -141,7 +178,8 @@ $(document).ready(function() {
 			
 		},
 		Deferreds: {
-			products: $.Deferred()
+			products: $.Deferred(),
+            copy: $.Deferred()
 		}
 		
 	};

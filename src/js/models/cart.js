@@ -6,8 +6,6 @@ var Basket = Backbone.Model.extend({
 		
 		this.getCart().then(function() {
 			
-			console.log('got cart');
-			
 			self.view.render(self.data).then(function() {
 				
 			});
@@ -83,9 +81,12 @@ var Basket = Backbone.Model.extend({
 			if(data.cart) {
 				// save cart model
 				self.data = data.cart;
-
-				// TODO: save id into user object
-				
+                
+                // save to user model
+				Einzlstck.Models.User.data.cart_id = data.cart.id;
+                
+                // save user into localStorage. TODO: Replace this with a listener on the user model (auto-save onChange)
+                Einzlstck.Models.User.saveToLocalstorage();
 				
 			} else {
 				notifyUser(einzl.copy.messages.noConnection, 'error');

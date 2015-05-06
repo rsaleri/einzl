@@ -10,6 +10,14 @@ var User = Backbone.Model.extend({
         
     },
     
+    saveToLocalstorage: function() {
+        
+        if(isLocalStorageNameSupported()) {
+            localStorage.einzl_user = JSON.stringify(this.data);
+        }
+        
+    },
+    
     getFromLocalStorage: function() {
         
         if(isLocalStorageNameSupported() && localStorage.einzl_user) {

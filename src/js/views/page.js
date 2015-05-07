@@ -80,8 +80,59 @@ var PageView = Backbone.View.extend({
 	},
 	
 	initController: function() {
+        
+        var self = this;
 		
-		
+        // init email subscribe button
+        this.el.find('.newsletter-form').each(function() {
+            var form = $(this);
+            var input = form.find('input[type="email"]'),
+                button = form.find('button.subscribe[type="submit"]');
+
+            // enable subscribe button
+            button.on('vclick', function(e) {
+
+                // stop default stuff
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+
+                if(!button.hasClass('loading')) {
+
+                    // check if entered email is valid
+                    if(form[0].checkValidity() && input.val().length > 0) {
+
+                        button.addClass('loading');
+
+                        // save entered user data
+                        var userData = {
+                            email: input.val()
+                        };
+
+                        // subscribe
+                        Einzlstck.Models.Shop.subscribe(userData)
+                        .always(function(data) {
+                            button.removeClass('loading');
+                            input.val('');
+                        })
+                        .done(function() {
+                            button.addTempClass('success', 2000);
+                        })
+                        .fail(function() {
+                            button.addTempClass('fail', 2000);
+                        });
+
+                    } else {
+
+                        // email is invalid
+                        input.addClass('error');
+                        input.one('focus', function() {
+                            input.removeClass('error');
+                        });
+                    }
+                }
+            });
+        });
 		
 	}
 	

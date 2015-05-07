@@ -21,6 +21,7 @@ var Shop = Backbone.Model.extend({
             window.setTimeout(function() {
                 notifyUser(copy.messages.welcome[getRandomInt(0, copy.messages.welcome.length -1)], 'success');
             }, 2000);
+			
 		});
 		
 	},

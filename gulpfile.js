@@ -38,6 +38,7 @@ gulp.task('scripts', function() {
       'src/js/helper.js',
       'src/js/app.js',
       'src/js/page.js',
+	  'src/js/views/page.js',
       'src/js/**/*.js'
   ])
     .pipe(jshint('.jshintrc'))

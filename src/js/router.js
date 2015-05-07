@@ -57,7 +57,7 @@ var Router = Backbone.Router.extend({
 		console.log('route to home');
 		
 		if(!Einzlstck.Views.Checkout) {
-			Einzlstck.Views.Checkout = new PageView({
+			Einzlstck.Views.Checkout = new CheckoutView({
 				hbsPath: 'pages/checkout.hbs'
 			});
 		}

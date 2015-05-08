@@ -1,3 +1,14 @@
+var PageModel = Backbone.Model.extend({
+    
+    initialize: function(data) {
+        
+        this.data = data;
+        this.view = new PageView(this.data.hbsPath);
+        
+    }
+    
+});
+
 var PageView = Backbone.View.extend({
 	
 	render: function() {
@@ -26,16 +37,13 @@ var PageView = Backbone.View.extend({
 		
 	},
 	
-	initialize: function(model) {
+	initialize: function(hbsPath) {
 		
 		var self = this;
 		
-		// page specific data
-		this.model = model;
-		
 		// get the template
 		this.template = $.Deferred();
-		Einzlstck.Models.Shop.getTemplate(this.model.hbsPath).then(function(hbs) {
+		Einzlstck.Models.Shop.getTemplate(hbsPath).then(function(hbs) {
 			
 			// resolve template deferred
 			self.template.resolve(hbs);

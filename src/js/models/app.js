@@ -190,7 +190,7 @@ $(document).ready(function() {
 	
 	
 	window.Einzlstck = {
-		
+		Pages: {},
 		Models: {
 			
 		},
@@ -206,7 +206,7 @@ $(document).ready(function() {
 	
 	// let's to this
 	Einzlstck.Models.Shop = new Shop();
-	Einzlstck.Router = new Router();
+	Einzlstck.Router = new Router(config);
     Einzlstck.Models.User = new User();
 	Einzlstck.Models.Cart = new Basket();
 });

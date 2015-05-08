@@ -1,6 +1,8 @@
 var Router = Backbone.Router.extend({
 	
-	initialize: function() {
+	initialize: function(config) {
+        
+        this.config = config;
 		
 		Backbone.history.start({pushState: true});
 		
@@ -20,35 +22,23 @@ var Router = Backbone.Router.extend({
 	},
 
 	routes: {
+		":page": "page",
+        "*default": "page"
+	},
+    
+    page: function(target) {		
+        
+        var slug = target ? "/" + target : "/";
+        
+        console.log('route to ' + slug);
+        
+        var config = this.getRouteConfig(slug);
 		
-		"home": "home",
+		if(!Einzlstck.Pages[config.id]) {
+			Einzlstck.Pages[config.id] = new PageModel(config);
+		}
 		
-		"rings": "rings",
-		"ringe": "rings",
-		
-		"armbaender": "bracelets",
-		"bracelets": "bracelets",
-		
-		"anhaenger": "pendants",
-		"pendants": "pendants",
-		
-		"checkout": "checkout",
-		"kasse": "checkout",
-		
-		"confirmation": "confirmation",
-		"bestaetigung": "confirmation",
-		
-		"marke": "brand",
-		"brand": "brand",
-		
-		"impressum": "imprint",
-		"imprint": "imprint",
-		
-		"shipping": "shipping",
-		
-		"privacy": "privacy",
-		
-		"*default": "home"
+		Einzlstck.Pages[config.id].view.render();
 		
 	},
 	
@@ -81,125 +71,50 @@ var Router = Backbone.Router.extend({
 		Einzlstck.Views.Confirmation.render();
 		
 	},
+    
+    getRouteConfig: function(target) {
+        // find target (slug) in this.model.routes
 
-	home: function(data) {
-		
-		console.log('route to home');
-		
-		if(!Einzlstck.Views.Home) {
-			Einzlstck.Views.Home = new PageView({
-				hbsPath: 'pages/home.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Home.render();
-		
-	},
-	
-	rings: function(data) {
-		
-		console.log('route to rings');
-		
-		if(!Einzlstck.Views.Rings) {
-			Einzlstck.Views.Rings = new PageView({
-				hbsPath: 'pages/rings.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Rings.render();
-		
-	},
-	
-	bracelets: function(data) {
-		
-		console.log('route to bracelets');
-		
-		if(!Einzlstck.Views.Bracelets) {
-			Einzlstck.Views.Bracelets = new PageView({
-				hbsPath: 'pages/bracelets.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Bracelets.render();
-		
-	},
-	
-	pendants: function(data) {
-		
-		console.log('route to pendants');
-		
-		if(!Einzlstck.Views.Pendants) {
-			Einzlstck.Views.Pendants = new PageView({
-				hbsPath: 'pages/pendants.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Pendants.render();
-		
-	},
-	
-	brand: function(data) {
-		
-		console.log('route to brand');
-		
-		if(!Einzlstck.Views.Brand) {
-			Einzlstck.Views.Brand = new PageView({
-				hbsPath: 'pages/brand.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Brand.render();
-		
-	},
-	
-	imprint: function(data) {
-		
-		console.log('route to imprint');
-		
-		if(!Einzlstck.Views.Imprint) {
-			Einzlstck.Views.Imprint = new PageView({
-				hbsPath: 'pages/imprint.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Imprint.render();
-		
-	},
-	
-	shipping: function(data) {
-		
-		console.log('route to shipping');
-		
-		if(!Einzlstck.Views.Shipping) {
-			Einzlstck.Views.Shipping = new PageView({
-				hbsPath: 'pages/shipping.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Shipping.render();
-		
-	},
-	
-	privacy: function(data) {
-		
-		console.log('route to privacy');
-		
-		if(!Einzlstck.Views.Privacy) {
-			Einzlstck.Views.Privacy = new PageView({
-				hbsPath: 'pages/privacy.hbs'
-			});
-		}
-		
-		
-		Einzlstck.Views.Privacy.render();
-		
-	}
+        // define variable which will be returned
+        var route = null; 
+
+        // loop through pre-defined routes
+        $.each(this.config, function() {
+            var match = false;
+
+            // check their slugs
+            $.each(this.slug, function(i, v) {
+
+                if(v === target) {
+                    // found the requested target slug
+                    match = true;
+                    // cancel loop
+                    return false;
+                }
+            });
+
+            if(match) {
+            // found route
+
+                // save route to return it
+                route = this;
+
+                // cancel loop
+                return false;
+            }
+
+        });
+
+        if(route) {
+            // route was found, return it
+            return route;
+        } else {
+            // requested URL doesn't exist, send to 404
+            return this.getRouteConfig('/404');
+        }
+
+
+
+    }
 
 });

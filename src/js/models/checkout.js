@@ -2,12 +2,11 @@ var CheckoutModel = PageModel.extend({
 	
 	initialize: function(data) {
         
+        var self = this;
+        
         this.data = data;
         this.view = new CheckoutView(this.data.hbsPath);
         this.view.model = this;
-    },
-    
-    test: function() {
         
     }
 	
@@ -16,6 +15,27 @@ var CheckoutModel = PageModel.extend({
 
 var CheckoutView = PageView.extend({
     
+    insertAddresses: function() {
+        
+        var self = this;
+        
+        // are there addresses?
+        if(Einzlstck.Models.User.data.addresses.length > 0) {
+            
+            // yup, insert them
+            Einzlstck.Models.User.views.addressList.render(Einzlstck.Models.User.data);
+            
+        } else {
+            
+            // nope, open the form
+            this.el.find('#billing-address').addClass('open-form');
+            
+        }
+        
+        
+        
+    },
+    
     initController: function() {
         
         PageView.prototype.initController.apply(this);
@@ -23,6 +43,11 @@ var CheckoutView = PageView.extend({
         
         var self = this;    
         console.log('init controller');
+        
+        
+        // insert addresses
+        this.insertAddresses();
+        
         // enable new address button
         this.el.find('.new-address-button').on('vclick', function(e) {
             $(e.currentTarget).closest('.unit').addClass('open-form');
@@ -54,8 +79,35 @@ var CheckoutView = PageView.extend({
             e.stopPropagation();
 
             var form = $(e.currentTarget).closest('form');
+            
+            
+            // TODO: VALIDATE FORM HERE
+            
+            
+            var obj = {};
+    
+            // extract address information
+            obj.first_name = form.find('.firstname input').val();
+            obj.last_name = form.find('.lastname input').val();
+            obj.email = form.find('.email input').val();
+            obj.phone = '000';
+            obj.address_1 = form.find('.address_1 input').val();
+            obj.postcode = form.find('.code input').val();
+            obj.city = form.find('.city input').val();
+            obj.county = '--';
+            obj.country = form.find('.country select').val();
+            obj.note = form.find('.note textarea').val();
+            obj.id = guid();
 
-//            self.addUserAddress(form);
+            Einzlstck.Models.User.addAddress(obj).then(function() {                
+                
+                // reset form
+                form.get(0).reset();
+
+                // close form
+                self.el.find('.open-form').removeClass('open-form');
+                
+            });
 
         });
 
@@ -99,13 +151,6 @@ var CheckoutView = PageView.extend({
 
 
 
-        });
-
-
-        // add user addresses
-        Einzlstck.Models.Shop.getTemplate('/modules/addressList').then(function(hbs) {
-            self.addressTemplate = hbs;
-//            self.insertAddresses();
         });
 
         // enable address buttons

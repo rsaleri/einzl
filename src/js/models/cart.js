@@ -3,7 +3,9 @@ var Basket = Backbone.Model.extend({
 	initialize: function() {
 		
 		var self = this;
-		
+        
+		this.view = new BasketView();
+        
 		this.getCart().then(function() {
 			
 			self.view.render(self.data).then(function() {
@@ -63,8 +65,6 @@ var Basket = Backbone.Model.extend({
 	
 	getCart: function() {
 		var self = this;
-		
-		this.view = new BasketView();
     
 		// define question for server & moltin
 		var obj = {

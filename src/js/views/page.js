@@ -4,7 +4,7 @@ var PageModel = Backbone.Model.extend({
         
         this.data = data;
         this.view = new PageView(this.data.hbsPath);
-        
+        this.view.model = this;
     }
     
 });

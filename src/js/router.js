@@ -22,6 +22,9 @@ var Router = Backbone.Router.extend({
 	},
 
 	routes: {
+        "checkout": "checkout",
+        "kasse": "checkout",
+        
 		":page": "page",
         "*default": "page"
 	},
@@ -32,28 +35,39 @@ var Router = Backbone.Router.extend({
         
         console.log('route to ' + slug);
         
+        // get config information
         var config = this.getRouteConfig(slug);
 		
+        // init page if it isn't already
 		if(!Einzlstck.Pages[config.id]) {
 			Einzlstck.Pages[config.id] = new PageModel(config);
 		}
 		
+        // render the view
 		Einzlstck.Pages[config.id].view.render();
 		
 	},
 	
-	checkout: function(data) {
+	checkout: function(target) {
+        
+        /* check if this can be done dynamically
+         * as discussed here:
+         * http://stackoverflow.com/questions/7563949/backbone-js-get-current-route
+         */ 
+		var slug = "/checkout";
+        
+        console.log('route to ' + slug);
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
 		
-		console.log('route to home');
-		
-		if(!Einzlstck.Views.Checkout) {
-			Einzlstck.Views.Checkout = new CheckoutView({
-				hbsPath: 'pages/checkout.hbs'
-			});
+        // init page if it isn't already
+		if(!Einzlstck.Pages[config.id]) {
+			Einzlstck.Pages[config.id] = new CheckoutModel(config);
 		}
 		
-		
-		Einzlstck.Views.Checkout.render();
+        // render the view
+		Einzlstck.Pages[config.id].view.render();
 		
 	},
 	

@@ -1,5 +1,5 @@
-//var Checkout = Backbone.Model.extend({
-//	
-//	
-//	
-//});
+var CheckoutModel = PageModel.extend({
+	
+	
+	
+});

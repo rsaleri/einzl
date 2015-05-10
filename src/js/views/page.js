@@ -17,8 +17,6 @@ var PageView = Backbone.View.extend({
 		
 		return this.template.then(function(hbs) {
 			var html = hbs();
-            
-            console.log('PAGE RENDER THEN');
 			
 			self.el = $(html);
 			

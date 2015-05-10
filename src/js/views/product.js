@@ -6,8 +6,6 @@ var ProductView = Backbone.View.extend({
 		
 		var self = this;
 		
-		console.log('init product');
-		
 		Einzlstck.Models.Shop.getTemplate('modules/product.hbs').then(function(hbs) {
 			self.template.resolve(hbs);
 		});

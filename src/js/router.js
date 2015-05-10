@@ -6,6 +6,10 @@ var Router = Backbone.Router.extend({
 		
 		Backbone.history.start({pushState: true});
 		
+		
+		// add loadinging class to body
+		$('body').addClass('loading');
+		
 		// handle internal links
 		$(document).on('vclick', 'a:not([target="_blank"])', function(e) {
 			
@@ -20,20 +24,34 @@ var Router = Backbone.Router.extend({
 		
 		
 	},
+	
+	execute: function(callback, args) {
+		
+		// add loading class to body
+		$('body').addClass('loading');
+
+		// remove current page from DOM
+		$('main section').remove();
+		
+		if(callback)  {
+			callback.apply(this, args);
+		}
+		
+	},
 
 	routes: {
         "checkout": "checkout",
         "kasse": "checkout",
+		
+		"confirmation/:orderID": "confirmation",
         
 		":page": "page",
         "*default": "page"
 	},
     
-    page: function(target) {		
+    page: function(target) {
         
         var slug = target ? "/" + target : "/";
-        
-        console.log('route to ' + slug);
         
         // get config information
         var config = this.getRouteConfig(slug);
@@ -56,8 +74,6 @@ var Router = Backbone.Router.extend({
          */ 
 		var slug = "/checkout";
         
-        console.log('route to ' + slug);
-        
         // get config information
         var config = this.getRouteConfig(slug);
 		
@@ -71,18 +87,23 @@ var Router = Backbone.Router.extend({
 		
 	},
 	
-	confirmation: function(data) {
+	confirmation: function(orderID) {
 		
-		console.log('route to home');
+		/* check if this can be done dynamically
+         * as discussed here:
+         * http://stackoverflow.com/questions/7563949/backbone-js-get-current-route
+         */ 
+		var slug = "/confirmation";
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
 		
-		if(!Einzlstck.Views.Confirmation) {
-			Einzlstck.Views.Confirmation = new PageView({
-				hbsPath: 'pages/confirmation.hbs'
-			});
-		}
+		config.order = {
+			id: orderID
+		};
 		
-		
-		Einzlstck.Views.Confirmation.render();
+        // init page
+		Einzlstck.Pages[config.id] = new OrderModel(config);
 		
 	},
     

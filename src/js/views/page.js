@@ -11,12 +11,12 @@ var PageModel = Backbone.Model.extend({
 
 var PageView = Backbone.View.extend({
 	
-	render: function() {
+	render: function(data) {
         
 		var self = this;
 		
 		return this.template.then(function(hbs) {
-			var html = hbs();
+			var html = hbs(data);
 			
 			self.el = $(html);
 			
@@ -25,6 +25,9 @@ var PageView = Backbone.View.extend({
 			
 			// insert into DOM
 			$('main').html(self.el);
+			
+			// remove loading class from body
+			$('body').removeClass('loading');
 			
 			self.initController();
 			

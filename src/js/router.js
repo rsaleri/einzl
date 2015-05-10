@@ -64,6 +64,9 @@ var Router = Backbone.Router.extend({
         // render the view
 		Einzlstck.Pages[config.id].view.render();
 		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
+		
 	},
 	
 	checkout: function(target) {
@@ -85,6 +88,9 @@ var Router = Backbone.Router.extend({
         // render the view
 		Einzlstck.Pages[config.id].view.render();
 		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
+		
 	},
 	
 	confirmation: function(orderID) {
@@ -104,6 +110,9 @@ var Router = Backbone.Router.extend({
 		
         // init page
 		Einzlstck.Pages[config.id] = new OrderModel(config);
+		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
 		
 	},
     

@@ -112,7 +112,7 @@ var CheckoutView = PageView.extend({
 
                     if(data.order.status) {
 						
-						self.model.confirmOrder(data.order);
+						self.model.confirmOrder(data.order.result);
                         
                     } else {
                         notifyUser(Einzlstck.Models.Copy.data.messages.nl_error, 'error');

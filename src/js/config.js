@@ -1,5 +1,3 @@
-var userLang = navigator.language || navigator.userLanguage;
-
 var config = [
      {
          title: {

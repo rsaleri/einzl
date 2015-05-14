@@ -67,6 +67,9 @@ var Router = Backbone.Router.extend({
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
 		
+		// mark item in main menu
+    	$('header nav a').removeClass('active').filter('[href="' + config.slug[0] + '"]').addClass('active');
+		
 	},
 	
 	checkout: function(target) {
@@ -91,6 +94,8 @@ var Router = Backbone.Router.extend({
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
 		
+		$('header nav a').removeClass('active')
+		
 	},
 	
 	confirmation: function(orderID) {
@@ -113,6 +118,8 @@ var Router = Backbone.Router.extend({
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
+		
+		$('header nav a').removeClass('active')
 		
 	},
     

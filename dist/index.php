@@ -66,7 +66,7 @@
                 <nav>
                     <div class="hamburger-button"><i class="fa fa-bars"></i></div>
                     <ul>
-                        <li><a data-copy="nav_01" href="/home" title="Home" class="active">Home</a></li>
+                        <li><a data-copy="nav_01" href="/home" title="Home">Home</a></li>
                         <li><a data-copy="nav_02" href="/rings" title="Ringe">Ringe</a></li>
                         <li><a data-copy="nav_05" href="/pendants" title="Anhänger">Anhänger</a></li>
 <!--                        <li><a data-copy="nav_03" href="/necklaces" title="Necklaces"></a></li>-->

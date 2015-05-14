@@ -27,6 +27,13 @@ var Router = Backbone.Router.extend({
 	
 	execute: function(callback, args) {
 		
+		// close menu
+		$('.hamburger-button').removeClass('open');
+		$('header nav').removeClass('open');
+		
+		// close cart
+		Einzlstck.Models.Cart.view.close();
+		
 		// add loading class to body
 		$('body').addClass('loading');
 

@@ -35,18 +35,14 @@ var Shop = Backbone.Model.extend({
 			var menuButton = $('.hamburger-button');
 
 			if(cartButton.hasClass('open')) {
-
+				
 				// close cart
-				cartButton.removeClass('open')
-				$('aside.cart-container').removeClass('open');
-				$('body').removeClass('no-scroll-mobile');
+				Einzlstck.Models.Cart.view.close();
 
 			} else {
-
+				
 				// open cart
-				cartButton.addClass('open')
-				$('aside.cart-container').addClass('open');
-				$('body').addClass('no-scroll-mobile');
+				Einzlstck.Models.Cart.view.open();
 
 				// close menu
 				menuButton.removeClass('open');

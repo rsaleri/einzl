@@ -57,7 +57,7 @@
         "confirmation_headline": "Vielen Dank, {{this.order.bill_to.data.first_name}}!",
         "confirmation_subheadline": "Deine Bestellung war erfolgreich.",
         "confirmation_dear_headline": "Liebe/r {{this.order.bill_to.data.first_name}}",
-        "confirmation_dear_copy1": "Es freut uns sehr, dass du etwas gefunden hast. Wenn du irgendwelche Fragen hast, dann zögere nicht uns via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück'>info@einzelstueck-shop.com</a> zu kontaktieren.",
+        "confirmation_dear_copy1": "Es freut uns sehr, dass du etwas gefunden hast. Wenn du irgendwelche Fragen hast, dann zögere nicht uns via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück' target='_blank'>info@einzelstueck-shop.com</a> zu kontaktieren.",
         "confirmation_dear_copy2": "Wir wünschen dir viel Spaß mit deinem neuen Schmuck und würden uns freuen, wenn du uns zeigst wie gut dir der Schmuck steht. Poste dein Bild auf Instagram und erwähne uns mit <a href='http://instagram.com/einzlstck' title='Einzelstück on Instagram' target='_blank'>@einzlstck</a> oder direkt auf unsere <a href='https://www.facebook.com/einzlstck' title='Einzelstück auf Facebook' target='_blank'>Facebook Wall</a>.",
         "confirmation_dear_copy3": "Die nächsten Schritte für deine Bestellung sind die Bezahlung und Versand. Mehr Infos findest du rechts.",
         "confirmation_pay_headline": "Zahlung",

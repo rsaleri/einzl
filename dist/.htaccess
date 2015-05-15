@@ -2,12 +2,11 @@ Options +FollowSymlinks -MultiViews
 RewriteEngine On
 RewriteBase /
 
-# remove trailing slash from URLs
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} (.*)$
-RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^ index.php?request=%{THE_REQUEST} [L]
+# html5 pushstate (history) support:
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.php [L]
+</ifModule>

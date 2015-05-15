@@ -28,6 +28,7 @@
         }
         
         .drop.like {
+			display: none;
             top: 70px;
             
             @media(min-width: $bp1) {
@@ -37,10 +38,10 @@
         }
         
         .drop.add-to-cart {
-            top: 120px;
+            top: 70px;
             
             @media(min-width: $bp1) {
-                top: 150px;
+                top: 100px;
             }
             
         }
@@ -135,7 +136,7 @@
 
             .drop.add-to-cart {
                 transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, -100px) rotate(45deg);
+                transform: translate(0px, -50px) rotate(45deg);
                 opacity: 0;
             }
 			
@@ -160,7 +161,7 @@
             }
 
             .drop.add-to-cart {
-                transition: transform ease .3s .4s, opacity ease .3s .4s, background-color ease .3s 0s, color ease .3s 0s;
+                transition: transform ease .3s .2s, opacity ease .3s .2s, background-color ease .3s 0s, color ease .3s 0s;
                 transform: translate(0px, 0px) rotate(-45deg);
                 opacity: 1;
             }

@@ -1,5 +1,11 @@
 //HELPER FUNCTIONS
 
+function guid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);
+    });
+}
+
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -26,7 +32,7 @@ function isLocalStorageNameSupported() {
 function getUrlParams() {
     var url = location.search.substring(1);
     var params = url?JSON.parse('{"' + url.replace(/&/g, '","').replace(/=/g,'":"') + '"}',
-    function(key, value) { return key===""?value:decodeURIComponent(value) }):{}
+    function(key, value) { return key===""?value:decodeURIComponent(value); }):{};
     
     return params;
 }

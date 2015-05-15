@@ -47,6 +47,8 @@ var Router = Backbone.Router.extend({
 
 		// remove current page from DOM
 		$('main section').remove();
+        
+        console.log(args);
 		
 		if(callback)  {
 			callback.apply(this, args);
@@ -60,9 +62,27 @@ var Router = Backbone.Router.extend({
 		
 		"confirmation/:orderID": "confirmation",
         
+        "": "page",
 		":page": "page",
-        "*default": "page"
+        "*default": "notfound"
 	},
+    
+    notfound: function(target) {
+        
+        var slug = '/404';
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
+        
+        // init page if it isn't already
+		if(!Einzlstck.Pages[config.id]) {
+			Einzlstck.Pages[config.id] = new PageModel(config);
+		}
+		
+        // render the view
+		Einzlstck.Pages[config.id].view.render();
+        
+    },
     
     page: function(target) {
         
@@ -119,7 +139,7 @@ var Router = Backbone.Router.extend({
          * as discussed here:
          * http://stackoverflow.com/questions/7563949/backbone-js-get-current-route
          */ 
-		var slug = "/confirmation";
+		var slug = "/confirmation/:orderID";
         
         // get config information
         var config = this.getRouteConfig(slug);

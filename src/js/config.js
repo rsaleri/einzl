@@ -68,7 +68,7 @@ var config = [
              de: 'Bestätigung'
          },
          id: 'confirmation',
-         slug: ['/confirmation'],
+         slug: ['/confirmation/:orderID'],
          hbsPath: '/pages/confirmation.hbs'
      },
      {

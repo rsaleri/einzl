@@ -19,6 +19,15 @@ var Router = Backbone.Router.extend({
 			// navigate to the target
 			var href = $(this).attr('href');
 			Einzlstck.Router.navigate(href, true);
+            
+            // The following is done in execute() as well. This is dirty. Find a better way
+            // close menu
+            $('.hamburger-button').removeClass('open');
+            $('header nav').removeClass('open');
+
+            // close cart
+            Einzlstck.Models.Cart.view.close();
+            
 			
 		});
 		

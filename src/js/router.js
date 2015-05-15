@@ -31,7 +31,6 @@ var Router = Backbone.Router.extend({
 			
 		});
 		
-		
 	},
 	
 	execute: function(callback, args) {

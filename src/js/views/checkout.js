@@ -45,13 +45,13 @@ var CheckoutView = PageView.extend({
             $(e.currentTarget).closest('.unit').removeClass('open-form');
 
             // reset form
-            self.view.find('form').get(0).reset();
+            self.el.find('form').get(0).reset();
 
             // remove focus
             $(':focus').blur();
 
             // scroll to address list
-            $(window).scrollTop(self.view.find('#billing-address').offset().top);
+            $(window).scrollTop(self.el.find('#billing-address').offset().top);
 
             e.preventDefault();
             e.stopPropagation();
@@ -66,7 +66,9 @@ var CheckoutView = PageView.extend({
             var form = $(e.currentTarget).closest('form');
             
             
-            // TODO: VALIDATE FORM HERE
+            if(!validateForm(form[0])) {
+				return false;
+			}
             
             
             var obj = {};

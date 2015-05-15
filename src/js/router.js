@@ -7,7 +7,7 @@ var Router = Backbone.Router.extend({
 		Backbone.history.start({pushState: true});
 		
 		
-		// add loadinging class to body
+		// add loading class to body
 		$('body').addClass('loading');
 		
 		// handle internal links

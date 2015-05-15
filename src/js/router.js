@@ -47,8 +47,6 @@ var Router = Backbone.Router.extend({
 
 		// remove current page from DOM
 		$('main section').remove();
-        
-        console.log(args);
 		
 		if(callback)  {
 			callback.apply(this, args);

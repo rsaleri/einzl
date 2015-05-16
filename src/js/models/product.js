@@ -17,9 +17,6 @@ var ProductModel = Backbone.Model.extend({
 	},
 	
 	addToCart: function() {
-		
-		console.log('add this product to cart: ' + this.data.id);
-		
 		return Einzlstck.Models.Cart.addItem(this.data.id);
 	},
 	
@@ -35,7 +32,7 @@ var ProductModel = Backbone.Model.extend({
 		});
 		
 		// enable add-to-cart button
-		this.view.el.find('.drop.add-to-cart').on('vclick', function(e) {
+		this.view.el.find('.add-to-cart').on('vclick', function(e) {
 			var button = $(this);
 
 			if(!button.hasClass('loading')) {

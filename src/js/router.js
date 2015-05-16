@@ -58,11 +58,38 @@ var Router = Backbone.Router.extend({
         "checkout": "checkout",
         "kasse": "checkout",
 		
+		"product/:id": "product",
+		
 		"confirmation/:orderID": "confirmation",
         
         "": "page",
 		":page": "page",
         "*default": "notfound"
+	},
+	
+	product: function(id) {
+		
+		var slug = "/product/:id";
+		
+		console.log('product id: ' + id);
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
+		
+		config.product = {
+			id: id
+		};
+		
+		
+		
+        // init page
+		Einzlstck.Pages[config.id] = new ProductDetailsModel(config);
+		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
+		
+		$('header nav a').removeClass('active');
+		
 	},
     
     notfound: function(target) {
@@ -152,7 +179,7 @@ var Router = Backbone.Router.extend({
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
 		
-		$('header nav a').removeClass('active')
+		$('header nav a').removeClass('active');
 		
 	},
     

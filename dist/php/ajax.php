@@ -21,6 +21,11 @@ if ( $authenticated ) {
         // get products from moltin
         $data = $moltin->get('products');
         
+    } else if($action == 'getProductById') {
+        
+        // get products from moltin
+        $data = $moltin->get('product/'.$_POST['productId']);
+        
     } else if($action == 'subscribe') {
         
         // send userdata to mailchimp for email subscription

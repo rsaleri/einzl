@@ -46,6 +46,15 @@ var config = [
      },
      {
          title: {
+             en: 'Product',
+             de: 'Produkt'
+         },
+         id: 'product',
+         slug: ['/product/:id'],
+         hbsPath: '/pages/productDetails.hbs'
+     },
+     {
+         title: {
              en: '<3',
              de: '<3'
          },

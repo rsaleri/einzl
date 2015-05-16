@@ -1,0 +1,189 @@
+section.product-details {
+	
+	
+	
+	
+	.image-gallery {
+		vertical-align: top;
+		
+		img {
+			width: 100%;
+			display: none;
+		}
+		
+		img.active {
+			display: block;
+		}
+		
+		.gallery-navigation .thumb {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			border: 1px solid #f3f3f3;
+			width: 150px;
+			height: 150px;
+			display: block;
+			float: left;
+		}
+		
+	}
+	
+	.details-panel {
+		box-sizing: border-box;
+		vertical-align: top;
+		text-align: left;
+		padding: 50px;
+		max-width: 600px;
+		
+		h2 {
+			text-align: left;
+			
+			&:after {
+				margin: 0;
+			}
+			
+		}
+		
+		
+		.cart-info {
+			margin: 40px 0;
+			white-space: nowrap;
+			
+			&:after {
+				@extend .clearfix;
+			}
+			
+			div {
+				font-size: 1.4em;
+				box-sizing: border-box;
+				text-align: center;
+				padding: 10px 5px;
+				float: left;
+				width: 50%;
+				
+				
+				&.price {
+					border: 2px solid $softwhite;
+					
+					&:after {
+						content: "€";
+					}
+				}
+				
+				&.add-to-cart {
+					border: 2px solid #333;
+					background-color: #333;
+					color: $softwhite;
+					
+					&.success {
+						border-color: $green;
+						background-color: $green;
+					}
+					
+					&.fail {
+						border-color: $red;
+						background-color: $red;
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	
+	ul.accordeon {
+		
+		list-style: none;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		
+		> li {
+			border-top: 1px solid $softwhite;
+			
+			&:hover {
+				cursor: pointer;
+			}
+			
+			> span {
+				
+				display: block;
+				padding: 10px 5px;
+
+				text-transform: uppercase;
+				font-size: .9em;
+				
+			}
+			
+			&:last-child {
+				border-bottom: 1px solid $softwhite;
+			}
+			
+			
+			
+			
+			.accordeon-content {
+//				transition: all ease 1s;
+				max-height: 0;
+				overflow: hidden;
+				
+				padding: 0px 0px 0px 5px;
+				
+			}
+			
+			&.extended {
+				
+				&:hover {
+					cursor: default;
+				}
+
+				.accordeon-content {
+					max-height: none;
+					padding: 10px 0 20px 5px;
+				}
+
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			/* SPECIFICS */
+			&.material {
+				
+				ul {
+					padding: 0 18px;
+					margin: 0;
+				}
+				
+				
+				li {
+					padding: 5px 0;
+				}
+			}
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	// TODO: Move this into general scss files when all products css changes to this
+	[data-product] {
+//		min-height: 0;
+	}
+	
+	
+	
+}

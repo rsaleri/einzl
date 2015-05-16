@@ -74,10 +74,10 @@ var PageView = Backbone.View.extend({
 				if(product.data.id === prodID) {
 					
 					// is the product template availble?
-					$.when(product.view.template).then(function() {
+					$.when(product.extractView.template).then(function() {
 						
 						// yes, so insert the products view into the product container on this page
-						product.view.el.clone(true).appendTo(container);
+						product.extractView.el.clone(true).appendTo(container);
 						
 					});
 					
@@ -96,6 +96,7 @@ var PageView = Backbone.View.extend({
 		
         // init email subscribe button
         this.el.find('.newsletter-form').each(function() {
+			
             var form = $(this);
             var input = form.find('input[type="email"]'),
                 button = form.find('button.subscribe[type="submit"]');

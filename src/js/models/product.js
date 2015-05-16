@@ -7,13 +7,15 @@ var ProductModel = Backbone.Model.extend({
 		
 		this.data = data;
 		
-		this.view = new ProductView();
+		this.extractView = new ProductViewExtract();
 		
-		this.view.render(this.data).then(function() {
+		this.extractView.render(this.data).then(function() {
 			
 			self.initController();
 			
 		});
+		
+		this.view = new ProductView();
 	},
 	
 	addToCart: function() {
@@ -25,14 +27,14 @@ var ProductModel = Backbone.Model.extend({
 		var self = this;
 		
 		// enable plus button
-		this.view.el.find('.drop.plus').on('vclick', function(e) {
+		this.extractView.el.find('.drop.plus').on('vclick', function(e) {
 			$(this).closest('.details').toggleClass('collapsed expanded');
 			e.preventDefault();
 			e.stopPropagation();
 		});
 		
 		// enable add-to-cart button
-		this.view.el.find('.add-to-cart').on('vclick', function(e) {
+		this.extractView.el.find('.add-to-cart').on('vclick', function(e) {
 			var button = $(this);
 
 			if(!button.hasClass('loading')) {
@@ -57,7 +59,7 @@ var ProductModel = Backbone.Model.extend({
 
 		// add stock class
 		if(this.data.stock_level == 0) {
-			this.view.el.addClass('out-of-stock');
+			this.extractView.el.addClass('out-of-stock');
 		}
 		
 	}

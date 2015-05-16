@@ -76,14 +76,31 @@ var Router = Backbone.Router.extend({
         // get config information
         var config = this.getRouteConfig(slug);
 		
-		config.product = {
-			id: id
-		};
+		Einzlstck.Deferreds.products.then(function() {
+			
+			// loop through all products
+			$.each(Einzlstck.Models.Products, function() {
+
+				var product = this;
+
+				// do we have a product match?
+				if(product.data.id === id) {
+
+					product.view.render(product.data);
+
+					return false;
+				}
+
+			});
+			
+		});
+		
+		
 		
 		
 		
         // init page
-		Einzlstck.Pages[config.id] = new ProductDetailsModel(config);
+//		Einzlstck.Pages[config.id] = new ProductDetailsModel(config);
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';

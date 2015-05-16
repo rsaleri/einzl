@@ -7,6 +7,8 @@ var ProductModel = Backbone.Model.extend({
 		
 		this.data = data;
 		
+		this.view = new ProductView();
+		
 		this.extractView = new ProductViewExtract();
 		
 		this.extractView.render(this.data).then(function() {
@@ -15,7 +17,6 @@ var ProductModel = Backbone.Model.extend({
 			
 		});
 		
-		this.view = new ProductView();
 	},
 	
 	addToCart: function() {

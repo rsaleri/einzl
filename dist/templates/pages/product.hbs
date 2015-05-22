@@ -6,17 +6,21 @@
 		<div>
 			
 			<div class="image-gallery">
-		
-				{{#each images}}
+				
+				<div class="images">
+					
+					{{#each images}}
 
-					{{#if @first}}
-						<img src="{{this.url.https}}" class="active">
-					{{else}}
-						<img src="{{this.url.https}}">
-					{{/if}}
+						{{#if @first}}	
+							<img src="{{this.url.https}}" class="active">
+						{{else}}
+							<img src="{{this.url.https}}">
+						{{/if}}
 
 
-				{{/each}}
+					{{/each}}
+				</div>
+				
 
 				<div class="gallery-navigation">
 

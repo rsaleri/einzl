@@ -48,7 +48,18 @@ var ProductView = PageView.extend({
 		
 		this.el.find('.accordeon li').on('vclick', function() {
 			var li = $(this);
-			li.addClass('extended').siblings('li').removeClass('extended');
+			li.toggleClass('extended');
+		});
+		
+		var images = $('.image-gallery .images img');
+		console.log(images.length);
+		this.el.find('.gallery-navigation .thumb').each(function(i) {
+			
+			$(this).on('vclick', function(e) {
+				
+				images.eq(i).addClass('active').siblings('img').removeClass('active');
+			});
+			
 		});
 		
 	}

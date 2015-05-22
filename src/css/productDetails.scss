@@ -24,6 +24,10 @@ section.product-details {
 			height: 150px;
 			display: block;
 			float: left;
+			
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		
 	}
@@ -137,7 +141,7 @@ section.product-details {
 			&.extended {
 				
 				&:hover {
-					cursor: default;
+//					cursor: default;
 				}
 
 				.accordeon-content {

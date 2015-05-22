@@ -85,6 +85,8 @@ var Router = Backbone.Router.extend({
 
 				// do we have a product match?
 				if(product.data.id === id) {
+					
+					console.log(product.data);
 
 					product.view.render(product.data);
 

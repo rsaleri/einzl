@@ -143,14 +143,6 @@ var CheckoutModel = PageModel.extend({
 		console.log(obj);
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-			
-			if(data.order.status) {
-				console.log('order did go through, new cart please');
-				
-				Einzlstck.Models.Cart.getCart();
-				
-			}
-			
 
 		});
 		

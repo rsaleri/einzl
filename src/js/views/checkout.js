@@ -106,7 +106,9 @@ var CheckoutView = PageView.extend({
                 button.addClass('loading');
 
                 self.model.processOrder().always(function() {
+					
                     button.removeClass('loading');
+					
                 }).done(function(data) {
 
                     if(data.order.status) {

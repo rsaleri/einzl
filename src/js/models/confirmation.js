@@ -8,9 +8,6 @@ var OrderModel = PageModel.extend({
         this.view = new OrderView(this.data.hbsPath);
         this.view.model = this;
 		
-		console.log('Order Model created');
-		console.log(data);
-		
 		this.getOrder(this.data.order.id).then(function() {
 			
 			self.view.render(self.data).then(function() {

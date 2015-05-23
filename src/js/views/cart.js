@@ -34,9 +34,7 @@ var BasketView = Backbone.View.extend({
 		
 		var self = this;
 		
-		// round to two decimals (move this into PHP at some point)
-		data.totals.rounded.with_tax = data.totals.rounded.with_tax.toFixed(2);
-		data.totals.rounded.without_tax = data.totals.rounded.without_tax.toFixed(2);
+		console.log('render cart');
 
 		$.each(data.contents, function() {
 
@@ -62,7 +60,7 @@ var BasketView = Backbone.View.extend({
 			
 			// update totals outside of view
 			$('.total-items').text(data.total_items);
-			$('.total-price').text(data.totals.rounded.with_tax);
+			$('.total-price').text(data.totals.post_discount.rounded.with_tax.toFixed(2));
 			
 		});
 		

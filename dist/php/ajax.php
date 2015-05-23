@@ -1,5 +1,5 @@
 <?php
-
+require 'vendor/autoload.php';
 require_once('moltin.php');
 require_once('newsletter.php');
 require_once('helper.php');
@@ -19,7 +19,7 @@ if ( $authenticated ) {
     if($action == 'getProducts') {
         
         // get products from moltin
-        $data = $moltin->get('products');
+        $data = Product::Listing(['status' => '1']);
         
     } else if($action == 'subscribe') {
         
@@ -30,14 +30,7 @@ if ( $authenticated ) {
     } else if($action == 'getCart') {
         
         // get cart from moltin (or create a new one)
-        if($_POST['cart']['id'] != null) {
-            $getCart = $moltin->get('cart/'.$_POST['cart']['id']);
-            $getCart['result']['id'] = $_POST['cart']['id'];
-        } else {
-            $newCartID = generateRandomString(10);
-            $getCart = $moltin->get('cart/'.$newCartID);
-            $getCart['result']['id'] = $newCartID;
-        }
+        $getCart = Cart::Contents();
         
         // return cart, if moltin doesn't screw up
         if(isset($getCart['status'])) {
@@ -50,10 +43,9 @@ if ( $authenticated ) {
         {
 
             $productID = $_POST['product_id'];
-            $cartID = $_POST['cart']['id'];
             
-            // put item into cart
-            $data['item'] = $moltin->post('cart/'.$cartID, array('id' => $productID, 'quantity' => 1));
+            // put item into cart			
+			$data['item'] = Cart::Insert($productID, 1);
             
         }
         catch (\Exception $e)
@@ -62,11 +54,8 @@ if ( $authenticated ) {
         }
         
         // get updated cart content
-        $cart = $moltin->get('cart/'.$cartID);
+        $cart = Cart::Contents();
         $data['cart'] = $cart['result'];
-
-        // insert cart ID into response
-        $data['cart']['id'] = $cartID;
         
     } else if($action == 'getOrder') {
         
@@ -74,7 +63,7 @@ if ( $authenticated ) {
         try
         {
             $orderID = $_POST['orderID'];
-            $data['order'] = $moltin->get('order/'.$orderID);
+            $data['order'] = Order::Get($orderID);
             
         } 
         catch (\Exception $e)
@@ -86,16 +75,17 @@ if ( $authenticated ) {
         
         $productKey = $_POST['product']['key'];
         $productQuantity = $_POST['product']['quantity'];
-        $cartID = $_POST['cart']['id'];
         
         try
         {
             // remove item from cart or lower quantity
             if($productQuantity == 1) {
-                $data['item'] = $moltin->delete('cart/'.$cartID.'/item/'.$productKey);
+                $data['item'] = Cart::Remove($productKey);
             } else {
                 $productQuantity--;
-                $data['item'] = $moltin->put('cart/'.$cartID.'/item/'.$productKey, array('quantity' => $productQuantity));
+                $data['item'] = Cart::Update($productKey, [
+					'quantity' => $productQuantity
+				]);
             }
             
         }
@@ -105,11 +95,9 @@ if ( $authenticated ) {
         }
         
         // get updated cart content
-        $cart = $moltin->get('cart/'.$cartID);
+        $cart = Cart::Contents();
         $data['cart'] = $cart['result'];
 
-        // insert cart ID into response
-        $data['cart']['id'] = $cartID;
     } else if($action == 'processOrder') {
         
         
@@ -118,7 +106,6 @@ if ( $authenticated ) {
 
             $order = $_POST['order'];
 			$cart = $_POST['cart'];
-            $cartID = $cart['id'];
             
             // create customer out of billing data
             $user = array(
@@ -128,7 +115,7 @@ if ( $authenticated ) {
             );
             
             // send order to moltin
-            $data['order'] = $moltin->post('cart/'.$cartID.'/checkout', array(
+            $data['order'] = Cart::Order(array(
                 'customer' => $user,
                 'gateway' => $order['payment'],
                 'bill_to' => $order['billAd'],
@@ -138,8 +125,22 @@ if ( $authenticated ) {
 			
 			$data['order']['result']['cart'] = $cart;
 			
-			// send confirmation mail
-			$data['mail'] = sendConfirmationMail($user, $data['order']['result'], $cart, $smtpPassword);
+			if($data['order']['status']) {
+				
+				// send confirmation mail
+				$data['mail'] = sendConfirmationMail($user, $data['order']['result'], $cart, $smtpPassword);
+				
+				// create new cart
+				unset($_COOKIE['mcart']);
+				Moltin::Identifier();
+				
+			} else {
+				
+				
+				
+			}
+			
+			
             
         }
         catch (\Exception $e)

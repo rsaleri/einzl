@@ -1,6 +1,5 @@
 <?php
 require_once('access.php');
-require_once('libs/mailchimp/src/Mailchimp.php');
 
 $mailchimp = new Mailchimp($mailchimpKey);
 

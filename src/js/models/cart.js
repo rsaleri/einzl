@@ -56,6 +56,8 @@ var Basket = Backbone.Model.extend({
 			
 			self.data = data.cart;
 			
+			console.log(data);
+			
 			self.view.render(self.data).then(function() {
 				
 			});
@@ -68,11 +70,7 @@ var Basket = Backbone.Model.extend({
     
 		// define question for server & moltin
 		var obj = {
-			action: 'getCart',
-			cart: {
-				// TODO: get id if already available from localStorage
-				id: Einzlstck.Models.User.data.cart_id ? Einzlstck.Models.User.data.cart_id : null
-			}
+			action: 'getCart'
 		};
 
 		// get cart data from moltin

@@ -26,8 +26,7 @@ var CheckoutView = PageView.extend({
         PageView.prototype.initController.apply(this);
         
         
-        var self = this;    
-        console.log('init controller');
+        var self = this;
         
         
         // insert addresses
@@ -109,8 +108,6 @@ var CheckoutView = PageView.extend({
                 self.model.processOrder().always(function() {
                     button.removeClass('loading');
                 }).done(function(data) {
-
-                    console.log(data);
 
                     if(data.order.status) {
 						

@@ -11,11 +11,6 @@ var CheckoutModel = PageModel.extend({
     },
 	
 	confirmOrder: function(order) {
-		
-		console.log(order);
-		
-		// remove current cart
-		Einzlstck.Models.User.data.cart_id = null;
 
 		// create new cart
 		Einzlstck.Models.Cart = new Basket();
@@ -148,7 +143,13 @@ var CheckoutModel = PageModel.extend({
 		console.log(obj);
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-
+			
+			if(data.order.status) {
+				console.log('order did go through, new cart please');
+				
+				Einzlstck.Models.Cart.getCart();
+				
+			}
 			
 
 		});

@@ -140,12 +140,14 @@ var Shop = Backbone.Model.extend({
 	
 	askServer: function(obj) {
 		
+		
 		return $.ajax({
 			type: 'POST',
 			dataType:'json',
 			url: 'php/ajax.php',
 			data: obj
 		}).done(function(result) {
+			
 
 		}).fail(function(a,b,c) {
 			console.log('AJAX Call failed');

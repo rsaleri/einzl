@@ -157,18 +157,12 @@ if ( $authenticated ) {
         
         
         
-//        $paypalArr = array(
-//            'return_url' => $_SERVER['SERVER_NAME'].'/confirmation/',
-//            'cancel_url' => $_SERVER['SERVER_NAME'].'/confirmation/'
-//        );
-        
-        // local development test from https://forwardhq.com/
         $paypalArr = array(
-            'return_url' => 'https://einzlstck.fwd.wf/php/paypalreturn.php?orderID='.$orderID,
-            'cancel_url' => 'https://einzlstck.fwd.wf/php/paypalreturn.php?orderID='.$orderID
+            'return_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID,
+            'cancel_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID
         );
         
-        $data['payment'] = $moltin->post('checkout/payment/purchase/'.$orderID, $paypalArr);
+        $data['payment'] = Checkout::Payment('purchase', $orderID, $paypalArr); 
         
 //        $data['payment'] = $paypalArr;
         
@@ -185,7 +179,7 @@ if ( $authenticated ) {
 		);
 		
 		// update order at moltin
-		$data['payment'] = $moltin->post('checkout/payment/complete_purchase/'.$orderID, $paypalArr);
+		$data['payment'] = $data['payment'] = Checkout::Payment('complete_purchase', $orderID, $paypalArr); 
 		
 	}
     

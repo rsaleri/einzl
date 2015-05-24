@@ -4,8 +4,6 @@ var OrderView = PageView.extend({
         
         PageView.prototype.initController.apply(this);
         
-        this.el.find('#pay-manual').show();
-        
     }
 	
 });

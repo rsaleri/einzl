@@ -47,7 +47,7 @@ var OrderModel = PageModel.extend({
 			// user canceled payment
 			notifyUser('Zahlung abgebrochen', 'error');
 			
-			// this isn't a return from gateway so, init the chosen gateway
+			// init the chosen gateway
 			this.initGateway(this.data.order.gateway.data.slug);
 		}
 		
@@ -57,15 +57,18 @@ var OrderModel = PageModel.extend({
 		
 		if(this.data.order.status.value === 'Paid' || this.data.order.status.value === 'Dispatched') {
 			
-			
+			// order is already paid
 			this.view.el.find('#paid').show();
 			
 			
 			
 		} else {
 			
-			if(this.data.urlParams.paypal) {
+			// order isn't paid yet
 			
+			if(this.data.urlParams.paypal) {
+				
+				// this is a paypal callback
 				this.handlePaypalResponse();
 
 			} else {

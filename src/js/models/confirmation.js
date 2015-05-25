@@ -25,6 +25,8 @@ var OrderModel = PageModel.extend({
 	
 	handlePaypalResponse: function() {
 		
+		var self = this;
+		
 		console.log('handle paypal response');
 		
 		if(this.data.urlParams.PayerID) {
@@ -39,7 +41,22 @@ var OrderModel = PageModel.extend({
 			
 			Einzlstck.Models.Shop.askServer(obj).then(function(data) {
 				
-				console.log(data);
+				if(data.payment.status) {
+					
+					// payment successfull
+					
+					// tell the user that
+					notifyUser('Zahlung erfolgreich', 'success');
+					
+					// show paid box
+					self.view.el.find('#paid').show();
+				} else {
+					
+					notifyUser('Zahlung fehlgeschlagen', 'error');
+					
+					// init the chosen gateway
+					self.initGateway(self.data.order.gateway.data.slug);
+				}
 				
 			});
 			

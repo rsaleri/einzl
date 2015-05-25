@@ -52,6 +52,9 @@ var OrderModel = PageModel.extend({
 					self.view.el.find('#paid').show();
 				} else {
 					
+					// payment failed for whatever reason
+					
+					// let the user know
 					notifyUser('Zahlung fehlgeschlagen', 'error');
 					
 					// init the chosen gateway

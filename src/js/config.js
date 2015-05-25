@@ -19,6 +19,15 @@ var config = [
      },
      {
          title: {
+             en: 'Testpage',
+             de: 'Testpage'
+         },
+         id: 'testpage',
+         slug: ['/testpage'],
+         hbsPath: '/pages/testpage.hbs'
+     },
+     {
+         title: {
              en: 'Necklaces',
              de: 'Ketten'
          },

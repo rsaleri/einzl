@@ -67,11 +67,7 @@ section.product-details {
 				
 				
 				&.price {
-					border: 2px solid $softwhite;
-					
-					&:after {
-						content: "€";
-					}
+					border: 2px solid $lightgrey;
 				}
 				
 				&.add-to-cart {
@@ -106,7 +102,8 @@ section.product-details {
 		margin: 0;
 		
 		> li {
-			border-top: 1px solid $softwhite;
+			user-select: none;
+			border-top: 1px solid $lightgrey;
 			
 			&:hover {
 				cursor: pointer;
@@ -116,14 +113,22 @@ section.product-details {
 				
 				display: block;
 				padding: 10px 5px;
+				position: relative;
 
 				text-transform: uppercase;
 				font-size: .9em;
 				
+				i {
+					position: absolute;
+					top: 12px;
+  					left: -15px;
+					transition: all ease .15s;
+				}
+				
 			}
 			
 			&:last-child {
-				border-bottom: 1px solid $softwhite;
+				border-bottom: 1px solid $lightgrey;
 			}
 			
 			
@@ -142,6 +147,10 @@ section.product-details {
 				
 				&:hover {
 //					cursor: default;
+				}
+				
+				i {
+					transform: rotate(90deg);
 				}
 
 				.accordeon-content {

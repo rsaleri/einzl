@@ -46,6 +46,37 @@ var ProductView = PageView.extend({
 	
 	initController: function() {
 		
+		var self = this;
+		
+		// enable add-to-cart button
+		this.el.find('.add-to-cart').on('vclick', function(e) {
+			var button = $(this);
+
+			if(!button.hasClass('loading')) {
+				button.addClass('loading').removeClass('success fail');
+
+				self.model.addToCart()
+				.always(function() {
+					button.removeClass('loading');
+				})
+				.done(function() {
+					button.addTempClass('success', 1500);
+				})
+				.fail(function() {
+					button.addTempClass('fail', 1500);
+				});
+			}
+
+			e.preventDefault();
+			e.stopPropagation();
+
+		});
+
+		// add stock class
+		if(this.model.data.stock_level == 0) {
+			this.el.addClass('out-of-stock');
+		}
+		
 		this.el.find('.accordeon li').on('vclick', function() {
 			var li = $(this);
 			li.toggleClass('extended');

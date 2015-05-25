@@ -8,13 +8,12 @@ var ProductModel = Backbone.Model.extend({
 		this.data = data;
 		
 		this.view = new ProductView();
+		this.view.model = this;
 		
 		this.extractView = new ProductViewExtract();
 		
 		this.extractView.render(this.data).then(function() {
-			
 			self.initController();
-			
 		});
 		
 	},

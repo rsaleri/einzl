@@ -5,7 +5,8 @@ var User = Backbone.Model.extend({
     },
     
     views: {
-        addressList: null
+        addressList: null,
+		addressForm: null
     },
     
     initialize: function() {
@@ -13,6 +14,7 @@ var User = Backbone.Model.extend({
         this.getFromLocalStorage();
         
         this.views.addressList = new AddressList();
+		this.views.addressForm = new AddressForm();
     },
     
     saveToLocalstorage: function() {

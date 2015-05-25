@@ -6,10 +6,13 @@ This is the source code for the [Einzelstück](http://www.einzelstueck-shop.com)
 ## Technology
 
 #### Frontend
-BackboneJS, Gulp, SASS, jQuery.
+BackboneJS, Handlebars, jQuery.
 
 #### Backend
 The backend is powered by the ecommerce-as-a-service platform moltin.
+
+#### Build Tools
+Gulp, SASS
 
 ## Contributing
 

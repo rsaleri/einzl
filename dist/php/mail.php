@@ -1,5 +1,4 @@
 <?php
-require 'libs/PHPMailer/PHPMailerAutoload.php';
 
 function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	$orderData = $order;
@@ -29,12 +28,12 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLitem .= '<tr>';
 		$HTMLitem .= '<td>'.$prod['name'].'</td>';
 		$HTMLitem .= '<td>'.$prod['quantity'].'</td>';
-		$HTMLitem .= '<td>€ '.$prod['total'].'</td>';
+		$HTMLitem .= '<td>'.$prod['totals']['post_discount']['formatted']['with_tax'].'</td>';
 		$HTMLitem .= '</tr>';
 	}
 	$message = str_replace('%cartitems%', $HTMLitem, $message);
-	$message = str_replace('%tax%', ($orderData['total']*0.19), $message);
-	$message = str_replace('%totalprice%', $orderData['total'], $message);
+	$message = str_replace('%tax%', ($orderData['totals']['total']['formatted']), $message);
+	$message = str_replace('%totalprice%', $orderData['totals']['total']['formatted'], $message);
 	$message = str_replace('%orderID%', $orderData['id'], $message);
 
 	$HTMLshipad = '';

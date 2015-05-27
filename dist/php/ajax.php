@@ -39,17 +39,15 @@ if ( $authenticated ) {
 
         
     } else if($action == 'addToCart') {
-        try
-        {
+        
+        try {
 
             $productID = $_POST['product_id'];
             
             // put item into cart			
 			$data['item'] = Cart::Insert($productID, 1);
             
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             $data = $e->getMessage();
         }
         
@@ -60,15 +58,15 @@ if ( $authenticated ) {
     } else if($action == 'getOrder') {
         
         
-        try
-        {
+        try {
+            
             $orderID = $_POST['orderID'];
             $data['order'] = Order::Get($orderID);
             
-        } 
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
+            
             $data = $e->getMessage();
+            
         }
         
     } else if($action == 'removeFromCart') {
@@ -100,7 +98,7 @@ if ( $authenticated ) {
 
     } else if($action == 'processOrder') {
         
-        
+        // create order
         try
         {
 
@@ -123,7 +121,7 @@ if ( $authenticated ) {
                 'shipping' => $order['shipping']
             ));
 			
-			$data['order']['result']['cart'] = $cart;
+			$data['cart'] = $cart;
 			
             
         }
@@ -173,7 +171,7 @@ if ( $authenticated ) {
                 'payerid' => $_POST['PayerID']
             );
             
-            // complete payment through moltoin
+            // complete payment through moltin
             $data['payment'] = Checkout::Payment('complete_purchase', $orderID, $paypalArr);
             
             $data['order'] = Order::Get($orderID);

@@ -10,7 +10,8 @@ var GatewayModel = PageModel.extend({
 		
 		
 		
-		console.log(this.data);
+		// prevent user greeting
+        window.clearTimeout(Einzlstck.Models.User.sayHello());
         
         this.handleGatewayResponse();
         
@@ -39,13 +40,15 @@ var GatewayModel = PageModel.extend({
             if(data.payment.status) {
                 
                 // payment successfull
+                notifyUser('Die Zahlung hat geklappt :-)', 'success');
                 
                 // create new cart
                 Einzlstck.Models.Cart = new Basket();
 
                 // track order with google analytics
 //                this.trackOrder(data.order.result);
-
+                
+                // navigate to confirmation page
                 Einzlstck.Router.navigate('/confirmation/' + data.order.result.id, {
                     trigger: true,
                     replace: true
@@ -55,6 +58,9 @@ var GatewayModel = PageModel.extend({
             } else {
                 
                 // payment failed
+                notifyUser('Bei der Zahlung ging etwas schief :-(', 'error');
+                
+                // navigate back to the checkout page
                 Einzlstck.Router.navigate('/checkout', {
                     trigger: true,
                     replace: true

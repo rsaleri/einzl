@@ -57,6 +57,8 @@ var Router = Backbone.Router.extend({
 	routes: {
         "checkout": "checkout",
         "kasse": "checkout",
+        
+        "gateway": "gateway",
 		
 		"confirmation/:orderID": "confirmation",
         
@@ -155,6 +157,24 @@ var Router = Backbone.Router.extend({
 		$('header nav a').removeClass('active')
 		
 	},
+    
+    gateway: function() {
+        
+        /* check if this can be done dynamically
+         * as discussed here:
+         * http://stackoverflow.com/questions/7563949/backbone-js-get-current-route
+         */ 
+		var slug = "/confirmation/:orderID";
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
+        
+        config.urlParams = getUrlParams();
+        
+        // init page
+		Einzlstck.Pages[config.id] = new GatewayModel(config);
+        
+    },
     
     getRouteConfig: function(target) {
         // find target (slug) in this.model.routes

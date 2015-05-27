@@ -53,19 +53,7 @@ var CheckoutView = PageView.extend({
                 button.addClass('loading');
 
                 self.model.processOrder().always(function() {
-					
                     button.removeClass('loading');
-					
-                }).done(function(data) {
-
-                    if(data.order.status) {
-						
-						self.model.confirmOrder(data.order.result);
-                        
-                    } else {
-                        notifyUser(Einzlstck.Models.Copy.data.messages.nl_error, 'error');
-                    }
-
                 });
             }
 

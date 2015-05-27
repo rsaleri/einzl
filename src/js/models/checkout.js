@@ -10,47 +10,12 @@ var CheckoutModel = PageModel.extend({
         
     },
 	
-	confirmOrder: function(order) {
+    
+    confirmOrder: function(order) {
 
-		// create new cart
-		Einzlstck.Models.Cart = new Basket();
-
-		// track order with google analytics
-		this.trackOrder(order);
-		
-		Einzlstck.Router.navigate('/confirmation/' + order.id, true);
 		
 	},
 	
-	trackOrder: function(order) {
-		
-		ga('require', 'ecommerce');
-	
-		ga('ecommerce:addTransaction', {
-			'id': order.id,                     	// Transaction ID. Required.
-			'affiliation': 'Einzelstück',   		// Affiliation or store name.
-			'revenue': order.total,               	// Grand Total.
-			'shipping': order.shipping_price,       // Shipping.
-			'tax': '0',                     		// Tax.
-			'currency': 'EUR'						// Currency
-		});
-
-		$.each(order.cart.contents, function(key, item) {
-
-			ga('ecommerce:addItem', {
-				'id': key,                     		// Transaction ID. Required.
-				'name': item.name,    				// Product name. Required.
-				'sku': item.sku,                 	// SKU/code.
-				'category': item.category.value,    // Category or variation.
-				'price': item.total,                // Unit price.
-				'quantity': item.quantity           // Quantity.
-			});
-
-		});
-
-		ga('ecommerce:send');
-		
-	},
 	
 	processOrder: function() {
 		
@@ -144,7 +109,39 @@ var CheckoutModel = PageModel.extend({
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
 			
+            window.open(data.payment.result.url);
+            
 		});
+		
+	},
+    
+    trackOrder: function(order) {
+		
+		ga('require', 'ecommerce');
+	
+		ga('ecommerce:addTransaction', {
+			'id': order.id,                     	// Transaction ID. Required.
+			'affiliation': 'Einzelstück',   		// Affiliation or store name.
+			'revenue': order.total,               	// Grand Total.
+			'shipping': order.shipping_price,       // Shipping.
+			'tax': '0',                     		// Tax.
+			'currency': 'EUR'						// Currency
+		});
+
+		$.each(order.cart.contents, function(key, item) {
+
+			ga('ecommerce:addItem', {
+				'id': key,                     		// Transaction ID. Required.
+				'name': item.name,    				// Product name. Required.
+				'sku': item.sku,                 	// SKU/code.
+				'category': item.category.value,    // Category or variation.
+				'price': item.total,                // Unit price.
+				'quantity': item.quantity           // Quantity.
+			});
+
+		});
+
+		ga('ecommerce:send');
 		
 	}
 	

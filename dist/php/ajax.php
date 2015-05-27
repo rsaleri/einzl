@@ -196,7 +196,7 @@ if ( $authenticated ) {
             
             $data['payment']['status'] = false;
             
-            // TODO: remove failed order
+            Order::Delete($orderID);
             
         }
         

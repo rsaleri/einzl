@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "d6bd7ddf8b1586c270dd578ae1725090",
@@ -50,7 +50,7 @@
                 "api",
                 "email"
             ],
-            "time": "2015-03-23 21:00:25"
+            "time": "2015-03-23 22:00:25"
         },
         {
             "name": "moltin/php-sdk",

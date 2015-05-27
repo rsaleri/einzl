@@ -1,46 +1,5 @@
 [
     {
-        "name": "moltin/php-sdk",
-        "version": "dev-version1",
-        "version_normalized": "dev-version1",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/moltin/php-sdk.git",
-            "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/moltin/php-sdk/zipball/d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
-            "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "0.7.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2015-05-20 12:09:56",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Moltin": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "Moltin Ltd",
-                "email": "support@molt.in",
-                "homepage": "http://molt.in",
-                "role": "Vendor"
-            }
-        ],
-        "description": "The Moltin php-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently"
-    },
-    {
         "name": "mailchimp/mailchimp",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -87,6 +46,47 @@
             "api",
             "email"
         ]
+    },
+    {
+        "name": "moltin/php-sdk",
+        "version": "dev-version1",
+        "version_normalized": "dev-version1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/moltin/php-sdk.git",
+            "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/moltin/php-sdk/zipball/d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
+            "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.7.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-05-20 12:09:56",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Moltin": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Moltin Ltd",
+                "email": "support@molt.in",
+                "homepage": "http://molt.in",
+                "role": "Vendor"
+            }
+        ],
+        "description": "The Moltin php-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently"
     },
     {
         "name": "phpmailer/phpmailer",

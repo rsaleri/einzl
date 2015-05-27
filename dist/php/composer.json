@@ -2,6 +2,6 @@
     "require": {
         "moltin/php-sdk": "dev-version1",
 		"mailchimp/mailchimp": "dev-master",
-		"phpmailer/phpmailer": "dev-master"
+		"phpmailer/phpmailer": "~5.2"
     }
 }

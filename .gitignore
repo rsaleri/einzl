@@ -5,4 +5,5 @@
 /.sass-cache/
 /npm-debug.log
 /dist/php/access.php
+/dist/php/vendor/*
 .DS_Store

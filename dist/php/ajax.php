@@ -155,7 +155,7 @@ if ( $authenticated ) {
                 $data['payment'] = 'manual';
 				
 				// send confirmation mail
-//                $data['mail'] = sendConfirmationMail($data['order']['result'], $smtpPassword);
+//                $data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart, $smtpPassword);
 				
 				// create new cart
 				unset($_COOKIE['mcart']);
@@ -181,12 +181,16 @@ if ( $authenticated ) {
             // complete payment through moltin
             $data['payment'] = Checkout::Payment('complete_purchase', $orderID, $paypalArr);
             
+			// get the order
             $data['order'] = Order::Get($orderID);
+			
+			// get the cart
+			$cart = Cart::Contents();
             
             try {
                 
                 // send confirmation mail
-//                $data['mail'] = sendConfirmationMail($data['order']['result'], $smtpPassword);
+//				$data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart['result'], $smtpPassword);
                 
             } catch (\Exception $e) {
                 $data['mail'] = $e->getMessage();

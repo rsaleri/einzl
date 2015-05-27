@@ -40,7 +40,7 @@ var GatewayModel = PageModel.extend({
             if(data.payment.status) {
                 
                 // payment successfull
-                notifyUser('Die Zahlung hat geklappt :-)', 'success');
+                notifyUser('Dein Zahlvorgang war erfolgreich.', 'success');
                 
                 // create new cart
                 Einzlstck.Models.Cart = new Basket();

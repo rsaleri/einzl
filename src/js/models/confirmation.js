@@ -32,7 +32,8 @@ var OrderModel = PageModel.extend({
 			
 		} else {
 			
-			
+			// show payment info for manual gateway
+			this.view.el.find('#pay-manual').show();
 			
 		}
 		

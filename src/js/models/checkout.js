@@ -109,7 +109,29 @@ var CheckoutModel = PageModel.extend({
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
 			
-            window.open(data.payment.result.url);
+			if(data.payment === 'manual') {
+				
+				// special treatment for manual gateway
+				
+				// create new cart
+                Einzlstck.Models.Cart = new Basket();
+
+                // track order with google analytics
+//                this.trackOrder(data.order.result);
+                
+                // navigate to confirmation page
+                Einzlstck.Router.navigate('/confirmation/' + data.order.result.id, {
+                    trigger: true,
+                    replace: true
+                });
+				
+			} else {
+				
+				window.open(data.payment.result.url);
+				
+			}
+			
+            
             
 		});
 		

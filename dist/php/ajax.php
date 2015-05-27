@@ -153,6 +153,13 @@ if ( $authenticated ) {
             } else {
                 
                 $data['payment'] = 'manual';
+				
+				// send confirmation mail
+//                $data['mail'] = sendConfirmationMail($data['order']['result'], $smtpPassword);
+				
+				// create new cart
+				unset($_COOKIE['mcart']);
+				Moltin::Identifier();
                 
             }
             

@@ -55,7 +55,7 @@ var OrderModel = PageModel.extend({
 			var obj = {
 				action: "processPayment",
 				orderID: this.data.order.id
-			}
+			};
 			
 			Einzlstck.Models.Shop.askServer(obj).then(function(data) {
 				

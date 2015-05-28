@@ -71,7 +71,7 @@ var Shop = Backbone.Model.extend({
                 $('body').addClass('no-scroll-mobile');
 
                 // close cart
-                cartButton.removeClass('open')
+                cartButton.removeClass('open');
                 $('aside.cart-container').removeClass('open');
 
             }

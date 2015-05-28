@@ -36,9 +36,9 @@ gulp.task('scripts', function() {
   return gulp.src([
       'src/js/config.js',
       'src/js/helper.js',
-      'src/js/app.js',
-      'src/js/page.js',
-	  'src/js/views/page.js',
+      'src/js/router.js',
+      'src/js/views/*.js',
+	  'src/js/models/*.js',
       'src/js/**/*.js'
   ])
     .pipe(jshint('.jshintrc'))

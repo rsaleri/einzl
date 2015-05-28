@@ -120,6 +120,9 @@ if ( $authenticated ) {
                 'ship_to' => $order['shipAd'],
                 'shipping' => $order['shipping']
             ));
+            
+            // just a test 
+            $data['orderTEST'] = Order::Get($data['order']['result']['id']);
 			
 			$data['cart'] = $cart;
 			

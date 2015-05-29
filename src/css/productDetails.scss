@@ -65,13 +65,17 @@ section.product-details {
 				float: left;
 				width: 50%;
 				
+				border-width: 2px;
+				border-style: solid;
+				
 				
 				&.price {
-					border: 2px solid $lightgrey;
+					border-color: $lightgrey;
+					border-right: 0px;
 				}
 				
 				&.add-to-cart {
-					border: 2px solid #333;
+					border-color: #333;
 					background-color: #333;
 					color: $softwhite;
 					

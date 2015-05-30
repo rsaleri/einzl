@@ -37,7 +37,9 @@ gulp.task('scripts', function() {
       'src/js/config.js',
       'src/js/helper.js',
       'src/js/router.js',
+	  'src/js/views/page.js',
       'src/js/views/*.js',
+	  'src/js/models/page.js',
 	  'src/js/models/*.js',
       'src/js/**/*.js'
   ])

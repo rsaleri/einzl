@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6bd7ddf8b1586c270dd578ae1725090",
+    "hash": "bd0729b9582fa3b6b701fd033f1eb1a9",
     "packages": [
         {
             "name": "mailchimp/mailchimp",
@@ -58,12 +58,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moltin/php-sdk.git",
-                "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3"
+                "reference": "43a5aac1014d10331d76e7e6b7acfb944a679902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moltin/php-sdk/zipball/d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
-                "reference": "d37884d0ca5a1e285dc3cdc50b09427e40cd73a3",
+                "url": "https://api.github.com/repos/moltin/php-sdk/zipball/43a5aac1014d10331d76e7e6b7acfb944a679902",
+                "reference": "43a5aac1014d10331d76e7e6b7acfb944a679902",
                 "shasum": ""
             },
             "require": {
@@ -89,20 +89,20 @@
                 }
             ],
             "description": "The Moltin php-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently",
-            "time": "2015-05-20 12:09:56"
+            "time": "2015-05-30 22:36:44"
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "dev-master",
+            "version": "v5.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "199bd9698b9b2b2c6b09e046fd12118fd10a7f73"
+                "reference": "07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/199bd9698b9b2b2c6b09e046fd12118fd10a7f73",
-                "reference": "199bd9698b9b2b2c6b09e046fd12118fd10a7f73",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7",
+                "reference": "07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7",
                 "shasum": ""
             },
             "require": {
@@ -144,7 +144,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2015-05-21 15:05:57"
+            "time": "2015-05-04 12:37:21"
         }
     ],
     "packages-dev": [],
@@ -152,8 +152,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "moltin/php-sdk": 20,
-        "mailchimp/mailchimp": 20,
-        "phpmailer/phpmailer": 20
+        "mailchimp/mailchimp": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

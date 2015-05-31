@@ -10,7 +10,7 @@
 	
 	console.log(params);
     
-    window.opener.location="/confirmation/" + params.orderID + "?" + url + "&paypal=1";
+    window.opener.location="/gateway?" + url + "&paypal=1";
     window.close();
     
 </script>

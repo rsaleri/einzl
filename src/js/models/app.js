@@ -17,11 +17,6 @@ var Shop = Backbone.Model.extend({
 			// ... get products from moltin
 			self.getProducts();
 			
-            // ... and greet the user
-            window.setTimeout(function() {
-                notifyUser(copy.messages.welcome[getRandomInt(0, copy.messages.welcome.length -1)], 'success');
-            }, 2000);
-			
 		});
 		
 	},
@@ -76,7 +71,7 @@ var Shop = Backbone.Model.extend({
                 $('body').addClass('no-scroll-mobile');
 
                 // close cart
-                cartButton.removeClass('open')
+                cartButton.removeClass('open');
                 $('aside.cart-container').removeClass('open');
 
             }

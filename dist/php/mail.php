@@ -31,10 +31,43 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLitem .= '<td>'.$prod['totals']['post_discount']['formatted']['with_tax'].'</td>';
 		$HTMLitem .= '</tr>';
 	}
+	
 	$message = str_replace('%cartitems%', $HTMLitem, $message);
-	$message = str_replace('%tax%', ($orderData['totals']['total']['formatted']), $message);
-	$message = str_replace('%totalprice%', $orderData['totals']['total']['formatted'], $message);
+	$message = str_replace('%tax%', ($orderData['totals']['post_discount']['formatted']['with_tax']), $message);
+	$message = str_replace('%totalprice%', $orderData['totals']['post_discount']['formatted']['with_tax'], $message);
 	$message = str_replace('%orderID%', $orderData['id'], $message);
+	
+	
+			
+			
+	
+	$HTMLpayment = '';
+	
+	if($orderData['gateway']['data']['slug'] === 'manual') {
+		
+		$HTMLpayment .= '<p>Bitte überweise den Gesamtbetrag von %totalprice% auf folgendes Konto:</p>';
+		$HTMLpayment .= '<p>';
+		$HTMLpayment .= 'Einzelstück (Inh. Sumit Kumar)<br/>';
+		$HTMLpayment .= 'IBAN: DE95120300001014163396<br/>';
+		$HTMLpayment .= 'BIC: BYLADEM1001<br/>';
+		$HTMLpayment .= '<b>Verwendungszweck: '.$orderData['id'].'</b><br/>';
+		$HTMLpayment .= '(bitte unbedingt angeben)';
+		$HTMLpayment .= '</p>';
+		$HTMLpayment .= '<p>Sobald wir den Zahlungseingang festellen, schicken wir dir deine Bestellung an folgende Adresse:</p>';
+		
+	} else if($orderData['gateway']['data']['slug'] === 'paypal-express') {
+		
+		$HTMLpayment .= '<p>Wir haben deine Paypal-Zahlung erhalten.</p>';
+		$HTMLpayment .= '<p>Dein Schmuck wird innerhalb der nächsten Tage an folgende Adresse versandt:</p>';
+		
+	}
+	
+	
+	
+	
+	
+	$message = str_replace('%paymentinfo%', $HTMLpayment, $message);
+	
 
 	$HTMLshipad = '';
 	$HTMLshipad .= $shipAd['first_name'].' '.$shipAd['last_name'].'<br/>';

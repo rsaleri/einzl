@@ -43,23 +43,24 @@ function validateForm(form) {
     }
     
     return true;
+    
 	
 	
-};
+}
 
 function guid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);
     });
-};
+}
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 function removeSlash(site) {
     return site.replace(/\/$/, "");
-};
+}
 
 function goToByScroll(obj){
     $('html,body').animate({scrollTop: obj.offset().top - 65},'slow');
@@ -74,7 +75,7 @@ function isLocalStorageNameSupported() {
 	} catch (error) {
 		return false;
 	}
-};
+}
 
 function getUrlParams() {
     var url = location.search.substring(1);
@@ -82,7 +83,7 @@ function getUrlParams() {
     function(key, value) { return key===""?value:decodeURIComponent(value); }):{};
     
     return params;
-};
+}
 
 // Notifications
 var t1;
@@ -105,7 +106,7 @@ function notifyUser(msg, type) {
             span.text('');
         }, 1000);
     }, 4500);
-};
+}
 
 
 // temporarily adds a class to an element and removes it after a timeout
@@ -116,4 +117,4 @@ jQuery.fn.addTempClass = function(c, t) {
     window.setTimeout(function() {
         o.removeClass(c);
     }, t);
-};
+}

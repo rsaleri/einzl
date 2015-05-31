@@ -8,8 +8,6 @@ var OrderModel = PageModel.extend({
         this.view = new OrderView(this.data.hbsPath);
         this.view.model = this;
 		
-		this.data.urlParams = getUrlParams();
-		
 		this.getOrder(this.data.order.id).then(function() {
 			
 			self.view.render(self.data).then(function() {
@@ -23,56 +21,6 @@ var OrderModel = PageModel.extend({
         
     },
 	
-	handlePaypalResponse: function() {
-		
-		var self = this;
-		
-		console.log('handle paypal response');
-		
-		if(this.data.urlParams.PayerID) {
-			
-			// user paid, tell that moltin
-			var obj = {
-				action: "completePayment",
-				orderID: this.data.order.id,
-				PayerID: this.data.urlParams.PayerID,
-				token: this.data.urlParams.token
-			}
-			
-			Einzlstck.Models.Shop.askServer(obj).then(function(data) {
-				
-				if(data.payment.status) {
-					
-					// payment successfull
-					
-					// tell the user that
-					notifyUser('Zahlung erfolgreich', 'success');
-					
-					// show paid box
-					self.view.el.find('#paid').show();
-				} else {
-					
-					// payment failed for whatever reason
-					
-					// let the user know
-					notifyUser('Zahlung fehlgeschlagen', 'error');
-					
-					// init the chosen gateway
-					self.initGateway(self.data.order.gateway.data.slug);
-				}
-				
-			});
-			
-		} else {
-			// user canceled payment
-			notifyUser('Zahlung abgebrochen', 'error');
-			
-			// init the chosen gateway
-			this.initGateway(this.data.order.gateway.data.slug);
-		}
-		
-	},
-	
 	handlePayment: function() {
 		
 		if(this.data.order.status.value === 'Paid' || this.data.order.status.value === 'Dispatched') {
@@ -84,18 +32,8 @@ var OrderModel = PageModel.extend({
 			
 		} else {
 			
-			// order isn't paid yet
-			
-			if(this.data.urlParams.paypal) {
-				
-				// this is a paypal callback
-				this.handlePaypalResponse();
-
-			} else {
-
-				// this isn't a return from gateway so, init the chosen gateway
-				this.initGateway(this.data.order.gateway.data.slug);
-			}
+			// show payment info for manual gateway
+			this.view.el.find('#pay-manual').show();
 			
 		}
 		
@@ -117,7 +55,7 @@ var OrderModel = PageModel.extend({
 			var obj = {
 				action: "processPayment",
 				orderID: this.data.order.id
-			}
+			};
 			
 			Einzlstck.Models.Shop.askServer(obj).then(function(data) {
 				

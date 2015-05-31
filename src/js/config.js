@@ -91,6 +91,14 @@ var config = [
      },
      {
          title: {
+             en: 'Gateway',
+             de: 'Zahlung'
+         },
+         id: 'gateway',
+         slug: ['/gateway']
+     },
+     {
+         title: {
              en: 'GTC',
              de: 'AGB'
          },

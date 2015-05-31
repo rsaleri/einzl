@@ -15,7 +15,7 @@ var BasketView = Backbone.View.extend({
 	close: function() {
 		
 		// close cart
-		$('.cart-button').removeClass('open')
+		$('.cart-button').removeClass('open');
 		$('aside.cart-container').removeClass('open');
 		$('body').removeClass('no-scroll-mobile');
 		
@@ -24,7 +24,7 @@ var BasketView = Backbone.View.extend({
 	open: function() {
 		
 		// open cart
-		$('.cart-button').addClass('open')
+		$('.cart-button').addClass('open');
 		$('aside.cart-container').addClass('open');
 		$('body').addClass('no-scroll-mobile');
 		

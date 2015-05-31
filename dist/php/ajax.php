@@ -44,17 +44,15 @@ if ( $authenticated ) {
 
         
     } else if($action == 'addToCart') {
-        try
-        {
+        
+        try {
 
             $productID = $_POST['product_id'];
             
             // put item into cart			
 			$data['item'] = Cart::Insert($productID, 1);
             
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             $data = $e->getMessage();
         }
         
@@ -65,15 +63,15 @@ if ( $authenticated ) {
     } else if($action == 'getOrder') {
         
         
-        try
-        {
+        try {
+            
             $orderID = $_POST['orderID'];
             $data['order'] = Order::Get($orderID);
             
-        } 
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
+            
             $data = $e->getMessage();
+            
         }
         
     } else if($action == 'removeFromCart') {
@@ -105,7 +103,7 @@ if ( $authenticated ) {
 
     } else if($action == 'processOrder') {
         
-        
+        // create order
         try
         {
 
@@ -127,64 +125,101 @@ if ( $authenticated ) {
                 'ship_to' => $order['shipAd'],
                 'shipping' => $order['shipping']
             ));
+            
+            // just a test 
+            $data['orderTEST'] = Order::Get($data['order']['result']['id']);
 			
-			$data['order']['result']['cart'] = $cart;
-			
-			if($data['order']['status']) {
-				
-				// send confirmation mail
-				$data['mail'] = sendConfirmationMail($user, $data['order']['result'], $cart, $smtpPassword);
-				
-				// create new cart
-				unset($_COOKIE['mcart']);
-				Moltin::Identifier();
-				
-			} else {
-				
-				
-				
-			}
-			
+			$data['cart'] = $cart;
 			
             
         }
         catch (\Exception $e)
         {
-            $data = $e->getMessage();
+            $data['order'] = $e->getMessage();
 			
         }
         
         
-        
-    } else if($action == 'processPayment') {
-        
-        $orderID = $_POST['orderID'];
-        
-        
-        
-        $paypalArr = array(
-            'return_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID,
-            'cancel_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID
-        );
-        
-        $data['payment'] = Checkout::Payment('purchase', $orderID, $paypalArr); 
-        
-//        $data['payment'] = $paypalArr;
+        if($data['order']['status']) {
+            
+            $order = $data['order']['result'];
+            $orderID = $order['id'];
+            $gateway = $order['gateway']['data']['slug'];
+            
+            // order created, now initiate paypal gateway
+            if($gateway == 'paypal-express') {
+                
+                
+                $paypalArr = array(
+                    'return_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID,
+                    'cancel_url' => 'http://'.$_SERVER['HTTP_HOST'].'/php/paypalreturn.php?orderID='.$orderID
+                );
+
+                $data['payment'] = Checkout::Payment('purchase', $orderID, $paypalArr); 
+                
+                
+            } else {
+                
+                $data['payment'] = 'manual';
+				
+				// send confirmation mail
+//                $data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart, $smtpPassword);
+				
+				// create new cart
+				unset($_COOKIE['mcart']);
+				Moltin::Identifier();
+                
+            }
+            
+        }
         
         
     } else if($action == 'completePayment') {
+        
+        $orderID = $_POST['orderID'];
+        
+        if(isset($_POST['paypal']) && isset($_POST['PayerID'])) {
+            
+            // paypal was paid
+            $paypalArr = array(
+                'token' => $_POST['token'],
+                'payerid' => $_POST['PayerID']
+            );
+            
+            // complete payment through moltin
+            $data['payment'] = Checkout::Payment('complete_purchase', $orderID, $paypalArr);
+            
+			// get the order
+            $data['order'] = Order::Get($orderID);
+			
+			// get the cart
+			$cart = Cart::Contents();
+            
+            try {
+                
+                // send confirmation mail
+//				$data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart['result'], $smtpPassword);
+                
+            } catch (\Exception $e) {
+                $data['mail'] = $e->getMessage();
+
+            }
+            
+            // create new cart
+            unset($_COOKIE['mcart']);
+            Moltin::Identifier();
+            
+        } else {
+            
+            $data['payment']['status'] = false;
+            
+            Order::Delete($orderID);
+            
+        }
+        
+        
 		
-		$orderID = $_POST['orderID'];
-		$PayerID = $_POST['PayerID'];
-		$token = $_POST['token'];
 		
-		$paypalArr = array(
-			'token' => $token,
-			'payerid' => $PayerID
-		);
-		
-		// update order at moltin
-		$data['payment'] = $data['payment'] = Checkout::Payment('complete_purchase', $orderID, $paypalArr); 
 		
 	}
     

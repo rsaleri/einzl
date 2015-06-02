@@ -10,13 +10,6 @@ var CheckoutModel = PageModel.extend({
         
     },
 	
-    
-    confirmOrder: function(order) {
-
-		
-	},
-	
-	
 	processOrder: function() {
 		
 		console.log('process order');
@@ -105,27 +98,16 @@ var CheckoutModel = PageModel.extend({
 			cart: Einzlstck.Models.Cart.data
 		};
 
-		console.log(obj);
-
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
 			
+            console.log('processed order:');
 			console.log(data);
 			
 			if(data.payment === 'manual') {
 				
-				// special treatment for manual gateway
+				// go directly to gateway page for manual gateway
+                window.location="/gateway?manual=1&orderID=" + data.order.result.id;
 				
-				// create new cart
-                Einzlstck.Models.Cart = new Basket();
-
-                // track order with google analytics
-//                this.trackOrder(data.order.result);
-                
-                // navigate to confirmation page
-                Einzlstck.Router.navigate('/confirmation/' + data.order.result.id, {
-                    trigger: true,
-                    replace: true
-                });
 				
 			} else {
 				

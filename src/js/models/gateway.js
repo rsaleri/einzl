@@ -5,15 +5,41 @@ var GatewayModel = PageModel.extend({
         var self = this;
         
         this.data = data;
-//        this.view = null;
-//        this.view.model = this;
-		
-		
 		
 		// prevent user greeting
         window.clearTimeout(Einzlstck.Models.User.sayHello());
         
+        
+        // handle gateway response
         this.handleGatewayResponse();
+        
+        
+        
+    },
+    
+    confirmOrder: function(order) {
+
+        // create new cart
+        Einzlstck.Models.Cart = new Basket();
+
+        // track order with google analytics
+//                this.trackOrder(order);
+
+        // navigate to confirmation page
+        Einzlstck.Router.navigate('/confirmation/' + order.id, {
+            trigger: true,
+            replace: true
+        });
+        
+    },
+    
+    cancelOrder: function() {
+        
+        // navigate back to the checkout page
+        Einzlstck.Router.navigate('/checkout', {
+            trigger: true,
+            replace: true
+        });
         
     },
 	
@@ -21,9 +47,8 @@ var GatewayModel = PageModel.extend({
 		
 		var self = this;
 		
-		console.log('handle paypal response');
+		console.log('handle gateway response');
 		
-		// user paid, tell that moltin
         var obj = {
             action: "completePayment"
         };
@@ -34,25 +59,19 @@ var GatewayModel = PageModel.extend({
         Einzlstck.Models.Shop.askServer(obj).then(function(data) {
             
             console.log('complete payment response: ');
-            
             console.log(data);
-				
-            if(data.payment.status) {
+            
+            if(data.payment == 'manual') {
+                
+                // manual gateway? go and confirm
+                self.confirmOrder(data.order.result);
+                
+            } else if(data.payment.status) {
                 
                 // payment successfull
                 notifyUser('Dein Zahlvorgang war erfolgreich.', 'success');
                 
-                // create new cart
-                Einzlstck.Models.Cart = new Basket();
-
-                // track order with google analytics
-//                this.trackOrder(data.order.result);
-                
-                // navigate to confirmation page
-                Einzlstck.Router.navigate('/confirmation/' + data.order.result.id, {
-                    trigger: true,
-                    replace: true
-                });
+                self.confirmOrder(data.order.result);
 
                 
             } else {
@@ -60,11 +79,7 @@ var GatewayModel = PageModel.extend({
                 // payment failed
                 notifyUser('Bei der Zahlung ging etwas schief :-(', 'error');
                 
-                // navigate back to the checkout page
-                Einzlstck.Router.navigate('/checkout', {
-                    trigger: true,
-                    replace: true
-                });
+                self.cancelOrder();
                 
             }
             

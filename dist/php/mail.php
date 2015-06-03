@@ -90,9 +90,9 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	$mail->FromName = 'Einzelstück';
 	$mail->addAddress($user['email'], $user['first_name']);  // Add a recipient
 	// 	$mail->addAddress('ellen@example.com');               // Name is optional
-	$mail->addReplyTo('info@einzelstueck-shop.com', 'Information');
+	$mail->addReplyTo('info@einzelstueck-shop.com', 'Einzelstück Team');
 	// 	$mail->addCC('cc@example.com');
-	$mail->addBCC('sk@outlook.com');
+	$mail->addBCC('info@einzlstck.de');
 
 	$mail->CharSet = "UTF-8";
 	$mail->WordWrap = 50;                                 // Set word wrap to 50 characters

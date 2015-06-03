@@ -37,20 +37,6 @@ var Inventory = Backbone.Model.extend({
                         self.products[prodData.id] = new ProductModel(prodData);
                     }
                     
-                    
-                    // init a products associated products
-                    if(prodData.recommendations) {
-                        
-                        $.each(prodData.recommendations.data, function() {
-
-                            if(!self.products[this.id]) {                        
-                                self.products[this.id] = new ProductModel(this);
-                            }
-
-                        });
-                        
-                    }
-                    
                 });
                 
                 Einzlstck.Deferreds.products.resolve(data);

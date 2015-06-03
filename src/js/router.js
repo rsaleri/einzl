@@ -82,13 +82,15 @@ var Router = Backbone.Router.extend({
 		Einzlstck.Deferreds.products.then(function() {
             
             var productModel = Einzlstck.Models.Inventory.selectProduct(id);
-            console.log(productModel.data);
+            
             productModel.view.render(productModel.data);
+            
+            // set document title
+            document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
 			
 		});
 		
-		// set document title
-		document.title = config.title.de + ' - Einzelstück';
+		
 		
 		$('header nav a').removeClass('active');
 		

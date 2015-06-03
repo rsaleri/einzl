@@ -17,9 +17,8 @@ Gulp, SASS
 ## Contributing
 
 1. do `npm install`
-2. `cd` to `dist/php` and do `composer install`
-3. do `gulp watch`
-4. start coding.
+2. do `gulp watch`
+3. start coding.
 
 ## Special Thanks
 

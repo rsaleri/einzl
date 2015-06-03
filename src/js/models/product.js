@@ -25,6 +25,16 @@ var ProductModel = Backbone.Model.extend({
 	initController: function() {
 		
 		var self = this;
+        
+        // enable link to details page
+        this.extractView.el.on('vclick', function() {
+            
+            // navigate to confirmation page
+            Einzlstck.Router.navigate('/product/' + self.data.id, {
+                trigger: true
+            });
+            
+        });
 		
 		// enable plus button
 		this.extractView.el.find('.drop.plus').on('vclick', function(e) {

@@ -87,7 +87,7 @@ var Basket = Backbone.Model.extend({
                 Einzlstck.Models.User.saveToLocalstorage();
 				
 			} else {
-				notifyUser(einzl.copy.messages.noConnection, 'error');
+				notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
 			}
 
 

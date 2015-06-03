@@ -61,6 +61,7 @@ var Router = Backbone.Router.extend({
         "gateway": "gateway",
 		
 		"product/:id": "product",
+        "p/:id": "product",
 		
 		"confirmation/:orderID": "confirmation",
         
@@ -79,32 +80,12 @@ var Router = Backbone.Router.extend({
         var config = this.getRouteConfig(slug);
 		
 		Einzlstck.Deferreds.products.then(function() {
-			
-			// loop through all products
-			$.each(Einzlstck.Models.Products, function() {
-
-				var product = this;
-
-				// do we have a product match?
-				if(product.data.id === id) {
-					
-					console.log(product.data);
-
-					product.view.render(product.data);
-
-					return false;
-				}
-
-			});
+            
+            var productModel = Einzlstck.Models.Inventory.selectProduct(id);
+            console.log(productModel.data);
+            productModel.view.render(productModel.data);
 			
 		});
-		
-		
-		
-		
-		
-        // init page
-//		Einzlstck.Pages[config.id] = new ProductDetailsModel(config);
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';

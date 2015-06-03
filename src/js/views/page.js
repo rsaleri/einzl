@@ -52,26 +52,15 @@ var PageView = Backbone.View.extend({
 			var container = $(this);
 			var prodID = container.attr('data-product');
 			
-			// loop through all products
-			$.each(Einzlstck.Models.Products, function() {
-				
-				var product = this;
-				
-				// do we have a product match?
-				if(product.data.id === prodID) {
-					
-					// is the product template availble?
-					$.when(product.extractView.template).then(function() {
-						
-						// yes, so insert the products view into the product container on this page
-						product.extractView.el.clone(true).appendTo(container);
-						
-					});
-					
-					return false;
-				}
-				
-			});
+			var productModel = Einzlstck.Models.Inventory.selectProduct(prodID);
+            
+            // is the product template availble?
+            $.when(productModel.extractView.template).then(function() {
+
+                // yes, so insert the products view into the product container on this page
+                productModel.extractView.el.clone(true).appendTo(container);
+
+            });
 			
 		});
 		

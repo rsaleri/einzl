@@ -47,49 +47,31 @@ var ProductView = PageView.extend({
 		
 		var self = this;
 		
-		// before doing the standard rendering, 
-		// let's find random products from the same categories to show in on the bottom of the details page
-		var productsFromCategory = [];
-		$.each(Einzlstck.Models.Products, function() {
-			
-			if(this.data.category.value === self.model.data.category.value) {
-				productsFromCategory.push(this);
-			}
-			
-		});
-		
-		
-		
 		// call the original .render() function from the PageView super/parent class
 		PageView.prototype.render.call(this, data).then(function() {
 			
-			// are all products available?
-			Einzlstck.Deferreds.products.then(function() {
-				
-				// show three random products
-				$.each([0,1,2], function() {
-					
-				
-				
-					// get a random index
-					var randIndex = getRandomInt(0, productsFromCategory.length - 1);
-					
-					// get the random product
-					var randomProduct = productsFromCategory[randIndex];
-					
-					// place its extractView into the random products of this detail-view
-					$.when(randomProduct.extractView.template).then(function() {
-						
-						// yes, so insert the products view into the product container on this page
-						randomProduct.extractView.el.clone(true).appendTo(self.el.find('.random-products'));
-						
-					});
+			console.log(data);
+            
+			if(data.recommendations) {
+                
+                $.each(data.recommendations.data, function() {
+                    
+                    var recommendedProduct = Einzlstck.Models.Inventory.selectProduct(this.id);
+                    
+                    // place its extractView into the random products of this detail-view
+                    $.when(recommendedProduct.extractView.template).then(function() {
 
-				});
-				
-				
-			});
-			
+                        // yes, so insert the products view into the product container on this page
+                        recommendedProduct.extractView.el.clone(true).appendTo(self.el.find('.recommended-products'));
+
+                    });
+                    
+                });
+                
+                
+                
+                
+            }
 			
 			
 			

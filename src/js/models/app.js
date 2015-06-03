@@ -14,9 +14,6 @@ var Shop = Backbone.Model.extend({
         // after we have our copy...
         Einzlstck.Deferreds.copy.then(function(copy) {
             
-            // ... get products from moltin
-            self.getProducts();
-            
         });
         
     },
@@ -103,34 +100,6 @@ var Shop = Backbone.Model.extend({
         
     },
     
-    getProducts: function() {
-        
-        var self = this;
-        
-        // get product models
-        var obj = {
-            action: 'getProducts'
-        };
-        
-        return this.askServer(obj).done(function(data) {
-
-            if(data && data.status) {
-                
-                Einzlstck.Models.Products = [];
-
-                $.each(data.result, function(i) {
-                    Einzlstck.Models.Products[i] = new ProductModel(this);
-                });
-                
-                Einzlstck.Deferreds.products.resolve(data);
-                
-                
-            } else {
-                notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
-            }
-        });
-    },
-    
     askServer: function(obj) {
         
         
@@ -197,6 +166,7 @@ $(document).ready(function() {
     
     // let's to this
     Einzlstck.Models.Shop = new Shop();
+    Einzlstck.Models.Inventory = new Inventory();
     Einzlstck.Models.User = new User();
     Einzlstck.Models.Cart = new Basket();
     

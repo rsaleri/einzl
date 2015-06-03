@@ -114,6 +114,11 @@ var ProductView = PageView.extend({
 		if(this.model.data.stock_level === 0) {
 			this.el.addClass('out-of-stock');
 		}
+        
+        // recommendations class
+        if(this.model.data.recommendations) {
+            this.el.addClass('has-recommendations');
+        }
 		
 		this.el.find('.accordeon li').on('vclick', function() {
 			var li = $(this);

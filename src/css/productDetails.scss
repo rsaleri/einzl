@@ -191,16 +191,31 @@ section.product-details {
 		
 		
 	}
+    
+    
+    
+    
+    .recommended-products-title {
+        padding: 20px;
+        display: none;
+    }
+    
+    .recommended-products {
+        display: none;
+    }
 	
 	
-	
-	
-	
-	// TODO: Move this into general scss files when all products css changes to this
-	[data-product] {
-//		min-height: 0;
-	}
-	
-	
+    &.has-recommendations {
+        
+        .recommended-products {
+            display: block;
+        }
+        
+        .recommended-products-title {
+            display: block;
+        }
+        
+    }
+    
 	
 }

@@ -1,0 +1,148 @@
+[
+    {
+        "name": "mailchimp/mailchimp",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://bitbucket.org/mailchimp/mailchimp-api-php.git",
+            "reference": "03ae0dba64d1a902fb4d76004ef12c8391ededc8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://bitbucket.org/mailchimp/mailchimp-api-php/get/03ae0dba64d1a902fb4d76004ef12c8391ededc8.zip",
+            "reference": "03ae0dba64d1a902fb4d76004ef12c8391ededc8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "apigen/apigen": "dev-master"
+        },
+        "time": "2015-03-23 21:00:25",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mailchimp": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "MailChimp Devs",
+                "email": "api@mailchimp.com",
+                "homepage": "http://mailchimp.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "API client library for the MailChimp bulk email as a service platform",
+        "homepage": "https://bitbucket.org/mailchimp/mailchimp-api-php",
+        "keywords": [
+            "api",
+            "email"
+        ]
+    },
+    {
+        "name": "phpmailer/phpmailer",
+        "version": "v5.2.10",
+        "version_normalized": "5.2.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPMailer/PHPMailer.git",
+            "reference": "07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7",
+            "reference": "07005ecbb80d11ec8c0f067bb37e8909cc7fcbb7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.0"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "*",
+            "phpunit/phpunit": "4.3.*"
+        },
+        "time": "2015-05-04 12:37:21",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "class.phpmailer.php",
+                "class.smtp.php",
+                "class.pop3.php",
+                "extras/EasyPeasyICS.php",
+                "extras/ntlm_sasl_client.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Jim Jagielski",
+                "email": "jimjag@gmail.com"
+            },
+            {
+                "name": "Marcus Bointon",
+                "email": "phpmailer@synchromedia.co.uk"
+            },
+            {
+                "name": "Andy Prevost",
+                "email": "codeworxtech@users.sourceforge.net"
+            },
+            {
+                "name": "Brent R. Matzelle"
+            }
+        ],
+        "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+    },
+    {
+        "name": "moltin/php-sdk",
+        "version": "dev-version1",
+        "version_normalized": "dev-version1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/moltin/php-sdk.git",
+            "reference": "43a5aac1014d10331d76e7e6b7acfb944a679902"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/moltin/php-sdk/zipball/43a5aac1014d10331d76e7e6b7acfb944a679902",
+            "reference": "43a5aac1014d10331d76e7e6b7acfb944a679902",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.7.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-05-30 22:36:44",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Moltin": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Moltin Ltd",
+                "email": "support@molt.in",
+                "homepage": "http://molt.in",
+                "role": "Vendor"
+            }
+        ],
+        "description": "The Moltin php-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently"
+    }
+]

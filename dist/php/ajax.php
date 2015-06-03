@@ -126,9 +126,6 @@ if ( $authenticated ) {
                 'shipping' => $order['shipping']
             ));
             
-            // just a test 
-            $data['orderTEST'] = Order::Get($data['order']['result']['id']);
-			
 			$data['cart'] = $cart;
 			
             
@@ -162,13 +159,6 @@ if ( $authenticated ) {
                 
                 $data['payment'] = 'manual';
 				
-				// send confirmation mail
-//                $data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart, $smtpPassword);
-				
-				// create new cart
-				unset($_COOKIE['mcart']);
-				Moltin::Identifier();
-                
             }
             
         }
@@ -178,7 +168,30 @@ if ( $authenticated ) {
         
         $orderID = $_POST['orderID'];
         
-        if(isset($_POST['paypal']) && isset($_POST['PayerID'])) {
+        if(isset($_POST['manual'])) {
+            
+            // manual gateway requires no completion
+            $data['payment'] = 'manual';
+            
+            // get the order
+            $data['order'] = Order::Get($orderID);
+            
+            // get the cart
+			$cart = Cart::Contents();
+            
+            try {
+                // send confirmation mail
+				$data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart['result'], $smtpPassword);
+            } catch (\Exception $e) {
+                $data['mail'] = $e->getMessage();
+
+            }
+            
+            // create new cart
+            unset($_COOKIE['mcart']);
+            Moltin::Identifier();
+            
+        } else if(isset($_POST['paypal']) && isset($_POST['PayerID'])) {
             
             // paypal was paid
             $paypalArr = array(
@@ -196,10 +209,8 @@ if ( $authenticated ) {
 			$cart = Cart::Contents();
             
             try {
-                
                 // send confirmation mail
-//				$data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart['result'], $smtpPassword);
-                
+				$data['mail'] = sendConfirmationMail($data['order']['result']['customer']['data'], $data['order']['result'], $cart['result'], $smtpPassword);
             } catch (\Exception $e) {
                 $data['mail'] = $e->getMessage();
 
@@ -216,7 +227,6 @@ if ( $authenticated ) {
             Order::Delete($orderID);
             
         }
-        
         
 		
 		

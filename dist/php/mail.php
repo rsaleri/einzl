@@ -33,8 +33,8 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	}
 	
 	$message = str_replace('%cartitems%', $HTMLitem, $message);
-	$message = str_replace('%tax%', ($orderData['totals']['post_discount']['formatted']['with_tax']), $message);
-	$message = str_replace('%totalprice%', $orderData['totals']['post_discount']['formatted']['with_tax'], $message);
+    $message = str_replace('%tax%', ($orderData['totals']['formatted']['tax']), $message);
+	$message = str_replace('%totalprice%', $orderData['totals']['formatted']['total'], $message);
 	$message = str_replace('%orderID%', $orderData['id'], $message);
 	
 	
@@ -45,7 +45,8 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	
 	if($orderData['gateway']['data']['slug'] === 'manual') {
 		
-		$HTMLpayment .= '<p>Bitte überweise den Gesamtbetrag von %totalprice% auf folgendes Konto:</p>';
+		$HTMLpayment .= '<p>Bitte überweise den Gesamtbetrag von '.$orderData['totals']['formatted']['total'].' auf folgendes Konto:</p>';
+
 		$HTMLpayment .= '<p>';
 		$HTMLpayment .= 'Einzelstück (Inh. Sumit Kumar)<br/>';
 		$HTMLpayment .= 'IBAN: DE95120300001014163396<br/>';
@@ -61,10 +62,6 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLpayment .= '<p>Dein Schmuck wird innerhalb der nächsten Tage an folgende Adresse versandt:</p>';
 		
 	}
-	
-	
-	
-	
 	
 	$message = str_replace('%paymentinfo%', $HTMLpayment, $message);
 	
@@ -93,9 +90,9 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	$mail->FromName = 'Einzelstück';
 	$mail->addAddress($user['email'], $user['first_name']);  // Add a recipient
 	// 	$mail->addAddress('ellen@example.com');               // Name is optional
-	$mail->addReplyTo('info@einzelstueck-shop.com', 'Information');
+	$mail->addReplyTo('info@einzelstueck-shop.com', 'Einzelstück Team');
 	// 	$mail->addCC('cc@example.com');
-	$mail->addBCC('sk@outlook.com');
+	$mail->addBCC('info@einzlstck.de');
 
 	$mail->CharSet = "UTF-8";
 	$mail->WordWrap = 50;                                 // Set word wrap to 50 characters

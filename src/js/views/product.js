@@ -111,7 +111,7 @@ var ProductView = PageView.extend({
 		});
 
 		// add stock class
-		if(this.model.data.stock_level == 0) {
+		if(this.model.data.stock_level === 0) {
 			this.el.addClass('out-of-stock');
 		}
 		

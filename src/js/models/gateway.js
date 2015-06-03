@@ -60,7 +60,7 @@ var GatewayModel = PageModel.extend({
             console.log('complete payment response: ');
             console.log(data);
             
-            if(data.payment == 'manual') {
+            if(data.payment === 'manual') {
                 
                 // manual gateway? go and confirm
                 self.confirmOrder(data.order.result);

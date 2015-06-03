@@ -68,7 +68,7 @@ var ProductModel = Backbone.Model.extend({
 		});
 
 		// add stock class
-		if(this.data.stock_level == 0) {
+		if(this.data.stock_level === 0) {
 			this.extractView.el.addClass('out-of-stock');
 		}
 		

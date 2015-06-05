@@ -113,9 +113,15 @@ footer {
             display: table-cell;
         }
         
+        &.col-3 > div {
+            width: 33.33333%;
+        }
+        
+        
     }
     
 }
+
 
 /**
  * Unit-1
@@ -218,7 +224,7 @@ footer {
     
 }
 
-.units-3-row {
+.units-3-col {
 	
 	> div {
 		

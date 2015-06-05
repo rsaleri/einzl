@@ -19,7 +19,14 @@ var ProductModel = Backbone.Model.extend({
 	},
 	
 	addToCart: function() {
-		return Einzlstck.Models.Cart.addItem(this.data.id);
+        
+        if(this.data.stock_level <= 0) {
+            notifyUser(this.data.title + ' ist ausverkauft :-(', 'error');
+            return $.Deferred().reject();
+        } else {
+            return Einzlstck.Models.Cart.addItem(this.data.id);
+        }
+        
 	},
 	
 	initController: function() {

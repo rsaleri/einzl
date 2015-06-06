@@ -215,6 +215,11 @@ section.product-details {
     
     .recommended-products {
         display: none;
+		
+		.product {
+			min-height: 30vh;
+		}
+		
     }
 	
 	

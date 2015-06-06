@@ -9,7 +9,6 @@ var GatewayModel = PageModel.extend({
 		// prevent user greeting
         window.clearTimeout(Einzlstck.Models.User.sayHello());
         
-        
         // handle gateway response
         this.handleGatewayResponse();
         
@@ -61,17 +60,19 @@ var GatewayModel = PageModel.extend({
             console.log('complete payment response: ');
             console.log(data);
             
-            if(data.payment == 'manual') {
+            if(data.payment === 'manual') {
                 
                 // manual gateway? go and confirm
                 self.confirmOrder(data.order.result);
                 
             } else if(data.payment.status) {
+
                 
                 // payment successfull
                 notifyUser('Dein Zahlvorgang war erfolgreich.', 'success');
                 
                 self.confirmOrder(data.order.result);
+
 
                 
             } else {
@@ -80,6 +81,7 @@ var GatewayModel = PageModel.extend({
                 notifyUser('Bei der Zahlung ging etwas schief :-(', 'error');
                 
                 self.cancelOrder();
+
                 
             }
             

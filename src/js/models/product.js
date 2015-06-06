@@ -8,34 +8,50 @@ var ProductModel = Backbone.Model.extend({
 		this.data = data;
 		
 		this.view = new ProductView();
+		this.view.model = this;
 		
-		this.view.render(this.data).then(function() {
-			
+		this.extractView = new ProductViewExtract();
+		
+		this.extractView.render(this.data).then(function() {
 			self.initController();
-			
 		});
+		
 	},
 	
 	addToCart: function() {
-		
-		console.log('add this product to cart: ' + this.data.id);
-		
-		return Einzlstck.Models.Cart.addItem(this.data.id);
+        
+        if(this.data.stock_level <= 0) {
+            notifyUser(this.data.title + ' ist ausverkauft :-(', 'error');
+            return $.Deferred().reject();
+        } else {
+            return Einzlstck.Models.Cart.addItem(this.data.id);
+        }
+        
 	},
 	
 	initController: function() {
 		
 		var self = this;
+        
+        // enable link to details page
+        this.extractView.el.on('vclick', function() {
+            
+            // navigate to confirmation page
+            Einzlstck.Router.navigate('/product/' + self.data.id, {
+                trigger: true
+            });
+            
+        });
 		
 		// enable plus button
-		this.view.el.find('.drop.plus').on('vclick', function(e) {
+		this.extractView.el.find('.drop.plus').on('vclick', function(e) {
 			$(this).closest('.details').toggleClass('collapsed expanded');
 			e.preventDefault();
 			e.stopPropagation();
 		});
 		
 		// enable add-to-cart button
-		this.view.el.find('.drop.add-to-cart').on('vclick', function(e) {
+		this.extractView.el.find('.add-to-cart').on('vclick', function(e) {
 			var button = $(this);
 
 			if(!button.hasClass('loading')) {
@@ -60,7 +76,7 @@ var ProductModel = Backbone.Model.extend({
 
 		// add stock class
 		if(this.data.stock_level === 0) {
-			this.view.el.addClass('out-of-stock');
+			this.extractView.el.addClass('out-of-stock');
 		}
 		
 	}

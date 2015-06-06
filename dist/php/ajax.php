@@ -21,6 +21,11 @@ if ( $authenticated ) {
         // get products from moltin
         $data = Product::Listing(['status' => '1']);
         
+    } else if($action == 'getProductById') {
+        
+        // get products from moltin
+        $data = $moltin->get('product/'.$_POST['productId']);
+        
     } else if($action == 'subscribe') {
         
         // send userdata to mailchimp for email subscription
@@ -120,7 +125,7 @@ if ( $authenticated ) {
                 'ship_to' => $order['shipAd'],
                 'shipping' => $order['shipping']
             ));
-			
+            
 			$data['cart'] = $cart;
 			
             
@@ -222,7 +227,6 @@ if ( $authenticated ) {
             Order::Delete($orderID);
             
         }
-        
         
 		
 		

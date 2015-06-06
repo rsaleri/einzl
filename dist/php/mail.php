@@ -33,7 +33,7 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	}
 	
 	$message = str_replace('%cartitems%', $HTMLitem, $message);
-	$message = str_replace('%tax%', ($orderData['totals']['formatted']['tax']), $message);
+    $message = str_replace('%tax%', ($orderData['totals']['formatted']['tax']), $message);
 	$message = str_replace('%totalprice%', $orderData['totals']['formatted']['total'], $message);
 	$message = str_replace('%orderID%', $orderData['id'], $message);
 	
@@ -46,6 +46,7 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 	if($orderData['gateway']['data']['slug'] === 'manual') {
 		
 		$HTMLpayment .= '<p>Bitte überweise den Gesamtbetrag von '.$orderData['totals']['formatted']['total'].' auf folgendes Konto:</p>';
+
 		$HTMLpayment .= '<p>';
 		$HTMLpayment .= 'Einzelstück (Inh. Sumit Kumar)<br/>';
 		$HTMLpayment .= 'IBAN: DE95120300001014163396<br/>';
@@ -61,7 +62,6 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLpayment .= '<p>Dein Schmuck wird innerhalb der nächsten Tage an folgende Adresse versandt:</p>';
 		
 	}
-	
 	
 	$message = str_replace('%paymentinfo%', $HTMLpayment, $message);
 	

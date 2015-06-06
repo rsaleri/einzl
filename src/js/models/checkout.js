@@ -100,7 +100,6 @@ var CheckoutModel = PageModel.extend({
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
 			
-            console.log('processed order:');
 			console.log(data);
 			
 			if(data.payment === 'manual') {
@@ -108,14 +107,12 @@ var CheckoutModel = PageModel.extend({
 				// go directly to gateway page for manual gateway
                 window.location="/gateway?manual=1&orderID=" + data.order.result.id;
 				
-				
 			} else {
 				
 				window.open(data.payment.result.url);
 				
 			}
 			
-            
             
 		});
 		

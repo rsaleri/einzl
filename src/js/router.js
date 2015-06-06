@@ -60,11 +60,40 @@ var Router = Backbone.Router.extend({
         
         "gateway": "gateway",
 		
+		"product/:id": "product",
+        "p/:id": "product",
+		
 		"confirmation/:orderID": "confirmation",
         
         "": "page",
 		":page": "page",
         "*default": "notfound"
+	},
+	
+	product: function(id) {
+		
+		var slug = "/product/:id";
+		
+		console.log('product id: ' + id);
+        
+        // get config information
+        var config = this.getRouteConfig(slug);
+		
+		Einzlstck.Deferreds.products.then(function() {
+            
+            var productModel = Einzlstck.Models.Inventory.selectProduct(id);
+            
+            productModel.view.render(productModel.data);
+            
+            // set document title
+            document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
+			
+		});
+		
+		
+		
+		$('header nav a').removeClass('active');
+		
 	},
     
     notfound: function(target) {

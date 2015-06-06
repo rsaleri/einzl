@@ -31,6 +31,7 @@ header {
 
 main {
     min-height: 100vh;
+	margin-top: 61px;
 }
 
 section, article, .content {
@@ -107,13 +108,20 @@ footer {
         display: table;
 
         > div {
+			vertical-align: top;
             float: none;
             display: table-cell;
         }
         
+        &.col-3 > div {
+            width: 33.33333%;
+        }
+        
+        
     }
     
 }
+
 
 /**
  * Unit-1
@@ -214,4 +222,18 @@ footer {
     }
     
     
+}
+
+.units-3-col {
+	
+	> div {
+		
+		@media(min-width: $bp1) {
+            
+            width: 33.333333%;
+            
+        }
+		
+	}
+	
 }

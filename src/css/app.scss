@@ -250,6 +250,11 @@ header {
             top: 50%;
             transform: translate(0, -50%);
         }
+		
+		p {
+			max-width: 400px;
+			margin: 0 auto;
+		}
     }
     
     

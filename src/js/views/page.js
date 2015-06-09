@@ -64,6 +64,39 @@ var PageView = Backbone.View.extend({
 			
 		});
 		
+		
+		// find all product categories on this page
+		this.el.find('[data-product-category]').each(function() {
+			
+			var container = $(this);
+			var category = container.attr('data-product-category');
+			
+			
+			
+			$.each(Einzlstck.Models.Inventory.products, function() {
+				
+				
+				
+				if(this.data.category.data[category]) {
+					
+					var productModel = Einzlstck.Models.Inventory.selectProduct(this.data.id);
+            
+					// is the product template availble?
+					$.when(productModel.extractView.template).then(function() {
+
+						// yes, so insert the products view into the product container on this page
+						productModel.extractView.el.clone(true).appendTo(container);
+
+					});
+					
+				}
+				
+			});
+			
+			
+			
+		});
+		
 	},
 	
 	initController: function() {

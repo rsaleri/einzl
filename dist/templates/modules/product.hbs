@@ -1,29 +1,16 @@
 <div class="product">
-    <div class="details collapsed">
-        <div class="drop plus"><i class="fa fa-times"></i></div>
-<!--        <div class="drop drop-points-left like"><i class="fa fa-heart"></i></div>-->
-        <div class="drop drop-points-left add-to-cart"><i class="fa fa-shopping-cart"></i></div>
+	<div class="drop add-to-cart"><i class="fa fa-shopping-cart"></i></div>
+    <div class="details">
 		<div class="info">
 			<h3>{{title}}</h3>
-			<span class="desc">{{description}}</span>
 			<div class="price">{{price.value}}</div>
-		</div>
-		
-		<div class="indicators">
-			{{#each images}}
-				{{#if @first}}
-					<span class="drop active"></span>
-				{{else}}
-					<span class="drop"></span>
-				{{/if}}
-				
-			{{/each}}
 		</div>
     </div>
     <div class="background">
         {{#each images}}
 			{{#if @first}}
-            	<div class="image active" style="background-image: url({{this.url.https}});"></div>
+<!--            	<div class="image active" style="background-image: url({{this.url.https}});"></div>-->
+				<img src="{{this.url.https}}">
 			{{/if}}
         {{/each}}
     </div>

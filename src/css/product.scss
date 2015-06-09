@@ -1,172 +1,136 @@
-.product {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    
-    &:hover {
-        cursor: pointer;
-    }
-    
-    .details {
-        position: absolute;
-        z-index: 20;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+.product-category {
+	
+	@extend .clearfix;
+	
+	.product {
 		
-		.drop {
-			right: 20px;
-    		top: 20px;
-			
-			@media(min-width: $bp1) {
-				top: 50px;
-				right: 50px;
-			}
+		@media(min-width: $bp1) {
+			width: 50%;
 		}
-        
-        .drop.plus {
-            z-index: 10;
-        }
-        
-        .drop.like {
-			display: none;
-            top: 70px;
-            
-            @media(min-width: $bp1) {
-                top: 100px;
-            }
-            
-        }
-        
-        .drop.add-to-cart {
-            top: 70px;
-            
-            @media(min-width: $bp1) {
-                top: 100px;
-            }
-            
-        }
+
+		@media(min-width: $bp2) {
+			width: 50%;
+		}
 		
-		.info {
-			padding: 20px;
-			background-color: $softwhite;
-			display: inline-block;
+	}
+	
+}
+
+.product {
+	box-sizing: border-box;
+	float: left;
+	position: relative;
+	border: 1px solid #eee;
+	overflow: hidden;
+
+	width: 100%;
+
+
+	.drop {
+		z-index: 30;
+		right: 30px;
+		top: 40px;
+	}
+	
+	.details {
+
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 25;
+
+		&:after {
+			content: "";
+			display: block;
 			position: absolute;
-			transition: all ease .4s;
-			top: 20px;
-			left: 20px;
-    		right: 80px;
-			
-			@media(min-width: 450px) {
-				left: auto;
-				max-width: 300px;
-			}
-			
-			@media(min-width: $bp1) {
-				padding: 30px;
-				top: 50px;
-				right: 110px;
-				left: auto;
-				max-width: 50%;
-			}
-			
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			background-color: #fff;
+			opacity: 0;
+			transform: scale(.9);
+			transition: all ease .3s;
+		}
+
+		.info {
+			background-color: transparent;
+			z-index: 27;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			right: auto;
+			bottom: auto;
+			padding: 0;
+			transform: translate(-50%, -50%) scale(.8);
+			max-width: none;
+			white-space: nowrap;
+			color: #333;
+			transition: all ease .3s .1s;
+			opacity: 0;
+
+
 			h3 {
-				text-align: left;
+				text-align: center;
+				font-size: 1.8em;
 			}
 			
 			.price {
+				text-align: center;
 				margin-top: 30px;
 				font-size: 20px;
-				text-align: center;
 			}
+
 		}
-        
-        &.collapsed {
-            
-            .drop.plus i {
-                transform: rotate(0deg);
-            }
 
-            .drop.like {
-                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, -50px) rotate(45deg);
-                opacity: 0;
-            }
+	}
 
-            .drop.add-to-cart {
-                transition: transform ease .3s 0s, opacity ease .3s 0s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, -50px) rotate(45deg);
-                opacity: 0;
-            }
-			
-			.info {
-				transform: translate3d(20px, 0, 0);
-				opacity: 0;
-				pointer-events: none;
-			}
-            
-        }
-        
-        &.expanded {
-            
-            .drop.plus i {
-                transform: rotate(-45deg);
-            }
+	.background {
 
-            .drop.like {
-                transition: transform ease .3s .2s, opacity ease .3s .2s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, 0px) rotate(-45deg);
-                opacity: 1;
-            }
+		position: relative;
+		line-height: 0;
+		transition: all ease .3s;
 
-            .drop.add-to-cart {
-                transition: transform ease .3s .2s, opacity ease .3s .2s, background-color ease .3s 0s, color ease .3s 0s;
-                transform: translate(0px, 0px) rotate(-45deg);
-                opacity: 1;
-            }
-			
-			.info {
-				transform: translate3d(0px, 0, 0);
-				opacity: 1;
-			}
-            
-        }
-    }
-	
-	
-	&.out-of-stock {
-		
-		.background {
-			opacity: .7;
-		}
-		
-		.details {
-            
-			.drop {
-				display: none;
-			}
-			
-			.info {
-				display: none;
-			}
-			
-			&:after {
-				content: "Ausverkauft";
-				display: block;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				z-index: 50;
-				transform: translate(-50%,-50%);
-				text-transform: uppercase;
-				font-weight: bold;
-				color: $red;
-				font-size: 2em;
-			} 
+		img {
+			width: 100%;
 		}
 	}
-    
+
+	&:hover {
+		cursor: pointer;
+		
+		.details {
+
+			&:after {
+				opacity: .9;
+				transform: scale(1);
+			}
+
+			.info {
+
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 1;
+
+			}
+
+		}
+
+
+		.background {
+			transform: scale(1.05);
+		}
+
+	}
+
+
+	&.out-of-stock {
+
+		.details:after {
+			display: none;
+		}
+
+	}
+
 }

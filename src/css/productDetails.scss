@@ -19,7 +19,7 @@ section.product-details {
             
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            
             
             .thumb {
                 
@@ -28,7 +28,8 @@ section.product-details {
                 }
                 
                 flex-grow: 1;
-                
+                flex-shrink: 0;
+                max-width: 25%;
                 
                 background-size: cover;
                 background-repeat: no-repeat;

@@ -1,4 +1,6 @@
-var Inventory = Backbone.Model.extend({
+var Inventory = Backbone.Collection.extend({
+    
+    model: ProductModel,
     
     initialize: function() {
         
@@ -6,11 +8,9 @@ var Inventory = Backbone.Model.extend({
         
     },
     
-    products: {},
-    
     selectProduct: function(id) {
         
-        return this.products[id];
+        return this.get(id);
         
     },
     
@@ -27,18 +27,7 @@ var Inventory = Backbone.Model.extend({
 
             if(data && data.status) {
                 
-                Einzlstck.Models.Products = [];
-
-                $.each(data.result, function(i) {
-                    var prodData = this;
-                    
-                    // init all products
-                    if(!self.products[prodData.id]) {                        
-                        self.products[prodData.id] = new ProductModel(prodData);
-                    }
-                    
-                });
-                
+                self.add(data.result);
                 Einzlstck.Deferreds.products.resolve(data);
                 
             } else {
@@ -46,6 +35,5 @@ var Inventory = Backbone.Model.extend({
             }
         });
     }
-    
     
 });

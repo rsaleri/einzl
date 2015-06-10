@@ -40,6 +40,7 @@ gulp.task('scripts', function() {
 	  'src/js/views/page.js',
       'src/js/views/*.js',
 	  'src/js/models/page.js',
+      'src/js/models/product.js',
 	  'src/js/models/*.js',
       'src/js/**/*.js'
   ])

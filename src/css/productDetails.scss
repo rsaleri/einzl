@@ -96,6 +96,17 @@ section.product-details {
 				&.price {
 					border-color: $lightgrey;
 					border-right: 0px;
+                    
+                    span {
+                        font-size: .8em;
+                        
+                        @media(min-width: $bp1) {
+                            font-size: 1em;
+                        }
+                        
+                    }
+                    
+                    
 				}
 				
 				&.add-to-cart {

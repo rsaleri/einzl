@@ -17,9 +17,9 @@ section.product-details {
         
         .gallery-navigation {
             
-            display: flex;
-            flex-direction: row;
-            
+            display: table;
+            table-layout: fixed;
+            width: 100%;
             
             .thumb {
                 
@@ -27,17 +27,13 @@ section.product-details {
                     width: 100%;
                 }
                 
-                flex-grow: 1;
-                flex-shrink: 0;
-                max-width: 25%;
+                display: table-cell;
                 
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;
                 border: 1px solid #f3f3f3;
                 
-                display: block;
-
                 &:hover {
                     cursor: pointer;
                 }

@@ -84,6 +84,11 @@ h3 {
     line-height: 1.4em;
 }
 
+img {
+    border: 0;
+    display: block;
+}
+
 input[type="email"],
 input[type="text"] {
     box-sizing: border-box;
@@ -202,13 +207,13 @@ blockquote {
     
     width: 40px;
     height: 40px;
-    line-height: 38px;
+    line-height: 40px;
     font-size: 1.1em;
     text-align: center;
     background-color: $softwhite;
-    border-radius: 0% 50% 50% 50%;
+    border-radius: 50% 0% 50% 50%;
     
-    transform: rotate(45deg);
+    transform: rotate(0deg);
     transform-origin: 50% 50%;
     transition: all ease .3s;
     backface-visibility: hidden;
@@ -228,7 +233,7 @@ blockquote {
     }
     
     i {
-        transform: rotate(-45deg);
+        transform: rotate(0deg);
         transition: transform ease .3s;
         backface-visibility: hidden;
     }

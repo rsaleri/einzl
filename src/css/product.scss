@@ -29,7 +29,7 @@
 	.drop {
 		z-index: 30;
 		right: 30px;
-		top: 40px;
+		top: 30px;
 	}
 	
 	.details {
@@ -123,13 +123,19 @@
 		}
 
 	}
+    
+    .sold {
+        color: $red;
+        display: none;
+    }
 
 
 	&.out-of-stock {
 
-		.details:after {
-			display: none;
-		}
+		.sold {
+            
+            display: block;
+        }
 
 	}
 

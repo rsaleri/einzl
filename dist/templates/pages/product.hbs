@@ -27,9 +27,13 @@
 					{{#each images}}
 
 						{{#if @first}}
-							<div class="thumb" style="background-image: url({{this.url.https}})" class="active"></div>
+							<div class="thumb active">
+                                <img src="{{this.url.https}}">
+                            </div>
 						{{else}}
-							<div class="thumb" style="background-image: url({{this.url.https}})"></div>
+							<div class="thumb">
+                                <img src="{{this.url.https}}">
+                            </div>
 						{{/if}}
 
 

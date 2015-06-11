@@ -26,7 +26,7 @@ var Router = Backbone.Router.extend({
             $('header nav').removeClass('open');
 
             // close cart
-            Einzlstck.Models.Cart.view.close();
+//            Einzlstck.Models.Cart.view.close();
             
 			
 		});
@@ -40,7 +40,7 @@ var Router = Backbone.Router.extend({
 		$('header nav').removeClass('open');
 		
 		// close cart
-		Einzlstck.Models.Cart.view.close();
+//		Einzlstck.Models.Cart.view.close();
 		
 		// add loading class to body
 		$('body').addClass('loading');

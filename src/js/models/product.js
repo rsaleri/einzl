@@ -24,7 +24,7 @@ var ProductModel = Backbone.Model.extend({
             notifyUser(this.data.title + ' ist ausverkauft :-(', 'error');
             return $.Deferred().reject();
         } else {
-            return Einzlstck.Models.Cart.addItem(this.data.id);
+            return einzl.views.cart.model.addItem(this.data.id);
         }
         
 	},

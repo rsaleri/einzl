@@ -29,12 +29,12 @@ var Shop = Backbone.Model.extend({
             if(cartButton.hasClass('open')) {
                 
                 // close cart
-                Einzlstck.Models.Cart.view.close();
+                einzl.views.cart.close();
 
             } else {
                 
                 // open cart
-                Einzlstck.Models.Cart.view.open();
+                einzl.views.cart.open();
 
                 // close menu
                 menuButton.removeClass('open');
@@ -61,15 +61,14 @@ var Shop = Backbone.Model.extend({
                 $('body').removeClass('no-scroll-mobile');
 
             } else {
+				
+				// close cart
+                einzl.views.cart.close();
 
                 // open menu
                 menuButton.addClass('open');
                 $('header nav').addClass('open');
                 $('body').addClass('no-scroll-mobile');
-
-                // close cart
-                cartButton.removeClass('open');
-                $('aside.cart-container').removeClass('open');
 
             }
 
@@ -163,12 +162,23 @@ $(document).ready(function() {
         }
         
     };
+	
+	window.einzl = {
+		views: {},
+		models: {}
+	};
+	
+	
     
     // let's to this
     Einzlstck.Models.Shop = new Shop();
     Einzlstck.Models.Inventory = new Inventory();
     Einzlstck.Models.User = new User();
-    Einzlstck.Models.Cart = new Basket();
+//    Einzlstck.Models.Cart = new Basket();
+	
+	einzl.views.cart = new BasketView({
+		model: new Basket()
+	});
     
     Einzlstck.Router = new Router(config);
 });

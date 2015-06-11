@@ -10,6 +10,11 @@ var BasketView = Backbone.View.extend({
 			self.template.resolve(hbs);
 		});
 		
+		this.model.on('change', function() {
+			console.log('cart model changed');
+			self.render();
+		});
+		
 	},
 	
 	close: function() {
@@ -30,11 +35,11 @@ var BasketView = Backbone.View.extend({
 		
 	},
 	
-	render: function(data) {
+	render: function() {
 		
 		var self = this;
 		
-		console.log('render cart');
+		var data = this.model.toJSON();
 
 		$.each(data.contents, function() {
 
@@ -53,7 +58,7 @@ var BasketView = Backbone.View.extend({
 			self.el = $(html);
 			
             // enable clicky stuff
-			self.initController();
+			self.initEvents();
 			
 			// insert into DOM
 			$('.cart').html(self.el.clone(true));
@@ -66,7 +71,7 @@ var BasketView = Backbone.View.extend({
 		
 	},
 	
-	initController: function() {
+	initEvents: function() {
 		
 		var self = this;
     
@@ -84,7 +89,7 @@ var BasketView = Backbone.View.extend({
 
 			if(!li.hasClass('loading')) {
 				li.addClass('loading');
-				Einzlstck.Models.Cart.removeItem(product_key);
+				self.model.removeItem(product_key);
 			}
 
 			e.stopPropagation();

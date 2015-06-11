@@ -4,17 +4,8 @@ var Basket = Backbone.Model.extend({
         
         var self = this;
         
-        this.view = new BasketView();
-        
-        this.getCart().then(function() {
-            
-            self.view.render(self.data).then(function() {
-                
-            });
-            
-        });
-        
-        
+        this.getCart();
+		
     },
     
     removeItem: function(product_key) {
@@ -32,12 +23,13 @@ var Basket = Backbone.Model.extend({
         };
 
         return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-                                                         
+			
+			// remove this as soon as everything is backboned
             self.data = data.cart;
-                                                         
-            self.view.render(self.data).then(function() {
-                
-            });
+			
+			// save data
+            self.set(data.cart);
+			
         });
     },
     
@@ -54,13 +46,12 @@ var Basket = Backbone.Model.extend({
 
         return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
             
+            // remove this as soon as everything is backboned
             self.data = data.cart;
+			
+			// save data
+            self.set(data.cart);
             
-            console.log(data);
-            
-            self.view.render(self.data).then(function() {
-                
-            });
         });
 
     },
@@ -75,16 +66,12 @@ var Basket = Backbone.Model.extend({
 
         // get cart data from moltin
         return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-
+			
             if(data.cart) {
                 // save cart model
                 self.data = data.cart;
-                
-                // save to user model
-                Einzlstck.Models.User.data.cart_id = data.cart.id;
-                
-                // save user into localStorage. TODO: Replace this with a listener on the user model (auto-save onChange)
-                Einzlstck.Models.User.saveToLocalstorage();
+				
+				self.set(data.cart);
                 
             } else {
                 notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');

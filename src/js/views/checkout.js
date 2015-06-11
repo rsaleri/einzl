@@ -72,7 +72,7 @@ var CheckoutView = PageView.extend({
         
         // insert cart (move this if template isnt rendered on each visit anymore)
         try {
-            this.el.find('.cart').html(Einzlstck.Models.Cart.view.el.clone(true));
+            this.el.find('.cart').html(einzl.views.cart.el.clone(true));
         } catch(e) {
             // cart will be inserted when it's ready by the CartView
         }

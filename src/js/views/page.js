@@ -73,7 +73,7 @@ var PageView = Backbone.View.extend({
 			
 			
 			
-			$.each(Einzlstck.Models.Inventory.products, function() {
+			$.each(Einzlstck.Models.Inventory.models, function() {
 				
 				
 				

@@ -18,8 +18,6 @@ section.product-details {
         .gallery-navigation {
             
             display: table;
-            table-layout: fixed;
-            width: 100%;
             
             .thumb {
                 
@@ -28,6 +26,7 @@ section.product-details {
                 }
                 
                 display: table-cell;
+                width: 150px;
                 
                 background-size: cover;
                 background-repeat: no-repeat;

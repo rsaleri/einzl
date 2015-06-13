@@ -169,6 +169,12 @@ $(document).ready(function() {
     Einzlstck.Models.Inventory = new Inventory();
     Einzlstck.Models.User = new User();
     Einzlstck.Models.Cart = new Basket();
+	
+	Einzlstck.Router = new Router(config);
+	
+	Einzlstck.Deferreds.products.then(function() {
+		Backbone.history.start({pushState: true});
+	});
     
-    Einzlstck.Router = new Router(config);
+    
 });

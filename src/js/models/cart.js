@@ -60,6 +60,8 @@ var Basket = Backbone.Model.extend({
             
             self.view.render(self.data).then(function() {
                 
+				Einzlstck.Models.Cart.view.open();
+				
             });
         });
 

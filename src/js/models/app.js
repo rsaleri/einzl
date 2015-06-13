@@ -78,6 +78,18 @@ var Shop = Backbone.Model.extend({
             e.stopPropagation();
         });
         
+		
+		// enable cart close when clicked outside
+		$(document).on('vclick', function(e) {
+			
+			if(!$(e.target).closest('.cart-container').length) {
+				if($('.cart-container').hasClass('open')) {
+					Einzlstck.Models.Cart.view.close();
+				}
+			}
+			
+		});
+		
     },
     
     getTemplate: function(path) {

@@ -53,7 +53,7 @@ var Basket = Backbone.Model.extend({
 			// save data
             self.set(data.cart);
             
-			Einzlstck.Models.Cart.view.open();
+			einzl.views.cart.open();
 			
 		});
 

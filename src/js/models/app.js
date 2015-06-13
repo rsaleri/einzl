@@ -83,7 +83,7 @@ var Shop = Backbone.Model.extend({
 			
 			if(!$(e.target).closest('.cart-container').length) {
 				if($('.cart-container').hasClass('open')) {
-					Einzlstck.Models.Cart.view.close();
+					einzl.views.cart.close();
 				}
 			}
 			

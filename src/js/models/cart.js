@@ -42,6 +42,7 @@ var Basket = Backbone.Model.extend({
                 id: self.data.id
             },
             product_id: prodID
+			
         };
 
         return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
@@ -52,7 +53,9 @@ var Basket = Backbone.Model.extend({
 			// save data
             self.set(data.cart);
             
-        });
+			Einzlstck.Models.Cart.view.open();
+			
+		});
 
     },
     

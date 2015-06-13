@@ -4,7 +4,7 @@ var Router = Backbone.Router.extend({
         
         this.config = config;
 		
-		Backbone.history.start({pushState: true});
+		
 		
 		
 		// add loading class to body

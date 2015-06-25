@@ -1,0 +1,35 @@
+<form autocomplete="on">
+	<h3>Neue Adresse</h3>
+
+	<div class="firstname">
+		<input autocomplete="on" type="text" data-placeholder="first_name" placeholder="first name" required="" name="firstname">
+	</div>
+	<div class="lastname">
+		<input autocomplete="on" type="text" data-placeholder="last_name" placeholder="last name" required="" name="lastname">
+	</div>
+	<div class="email">
+		<input autocomplete="on" type="email" data-placeholder="email" placeholder="email" required="" name="email">
+	</div>
+	<div class="address_1">
+		<input autocomplete="on" type="text" data-placeholder="street" placeholder="street / apt number" required="" name="street">
+	</div>
+	<div class="code">
+		<input autocomplete="on" type="text" data-placeholder="area_code" placeholder="area code" required="" name="zipcode">
+	</div>
+	<div class="city">
+		<input autocomplete="on" type="text" data-placeholder="city" placeholder="city" required="" name="city">
+	</div>
+	<div class="country">
+		<select type="text" required="" name="country">
+			<option value="DE">DE</option>
+			<option value="CH">CH</option>
+			<option value="AT">AT</option>
+		</select>
+	</div>
+	<div class="note">
+		<textarea data-placeholder="notes" placeholder="Any special notes?"></textarea>
+	</div>
+
+	<button type="submit" class="save green"><span>Adresse speichern</span></button>
+	<button type="reset" class="cancel">Abbrechen</button>
+</form>

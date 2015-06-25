@@ -13,7 +13,7 @@ var User = Backbone.Model.extend({
         
         // greet the user - only once!
         var helloTimeout = window.setTimeout(function() {
-            notifyUser(Einzlstck.Models.Copy.data.messages.welcome[getRandomInt(0, Einzlstck.Models.Copy.data.messages.welcome.length -1)], 'success');
+            notifyUser(einzl.models.language.get('copy').messages.welcome[getRandomInt(0, einzl.models.language.get('copy').messages.welcome.length -1)], 'success');
         }, 2000);
         
         return helloTimeout;

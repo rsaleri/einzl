@@ -5,6 +5,7 @@ var PageView = Backbone.View.extend({
 		var self = this;
 		
 		return this.template.then(function(hbs) {
+			
 			var html = hbs(data);
 			
 			self.el = $(html);

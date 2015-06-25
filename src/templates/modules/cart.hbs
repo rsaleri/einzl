@@ -1,0 +1,39 @@
+<ul class="items">
+    
+    <li class="heading">
+        <span class="price">EUR</span>
+        <span class="name">Produkt</span>
+    </li>
+    
+    {{#each contents}}
+        
+    <li class="item" data-product-key="{{@key}}">
+        <span class="remove"><i class="fa fa-trash"></i></span>
+        <span class="price">{{this.pricing.rounded.with_tax}}</span>
+        <span class="name">{{this.title}}</span>
+        <span class="quantity">{{this.quantity}}</span>
+    </li>
+    
+    {{/each}}
+</ul>
+<ul class="totals">
+    <li class="subtotal">
+        <span class="price">{{totals.post_discount.rounded.with_tax}}</span>
+        <span class="name">Zwischensumme</span>
+    </li>
+	<li class="taxes">
+        <span class="price"><a href="/impressum">Mehr Infos &rarr;</a></span>
+        <span class="name">Keine MwSt</span>
+    </li>
+    <li class="shipping">
+        <span class="price">gratis</span>
+        <span class="name">Lieferung</span>
+    </li>
+    <li class="total">
+        <span class="price">{{totals.post_discount.rounded.with_tax}}</span>
+        <span class="name">Summe</span>
+    </li>
+</ul>
+<div class="actions">
+    <a class="button checkout" href="/checkout" title="Proceed to Checkout"><span>Kasse</span></a>
+</div>

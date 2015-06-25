@@ -1,0 +1,103 @@
+<section class="confirmation">
+    <article>
+        <div class="units-1 cut-in-half">
+            <div>
+                <div class="copy center-y">
+                    <h1 data-copy="confirmation_headline"></h1>
+                    <p data-copy="confirmation_subheadline"></p>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <article>
+        <div class="content">
+            <div class="units-2">
+                <div>
+                    <div class="copy">
+                        <h2 data-copy="confirmation_dear_headline"></h2>
+                        <p data-copy="confirmation_dear_copy1"></p>
+                        <p data-copy="confirmation_dear_copy2"></p>
+                        <p data-copy="confirmation_dear_copy3"></p>
+                    </div>
+                </div>
+                <div>
+                    <div id="pay-manual" class="copy payment-information">
+                        <h2 data-copy="confirmation_pay_headline"></h2>
+                        <p data-copy="confirmation_pay_copy1"></p>
+                        <ul>
+                            <li>
+                                <label data-copy="confirmation_pay_account_label"></label>
+                                <span>Einzelstück (Inh. Sumit Kumar)</span>
+                            </li>
+                            <li>
+                                <label>IBAN</label>
+                                <span>DE95120300001014163396</span>
+                            </li>
+                            <li>
+                                <label>BIC</label>
+                                <span>BYLADEM1001</span>
+                            </li>
+                        </ul>
+                    </div>
+					
+					<div id="pay-paypal" class="copy payment-information">
+                        <h2 data-copy="confirmation_pay_headline"></h2>
+						<p>Du hast Paypal als Zahlungsmethode gewählt. Klicke auf diesen Button um deinen Zahlungsvorgang zu beginnen.</p>
+						<div class="button pay">
+							<span>Jetzt mit Paypal zahlen</span>
+						</div>
+						<p>Du kannst es auch später tun. Komm einfach wieder hier her :-)</p>
+					</div>
+					
+					<div id="paid" class="copy payment-information">
+						<h2 data-copy="confirmation_pay_headline"></h2>
+						<h3><i class="fa fa-check"></i> Wir haben deine Zahlung erhalten!</h3>
+					</div>
+                </div>
+					
+                
+            </div>
+            <div class="units-2">
+                <div>
+                    <div class="copy">
+                        <h2 data-copy="confirmation_bill_headline"></h2>
+                        <p data-copy="confirmation_bill_copy1"></p>
+                        <span>{{this.order.bill_to.data.first_name}} {{this.order.bill_to.data.last_name}}</span><br/>
+                        <span>{{this.order.bill_to.data.address_1}}</span><br/>
+                        <span>{{this.order.bill_to.data.postcode}} {{this.order.bill_to.data.city}}, {{this.order.bill_to.data.country.value}}</span><br/>
+                        <span>{{this.order.bill_to.data.note}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="copy">
+                        <h2 data-copy="confirmation_ship_headline"></h2>
+                        <p data-copy="confirmation_ship_copy1"></p>
+                        <span>{{this.order.ship_to.data.first_name}} {{this.order.ship_to.data.last_name}}</span><br/>
+                        <span>{{this.order.ship_to.data.address_1}}</span><br/>
+                        <span>{{this.order.ship_to.data.postcode}} {{this.order.ship_to.data.city}}, {{this.order.ship_to.data.country.value}}</span><br/>
+                        <span>{{this.order.ship_to.data.note}}</span>
+                   </div>
+                </div>
+                
+            </div>
+            <center style="padding: 20px;">Schön, dass du hier warst :-)</center>
+            <div class="units-2">
+				<div>
+                    <div class="copy">
+						<h2>Noch Fragen?</h2>
+						<p>Falls dir noch etwas unklar ist, du etwas auf dem Herzen hast oder einfach Hallo sagen möchtest, dann melde dich via <a href="mailto:info@einzelstueck-shop.com" target="_blank">info@einzelstueck-shop.com</a>.</p>
+						<p>Wir würden uns freuen von dir zu hören :-)</p>
+					</div>
+                </div>
+                <div>
+                    <div class="copy">
+                        <h2>Zeig' dich!</h2>
+                        <p>Poste ein Foto von dir und deinem neuen Schmuck auf Instagram und tagge uns mit <a href="http://www.instagram.com/einzlstck" target="_blank" title="Einzelstück auf Instagram">@einzlstck</a>. Wir können es kaum erwarten zu sehen, wie gut dir der Schmuck steht.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </article>
+</section>

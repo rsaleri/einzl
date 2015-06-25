@@ -1,29 +1,30 @@
 var AddressList = Backbone.View.extend({
+	
+	template: function(data) {
+		return Templates.addressList(data)
+	},
     
     initialize: function() {
-        this.template = Einzlstck.Models.Shop.getTemplate('/modules/addressList.hbs');
+        
     },
     
     render: function(data) {
         
         var self = this;
-        
-        return this.template.then(function(hbs) {
+		
+		
+        var html = this.template(data);
             
-            var html = hbs(data);
-            
-            self.el = $(html);
-            
-            // activate the first one
-            self.el.find('li:first-child').addClass('selected');
-            
-            self.initController();
-            
-            // insert into DOM
-            $('.user-address-list').html('');
-            self.el.clone(true).appendTo($('.user-address-list'));
-            
-        });
+		this.el = $(html);
+
+		// activate the first one
+		this.el.find('li:first-child').addClass('selected');
+
+		this.initController();
+
+		// insert into DOM
+		$('.user-address-list').html('');
+		this.el.clone(true).appendTo($('.user-address-list'));
         
     },
     
@@ -35,28 +36,28 @@ var AddressList = Backbone.View.extend({
 });
 
 var AddressForm = Backbone.View.extend({
+	
+	template: function(data) {
+		return Templates.addressForm(data)
+	},
     
     initialize: function() {
-        this.template = Einzlstck.Models.Shop.getTemplate('/modules/addressForm.hbs');
+        
     },
     
     render: function(data) {
         
         var self = this;
-        
-        return this.template.then(function(hbs) {
+		
+        var html = this.template(data);
             
-            var html = hbs(data);
-            
-            self.el = $(html);
-            
-            self.initController();
-            
-            // insert into DOM
-            $('.new-address-form').html('');
-            self.el.clone(true).appendTo($('.new-address-form'));
-            
-        });
+		this.el = $(html);
+
+		this.initController();
+
+		// insert into DOM
+		$('.new-address-form').html('');
+		this.el.clone(true).appendTo($('.new-address-form'));
         
     },
     

@@ -76,7 +76,7 @@ var CheckoutModel = PageModel.extend({
 		order.shipAd = shippingAddress;
 
 		// check if cart is empty
-		if(!Einzlstck.Models.Cart || Einzlstck.Models.Cart.data.total_items <= 0) {
+		if(!einzl.models.cart || einzl.models.cart.get('total_items') <= 0) {
 			// display error
 			notifyUser(einzl.models.language.get('copy').messages.checkout_empty_cart, 'error');
 			return errorPromise.reject();
@@ -94,7 +94,7 @@ var CheckoutModel = PageModel.extend({
 		var obj = {
 			action: 'processOrder',
 			order: order,
-			cart: Einzlstck.Models.Cart.data
+			cart: einzl.models.cart.toJSON
 		};
 
 		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {

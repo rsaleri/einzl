@@ -10,8 +10,6 @@ var PageView = Backbone.View.extend({
 		
 		var data = this.model.toJSON();
 		
-		console.log(this);
-		
 		var html = this.template(data);
 
 		this.el = $(html);

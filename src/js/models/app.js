@@ -38,9 +38,14 @@ $(document).ready(function() {
 
 			Backbone.history.start({pushState: true});
 			
+			einzl.models.cart = new Basket();
 			einzl.views.cart = new BasketView({
-				model: new Basket()
+				model: einzl.models.cart
 			});
+			
+			
+			// greet user
+			einzl.models.user.sayHello();
 
 		});
 		

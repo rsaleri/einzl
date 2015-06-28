@@ -14,7 +14,7 @@ var User = Backbone.Model.extend({
         // greet the user - only once!
         var helloTimeout = window.setTimeout(function() {
             notifyUser(einzl.models.language.get('copy').messages.welcome[getRandomInt(0, einzl.models.language.get('copy').messages.welcome.length -1)], 'success');
-        }, 2000);
+        }, 50);
         
         return helloTimeout;
         
@@ -26,8 +26,6 @@ var User = Backbone.Model.extend({
         
         this.views.addressList = new AddressList();
 		this.views.addressForm = new AddressForm();
-        
-        this.sayHello();
     },
     
     saveToLocalstorage: function() {

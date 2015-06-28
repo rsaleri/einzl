@@ -176,8 +176,11 @@ var Router = Backbone.Router.extend({
 			id: orderID
 		};
 		
-        // init page
-		Einzlstck.Pages[config.id] = new OrderModel(config);
+		// init page
+		einzl.views[config.id] = new OrderView({model: new OrderModel(config)});
+		
+        // render the view
+//		einzl.views[config.id].render();
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';

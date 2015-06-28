@@ -32,8 +32,6 @@ $(document).ready(function() {
 	
 	einzl.models.language.fetch().then(function() {
 		
-		
-		
 		Einzlstck.Models.Shop = new Shop();
 		Einzlstck.Models.Inventory = new Inventory();
 		

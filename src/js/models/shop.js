@@ -134,11 +134,11 @@ var Shop = Backbone.Model.extend({
         return this.askServer(obj).done(function(data) {
             console.log('user successfully subscribed');
             console.log(data);
-            notifyUser(Einzlstck.Models.Copy.data.messages.nl_subscribed, 'success');
+            notifyUser(einzl.models.language.get('copy').messages.nl_subscribed, 'success');
         }).fail(function(data) {
             console.log('something is wrong with that email');
             console.log(data);
-            notifyUser(Einzlstck.Models.Copy.data.messages.nl_error, 'error');
+            notifyUser(einzl.models.language.get('copy').messages.nl_error, 'error');
         });
 
     }

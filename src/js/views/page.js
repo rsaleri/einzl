@@ -1,8 +1,10 @@
 var PageView = Backbone.View.extend({
 	
-	render: function(data) {
+	render: function() {
         
 		var self = this;
+		
+		var data = this.model.toJSON();
 		
 		return this.template.then(function(hbs) {
 			
@@ -30,13 +32,13 @@ var PageView = Backbone.View.extend({
 		
 	},
 	
-	initialize: function(hbsPath) {
+	initialize: function() {
 		
 		var self = this;
 		
 		// get the template
 		this.template = $.Deferred();
-		Einzlstck.Models.Shop.getTemplate(hbsPath).then(function(hbs) {
+		Einzlstck.Models.Shop.getTemplate(this.model.get('hbsPath')).then(function(hbs) {
 			
 			// resolve template deferred
 			self.template.resolve(hbs);
@@ -54,14 +56,12 @@ var PageView = Backbone.View.extend({
 			var prodID = container.attr('data-product');
 			
 			var productModel = Einzlstck.Models.Inventory.selectProduct(prodID);
+			
+			var productViewExtract = new ProductViewExtract({
+				model: productModel
+			});
             
-            // is the product template availble?
-            $.when(productModel.extractView.template).then(function() {
-
-                // yes, so insert the products view into the product container on this page
-                productModel.extractView.el.clone(true).appendTo(container);
-
-            });
+            productViewExtract.render().appendTo(container);
 			
 		});
 		
@@ -81,14 +81,12 @@ var PageView = Backbone.View.extend({
 				if(this.data.category.data[category]) {
 					
 					var productModel = Einzlstck.Models.Inventory.selectProduct(this.data.id);
-            
-					// is the product template availble?
-					$.when(productModel.extractView.template).then(function() {
-
-						// yes, so insert the products view into the product container on this page
-						productModel.extractView.el.clone(true).appendTo(container);
-
+            		
+					var productViewExtract = new ProductViewExtract({
+						model: productModel
 					});
+
+					productViewExtract.render().appendTo(container);
 					
 				}
 				

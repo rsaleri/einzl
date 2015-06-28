@@ -82,8 +82,10 @@ var Router = Backbone.Router.extend({
 		Einzlstck.Deferreds.products.then(function() {
             
             var productModel = Einzlstck.Models.Inventory.selectProduct(id);
+			
+			var productView = new ProductView({model: productModel});
             
-            productModel.view.render(productModel.data);
+            productView.render();
             
             // set document title
             document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
@@ -121,12 +123,12 @@ var Router = Backbone.Router.extend({
         var config = this.getRouteConfig(slug);
 		
         // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new PageModel(config);
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new PageView({model: new PageModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';

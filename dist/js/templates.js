@@ -54,7 +54,7 @@ this["Templates"]["cart"] = Handlebars.template({"1":function(depth0,helpers,par
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.totals : depth0)) != null ? stack1.post_discount : stack1)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
     + "</span>\n        <span class=\"name\">Summe</span>\n    </li>\n</ul>\n<div class=\"actions\">\n    <a class=\"button checkout\" href=\"/checkout\" title=\"Proceed to Checkout\"><span>Kasse</span></a>\n</div>\n";
 },"useData":true});
-this["Templates"]["product"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+this["Templates"]["productExtract"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
     var stack1;
 
   return ((stack1 = helpers['if'].call(depth0,(data && data.first),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");

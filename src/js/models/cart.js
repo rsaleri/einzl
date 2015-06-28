@@ -77,7 +77,7 @@ var Basket = Backbone.Model.extend({
 				self.set(data.cart);
                 
             } else {
-                notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
+                notifyUser(einzl.models.language.get('copy').messages.noConnection, 'error');
             }
 
 

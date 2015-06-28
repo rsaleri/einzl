@@ -49,6 +49,8 @@ var BasketView = Backbone.View.extend({
 
 		});
 		
+		data.totals.post_discount.rounded.with_tax = data.totals.post_discount.rounded.with_tax.toFixed(2);
+		
         // render it
 		var html = this.template(data);
 		
@@ -63,7 +65,7 @@ var BasketView = Backbone.View.extend({
 
 		// update totals outside of view
 		$('.total-items').text(data.total_items);
-		$('.total-price').text(data.totals.post_discount.rounded.with_tax.toFixed(2));
+		$('.total-price').text(data.totals.post_discount.rounded.with_tax);
 		
 		return self.el;
 		

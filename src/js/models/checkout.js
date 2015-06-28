@@ -28,7 +28,7 @@ var CheckoutModel = PageModel.extend({
 
 			billID = selectedBill.attr('data-address-id');
 
-			$.each(Einzlstck.Models.User.data.addresses, function() {
+			$.each(einzl.models.user.data.addresses, function() {
 
 				if(this.id === billID) {
 					billingAddress = this;
@@ -57,7 +57,7 @@ var CheckoutModel = PageModel.extend({
 
 			shipID = selectedShip.attr('data-address-id');
 
-			$.each(Einzlstck.Models.User.data.addresses, function() {
+			$.each(einzl.models.user.data.addresses, function() {
 
 				if(this.id === shipID) {
 					shippingAddress = this;

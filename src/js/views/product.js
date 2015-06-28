@@ -30,7 +30,7 @@ var ProductViewExtract = Backbone.View.extend({
         this.el.on('vclick', function() {
             
             // navigate to confirmation page
-            Einzlstck.Router.navigate('/product/' + self.model.get('id'), {
+            einzl.router.navigate('/product/' + self.model.get('id'), {
                 trigger: true
             });
             
@@ -79,15 +79,12 @@ var ProductViewExtract = Backbone.View.extend({
 
 var ProductView = PageView.extend({
 	
-	template: $.Deferred(),
+	template: function(data) {		
+		return Templates.product(data);
+	},
 	
 	initialize: function() {
 		
-		var self = this;
-		
-		Einzlstck.Models.Shop.getTemplate('pages/product.hbs').then(function(hbs) {
-			self.template.resolve(hbs);
-		});
 		
 	},
 	
@@ -98,33 +95,27 @@ var ProductView = PageView.extend({
 		var data = this.model.toJSON();
 		
 		// call the original .render() function from the PageView super/parent class
-		PageView.prototype.render.call(this, data).then(function() {
-			
-			console.log(data);
-            
-			if(data.recommendations) {
+		PageView.prototype.render.call(this, data);
+		
+		if(data.recommendations) {
                 
-                $.each(data.recommendations.data, function() {
-                    
-                    var recommendedProduct = Einzlstck.Models.Inventory.selectProduct(this.id);
-					
-					var productViewExtract = new ProductViewExtract({
-						model: recommendedProduct
-					});
-					
-					// place its extractView into the random products of this detail-view
-					productViewExtract.render().appendTo(self.el.find('.recommended-products'));                   
-                    
-                });
-                
-                
-                
-                
-            }
-			
-			
-			
-		});
+			$.each(data.recommendations.data, function() {
+
+				var recommendedProduct = einzl.models.inventory.selectProduct(this.id);
+
+				var productViewExtract = new ProductViewExtract({
+					model: recommendedProduct
+				});
+
+				// place its extractView into the random products of this detail-view
+				productViewExtract.render().appendTo(self.el.find('.recommended-products'));                   
+
+			});
+
+
+
+
+		}
 		
 		
 		
@@ -175,7 +166,7 @@ var ProductView = PageView.extend({
 		});
 		
 		var images = $('.image-gallery .images img');
-		console.log(images.length);
+		
 		this.el.find('.gallery-navigation .thumb').each(function(i) {
 			
 			$(this).on('vclick', function(e) {

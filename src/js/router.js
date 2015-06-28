@@ -1,6 +1,8 @@
 var Router = Backbone.Router.extend({
 	
 	initialize: function(config) {
+		
+		var self = this;
         
         this.config = config;
 		
@@ -18,7 +20,7 @@ var Router = Backbone.Router.extend({
 			
 			// navigate to the target
 			var href = $(this).attr('href');
-			Einzlstck.Router.navigate(href, true);
+			self.navigate(href, true);
             
             // The following is done in execute() as well. This is dirty. Find a better way
             // close menu
@@ -79,18 +81,13 @@ var Router = Backbone.Router.extend({
         // get config information
         var config = this.getRouteConfig(slug);
 		
-		Einzlstck.Deferreds.products.then(function() {
-            
-            var productModel = Einzlstck.Models.Inventory.selectProduct(id);
+		var productModel = einzl.models.inventory.selectProduct(id);
 			
-			var productView = new ProductView({model: productModel});
-            
-            productView.render();
-            
-            // set document title
-            document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
-			
-		});
+		var productView = new ProductView({model: productModel});
+		productView.render();
+
+		// set document title
+		document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
 		
 		
 		

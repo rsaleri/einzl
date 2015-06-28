@@ -24,26 +24,23 @@ $(document).ready(function() {
 	
     
     // let's to this
-    
-    
-    Einzlstck.Models.User = new User();
-	
+    einzl.models.user = new User();
 	einzl.models.language = new Lang();
 	
 	einzl.models.language.fetch().then(function() {
 		
 		Einzlstck.Models.Shop = new Shop();
-		Einzlstck.Models.Inventory = new Inventory();
-		
-		einzl.views.cart = new BasketView({
-			model: new Basket()
-		});
+		einzl.models.inventory = new Inventory();
 
-		Einzlstck.Router = new Router(config);
+		einzl.router = new Router(config);
 
 		Einzlstck.Deferreds.products.then(function() {
 
 			Backbone.history.start({pushState: true});
+			
+			einzl.views.cart = new BasketView({
+				model: new Basket()
+			});
 
 		});
 		

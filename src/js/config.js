@@ -6,7 +6,8 @@ var config = [
          },
          id: 'home',
          slug: ['/home', '/', ''],
-         hbsPath: '/pages/home.hbs'
+         hbsPath: '/pages/home.hbs',
+		 tplName: 'home'
      },
      {
          title: {
@@ -15,7 +16,8 @@ var config = [
          },
          id: 'rings',
          slug: ['/rings', '/ringe'],
-         hbsPath: '/pages/rings.hbs'
+         hbsPath: '/pages/rings.hbs',
+		 tplName: 'rings'
      },
      {
          title: {
@@ -24,7 +26,8 @@ var config = [
          },
          id: 'testpage',
          slug: ['/testpage'],
-         hbsPath: '/pages/testpage.hbs'
+         hbsPath: '/pages/testpage.hbs',
+		 tplName: 'testpage'
      },
      {
          title: {
@@ -33,7 +36,8 @@ var config = [
          },
          id: 'necklaces',
          slug: ['/necklaces', '/ketten'],
-         hbsPath: '/pages/necklaces.hbs'
+         hbsPath: '/pages/necklaces.hbs',
+		 tplName: 'necklaces'
      },
      {
          title: {
@@ -42,7 +46,8 @@ var config = [
          },
          id: 'pendants',
          slug: ['/pendants', '/anhaenger'],
-         hbsPath: '/pages/pendants.hbs'
+         hbsPath: '/pages/pendants.hbs',
+		 tplName: 'pendants'
      },
      {
          title: {
@@ -51,7 +56,8 @@ var config = [
          },
          id: 'bracelets',
          slug: ['/bracelets', '/armbaender', '/armband'],
-         hbsPath: '/pages/bracelets.hbs'
+         hbsPath: '/pages/bracelets.hbs',
+		 tplName: 'bracelets'
      },
      {
          title: {
@@ -60,7 +66,8 @@ var config = [
          },
          id: 'product',
          slug: ['/product/:id'],
-         hbsPath: '/pages/productDetails.hbs'
+         hbsPath: '/pages/productDetails.hbs',
+		 tplName: 'product'
      },
      {
          title: {
@@ -69,7 +76,8 @@ var config = [
          },
          id: 'likes',
          slug: ['/likes', '/yourlikes', '/mylikes'],
-         hbsPath: '/pages/likes.hbs'
+         hbsPath: '/pages/likes.hbs',
+		 tplName: 'likes'
      },
      {
          title: {
@@ -78,7 +86,8 @@ var config = [
          },
          id: 'checkout',
          slug: ['/checkout', '/kasse'],
-         hbsPath: '/pages/checkout.hbs'
+         hbsPath: '/pages/checkout.hbs',
+		 tplName: 'checkout'
      },
      {
          title: {
@@ -87,7 +96,8 @@ var config = [
          },
          id: 'confirmation',
          slug: ['/confirmation/:orderID'],
-         hbsPath: '/pages/confirmation.hbs'
+         hbsPath: '/pages/confirmation.hbs',
+		 tplName: 'confirmation'
      },
      {
          title: {
@@ -104,7 +114,8 @@ var config = [
          },
          id: 'terms',
          slug: ['/terms', '/agb'],
-         hbsPath: '/pages/terms.hbs'
+         hbsPath: '/pages/terms.hbs',
+		 tplName: 'terms'
      },
      {
          title: {
@@ -113,7 +124,8 @@ var config = [
          },
          id: 'imprint',
          slug: ['/imprint', '/impressum'],
-         hbsPath: '/pages/imprint.hbs'
+         hbsPath: '/pages/imprint.hbs',
+		 tplName: 'imprint'
      },
      {
          title: {
@@ -122,7 +134,8 @@ var config = [
          },
          id: 'shipping',
          slug: ['/shipping', '/versand'],
-         hbsPath: '/pages/shipping.hbs'
+         hbsPath: '/pages/shipping.hbs',
+		 tplName: 'shipping'
      },
      {
          title: {
@@ -131,7 +144,8 @@ var config = [
          },
          id: 'privacy',
          slug: ['/privacy', '/datenschutz'],
-         hbsPath: '/pages/privacy.hbs'
+         hbsPath: '/pages/privacy.hbs',
+		 tplName: 'privacy'
      },
      {
          title: {
@@ -140,7 +154,8 @@ var config = [
          },
          id: 'brand',
          slug: ['/brand', '/marke'],
-         hbsPath: '/pages/brand.hbs'
+         hbsPath: '/pages/brand.hbs',
+		 tplName: 'brand'
      },
      {
          title: {
@@ -149,7 +164,8 @@ var config = [
          },
          id: 'f12',
          slug: ['/f12'],
-         hbsPath: '/pages/f12.hbs'
+         hbsPath: '/pages/f12.hbs',
+		 tplName: 'f12'
      },
      {
          title: {
@@ -158,6 +174,7 @@ var config = [
          },
          id: '404',
          slug: ['/404'],
-         hbsPath: '/pages/404.hbs'
+         hbsPath: '/pages/404.hbs',
+		 tplName: '404'
      }
  ];

@@ -7,7 +7,7 @@ var GatewayModel = PageModel.extend({
         this.data = data;
 		
 		// prevent user greeting
-        window.clearTimeout(Einzlstck.Models.User.sayHello());
+        window.clearTimeout(einzl.models.user.sayHello());
         
         // handle gateway response
         this.handleGatewayResponse();
@@ -25,7 +25,7 @@ var GatewayModel = PageModel.extend({
 //                this.trackOrder(order);
 
         // navigate to confirmation page
-        Einzlstck.Router.navigate('/confirmation/' + order.id, {
+        einzl.router.navigate('/confirmation/' + order.id, {
             trigger: true,
             replace: true
         });
@@ -35,7 +35,7 @@ var GatewayModel = PageModel.extend({
     cancelOrder: function() {
         
         // navigate back to the checkout page
-        Einzlstck.Router.navigate('/checkout', {
+        einzl.router.navigate('/checkout', {
             trigger: true,
             replace: true
         });

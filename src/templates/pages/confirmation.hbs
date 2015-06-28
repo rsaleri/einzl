@@ -3,8 +3,8 @@
         <div class="units-1 cut-in-half">
             <div>
                 <div class="copy center-y">
-                    <h1 data-copy="confirmation_headline"></h1>
-                    <p data-copy="confirmation_subheadline"></p>
+                    <h1>Vielen Dank, {{this.order.bill_to.data.first_name}}!</h1>
+                    <p>Deine Bestellung war erfolgreich.</p>
                 </div>
             </div>
         </div>
@@ -15,19 +15,19 @@
             <div class="units-2">
                 <div>
                     <div class="copy">
-                        <h2 data-copy="confirmation_dear_headline"></h2>
-                        <p data-copy="confirmation_dear_copy1"></p>
-                        <p data-copy="confirmation_dear_copy2"></p>
-                        <p data-copy="confirmation_dear_copy3"></p>
+                        <h2>Liebe/r {{this.order.bill_to.data.first_name}}</h2>
+                        <p>Es freut uns sehr, dass du etwas gefunden hast. Wenn du irgendwelche Fragen hast, dann zögere nicht uns via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück' target='_blank'>info@einzelstueck-shop.com</a> zu kontaktieren.</p>
+                        <p>Wir wünschen dir viel Spaß mit deinem neuen Schmuck und würden uns freuen, wenn du uns zeigst wie gut dir der Schmuck steht. Poste dein Bild auf Instagram und erwähne uns mit <a href='http://instagram.com/einzlstck' title='Einzelstück on Instagram' target='_blank'>@einzlstck</a> oder direkt auf unsere <a href='https://www.facebook.com/einzlstck' title='Einzelstück auf Facebook' target='_blank'>Facebook Wall</a>.</p>
+                        <p>Die nächsten Schritte für deine Bestellung sind die Bezahlung und Versand. Mehr Infos findest du rechts.</p>
                     </div>
                 </div>
                 <div>
                     <div id="pay-manual" class="copy payment-information">
-                        <h2 data-copy="confirmation_pay_headline"></h2>
-                        <p data-copy="confirmation_pay_copy1"></p>
+                        <h2>Zahlung</h2>
+                        <p>Bitte überweise <strong>{{this.order.currency_code}} {{this.order.total}}</strong> auf das folgende Bankkonto</p>
                         <ul>
                             <li>
-                                <label data-copy="confirmation_pay_account_label"></label>
+                                <label>Konto Inhaber</label>
                                 <span>Einzelstück (Inh. Sumit Kumar)</span>
                             </li>
                             <li>
@@ -42,7 +42,7 @@
                     </div>
 					
 					<div id="pay-paypal" class="copy payment-information">
-                        <h2 data-copy="confirmation_pay_headline"></h2>
+                        <h2>Zahlung</h2>
 						<p>Du hast Paypal als Zahlungsmethode gewählt. Klicke auf diesen Button um deinen Zahlungsvorgang zu beginnen.</p>
 						<div class="button pay">
 							<span>Jetzt mit Paypal zahlen</span>
@@ -51,7 +51,7 @@
 					</div>
 					
 					<div id="paid" class="copy payment-information">
-						<h2 data-copy="confirmation_pay_headline"></h2>
+						<h2>Zahlung</h2>
 						<h3><i class="fa fa-check"></i> Wir haben deine Zahlung erhalten!</h3>
 					</div>
                 </div>
@@ -61,8 +61,8 @@
             <div class="units-2">
                 <div>
                     <div class="copy">
-                        <h2 data-copy="confirmation_bill_headline"></h2>
-                        <p data-copy="confirmation_bill_copy1"></p>
+                        <h2>Rechnung</h2>
+                        <p>Deine Rechnung geht an folgende Adresse</p>
                         <span>{{this.order.bill_to.data.first_name}} {{this.order.bill_to.data.last_name}}</span><br/>
                         <span>{{this.order.bill_to.data.address_1}}</span><br/>
                         <span>{{this.order.bill_to.data.postcode}} {{this.order.bill_to.data.city}}, {{this.order.bill_to.data.country.value}}</span><br/>
@@ -71,8 +71,8 @@
                 </div>
                 <div>
                     <div class="copy">
-                        <h2 data-copy="confirmation_ship_headline"></h2>
-                        <p data-copy="confirmation_ship_copy1"></p>
+                        <h2>Versand</h2>
+                        <p>Sobald wir den Zahlungseingang feststellen, wird dein neuer Schmuck an folgende Adresse versandt</p>
                         <span>{{this.order.ship_to.data.first_name}} {{this.order.ship_to.data.last_name}}</span><br/>
                         <span>{{this.order.ship_to.data.address_1}}</span><br/>
                         <span>{{this.order.ship_to.data.postcode}} {{this.order.ship_to.data.city}}, {{this.order.ship_to.data.country.value}}</span><br/>

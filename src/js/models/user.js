@@ -57,11 +57,7 @@ var User = Backbone.Model.extend({
         this.saveToLocalstorage();
         
         // re-render address list template
-        return this.views.addressList.render(this.data).then(function() {
-            
-            
-            
-        });
+        return this.views.addressList.render(this.data);
         
     }
     

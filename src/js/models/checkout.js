@@ -5,8 +5,7 @@ var CheckoutModel = PageModel.extend({
         var self = this;
         
         this.data = data;
-        this.view = new CheckoutView(this.data.hbsPath);
-        this.view.model = this;
+		this.set(data);
         
     },
 	
@@ -41,7 +40,7 @@ var CheckoutModel = PageModel.extend({
 		} else {
 			// display error
 			goToByScroll(billingContainer);
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_noBillingAddress, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_noBillingAddress, 'error');
 			return errorPromise.reject();
 		}
 
@@ -70,7 +69,7 @@ var CheckoutModel = PageModel.extend({
 		} else {
 			// display error
 			goToByScroll(shippingContainer);
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_noShippingAddress, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_noShippingAddress, 'error');
 			return errorPromise.reject();
 		}
 
@@ -79,7 +78,7 @@ var CheckoutModel = PageModel.extend({
 		// check if cart is empty
 		if(!Einzlstck.Models.Cart || Einzlstck.Models.Cart.data.total_items <= 0) {
 			// display error
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_empty_cart, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_empty_cart, 'error');
 			return errorPromise.reject();
 		}
 

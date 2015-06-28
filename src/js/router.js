@@ -149,13 +149,13 @@ var Router = Backbone.Router.extend({
         // get config information
         var config = this.getRouteConfig(slug);
 		
-        // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new CheckoutModel(config);
+		// init page if it isn't already
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new CheckoutView({model: new CheckoutModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';

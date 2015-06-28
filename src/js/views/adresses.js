@@ -114,15 +114,13 @@ var AddressForm = Backbone.View.extend({
             obj.note = form.find('.note textarea').val();
             obj.id = guid();
 
-            Einzlstck.Models.User.addAddress(obj).then(function() {                
-                
-                // reset form
-                form.get(0).reset();
+            Einzlstck.Models.User.addAddress(obj);
+			
+			// reset form
+			form.get(0).reset();
 
-                // close form
-                $('.open-form').removeClass('open-form');
-                
-            });
+			// close form
+			$('.open-form').removeClass('open-form');
 
         });
         

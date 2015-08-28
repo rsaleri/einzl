@@ -22,7 +22,7 @@ var Basket = Backbone.Model.extend({
             }
         };
 
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+        return einzl.models.shop.askServer(obj).done(function(data) {
 			
 			// remove this as soon as everything is backboned
             self.data = data.cart;
@@ -45,7 +45,7 @@ var Basket = Backbone.Model.extend({
 			
         };
 
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+        return einzl.models.shop.askServer(obj).done(function(data) {
             
             // remove this as soon as everything is backboned
             self.data = data.cart;
@@ -68,7 +68,7 @@ var Basket = Backbone.Model.extend({
         };
 
         // get cart data from moltin
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+        return einzl.models.shop.askServer(obj).done(function(data) {
 			
             if(data.cart) {
                 // save cart model

@@ -26,10 +26,6 @@ var Router = Backbone.Router.extend({
             // close menu
             $('.hamburger-button').removeClass('open');
             $('header nav').removeClass('open');
-
-            // close cart
-//            Einzlstck.Models.Cart.view.close();
-            
 			
 		});
 		
@@ -40,9 +36,6 @@ var Router = Backbone.Router.extend({
 		// close menu
 		$('.hamburger-button').removeClass('open');
 		$('header nav').removeClass('open');
-		
-		// close cart
-//		Einzlstck.Models.Cart.view.close();
 		
 		// add loading class to body
 		$('body').addClass('loading');
@@ -103,12 +96,15 @@ var Router = Backbone.Router.extend({
         var config = this.getRouteConfig(slug);
         
         // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new PageModel(config);
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new PageView({model: new PageModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
+		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
         
     },
     
@@ -203,7 +199,7 @@ var Router = Backbone.Router.extend({
         config.urlParams = getUrlParams();
         
         // init page
-		Einzlstck.Pages[config.id] = new GatewayModel(config);
+		einzl.models = new GatewayModel(config);
         
     },
     

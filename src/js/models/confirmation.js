@@ -18,7 +18,7 @@ var OrderModel = PageModel.extend({
 		};
 
 		// do the moltin request and ask for the order, given via URL parameter
-		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+		return einzl.models.shop.askServer(obj).done(function(data) {
 			
 			if(data.order.status) {
 				self.set({

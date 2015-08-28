@@ -117,7 +117,7 @@ var PageView = Backbone.View.extend({
                         };
 
                         // subscribe
-                        Einzlstck.Models.Shop.subscribe(userData)
+                        einzl.model.shop.subscribe(userData)
                         .always(function(data) {
                             button.removeClass('loading');
                             input.val('');

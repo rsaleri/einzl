@@ -4,7 +4,7 @@ var Inventory = Backbone.Collection.extend({
     
     initialize: function() {
         
-        this.getProducts();
+        
         
     },
     
@@ -23,15 +23,14 @@ var Inventory = Backbone.Collection.extend({
             action: 'getProducts'
         };
         
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+        return einzl.models.shop.askServer(obj).done(function(data) {
 
             if(data && data.status) {
                 
                 self.add(data.result);
-                Einzlstck.Deferreds.products.resolve(data);
                 
             } else {
-                notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
+                notifyUser(einzl.models.language.get('copy').messages.noConnection, 'error');
             }
         });
     }

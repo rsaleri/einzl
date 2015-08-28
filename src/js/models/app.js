@@ -1,57 +1,41 @@
 $(document).ready(function() {
     
-    
-    window.Einzlstck = {
-        Pages: {},
-        Models: {
-            
-        },
-        Views: {
-            
-        },
-        Deferreds: {
-            products: $.Deferred(),
-            copy: $.Deferred()
-        }
-        
+    window.einzl = {
+        views: {},
+        models: {}
     };
-	
-	window.einzl = {
-		views: {},
-		models: {}
-	};
-	
-	
+    
+    
     
     // let's to this
     einzl.models.user = new User();
-	einzl.models.language = new Lang();
-	
-	einzl.models.language.fetch().then(function() {
-		
-		Einzlstck.Models.Shop = new Shop();
-		einzl.models.inventory = new Inventory();
+    einzl.models.language = new Lang();
+    
+    einzl.models.language.fetch().then(function() {
+        
+        einzl.models.shop = new Shop();
+        einzl.models.inventory = new Inventory();
 
-		einzl.router = new Router(config);
+        einzl.router = new Router(config);
 
-		Einzlstck.Deferreds.products.then(function() {
+        einzl.models.inventory.getProducts().then(function() {
 
-			Backbone.history.start({pushState: true});
-			
-			einzl.models.cart = new Basket();
-			einzl.views.cart = new BasketView({
-				model: einzl.models.cart
-			});
-			
-			
-			// greet user
-			einzl.models.user.sayHello();
+            Backbone.history.start({pushState: true});
+            
+            einzl.models.cart = new Basket();
+            einzl.views.cart = new BasketView({
+                model: einzl.models.cart
+            });
+            
+            
+            // greet user
+            einzl.models.user.sayHello();
 
-		});
-		
-		
-	});
-	
-	
+        });
+        
+        
+    });
+    
+    
     
 });

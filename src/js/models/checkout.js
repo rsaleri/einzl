@@ -97,7 +97,7 @@ var CheckoutModel = PageModel.extend({
 			cart: einzl.models.cart.toJSON
 		};
 
-		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+		return einzl.models.shop.askServer(obj).done(function(data) {
 			
 			console.log(data);
 			

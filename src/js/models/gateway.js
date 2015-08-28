@@ -19,7 +19,7 @@ var GatewayModel = PageModel.extend({
     confirmOrder: function(order) {
 
         // create new cart
-        Einzlstck.Models.Cart = new Basket();
+        
 
         // track order with google analytics
 //                this.trackOrder(order);
@@ -55,7 +55,7 @@ var GatewayModel = PageModel.extend({
         $.extend(obj, this.data.urlParams);
         
         
-        Einzlstck.Models.Shop.askServer(obj).then(function(data) {
+        einzl.models.shop.askServer(obj).then(function(data) {
             
             console.log('complete payment response: ');
             console.log(data);

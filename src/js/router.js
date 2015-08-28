@@ -199,7 +199,7 @@ var Router = Backbone.Router.extend({
         config.urlParams = getUrlParams();
         
         // init page
-		einzl.models = new GatewayModel(config);
+		einzl.models.gateway = new GatewayModel(config);
         
     },
     

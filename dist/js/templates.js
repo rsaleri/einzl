@@ -1,4 +1,82 @@
 this["Templates"] = this["Templates"] || {};
+this["Templates"]["addressForm"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<form autocomplete=\"on\">\n	<h3>Neue Adresse</h3>\n\n	<div class=\"firstname\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"first_name\" placeholder=\"first name\" required=\"\" name=\"firstname\">\n	</div>\n	<div class=\"lastname\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"last_name\" placeholder=\"last name\" required=\"\" name=\"lastname\">\n	</div>\n	<div class=\"email\">\n		<input autocomplete=\"on\" type=\"email\" data-placeholder=\"email\" placeholder=\"email\" required=\"\" name=\"email\">\n	</div>\n	<div class=\"address_1\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"street\" placeholder=\"street / apt number\" required=\"\" name=\"street\">\n	</div>\n	<div class=\"code\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"area_code\" placeholder=\"area code\" required=\"\" name=\"zipcode\">\n	</div>\n	<div class=\"city\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"city\" placeholder=\"city\" required=\"\" name=\"city\">\n	</div>\n	<div class=\"country\">\n		<select type=\"text\" required=\"\" name=\"country\">\n			<option value=\"DE\">DE</option>\n			<option value=\"CH\">CH</option>\n			<option value=\"AT\">AT</option>\n		</select>\n	</div>\n	<div class=\"note\">\n		<textarea data-placeholder=\"notes\" placeholder=\"Any special notes?\"></textarea>\n	</div>\n\n	<button type=\"submit\" class=\"save green\"><span>Adresse speichern</span></button>\n	<button type=\"reset\" class=\"cancel\">Abbrechen</button>\n</form>";
+},"useData":true});
+this["Templates"]["addressList"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+    var alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "    <li data-address-id=\""
+    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
+    + "\">\n        <span>"
+    + alias2(alias1((depth0 != null ? depth0.first_name : depth0), depth0))
+    + " "
+    + alias2(alias1((depth0 != null ? depth0.last_name : depth0), depth0))
+    + "</span>\n        <span class=\"email\">["
+    + alias2(alias1((depth0 != null ? depth0.email : depth0), depth0))
+    + "]</span><br/>\n        <span>"
+    + alias2(alias1((depth0 != null ? depth0.address_1 : depth0), depth0))
+    + "</span><br/>\n        <span>"
+    + alias2(alias1((depth0 != null ? depth0.postcode : depth0), depth0))
+    + " "
+    + alias2(alias1((depth0 != null ? depth0.city : depth0), depth0))
+    + ", "
+    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
+    + "</span><br/>\n        <span>"
+    + alias2(alias1((depth0 != null ? depth0.note : depth0), depth0))
+    + "</span>\n    </li>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<ul>\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.addresses : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>";
+},"useData":true});
+this["Templates"]["cart"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=this.escapeExpression, alias2=this.lambda;
+
+  return "        \n    <li class=\"item\" data-product-key=\""
+    + alias1(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"key","hash":{},"data":data}) : helper)))
+    + "\">\n        <span class=\"remove\"><i class=\"fa fa-trash\"></i></span>\n        <span class=\"price\">"
+    + alias1(alias2(((stack1 = ((stack1 = (depth0 != null ? depth0.pricing : depth0)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
+    + "</span>\n        <span class=\"name\">"
+    + alias1(alias2((depth0 != null ? depth0.title : depth0), depth0))
+    + "</span>\n        <span class=\"quantity\">"
+    + alias1(alias2((depth0 != null ? depth0.quantity : depth0), depth0))
+    + "</span>\n    </li>\n    \n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "<ul class=\"items\">\n    \n    <li class=\"heading\">\n        <span class=\"price\">EUR</span>\n        <span class=\"name\">Produkt</span>\n    </li>\n    \n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.contents : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>\n<ul class=\"totals\">\n    <li class=\"subtotal\">\n        <span class=\"price\">"
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.totals : depth0)) != null ? stack1.post_discount : stack1)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
+    + "</span>\n        <span class=\"name\">Zwischensumme</span>\n    </li>\n	<li class=\"taxes\">\n        <span class=\"price\"><a href=\"/impressum\">Mehr Infos &rarr;</a></span>\n        <span class=\"name\">Keine MwSt</span>\n    </li>\n    <li class=\"shipping\">\n        <span class=\"price\">gratis</span>\n        <span class=\"name\">Lieferung</span>\n    </li>\n    <li class=\"total\">\n        <span class=\"price\">"
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.totals : depth0)) != null ? stack1.post_discount : stack1)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
+    + "</span>\n        <span class=\"name\">Summe</span>\n    </li>\n</ul>\n<div class=\"actions\">\n    <a class=\"button checkout\" href=\"/checkout\" title=\"Proceed to Checkout\"><span>Kasse</span></a>\n</div>\n";
+},"useData":true});
+this["Templates"]["productExtract"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(data && data.first),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
+},"2":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "<!--            	<div class=\"image active\" style=\"background-image: url("
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.url : depth0)) != null ? stack1.https : stack1), depth0))
+    + ");\"></div>-->\n				<img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.url : depth0)) != null ? stack1.https : stack1), depth0))
+    + "\">\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=this.escapeExpression;
+
+  return "<div class=\"product\">\n	<div class=\"drop add-to-cart\"><i class=\"fa fa-shopping-cart\"></i></div>\n    <div class=\"details\">\n		<div class=\"info\">\n			<h3>"
+    + alias1(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
+    + "<span class=\"sold\">SOLD OUT</span></h3>\n			<div class=\"price\">"
+    + alias1(this.lambda(((stack1 = (depth0 != null ? depth0.price : depth0)) != null ? stack1.value : stack1), depth0))
+    + "</div>\n		</div>\n    </div>\n    <div class=\"background\">\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.images : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n</div>";
+},"useData":true});
 this["Templates"]["404"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<section class=\"notfound\">\n    <article>\n        <div class=\"units-1 cut-in-half\">\n            <div>\n                <div class=\"copy center-y\">\n                    <h1>404</h1>\n                    <p>Ohje, was du suchst scheint nicht hier zu sein :-(</p>\n                </div>\n            </div>\n        </div>\n    </article>\n    \n    <article>\n        <div class=\"content\">\n            <div class=\"units-2\">\n               <div>\n                   <div class=\"copy center-y\">\n                       <h2>Gehe Shoppen</h2>\n                       <center><a href=\"/\">Jetzt shoppen</a></center>\n                   </div>\n                </div>\n                <div>\n                    <div class=\"copy center-y\">\n                        <h2>Lass dich auf Instagram inspirieren</h2>\n                        <h3 class=\"social-links\">\n                            <a target=\"_blank\" href=\"http://www.instagram.com/einzlstck\" title=\"Follow us on Instagram\" class=\"insta-link\"><i class=\"fa fa-instagram\"></i></a>\n                        </h3>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </article>\n</section>";
 },"useData":true});
@@ -137,82 +215,4 @@ this["Templates"]["terms"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1
 },"useData":true});
 this["Templates"]["testpage"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<section class=\"testpage\">\n    <article>\n        <div class=\"units-1 cut-in-half\">\n            <div>\n                <div class=\"copy center-y\">\n                    <h1>Test Page</h1>\n                </div>\n            </div>\n        </div>\n    </article>\n    <article>\n        <div class=\"content\">\n            <div class=\"units-2\">\n				<div data-product=\"992712251494367443\"></div>\n                <div></div>\n            </div>\n        </div>\n    </article>\n    <article>\n        <div class=\"content\">\n            <div class=\"units-4\">\n            </div>\n        </div>\n    </article>\n</section>";
-},"useData":true});
-this["Templates"]["addressForm"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<form autocomplete=\"on\">\n	<h3>Neue Adresse</h3>\n\n	<div class=\"firstname\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"first_name\" placeholder=\"first name\" required=\"\" name=\"firstname\">\n	</div>\n	<div class=\"lastname\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"last_name\" placeholder=\"last name\" required=\"\" name=\"lastname\">\n	</div>\n	<div class=\"email\">\n		<input autocomplete=\"on\" type=\"email\" data-placeholder=\"email\" placeholder=\"email\" required=\"\" name=\"email\">\n	</div>\n	<div class=\"address_1\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"street\" placeholder=\"street / apt number\" required=\"\" name=\"street\">\n	</div>\n	<div class=\"code\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"area_code\" placeholder=\"area code\" required=\"\" name=\"zipcode\">\n	</div>\n	<div class=\"city\">\n		<input autocomplete=\"on\" type=\"text\" data-placeholder=\"city\" placeholder=\"city\" required=\"\" name=\"city\">\n	</div>\n	<div class=\"country\">\n		<select type=\"text\" required=\"\" name=\"country\">\n			<option value=\"DE\">DE</option>\n			<option value=\"CH\">CH</option>\n			<option value=\"AT\">AT</option>\n		</select>\n	</div>\n	<div class=\"note\">\n		<textarea data-placeholder=\"notes\" placeholder=\"Any special notes?\"></textarea>\n	</div>\n\n	<button type=\"submit\" class=\"save green\"><span>Adresse speichern</span></button>\n	<button type=\"reset\" class=\"cancel\">Abbrechen</button>\n</form>";
-},"useData":true});
-this["Templates"]["addressList"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-    var alias1=this.lambda, alias2=this.escapeExpression;
-
-  return "    <li data-address-id=\""
-    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
-    + "\">\n        <span>"
-    + alias2(alias1((depth0 != null ? depth0.first_name : depth0), depth0))
-    + " "
-    + alias2(alias1((depth0 != null ? depth0.last_name : depth0), depth0))
-    + "</span>\n        <span class=\"email\">["
-    + alias2(alias1((depth0 != null ? depth0.email : depth0), depth0))
-    + "]</span><br/>\n        <span>"
-    + alias2(alias1((depth0 != null ? depth0.address_1 : depth0), depth0))
-    + "</span><br/>\n        <span>"
-    + alias2(alias1((depth0 != null ? depth0.postcode : depth0), depth0))
-    + " "
-    + alias2(alias1((depth0 != null ? depth0.city : depth0), depth0))
-    + ", "
-    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
-    + "</span><br/>\n        <span>"
-    + alias2(alias1((depth0 != null ? depth0.note : depth0), depth0))
-    + "</span>\n    </li>\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<ul>\n"
-    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.addresses : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "</ul>";
-},"useData":true});
-this["Templates"]["cart"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-    var stack1, helper, alias1=this.escapeExpression, alias2=this.lambda;
-
-  return "        \n    <li class=\"item\" data-product-key=\""
-    + alias1(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"key","hash":{},"data":data}) : helper)))
-    + "\">\n        <span class=\"remove\"><i class=\"fa fa-trash\"></i></span>\n        <span class=\"price\">"
-    + alias1(alias2(((stack1 = ((stack1 = (depth0 != null ? depth0.pricing : depth0)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
-    + "</span>\n        <span class=\"name\">"
-    + alias1(alias2((depth0 != null ? depth0.title : depth0), depth0))
-    + "</span>\n        <span class=\"quantity\">"
-    + alias1(alias2((depth0 != null ? depth0.quantity : depth0), depth0))
-    + "</span>\n    </li>\n    \n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
-
-  return "<ul class=\"items\">\n    \n    <li class=\"heading\">\n        <span class=\"price\">EUR</span>\n        <span class=\"name\">Produkt</span>\n    </li>\n    \n"
-    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.contents : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "</ul>\n<ul class=\"totals\">\n    <li class=\"subtotal\">\n        <span class=\"price\">"
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.totals : depth0)) != null ? stack1.post_discount : stack1)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
-    + "</span>\n        <span class=\"name\">Zwischensumme</span>\n    </li>\n	<li class=\"taxes\">\n        <span class=\"price\"><a href=\"/impressum\">Mehr Infos &rarr;</a></span>\n        <span class=\"name\">Keine MwSt</span>\n    </li>\n    <li class=\"shipping\">\n        <span class=\"price\">gratis</span>\n        <span class=\"name\">Lieferung</span>\n    </li>\n    <li class=\"total\">\n        <span class=\"price\">"
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.totals : depth0)) != null ? stack1.post_discount : stack1)) != null ? stack1.rounded : stack1)) != null ? stack1.with_tax : stack1), depth0))
-    + "</span>\n        <span class=\"name\">Summe</span>\n    </li>\n</ul>\n<div class=\"actions\">\n    <a class=\"button checkout\" href=\"/checkout\" title=\"Proceed to Checkout\"><span>Kasse</span></a>\n</div>\n";
-},"useData":true});
-this["Templates"]["productExtract"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-    var stack1;
-
-  return ((stack1 = helpers['if'].call(depth0,(data && data.first),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
-},"2":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
-
-  return "<!--            	<div class=\"image active\" style=\"background-image: url("
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.url : depth0)) != null ? stack1.https : stack1), depth0))
-    + ");\"></div>-->\n				<img src=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.url : depth0)) != null ? stack1.https : stack1), depth0))
-    + "\">\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, helper, alias1=this.escapeExpression;
-
-  return "<div class=\"product\">\n	<div class=\"drop add-to-cart\"><i class=\"fa fa-shopping-cart\"></i></div>\n    <div class=\"details\">\n		<div class=\"info\">\n			<h3>"
-    + alias1(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
-    + "<span class=\"sold\">SOLD OUT</span></h3>\n			<div class=\"price\">"
-    + alias1(this.lambda(((stack1 = (depth0 != null ? depth0.price : depth0)) != null ? stack1.value : stack1), depth0))
-    + "</div>\n		</div>\n    </div>\n    <div class=\"background\">\n"
-    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.images : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "    </div>\n</div>";
 },"useData":true});

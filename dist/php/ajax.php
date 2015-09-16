@@ -18,7 +18,7 @@ if ( $authenticated ) {
 	
 	
 	
-	if(!$_SESSION["cart"]) {
+	if(isset($_SESSION["cart"])) {
 		$_SESSION["cart"] = Cart::Contents();
 	}
 	

@@ -49,7 +49,7 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 
 		$HTMLpayment .= '<p>';
 		$HTMLpayment .= 'Einzelstück (Inh. Sumit Kumar)<br/>';
-		$HTMLpayment .= 'IBAN: DE95120300001014163396<br/>';
+		$HTMLpayment .= 'IBAN: DE67120300001036616587<br/>';
 		$HTMLpayment .= 'BIC: BYLADEM1001<br/>';
 		$HTMLpayment .= '<b>Verwendungszweck: '.$orderData['id'].'</b><br/>';
 		$HTMLpayment .= '(bitte unbedingt angeben)';

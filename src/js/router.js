@@ -175,9 +175,6 @@ var Router = Backbone.Router.extend({
 		// init page
 		einzl.views[config.id] = new OrderView({model: new OrderModel(config)});
 		
-        // render the view
-//		einzl.views[config.id].render();
-		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
 		
@@ -235,6 +232,8 @@ var Router = Backbone.Router.extend({
             }
 
         });
+		
+		$('body').attr('data-route', route.id);
 
         if(route) {
             // route was found, return it

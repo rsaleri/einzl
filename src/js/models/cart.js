@@ -14,18 +14,15 @@ var Basket = Backbone.Model.extend({
         var obj = {
             action: 'removeFromCart',
             cart: {
-                id: self.data.id
+                id: this.get('id')
             },
             product: {
                 key: product_key,
-                quantity: self.data.contents[product_key].quantity
+                quantity: this.get('contents')[product_key].quantity
             }
         };
 
         return einzl.models.shop.askServer(obj).done(function(data) {
-			
-			// remove this as soon as everything is backboned
-            self.data = data.cart;
 			
 			// save data
             self.set(data.cart);
@@ -39,16 +36,13 @@ var Basket = Backbone.Model.extend({
         var obj = {
             action: 'addToCart',
             cart: {
-                id: self.data.id
+                id: this.get('id')
             },
             product_id: prodID
 			
         };
 
         return einzl.models.shop.askServer(obj).done(function(data) {
-            
-            // remove this as soon as everything is backboned
-            self.data = data.cart;
 			
 			// save data
             self.set(data.cart);
@@ -70,10 +64,10 @@ var Basket = Backbone.Model.extend({
         // get cart data from moltin
         return einzl.models.shop.askServer(obj).done(function(data) {
 			
+			console.log('GOT CART');
+			
             if(data.cart) {
                 // save cart model
-                self.data = data.cart;
-				
 				self.set(data.cart);
                 
             } else {

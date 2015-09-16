@@ -140,6 +140,7 @@ button, .button, a.button {
     color: #f3f3f3;
     transition: all ease .3s;
     backface-visibility: hidden;
+	overflow: hidden;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     
     &:hover {

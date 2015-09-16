@@ -18,8 +18,8 @@ var GatewayModel = PageModel.extend({
     
     confirmOrder: function(order) {
 
-        // create new cart
-        
+        // get new cart
+        einzl.models.cart.getCart();
 
         // track order with google analytics
 //		this.trackOrder(order);
@@ -46,8 +46,6 @@ var GatewayModel = PageModel.extend({
 		
 		var self = this;
 		
-		console.log('handle gateway response');
-		
         var obj = {
             action: "completePayment"
         };
@@ -56,9 +54,6 @@ var GatewayModel = PageModel.extend({
         
         
         einzl.models.shop.askServer(obj).then(function(data) {
-            
-            console.log('complete payment response: ');
-            console.log(data);
             
             if(data.payment === 'manual') {
                 

@@ -15,6 +15,13 @@ $data = [];
 
 // Check moltin authentication
 if ( $authenticated ) {
+	
+	
+	
+	if(!$_SESSION["cart"]) {
+		$_SESSION["cart"] = Cart::Contents();
+	}
+	
     
     if($action == 'getProducts') {
         
@@ -57,7 +64,8 @@ if ( $authenticated ) {
         }
         
         // get updated cart content
-        $cart = Cart::Contents();
+		$_SESSION["cart"] = Cart::Contents();
+        $cart = $_SESSION["cart"];
         $data['cart'] = $cart['result'];
         
     } else if($action == 'getOrder') {
@@ -98,7 +106,8 @@ if ( $authenticated ) {
         }
         
         // get updated cart content
-        $cart = Cart::Contents();
+		$_SESSION["cart"] = Cart::Contents();
+        $cart = $_SESSION["cart"];
         $data['cart'] = $cart['result'];
 
     } else if($action == 'processOrder') {
@@ -177,7 +186,8 @@ if ( $authenticated ) {
             $data['order'] = Order::Get($orderID);
             
             // get the cart
-			$cart = Cart::Contents();
+			$cart = $_SESSION["cart"];
+			$data['cart'] = $cart;
             
             try {
                 // send confirmation mail
@@ -190,6 +200,8 @@ if ( $authenticated ) {
             // create new cart
             unset($_COOKIE['mcart']);
             Moltin::Identifier();
+			
+			$_SESSION["cart"] = Cart::Contents();
             
         } else if(isset($_POST['paypal']) && isset($_POST['PayerID'])) {
             
@@ -206,7 +218,8 @@ if ( $authenticated ) {
             $data['order'] = Order::Get($orderID);
 			
 			// get the cart
-			$cart = Cart::Contents();
+			$cart = $_SESSION["cart"];
+			$data['cart'] = $cart;
             
             try {
                 // send confirmation mail
@@ -220,6 +233,7 @@ if ( $authenticated ) {
             unset($_COOKIE['mcart']);
             Moltin::Identifier();
             
+			$_SESSION["cart"] = Cart::Contents();
         } else {
             
             $data['payment']['status'] = false;

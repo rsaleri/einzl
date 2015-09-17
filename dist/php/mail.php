@@ -28,7 +28,7 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLitem .= '<tr>';
 		$HTMLitem .= '<td>'.$prod['name'].'</td>';
 		$HTMLitem .= '<td>'.$prod['quantity'].'</td>';
-		$HTMLitem .= '<td>'.$prod['totals']['post_discount']['formatted']['with_tax'].'</td>';
+		$HTMLitem .= '<td style=" text-align: right;">'.$prod['totals']['post_discount']['formatted']['with_tax'].'</td>';
 		$HTMLitem .= '</tr>';
 	}
 	
@@ -54,12 +54,10 @@ function sendConfirmationMail($user, $order, $cart, $smtpPassword) {
 		$HTMLpayment .= '<b>Verwendungszweck: '.$orderData['id'].'</b><br/>';
 		$HTMLpayment .= '(bitte unbedingt angeben)';
 		$HTMLpayment .= '</p>';
-		$HTMLpayment .= '<p>Sobald wir den Zahlungseingang festellen, schicken wir dir deine Bestellung an folgende Adresse:</p>';
 		
 	} else if($orderData['gateway']['data']['slug'] === 'paypal-express') {
 		
 		$HTMLpayment .= '<p>Wir haben deine Paypal-Zahlung erhalten.</p>';
-		$HTMLpayment .= '<p>Dein Schmuck wird innerhalb der nächsten Tage an folgende Adresse versandt:</p>';
 		
 	}
 	

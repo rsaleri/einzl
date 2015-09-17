@@ -79,8 +79,8 @@
 				</tr>
 				<tr>
 					<td>
-						<p>Hi Marina,<br/>schön, dass du etwas bei uns gefunden hast.</p>
-						<p>Deine Bestellnummer ist: <a href="http://www.einzlstck.de/confirmation/981121852304786314" title="Bestellbestätigung">981121852304786314</a></p>
+						<p>Hi %firstname%,<br/>schön, dass du etwas bei uns gefunden hast.</p>
+						<p>Deine Bestellnummer ist: <a href="http://www.einzlstck.de/confirmation/%orderID%" title="Bestellbestätigung">%orderID%</a></p>
 					</td>
 				</tr>
 				<tr>
@@ -96,20 +96,11 @@
 								<td style="font-weight: bold; border-bottom: 1px solid #ccc;">Anzahl</td>
 								<td style="font-weight: bold; border-bottom: 1px solid #ccc; text-align: right;">Preis</td>
 							</tr>
-							<tr>
-								<td>Verletztes Herz</td>
-								<td>1</td>
-								<td style=" text-align: right;">62.45€</td>
-							</tr>
-							<tr>
-								<td>Haut auf Haut</td>
-								<td>2</td>
-								<td style=" text-align: right;">39.99€</td>
-							</tr>
+							%cartitems%
 							<tr>
 								<td style="border-top: 1px solid #ccc;">Zwischensumme</td>
 								<td style="border-top: 1px solid #ccc;"></td>
-								<td style="border-top: 1px solid #ccc; text-align: right;">102.00€</td>
+								<td style="border-top: 1px solid #ccc; text-align: right;">%totalprice%</td>
 							</tr>
 							<tr>
 								<td style="">Keine MwSt</td>
@@ -124,7 +115,7 @@
 							<tr>
 								<td style="font-weight: bold;">Total</td>
 								<td style="font-weight: bold;"></td>
-								<td style="font-weight: bold; text-align: right;">102.00€</td>
+								<td style="font-weight: bold; text-align: right;">%totalprice%</td>
 							</tr>
 						</table>
 
@@ -132,8 +123,13 @@
 				</tr>
 				<tr>
 					<td>
+						%paymentinfo%
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<p>Deine Bestellung schicken wir an folgende Adresse:</p>
-						<p>Sumit Kumar<br/>Schwabstraße 32<br/>70197 Stuttgart</p>
+						<p>%shippingAdress%</p>
 					</td>
 				</tr>
 				<tr>

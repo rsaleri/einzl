@@ -5,8 +5,7 @@ var CheckoutModel = PageModel.extend({
         var self = this;
         
         this.data = data;
-        this.view = new CheckoutView(this.data.hbsPath);
-        this.view.model = this;
+		this.set(data);
         
     },
 	
@@ -29,7 +28,7 @@ var CheckoutModel = PageModel.extend({
 
 			billID = selectedBill.attr('data-address-id');
 
-			$.each(Einzlstck.Models.User.data.addresses, function() {
+			$.each(einzl.models.user.data.addresses, function() {
 
 				if(this.id === billID) {
 					billingAddress = this;
@@ -41,7 +40,7 @@ var CheckoutModel = PageModel.extend({
 		} else {
 			// display error
 			goToByScroll(billingContainer);
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_noBillingAddress, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_noBillingAddress, 'error');
 			return errorPromise.reject();
 		}
 
@@ -58,7 +57,7 @@ var CheckoutModel = PageModel.extend({
 
 			shipID = selectedShip.attr('data-address-id');
 
-			$.each(Einzlstck.Models.User.data.addresses, function() {
+			$.each(einzl.models.user.data.addresses, function() {
 
 				if(this.id === shipID) {
 					shippingAddress = this;
@@ -70,16 +69,16 @@ var CheckoutModel = PageModel.extend({
 		} else {
 			// display error
 			goToByScroll(shippingContainer);
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_noShippingAddress, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_noShippingAddress, 'error');
 			return errorPromise.reject();
 		}
 
 		order.shipAd = shippingAddress;
 
 		// check if cart is empty
-		if(!Einzlstck.Models.Cart || Einzlstck.Models.Cart.data.total_items <= 0) {
+		if(!einzl.models.cart || einzl.models.cart.get('total_items') <= 0) {
 			// display error
-			notifyUser(Einzlstck.Models.Copy.data.messages.checkout_empty_cart, 'error');
+			notifyUser(einzl.models.language.get('copy').messages.checkout_empty_cart, 'error');
 			return errorPromise.reject();
 		}
 
@@ -95,10 +94,10 @@ var CheckoutModel = PageModel.extend({
 		var obj = {
 			action: 'processOrder',
 			order: order,
-			cart: Einzlstck.Models.Cart.data
+			cart: einzl.models.cart.toJSON
 		};
 
-		return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+		return einzl.models.shop.askServer(obj).done(function(data) {
 			
 			console.log(data);
 			
@@ -115,36 +114,6 @@ var CheckoutModel = PageModel.extend({
 			
             
 		});
-		
-	},
-    
-    trackOrder: function(order) {
-		
-		ga('require', 'ecommerce');
-	
-		ga('ecommerce:addTransaction', {
-			'id': order.id,                     	// Transaction ID. Required.
-			'affiliation': 'Einzelstück',   		// Affiliation or store name.
-			'revenue': order.total,               	// Grand Total.
-			'shipping': order.shipping_price,       // Shipping.
-			'tax': '0',                     		// Tax.
-			'currency': 'EUR'						// Currency
-		});
-
-		$.each(order.cart.contents, function(key, item) {
-
-			ga('ecommerce:addItem', {
-				'id': key,                     		// Transaction ID. Required.
-				'name': item.name,    				// Product name. Required.
-				'sku': item.sku,                 	// SKU/code.
-				'category': item.category.value,    // Category or variation.
-				'price': item.total,                // Unit price.
-				'quantity': item.quantity           // Quantity.
-			});
-
-		});
-
-		ga('ecommerce:send');
 		
 	}
 	

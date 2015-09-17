@@ -7,7 +7,7 @@ var GatewayModel = PageModel.extend({
         this.data = data;
 		
 		// prevent user greeting
-        window.clearTimeout(Einzlstck.Models.User.sayHello());
+        window.clearTimeout(einzl.models.user.sayHello());
         
         // handle gateway response
         this.handleGatewayResponse();
@@ -18,14 +18,14 @@ var GatewayModel = PageModel.extend({
     
     confirmOrder: function(order) {
 
-        // create new cart
-        Einzlstck.Models.Cart = new Basket();
+        // get new cart
+        einzl.models.cart.getCart();
 
         // track order with google analytics
-//                this.trackOrder(order);
+//		this.trackOrder(order);
 
         // navigate to confirmation page
-        Einzlstck.Router.navigate('/confirmation/' + order.id, {
+        einzl.router.navigate('/confirmation/' + order.id, {
             trigger: true,
             replace: true
         });
@@ -35,7 +35,7 @@ var GatewayModel = PageModel.extend({
     cancelOrder: function() {
         
         // navigate back to the checkout page
-        Einzlstck.Router.navigate('/checkout', {
+        einzl.router.navigate('/checkout', {
             trigger: true,
             replace: true
         });
@@ -46,8 +46,6 @@ var GatewayModel = PageModel.extend({
 		
 		var self = this;
 		
-		console.log('handle gateway response');
-		
         var obj = {
             action: "completePayment"
         };
@@ -55,10 +53,7 @@ var GatewayModel = PageModel.extend({
         $.extend(obj, this.data.urlParams);
         
         
-        Einzlstck.Models.Shop.askServer(obj).then(function(data) {
-            
-            console.log('complete payment response: ');
-            console.log(data);
+        einzl.models.shop.askServer(obj).then(function(data) {
             
             if(data.payment === 'manual') {
                 
@@ -86,6 +81,36 @@ var GatewayModel = PageModel.extend({
             }
             
         });
+		
+	},
+    
+    trackOrder: function(order) {
+		
+		ga('require', 'ecommerce');
+	
+		ga('ecommerce:addTransaction', {
+			'id': order.id,                     	// Transaction ID. Required.
+			'affiliation': 'Einzelstück',   		// Affiliation or store name.
+			'revenue': order.total,               	// Grand Total.
+			'shipping': order.shipping_price,       // Shipping.
+			'tax': '0',                     		// Tax.
+			'currency': 'EUR'						// Currency
+		});
+
+		$.each(order.cart.contents, function(key, item) {
+
+			ga('ecommerce:addItem', {
+				'id': key,                     		// Transaction ID. Required.
+				'name': item.name,    				// Product name. Required.
+				'sku': item.sku,                 	// SKU/code.
+				'category': item.category.value,    // Category or variation.
+				'price': item.total,                // Unit price.
+				'quantity': item.quantity           // Quantity.
+			});
+
+		});
+
+		ga('ecommerce:send');
 		
 	}
     

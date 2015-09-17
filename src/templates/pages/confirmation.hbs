@@ -1,0 +1,103 @@
+<section class="confirmation">
+    <article>
+        <div class="units-1 cut-in-half">
+            <div>
+                <div class="copy center-y">
+                    <h1>Vielen Dank, {{this.order.bill_to.data.first_name}}!</h1>
+                    <p>Deine Bestellung war erfolgreich.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <article>
+        <div class="content">
+            <div class="units-2">
+                <div>
+                    <div class="copy">
+                        <h2>Liebe/r {{this.order.bill_to.data.first_name}}</h2>
+                        <p>Es freut uns sehr, dass du etwas gefunden hast. Wenn du irgendwelche Fragen hast, dann zögere nicht uns via <a href='mailto:info@einzelstueck-shop.com' title='mail Einzelstück' target='_blank'>info@einzelstueck-shop.com</a> zu kontaktieren.</p>
+                        <p>Wir wünschen dir viel Spaß mit deinem neuen Schmuck und würden uns freuen, wenn du uns zeigst wie gut dir der Schmuck steht. Poste dein Bild auf Instagram und erwähne uns mit <a href='http://instagram.com/einzlstck' title='Einzelstück on Instagram' target='_blank'>@einzlstck</a> oder direkt auf unsere <a href='https://www.facebook.com/einzlstck' title='Einzelstück auf Facebook' target='_blank'>Facebook Wall</a>.</p>
+                        <p>Die nächsten Schritte für deine Bestellung sind die Bezahlung und Versand. Mehr Infos findest du rechts.</p>
+                    </div>
+                </div>
+                <div>
+                    <div id="pay-manual" class="copy payment-information">
+                        <h2>Zahlung</h2>
+                        <p>Bitte überweise <strong>{{this.order.currency_code}} {{this.order.total}}</strong> auf das folgende Bankkonto</p>
+                        <ul>
+                            <li>
+                                <label>Konto Inhaber</label>
+                                <span>Einzelstück (Inh. Sumit Kumar)</span>
+                            </li>
+                            <li>
+                                <label>IBAN</label>
+                                <span>DE95120300001014163396</span>
+                            </li>
+                            <li>
+                                <label>BIC</label>
+                                <span>BYLADEM1001</span>
+                            </li>
+                        </ul>
+                    </div>
+					
+					<div id="pay-paypal" class="copy payment-information">
+                        <h2>Zahlung</h2>
+						<p>Du hast Paypal als Zahlungsmethode gewählt. Klicke auf diesen Button um deinen Zahlungsvorgang zu beginnen.</p>
+						<div class="button pay">
+							<span>Jetzt mit Paypal zahlen</span>
+						</div>
+						<p>Du kannst es auch später tun. Komm einfach wieder hier her :-)</p>
+					</div>
+					
+					<div id="paid" class="copy payment-information">
+						<h2>Zahlung</h2>
+						<h3><i class="fa fa-check"></i> Wir haben deine Zahlung erhalten!</h3>
+					</div>
+                </div>
+					
+                
+            </div>
+            <div class="units-2">
+                <div>
+                    <div class="copy">
+                        <h2>Rechnung</h2>
+                        <p>Deine Rechnung geht an folgende Adresse</p>
+                        <span>{{this.order.bill_to.data.first_name}} {{this.order.bill_to.data.last_name}}</span><br/>
+                        <span>{{this.order.bill_to.data.address_1}}</span><br/>
+                        <span>{{this.order.bill_to.data.postcode}} {{this.order.bill_to.data.city}}, {{this.order.bill_to.data.country.value}}</span><br/>
+                        <span>{{this.order.bill_to.data.note}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="copy">
+                        <h2>Versand</h2>
+                        <p>Sobald wir den Zahlungseingang feststellen, wird dein neuer Schmuck an folgende Adresse versandt</p>
+                        <span>{{this.order.ship_to.data.first_name}} {{this.order.ship_to.data.last_name}}</span><br/>
+                        <span>{{this.order.ship_to.data.address_1}}</span><br/>
+                        <span>{{this.order.ship_to.data.postcode}} {{this.order.ship_to.data.city}}, {{this.order.ship_to.data.country.value}}</span><br/>
+                        <span>{{this.order.ship_to.data.note}}</span>
+                   </div>
+                </div>
+                
+            </div>
+            <center style="padding: 20px;">Schön, dass du hier warst :-)</center>
+            <div class="units-2">
+				<div>
+                    <div class="copy">
+						<h2>Noch Fragen?</h2>
+						<p>Falls dir noch etwas unklar ist, du etwas auf dem Herzen hast oder einfach Hallo sagen möchtest, dann melde dich via <a href="mailto:info@einzelstueck-shop.com" target="_blank">info@einzelstueck-shop.com</a>.</p>
+						<p>Wir würden uns freuen von dir zu hören :-)</p>
+					</div>
+                </div>
+                <div>
+                    <div class="copy">
+                        <h2>Zeig' dich!</h2>
+                        <p>Poste ein Foto von dir und deinem neuen Schmuck auf Instagram und tagge uns mit <a href="http://www.instagram.com/einzlstck" target="_blank" title="Einzelstück auf Instagram">@einzlstck</a>. Wir können es kaum erwarten zu sehen, wie gut dir der Schmuck steht.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </article>
+</section>

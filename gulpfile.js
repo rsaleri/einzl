@@ -14,6 +14,25 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     del = require('del');
+	handlebars = require('gulp-handlebars'),
+	wrap = require('gulp-wrap'),
+	declare = require('gulp-declare');
+
+
+// Templates
+gulp.task('templates', function(){
+  gulp.src('src/templates/**/*.hbs')
+    .pipe(handlebars())
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'Templates',
+      noRedeclare: true, // Avoid duplicate declarations 
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('dist/js'))
+  	.pipe(notify({ message: 'Templates task complete' }));
+});
+	
 
 // Styles
 gulp.task('styles', function() {
@@ -61,16 +80,19 @@ gulp.task('clean', function(cb) {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts');
+    gulp.start('styles', 'scripts', 'templates');
 });
 
 // Watch
 gulp.task('watch', function() {
 
-  // Watch .scss files
-  gulp.watch('src/css/**/*.scss', ['styles']);
+	// Watch .scss files
+	gulp.watch('src/css/**/*.scss', ['styles']);
 
-  // Watch .js files
-  gulp.watch('src/js/**/*.js', ['scripts']);
+	// Watch .js files
+	gulp.watch('src/js/**/*.js', ['scripts']);
+
+	// Watch .js files
+	gulp.watch('src/templates/**/*.hbs', ['templates']);
 
 });

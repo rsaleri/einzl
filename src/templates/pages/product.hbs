@@ -1,0 +1,132 @@
+<section class="product-details">
+	
+	
+	<div class="units-2">
+		
+		<div>
+			
+			<div class="image-gallery">
+				
+				<div class="images">
+					
+					{{#each images}}
+
+						{{#if @first}}	
+							<img src="{{this.url.https}}" class="active">
+						{{else}}
+							<img src="{{this.url.https}}">
+						{{/if}}
+
+
+					{{/each}}
+				</div>
+				
+
+				<div class="gallery-navigation">
+
+					{{#each images}}
+
+						{{#if @first}}
+							<div class="thumb active">
+                                <img src="{{this.url.https}}">
+                            </div>
+						{{else}}
+							<div class="thumb">
+                                <img src="{{this.url.https}}">
+                            </div>
+						{{/if}}
+
+
+					{{/each}}
+
+				</div>
+			</div>
+
+		</div>
+		<div>
+
+			<div class="details-panel">
+
+				<h2>{{title}} <span class="sold">SOLD OUT</span></h2>
+				<p>{{description}}</p>
+				<div class="cart-info">
+					<div class="price">
+						<span>{{price.value}}</span>
+					</div>
+					<div class="button add-to-cart">
+						<span><i class="fa fa-shopping-cart"></i></span>
+					</div>
+				</div>
+				
+				
+				<ul class="accordeon">
+<!--
+					<li>
+						<span>Story</span>
+					</li>
+-->
+<!--
+					<li class="material">
+					
+						<span>Größen & Material</span>
+						<div class="accordeon-content">
+							
+							<ul>
+								<li>Ring-Größe: 53</li>
+								<li>Armband-Länge: 18cm</li>
+								<li>Stein: Bernstein</li>
+								<li>Fassung: 925 Sterlingsilber</li>
+							
+							</ul>
+							
+						</div>
+					</li>
+-->
+					<li class="extended">
+						<span><i class="fa fa-chevron-right"></i>Lieferung</span>
+						<div class="accordeon-content">
+							<p>Die Lieferzeit beträgt in der Regel 2 - 3 Werktage, kann in Ausnahmefällen jedoch bis zu 2 Wochen in Anspruch nehmen.</p>
+							<p>Kostenlose Lieferung nach Deutschland, Österreich und in die Schweiz.</p>
+							<p>Wir liefern aktuell in keine anderen Länder.</p>
+						</div>
+					</li>
+				
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+	
+	<center class="recommended-products-title">
+        <p>&darr; Das passt super zu {{title}} &darr;</p>
+    </center>
+	<div class="units-3 recommended-products"></div>
+    
+    <center style="padding: 20px;">
+        <p>Unsere Werte</p>
+    </center>
+    <div class="units-3">
+        <div>
+            <div class="copy">
+                <h2>Echt und Handgemacht</h2>
+                <p>Unsere Schmuckstücke bestehen aus 925 Sterlingsilber und echten Edelsteinen. Von Hand geformte Fassungen verzieren wunderschöne, handgeschliffene Edelsteine.</p>
+                <p>Keine Angst vor Wasser, Rost oder Sonne - unser Schmuck besteht nur aus echten Materialien die nach einer Kuschel-Runde mit einem Pflegetuch wieder wie neu aussehen.</p>
+            </div>
+            
+        </div>
+        <div>
+            <div class="copy">
+                <h2>Aus Tradition</h2>
+                <p>Unser Schmuck wird von Familien mit langer Tradition in der Edelmetal- und Edelsteinverarbeitung gefertigt. Bis 1947 fertigten sie Schmuck für die Könige Indiens, sogenannte Maharadschas. Jede Familie kümmerte sich um die Verarbeitung eines bestimmten Edelsteins. Als 1947 die Herrschaft der Maharadschas endete, fertigten diese Familien Schmuck für westliche Großhändler und Touristen.</p>
+            </div>
+        </div>
+        <div>
+            <div class="copy">
+                <h2>Fair</h2>
+                <p>Wir beziehen unseren Schmuck direkt bei den verarbeitenden Familien in Indien. Wir arbeiten nicht mit Großhändlern womit wir überdurchschnittlich hohe und faire Vergütungen an diese Familien zahlen können, um ihnen die Unabhängikeit von Großhändlern weiter zu erleichtern.</p>
+            </div>
+            
+        </div>
+    </div>
+	
+</section>

@@ -1,30 +1,14 @@
 var Lang = Backbone.Model.extend({
 	
-	
-	initialize: function(language) {
-		
-		this.language = language;
-        
-		this.getCopy();
-		
-		
+	defaults: {
+		language: 'de'
 	},
 	
-	getCopy: function() {
-		
-		var self = this;
-		
-		return $.getJSON('copy/' + this.language + '.json', function(data) {
-
-			// resolve the deferred to let everyone know that we learned words
-			Einzlstck.Deferreds.copy.resolve(data.copy);
-            self.data = data.copy;
-
-		});
-		
+	url: function() {
+		return 'copy/' + this.get('language') + '.json';
 	},
 	
-	insertCopy: function(htmlStr, allCopy) {
+	insertCopy: function(htmlStr) {
 		
 		var self = this;
 		
@@ -35,13 +19,13 @@ var Lang = Backbone.Model.extend({
 
 		// insert copy
 		html.find('[data-copy]').each(function() {
-			var copy = allCopy[$(this).attr('data-copy')];
+			var copy = self.get('copy')[$(this).attr('data-copy')];
 			$(this).html(copy);
 		});
 
 		// insert placeholders
 		html.find('[data-placeholder]').each(function() {
-			var placeholder = allCopy.placeholders[$(this).attr('data-placeholder')];
+			var placeholder = self.get('copy').placeholders[$(this).attr('data-placeholder')];
 			$(this).attr('placeholder', placeholder);
 		});
 

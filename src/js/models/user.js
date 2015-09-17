@@ -13,8 +13,8 @@ var User = Backbone.Model.extend({
         
         // greet the user - only once!
         var helloTimeout = window.setTimeout(function() {
-            notifyUser(Einzlstck.Models.Copy.data.messages.welcome[getRandomInt(0, Einzlstck.Models.Copy.data.messages.welcome.length -1)], 'success');
-        }, 2000);
+            notifyUser(einzl.models.language.get('copy').messages.welcome[getRandomInt(0, einzl.models.language.get('copy').messages.welcome.length -1)], 'success');
+        }, 50);
         
         return helloTimeout;
         
@@ -26,8 +26,6 @@ var User = Backbone.Model.extend({
         
         this.views.addressList = new AddressList();
 		this.views.addressForm = new AddressForm();
-        
-        this.sayHello();
     },
     
     saveToLocalstorage: function() {
@@ -57,11 +55,7 @@ var User = Backbone.Model.extend({
         this.saveToLocalstorage();
         
         // re-render address list template
-        return this.views.addressList.render(this.data).then(function() {
-            
-            
-            
-        });
+        return this.views.addressList.render(this.data);
         
     }
     

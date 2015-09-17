@@ -4,17 +4,8 @@ var Basket = Backbone.Model.extend({
         
         var self = this;
         
-        this.view = new BasketView();
-        
-        this.getCart().then(function() {
-            
-            self.view.render(self.data).then(function() {
-                
-            });
-            
-        });
-        
-        
+        this.getCart();
+		
     },
     
     removeItem: function(product_key) {
@@ -23,21 +14,19 @@ var Basket = Backbone.Model.extend({
         var obj = {
             action: 'removeFromCart',
             cart: {
-                id: self.data.id
+                id: this.get('id')
             },
             product: {
                 key: product_key,
-                quantity: self.data.contents[product_key].quantity
+                quantity: this.get('contents')[product_key].quantity
             }
         };
 
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-                                                         
-            self.data = data.cart;
-                                                         
-            self.view.render(self.data).then(function() {
-                
-            });
+        return einzl.models.shop.askServer(obj).done(function(data) {
+			
+			// save data
+            self.set(data.cart);
+			
         });
     },
     
@@ -47,23 +36,20 @@ var Basket = Backbone.Model.extend({
         var obj = {
             action: 'addToCart',
             cart: {
-                id: self.data.id
+                id: this.get('id')
             },
             product_id: prodID
+			
         };
 
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
+        return einzl.models.shop.askServer(obj).done(function(data) {
+			
+			// save data
+            self.set(data.cart);
             
-            self.data = data.cart;
-            
-            console.log(data);
-            
-            self.view.render(self.data).then(function() {
-                
-				Einzlstck.Models.Cart.view.open();
-				
-            });
-        });
+			einzl.views.cart.open();
+			
+		});
 
     },
     
@@ -76,20 +62,16 @@ var Basket = Backbone.Model.extend({
         };
 
         // get cart data from moltin
-        return Einzlstck.Models.Shop.askServer(obj).done(function(data) {
-
+        return einzl.models.shop.askServer(obj).done(function(data) {
+			
+			console.log('GOT CART');
+			
             if(data.cart) {
                 // save cart model
-                self.data = data.cart;
-                
-                // save to user model
-                Einzlstck.Models.User.data.cart_id = data.cart.id;
-                
-                // save user into localStorage. TODO: Replace this with a listener on the user model (auto-save onChange)
-                Einzlstck.Models.User.saveToLocalstorage();
+				self.set(data.cart);
                 
             } else {
-                notifyUser(Einzlstck.Models.Copy.data.messages.noConnection, 'error');
+                notifyUser(einzl.models.language.get('copy').messages.noConnection, 'error');
             }
 
 

@@ -124,6 +124,7 @@
     <script src="js/libs/underscore-min.js"></script>
 	<script src="js/libs/backbone-min.js"></script>
     <script src="js/libs/handlebars-v2.0.0.js"></script>
+	<script src="js/templates.js"></script>
     <!-- media queries for IE8 -->
 	<!--[if lt IE 9]>
     <script src='js/libs/respond.min.js'></script>

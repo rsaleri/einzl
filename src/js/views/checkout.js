@@ -5,13 +5,13 @@ var CheckoutView = PageView.extend({
         var self = this;
 		
 		// insert "new address" form
-		Einzlstck.Models.User.views.addressForm.render();
+		einzl.models.user.views.addressForm.render();
         
         // are there addresses?
-        if(Einzlstck.Models.User.data.addresses.length > 0) {
+        if(einzl.models.user.data.addresses.length > 0) {
             
             // yup, insert them
-            Einzlstck.Models.User.views.addressList.render(Einzlstck.Models.User.data);
+            einzl.models.user.views.addressList.render(einzl.models.user.data);
             
         } else {
             
@@ -19,8 +19,6 @@ var CheckoutView = PageView.extend({
             this.el.find('#billing-address').addClass('open-form');
             
         }
-        
-        
         
     },
     
@@ -40,9 +38,6 @@ var CheckoutView = PageView.extend({
             $(e.currentTarget).closest('.unit').addClass('open-form');
         });
 
-        
-
-        
 
         // enable process order button
         this.el.find('.button.buy').on('vclick', function(e) {
@@ -72,7 +67,7 @@ var CheckoutView = PageView.extend({
         
         // insert cart (move this if template isnt rendered on each visit anymore)
         try {
-            this.el.find('.cart').html(Einzlstck.Models.Cart.view.el.clone(true));
+            this.el.find('.cart').html(einzl.views.cart.el.clone(true));
         } catch(e) {
             // cart will be inserted when it's ready by the CartView
         }

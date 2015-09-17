@@ -1,6 +1,8 @@
 var Router = Backbone.Router.extend({
 	
 	initialize: function(config) {
+		
+		var self = this;
         
         this.config = config;
 		
@@ -18,16 +20,12 @@ var Router = Backbone.Router.extend({
 			
 			// navigate to the target
 			var href = $(this).attr('href');
-			Einzlstck.Router.navigate(href, true);
+			self.navigate(href, true);
             
             // The following is done in execute() as well. This is dirty. Find a better way
             // close menu
             $('.hamburger-button').removeClass('open');
             $('header nav').removeClass('open');
-
-            // close cart
-            Einzlstck.Models.Cart.view.close();
-            
 			
 		});
 		
@@ -38,9 +36,6 @@ var Router = Backbone.Router.extend({
 		// close menu
 		$('.hamburger-button').removeClass('open');
 		$('header nav').removeClass('open');
-		
-		// close cart
-		Einzlstck.Models.Cart.view.close();
 		
 		// add loading class to body
 		$('body').addClass('loading');
@@ -79,16 +74,13 @@ var Router = Backbone.Router.extend({
         // get config information
         var config = this.getRouteConfig(slug);
 		
-		Einzlstck.Deferreds.products.then(function() {
-            
-            var productModel = Einzlstck.Models.Inventory.selectProduct(id);
-            
-            productModel.view.render(productModel.data);
-            
-            // set document title
-            document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
+		var productModel = einzl.models.inventory.selectProduct(id);
 			
-		});
+		var productView = new ProductView({model: productModel});
+		productView.render();
+
+		// set document title
+		document.title = productModel.data.title + ' - ' + productModel.data.category.value + ' - Einzelstück';
 		
 		
 		
@@ -104,12 +96,15 @@ var Router = Backbone.Router.extend({
         var config = this.getRouteConfig(slug);
         
         // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new PageModel(config);
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new PageView({model: new PageModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
+		
+		// set document title
+		document.title = config.title.de + ' - Einzelstück';
         
     },
     
@@ -121,12 +116,12 @@ var Router = Backbone.Router.extend({
         var config = this.getRouteConfig(slug);
 		
         // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new PageModel(config);
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new PageView({model: new PageModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
@@ -147,13 +142,13 @@ var Router = Backbone.Router.extend({
         // get config information
         var config = this.getRouteConfig(slug);
 		
-        // init page if it isn't already
-		if(!Einzlstck.Pages[config.id]) {
-			Einzlstck.Pages[config.id] = new CheckoutModel(config);
+		// init page if it isn't already
+		if(!einzl.views[config.id]) {
+			einzl.views[config.id] = new CheckoutView({model: new CheckoutModel(config)});
 		}
 		
         // render the view
-		Einzlstck.Pages[config.id].view.render();
+		einzl.views[config.id].render();
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
@@ -177,8 +172,8 @@ var Router = Backbone.Router.extend({
 			id: orderID
 		};
 		
-        // init page
-		Einzlstck.Pages[config.id] = new OrderModel(config);
+		// init page
+		einzl.views[config.id] = new OrderView({model: new OrderModel(config)});
 		
 		// set document title
 		document.title = config.title.de + ' - Einzelstück';
@@ -201,7 +196,7 @@ var Router = Backbone.Router.extend({
         config.urlParams = getUrlParams();
         
         // init page
-		Einzlstck.Pages[config.id] = new GatewayModel(config);
+		einzl.models.gateway = new GatewayModel(config);
         
     },
     
@@ -237,6 +232,8 @@ var Router = Backbone.Router.extend({
             }
 
         });
+		
+		$('body').attr('data-route', route.id);
 
         if(route) {
             // route was found, return it

@@ -1,46 +1,36 @@
 var PageView = Backbone.View.extend({
 	
-	render: function(data) {
+	template: function(data) {
+		return Templates[this.model.get('tplName')](data);
+	},
+	
+	render: function() {
         
 		var self = this;
 		
-		return this.template.then(function(hbs) {
-			var html = hbs(data);
-			
-			self.el = $(html);
-			
-			// scroll to top
-			$('html, body').scrollTop(0);
-			
-			// insert into DOM
-			$('main').html(self.el);
-			
-			// remove loading class from body
-			$('body').removeClass('loading');
-			
-			self.initController();
-			
-			Einzlstck.Deferreds.products.then(function() {
-				self.insertProducts();
-			});
-			
-			
-		});
+		var data = this.model.toJSON();
+		
+		var html = this.template(data);
+
+		this.el = $(html);
+
+		// scroll to top
+		$('html, body').scrollTop(0);
+
+		// insert into DOM
+		$('main').html(this.el);
+
+		// remove loading class from body
+		$('body').removeClass('loading');
+
+		this.initController();
+		this.insertProducts();
 		
 	},
 	
-	initialize: function(hbsPath) {
+	initialize: function() {
 		
-		var self = this;
 		
-		// get the template
-		this.template = $.Deferred();
-		Einzlstck.Models.Shop.getTemplate(hbsPath).then(function(hbs) {
-			
-			// resolve template deferred
-			self.template.resolve(hbs);
-			
-		});
 		
 	},
 	
@@ -52,15 +42,13 @@ var PageView = Backbone.View.extend({
 			var container = $(this);
 			var prodID = container.attr('data-product');
 			
-			var productModel = Einzlstck.Models.Inventory.selectProduct(prodID);
+			var productModel = einzl.models.inventory.selectProduct(prodID);
+			
+			var productViewExtract = new ProductViewExtract({
+				model: productModel
+			});
             
-            // is the product template availble?
-            $.when(productModel.extractView.template).then(function() {
-
-                // yes, so insert the products view into the product container on this page
-                productModel.extractView.el.clone(true).appendTo(container);
-
-            });
+            productViewExtract.render().appendTo(container);
 			
 		});
 		
@@ -73,21 +61,19 @@ var PageView = Backbone.View.extend({
 			
 			
 			
-			$.each(Einzlstck.Models.Inventory.models, function() {
+			$.each(einzl.models.inventory.models, function() {
 				
 				
 				
 				if(this.data.category.data[category]) {
 					
-					var productModel = Einzlstck.Models.Inventory.selectProduct(this.data.id);
-            
-					// is the product template availble?
-					$.when(productModel.extractView.template).then(function() {
-
-						// yes, so insert the products view into the product container on this page
-						productModel.extractView.el.clone(true).appendTo(container);
-
+					var productModel = einzl.models.inventory.selectProduct(this.data.id);
+            		
+					var productViewExtract = new ProductViewExtract({
+						model: productModel
 					});
+
+					productViewExtract.render().appendTo(container);
 					
 				}
 				
@@ -131,7 +117,7 @@ var PageView = Backbone.View.extend({
                         };
 
                         // subscribe
-                        Einzlstck.Models.Shop.subscribe(userData)
+                        einzl.model.shop.subscribe(userData)
                         .always(function(data) {
                             button.removeClass('loading');
                             input.val('');

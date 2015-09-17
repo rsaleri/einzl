@@ -1,13 +1,15 @@
 var BasketView = Backbone.View.extend({
 	
-	template: $.Deferred(),
+	template: function(data) {
+		return Templates.cart(data);
+	},
 	
 	initialize: function() {
 		
 		var self = this;
 		
-		Einzlstck.Models.Shop.getTemplate('modules/cart.hbs').then(function(hbs) {
-			self.template.resolve(hbs);
+		this.model.on('change', function() {
+			self.render();
 		});
 		
 	},
@@ -23,8 +25,6 @@ var BasketView = Backbone.View.extend({
 			
 		}
 		
-		
-		
 	},
 	
 	open: function() {
@@ -36,11 +36,11 @@ var BasketView = Backbone.View.extend({
 		
 	},
 	
-	render: function(data) {
+	render: function() {
 		
 		var self = this;
 		
-		console.log('render cart');
+		var data = this.model.toJSON();
 
 		$.each(data.contents, function() {
 
@@ -49,34 +49,31 @@ var BasketView = Backbone.View.extend({
 
 		});
 		
-        // get the template
-		return this.template.then(function(hbs) {
-			
-            // render it
-			var html = hbs(data);
-			
-            // save it
-			self.el = $(html);
-			
-            // enable clicky stuff
-			self.initController();
-			
-			// insert into DOM
-			$('.cart').html(self.el.clone(true));
-			
-			// update totals outside of view
-			$('.total-items').text(data.total_items);
-			$('.total-price').text(data.totals.post_discount.rounded.with_tax.toFixed(2));
-			
-		});
+		data.totals.post_discount.rounded.with_tax = data.totals.post_discount.rounded.with_tax.toFixed(2);
+		
+        // render it
+		var html = this.template(data);
+		
+		// save it
+		self.el = $(html);
+
+		// enable clicky stuff
+		self.initEvents();
+
+		// insert into DOM
+		$('.cart').html(self.el.clone(true));
+
+		// update totals outside of view
+		$('.total-items').text(data.total_items);
+		$('.total-price').text(data.totals.post_discount.rounded.with_tax);
+		
+		return self.el;
 		
 	},
 	
-	initController: function() {
+	initEvents: function() {
 		
 		var self = this;
-		
-		
     
 		this.el.find('.item').off('vclick');
 		this.el.find('.item').on('vclick', function(e) {
@@ -92,7 +89,7 @@ var BasketView = Backbone.View.extend({
 
 			if(!li.hasClass('loading')) {
 				li.addClass('loading');
-				Einzlstck.Models.Cart.removeItem(product_key);
+				self.model.removeItem(product_key);
 			}
 
 			e.stopPropagation();
